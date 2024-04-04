@@ -1,0 +1,8 @@
+<div class="main">
+    <div class="input" [style.border-color]="formControl.value ? '#FDD22A' : '#000'">
+        <span class="material-symbols-outlined color-icon">
+            {{icon}}
+        </span>
+        <input [type]="type" [placeholder]="placeholder" [formControl]="formControl" [mask]="mask">
+    </div>
+</div>

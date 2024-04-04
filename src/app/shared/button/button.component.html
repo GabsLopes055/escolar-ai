@@ -1,0 +1,27 @@
+<button type="button"
+[style.opacity]="disabled ? 0.5 : 1"
+[style.background]="fieldButton === 'field' ? colors[color] : 'white'"
+[style.width]="'100%'"
+[style.padding]="'1rem'"
+[style.border]="(fieldButton == 'outline' && border) ? 'solid 1px black' : 'none'"
+[style.color]="((color == 'primary'  || color == 'error') && fieldButton != 'outline') ? '#FFF' : '#000'"
+[style.border-radius]="'50px'"
+[style.font-weight]="'bold'"
+[style.display]="'flex'"
+[style.justify-content]="'center'"
+[style.align-items]="'center'"
+[style.gap]="'8px'"
+[style.cursor]="'pointer'"
+>
+    @if(icon && iconPosition == 'left') {
+        <span class="material-symbols-outlined">
+            {{icon}}
+        </span>
+    }
+    <ng-content></ng-content>
+    @if(icon && iconPosition == 'right') {
+        <span class="material-symbols-outlined">
+            {{icon}}
+        </span>
+    }
+</button>

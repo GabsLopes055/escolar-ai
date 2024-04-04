@@ -1,0 +1,178 @@
+main {
+    background-color: #EFEFEF;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .left {
+        width: 18vw;
+        background-image: linear-gradient(to right top, #fca61d, #fabf42, #fad666, #fbeb8a, #ffffaf);
+        height: 75vh;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        border-radius: 16px 0 0 16px;
+        gap: 44px;
+
+        p {
+            width: 200px;
+        }
+    }
+
+    .right {
+        width: 60vw;
+        height: 75vh;
+        background-color: #fff;
+        padding: 2rem;
+        border-radius: 0 18px 28px 0;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            animation: initForm .8s;
+            form {
+                display: grid;
+                grid-template-columns: repeat(12, 1fr);
+                gap: 24px;
+                h3 {
+                    grid-column: span 12;
+                }
+                tgt-input {
+                    grid-column: span 12;
+                }
+            }
+
+            .section {
+                font-size: 12px;
+                display: flex;
+                flex-direction: column;
+                gap:8px;
+
+                .info-label {
+                    margin-bottom: 16px;
+                }
+
+                .info-detail {
+                    display: flex;
+                    gap: 8px;
+                    .icone {
+                        font-size: 20px;
+                    }
+                }
+            }
+
+            .footer {
+                grid-column: span 12;
+                display: grid;
+                grid-template-columns: repeat(12, 1fr);
+                gap: 8px;
+
+                tgt-input {
+                    grid-column: span 6;
+                }
+            }
+        }
+
+        .content-end {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
+            animation: initForm .8s;
+
+            .text {
+                width: 307px;
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+                text-align: center;
+            }
+        }
+
+        .footer-btn {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            .btn-l {
+                width: 150px;
+                justify-self: end;
+            }
+        }
+
+
+
+    }
+}
+
+@keyframes initForm {
+    from {
+        margin-left: 50px;
+        opacity: 0;
+    }
+    to {
+        margin-left: 0;
+        opacity: 1;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    main {
+        background-color: #FFF;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+
+        .left {
+            width: 90%;
+            height: 38vh;
+            background-image: linear-gradient(to right top, #fca61d, #fabf42, #fad666, #fbeb8a, #ffffaf);
+            border-radius: 0 0 100px 0;
+
+            display: flex;
+            flex-direction: row;
+            gap: 8px;
+            align-items: center;
+
+            p {
+                display: none;
+            }
+        }
+        .right {
+            width: 90%;
+            padding: 1rem;
+            .content {
+                gap: 16px;
+                h3 {
+                    font-size: 16px;
+                    width: 100%;
+                }
+
+                .footer {
+                    gap: 24px;
+                    tgt-input {
+                        grid-column: span 12;
+                    }
+                }
+            }
+
+            .footer-btn {
+                margin-top: 1rem;
+                flex-direction: column-reverse;
+                gap: 8px;
+
+                .btn-l{
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

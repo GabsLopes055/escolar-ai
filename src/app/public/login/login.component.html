@@ -1,0 +1,27 @@
+<main>
+    <div class="circle">
+        <img src="assets/images/plane.png" width="150px" [style.opacity]="0.4">
+        <h1 class="title-mob"><strong>Hey, </strong>Bem vindo!</h1>
+        <div class="title-text-desk">
+            <h1>TO GO TRIP</h1>
+            <h2>Controle todas as viagens que ocorrem na sua empresa. Tenha os melhores voos, hotéis e restaurantes a sua disposição. </h2>
+        </div>
+    </div>
+    <div class="content">
+        <form class="form">
+            <h1 class="title-desk"><strong>Hey, </strong>Bem Vindo!</h1>
+            <h2>Entrar</h2>
+            <tgt-input-icon placeholder="username" [type]="'email'" icon="email"></tgt-input-icon>
+            <tgt-input-icon placeholder="password" [type]="'password'" icon="lock"></tgt-input-icon>
+            <div class="forgot">
+                <span><a href="#">Esqueci minha senha</a></span>
+            </div>
+            <tgt-button [color]="'primary'" icon="login" iconPosition="right">Entrar</tgt-button>
+        </form>
+        <div class="create">
+            <span>Não possui uma conta? <a [routerLink]="['/register']" >Cadastre-se</a></span>
+        </div>
+    </div>
+
+</main>
+
