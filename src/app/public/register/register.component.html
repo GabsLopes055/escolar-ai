@@ -1,0 +1,35 @@
+<main>
+    <div class="circle">
+        <img src="assets/images/plane.png" class="title-text-desk" width="150px" [style.opacity]="0.4">
+        <span class="material-symbols-outlined title-mob back" [routerLink]="['/login']">
+            arrow_back
+        </span>
+        <h1 class="title-mob">Vamos começar!</h1>
+        <div class="title-text-desk">
+            <h1>TO GO TRIP</h1>
+            <h2>Controle todas as viagens que ocorrem na sua empresa. Tenha os melhores voos, hotéis e restaurantes a sua disposição. </h2>
+        </div>
+    </div>
+    <div class="content">
+        @if(!isFeedback) {
+            <form class="form">
+                <h1 class="title-desk">Vamos começar!</h1>
+                <h2>Registre-se</h2>
+                <tgt-input-icon [type]="'text'" icon="apartment" placeholder="CNPJ" mask="00.000.000/0000-00"></tgt-input-icon>
+                <tgt-input-icon [type]="'text'" icon="person" placeholder="Nome completo"></tgt-input-icon>
+                <tgt-input-icon [type]="'email'" icon="email" placeholder="E-mail corporativo"></tgt-input-icon>
+    
+                <tgt-button [color]="'primary'" [icon]="'login'" [iconPosition]="'right'" (click)="showFeedback()">Cadastrar</tgt-button>
+            </form>
+
+        } @else {
+            <feedback-init-register></feedback-init-register>
+        }
+
+        <div class="create">
+            <span>Já possui uma conta? <a [routerLink]="['/login']">Login</a></span>
+        </div>
+    </div>
+
+</main>
+

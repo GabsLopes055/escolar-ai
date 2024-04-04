@@ -1,0 +1,126 @@
+<main>
+    <div class="left">
+        <h1>Olá,</h1>
+        <h1>Kopetski!</h1>
+
+        <p>Conclua seu cadastro e aproveite as melhores condições para suas viagens.</p>
+    </div>
+    <div class="right">
+        @switch (steps) {
+        @case(1) {
+        <div class="content">
+            <h3>Antes de continuarmos, confirme os dados empresariais:</h3>
+            <form [formGroup]="formGroup">
+                <tgt-input label="CNPJ" mask="00.000.000/0000-00" [readonly]="true"
+                    [control]="formGroup.controls.cnpj"></tgt-input>
+                <tgt-input [label]="'Razão social'" [readonly]="true"
+                    [control]="formGroup.controls.razaoSocial"></tgt-input>
+                <tgt-input label="Nome Fantasia" [readonly]="true"
+                    [control]="formGroup.controls.nomeFantasia"></tgt-input>
+                <tgt-input label="Inscrição Estadual" [readonly]="true"
+                    [control]="formGroup.controls.inscEstadual"></tgt-input>
+                <div class="footer">
+                    <tgt-input label="CNAE Primário" class="inn" [readonly]="true"
+                        [control]="formGroup.controls.cnaePrimario"></tgt-input>
+                    <tgt-input label="CNAE Secundário" [readonly]="true"
+                        [control]="formGroup.controls.cnaeSecundario"></tgt-input>
+                </div>
+            </form>
+        </div>
+        }
+
+        @case(2) {
+        <div class="content">
+            <h3>Agora, precisamos de alguns dados pessoais:</h3>
+            <form [formGroup]="formGroup">
+                <tgt-input label="Nome"></tgt-input>
+                <tgt-input [label]="'E-mail'"></tgt-input>
+                <tgt-input label="Telefone" mask="(00) 00000-0000"></tgt-input>
+            </form>
+        </div>
+        }
+        @case(3) {
+        <div class="content">
+            <h3>Cadastre sua senha de acesso:</h3>
+            <form [formGroup]="formGroup">
+                <tgt-input label="Senha*" type="password" [control]="senha"></tgt-input>
+                <tgt-input [label]="'Confirmar Senha*'" type="password"></tgt-input>
+            </form>
+            <div class="section">
+                <span class="info-label">A senha deve conter:</span>
+                <div class="info-detail">
+                    @if(senha.value == null) {
+                    <span class="material-symbols-outlined icone">do_not_disturb_on</span>
+                    } @else if(senha.value['length'] >= 8) {
+
+                    <span class="material-symbols-outlined icone" [style.color]="'#3CCF17'">check_circle</span>
+                    } @else {
+
+                    <span class="material-symbols-outlined icone" [style.color]="'#FA077C'">cancel</span>
+                    }
+                    <p>Pelo menos 8 caracteres;</p>
+                </div>
+                <div class="info-detail">
+                    @if(senha.value == null && haveUppercaseAndLowwercase == false) {
+                        <span class="material-symbols-outlined icone">do_not_disturb_on</span>
+                    } @else if(haveUppercaseAndLowwercase) {
+                        <span class="material-symbols-outlined icone" [style.color]="'#3CCF17'">check_circle</span>
+                    } @else {
+                        <span class="material-symbols-outlined icone" [style.color]="'#FA077C'">cancel</span>
+                    }
+                    <p>Letras maiúsculas e minúsculas;</p>
+                </div>
+                <div class="info-detail">
+                    @if(senha.value == null && contentNumbers == false) {
+                        <span class="material-symbols-outlined icone">do_not_disturb_on</span>
+                    } @else if(contentNumbers) {
+                        <span class="material-symbols-outlined icone" [style.color]="'#3CCF17'">check_circle</span>
+                    } @else {
+                        <span class="material-symbols-outlined icone" [style.color]="'#FA077C'">cancel</span>
+                    }
+                    <p>Números;</p>
+                </div>
+                <div class="info-detail">
+                    @if(senha.value == null && specialChars == false) {
+                        <span class="material-symbols-outlined icone">do_not_disturb_on</span>
+                    } @else if(specialChars) {
+                        <span class="material-symbols-outlined icone" [style.color]="'#3CCF17'">check_circle</span>
+                    } @else {
+                        <span class="material-symbols-outlined icone" [style.color]="'#FA077C'">cancel</span>
+                    }
+
+                    <p>Caracteres especiais.</p>
+                </div>
+            </div>
+
+        </div>
+        }
+        @case(4) {
+        <div class="content-end">
+            <img src="assets/images/success.svg" alt="" srcset="">
+            <div class="text">
+                <h2>Parabéns!</h2>
+                <p>Cadastro concluído com sucesso! Realize o Login e aproveite as melhores condições para suas viagens.
+                </p>
+            </div>
+
+            <div class="btn-l">
+                <tgt-button [icon]="'login'" iconPosition="right" [routerLink]="['/login']">Entrar</tgt-button>
+            </div>
+        </div>
+        }
+        }
+
+        <div class="footer-btn" [style.justify-content]="steps==1 ? 'end' : 'space-between'">
+            @if(steps>1 && steps < 4){ <div class="btn-l">
+                <tgt-button [fieldButton]="'outline'" (click)="backStep()" [border]="false">Voltar</tgt-button>
+        </div>
+        }
+        @if(steps != 4) {
+        <div class="btn-l">
+            <tgt-button [icon]="'trending_flat'" iconPosition="right" (click)="nextStep()">Continuar</tgt-button>
+        </div>
+        }
+    </div>
+    </div>
+</main>
