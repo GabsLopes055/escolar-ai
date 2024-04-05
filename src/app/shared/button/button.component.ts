@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, HostListener, Input } from '@angular/core';
 
 @Component({
   selector: 'tgt-button',
@@ -15,6 +15,16 @@ export class ButtonComponent {
   @Input() color: TypeColors = 'primary';
   @Input() disabled: boolean = false;
   @Input() border: boolean = true
+
+  protected hover = false;
+
+  @HostListener('mouseleave') onMouseLeave() {
+    this.hover = false;
+  }
+
+  @HostListener('mouseenter') onMouseEnter() {
+    this.hover = true;
+  }
 
 
   colors: Colors = {
