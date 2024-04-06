@@ -1,3 +1,5 @@
+@import "../../../assets/styles/colors.scss";
+
 main {
     background-color: #eee;
     height: 100vh;
@@ -8,7 +10,7 @@ main {
     .circle {
         width: 50vw;
         height: 90vh;
-        background-image: linear-gradient(to right top, #fca61d, #fabf42, #fad666, #fbeb8a, #ffffaf);
+        background-color: $color-yellow;
         border-radius: 10px 0 0 10px;
         display: flex;
         align-items: center;

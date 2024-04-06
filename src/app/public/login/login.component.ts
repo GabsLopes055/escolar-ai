@@ -8,6 +8,7 @@ import { InputIconComponent } from "../../shared/input-icon/input-icon.component
 @Component({
     selector: 'app-login',
     standalone: true,
+    host: {class: 'main'},
     templateUrl: './login.component.html',
     styleUrl: './login.component.scss',
     imports: [InputComponent, ButtonComponent, RouterLink, InputIconComponent]
