@@ -8,6 +8,7 @@ import { Subscription, debounceTime, distinctUntilChanged } from 'rxjs';
 @Component({
     selector: 'app-register-full',
     standalone: true,
+    host: {class: 'main'},
     templateUrl: './register-full.component.html',
     styleUrl: './register-full.component.scss',
     imports: [InputComponent, ButtonComponent, ReactiveFormsModule, RouterLink]

@@ -1,0 +1,57 @@
+<div class="menu" [style.width]="isOpen ? '286px' : '120px'">
+    <div class="content" [style.width]="isOpen ? '222px' : '56px'" [ngClass]="{content_close: !isOpen}">
+        <div class="logo">
+            @if(isOpen) {
+                <img src="assets/images/logo.svg" alt="" srcset="">
+                <span class="material-symbols-outlined" [style.color]="'#fff'" (click)="openClose()">
+                    menu_open
+                </span>
+            } @else {
+            <span class="material-symbols-outlined" [style.color]="'#F3F4F3'" (click)="openClose()">
+                menu
+            </span>
+            }
+
+
+        </div>
+    
+        <div class="new">
+            <a href="">
+                <span class="material-symbols-outlined">
+                    add
+                </span>
+
+                <div class="item-description" [ngClass]="{item_description_close: !isOpen}">Viajar</div>
+            </a>
+        </div>
+    
+        <div class="divider" [ngClass]="{divider_close: !isOpen}"></div>
+    
+        <ul class="items">
+            @for(item of menu; track item){
+                <li class="item" [ngClass]="{li_close: !isOpen}">
+                    <a href="">
+                        <span class="material-symbols-outlined">
+                            {{item.icon}}
+                        </span>
+            
+                        <div class="item-description" [ngClass]="{item_description_close: !isOpen}">{{item.label}}</div>
+                    </a>
+                </li>
+            }
+            
+        </ul>
+    </div>
+
+    <div class="item-help" [style.width]="isOpen ? '222px' : '56px'">
+        <a href="#">
+            <span class="material-symbols-outlined">
+                help
+            </span>
+
+            <div class="item-description" [ngClass]="{item_description_close: !isOpen}">Ajuda</div>
+        </a>
+    </div>
+    
+
+</div>

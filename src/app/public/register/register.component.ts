@@ -7,6 +7,7 @@ import { FeedbackInitRegisterComponent } from "./components/feedback-init-regist
 @Component({
     selector: 'app-register',
     standalone: true,
+    host: {class: 'main'},
     templateUrl: './register.component.html',
     styleUrl: './register.component.scss',
     imports: [InputIconComponent, RouterLink, ButtonComponent, FeedbackInitRegisterComponent]
