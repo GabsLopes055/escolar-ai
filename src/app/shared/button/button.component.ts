@@ -15,6 +15,7 @@ export class ButtonComponent {
   @Input() color: TypeColors = 'primary';
   @Input() disabled: boolean = false;
   @Input() border: boolean = true
+  @Input() size: 'small' | 'middle' = 'middle';
 
   protected hover = false;
 
