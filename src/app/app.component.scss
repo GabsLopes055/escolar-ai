@@ -1,6 +1,18 @@
+@import "../assets/styles/colors.scss";
 .corpo {
     display: flex;
     flex-direction: row;
+    background-color: $color-black;
+    
+    div {
+        background-color: $color-off-white;
+        border-radius: 32px 0 0 32px;
+        width: 100%;
+
+        h1{
+            height: 88px;
+        }
+    }
 }
 
 ::ng-deep .main {
