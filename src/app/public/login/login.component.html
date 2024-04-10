@@ -1,11 +1,17 @@
 <main>
     <div class="circle">
-        <img src="assets/images/plane.png" width="150px" [style.opacity]="0.4">
-        <h1 class="title-mob"><strong>Hey, </strong>Bem vindo!</h1>
-        <div class="title-text-desk">
-            <h1>TO GO TRIP</h1>
-            <h2>Controle todas as viagens que ocorrem na sua empresa. Tenha os melhores voos, hotéis e restaurantes a sua disposição. </h2>
+        <div class="conteudo">
+            <img src="assets/images/logo_dark.svg" width="150px">
+            <h1 class="title-mob"><strong>Hey, </strong>Bem vindo!</h1>
+            <div class="title-text-desk">
+                <h1><span>Hey,</span> Bem vindo!</h1>
+                <div class="text">
+                    <p>Faça reservas e simplifique o gerenciamento de suas viagens corporativas com a To Go Trip! Desfrute das melhores tarifas, mantenha o controle das despesas e assegure o conforto de seus colaboradores.</p>
+                    <p>Economize tempo e dinheiro.</p>
+                </div>
+            </div>
         </div>
+    
     </div>
     <div class="content">
         <form class="form">
@@ -16,7 +22,7 @@
             <div class="forgot">
                 <span><a href="#">Esqueci minha senha</a></span>
             </div>
-            <tgt-button [color]="'primary'" icon="login" iconPosition="right">Entrar</tgt-button>
+            <tgt-button [color]="'primary'" icon="login" iconPosition="right" (click)="entrar()">Entrar</tgt-button>
         </form>
         <div class="create">
             <span>Não possui uma conta? <a [routerLink]="['/register']" >Cadastre-se</a></span>

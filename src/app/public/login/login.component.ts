@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { InputComponent } from "../../shared/input/input.component";
 import { FormControl } from '@angular/forms';
 import { ButtonComponent } from "../../shared/button/button.component";
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { InputIconComponent } from "../../shared/input-icon/input-icon.component";
+import { MenuService } from '../../shared/menu/menu.service';
 
 @Component({
     selector: 'app-login',
@@ -15,10 +16,19 @@ import { InputIconComponent } from "../../shared/input-icon/input-icon.component
 })
 export class LoginComponent implements OnInit{
 
-
+  constructor(
+    private readonly router: Router,
+    private readonly menuService: MenuService
+  ) {}
 
   ngOnInit(): void {
 
+  }
+
+  entrar() {
+    window.sessionStorage.setItem('usuario','usuario');
+    this.router.navigate(['/admin/']);
+    this.menuService.updateMenu();
   }
 
 }

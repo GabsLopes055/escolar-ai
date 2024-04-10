@@ -3,11 +3,11 @@
         <div class="logo">
             @if(isOpen) {
                 <img src="assets/images/logo.svg" alt="" srcset="">
-                <span class="material-symbols-outlined" [style.color]="'#fff'" (click)="openClose()">
+                <span class="material-symbols-outlined hamb" (click)="openClose()">
                     menu_open
                 </span>
             } @else {
-            <span class="material-symbols-outlined" [style.color]="'#F3F4F3'" (click)="openClose()">
+            <span class="material-symbols-outlined hamb" (click)="openClose()">
                 menu
             </span>
             }
@@ -19,7 +19,7 @@
         <ul class="items">
             @for(item of menu; track item){
                 <li class="item" [ngClass]="{li_close: !isOpen}">
-                    <a href="">
+                    <a href="" [ngClass]="{selected: item.checked}" [routerLink]="item.route">
                         <span class="material-symbols-outlined">
                             {{item.icon}}
                         </span>
@@ -33,7 +33,7 @@
     </div>
 
     <div class="item-help" [style.width]="isOpen ? '222px' : '56px'">
-        <a href="#">
+        <a [routerLink]="['/admin/']" >
             <span class="material-symbols-outlined">
                 help
             </span>

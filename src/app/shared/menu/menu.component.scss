@@ -22,9 +22,19 @@
             padding: 20px 0;
             cursor: pointer;
 
-            >span {
+            span {
                 cursor: pointer;
+
+                
             }
+            .hamb {
+                color: $color-off-white;
+                transition: all .5s;
+            }
+            .hamb:hover {
+                color: $color-yellow;
+            }
+
         }
 
         .new {
@@ -109,6 +119,12 @@
                         letter-spacing: 0.5px;
                         text-align: left;
                     }
+                }
+                .selected{
+                    background-color: $color-yellow;
+                    border-radius: 300px;
+                    color: $color-black;
+
                 }
                 &:hover {
                     background: rgba(255, 210, 0, 0.3);

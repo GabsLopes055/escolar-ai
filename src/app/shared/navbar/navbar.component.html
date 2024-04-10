@@ -1,13 +1,36 @@
 <main>
     <div class="title">
-        <h2></h2>
+        <h2>{{title | async}}</h2>
     </div>
 
-    <tgt-button [color]="'primary'" size="middle" icon="luggage" iconPosition="left">Viajar</tgt-button>
-
-    <div class="user">
-        //////
+    
+    <div class="final">
+        @if(isViajar | async) {
+            <tgt-button [color]="'primary'" size="small" icon="luggage" iconPosition="left" [routerLink]="['/admin/viajar']" >Viajar</tgt-button>
+        }
+        <span class="material-symbols-outlined pointer">
+            notifications
+        </span>
+        <div class="divider-vertical"></div>
+        <div class="user pointer" (click)="showHideDetail()">
+            <img src="assets/images/3d_avatar_21.png" alt="avatar">
+            <label>Jonathan</label>
+            @if(isDetail) {
+                <span class="material-symbols-outlined">
+                    expand_less
+                </span>
+            } @else {
+                <span class="material-symbols-outlined">
+                    keyboard_arrow_down
+                </span>
+            }
+        </div>
     </div>
 
+    @if(isDetail) {
+        <div class="user-detail">
+            <h3>Olá</h3>
+        </div>
+    }
 
 </main>

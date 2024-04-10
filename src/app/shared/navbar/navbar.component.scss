@@ -1,3 +1,4 @@
+@import "../../../assets/styles/colors.scss";
 main {
     display: flex;
     flex-direction: row;
@@ -5,17 +6,72 @@ main {
     justify-content: space-between;
     height: 88px;
     padding: 24px, 32px, 24px, 32px;
+    gap: 64px;
+    position: relative;
 
     .title{
-        width: 862px;
         height: 24px;
-        padding: 1rem;
+        padding: 2rem;
 
-        font-size: 20px;
+        font-size: 16px;
         font-weight: 600;
         line-height: 24px;
         letter-spacing: 0.5px;
         text-align: left;
 
+    }
+
+    .final {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap:24px;
+        padding: 2rem;
+
+        .divider-vertical {
+            width: 1px;
+            height: 24px;
+            background-color: #B5B4B2;
+            ;
+        }
+
+        .user {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap:8px;
+
+            img {
+                border: solid 4px #FFD200;
+                border-radius: 100px;
+            }
+        }
+    }
+
+    .user-detail {
+        position: absolute;
+        background-color: $color-off-white;
+        width: 145px;
+        height: 150px;
+        top: 75px;
+        right: 15px;
+        padding: 1rem;
+        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+        animation: animation .5s;
+    }
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+@keyframes animation {
+    from {
+        opacity: 0;
+        height: 0;
+    }
+    to {
+        opacity: 1;
+        height: 150px;
     }
 }

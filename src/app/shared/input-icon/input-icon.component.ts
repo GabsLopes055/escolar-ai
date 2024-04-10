@@ -20,4 +20,5 @@ export class InputIconComponent {
   @Input() placeholder: string = '';
   @Input() formControl: FormControl = new FormControl();
   @Input() mask: string = '';
+  @Input() iconPosition: 'left' | 'right' = 'left';
 }
