@@ -1,7 +1,12 @@
 <div class="corpo">
-    <menu></menu>
+    @if(isMenu.length) {
+        <menu></menu>
+    }
+
     <div>
-        <navbar></navbar>
+        @if(isMenu.length){
+            <navbar></navbar>
+        }
         <!-- navbar -->
         <router-outlet />
     </div>

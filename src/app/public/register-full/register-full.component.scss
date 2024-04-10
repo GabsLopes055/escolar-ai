@@ -1,3 +1,5 @@
+@import "../../../assets/styles/colors.scss";
+
 main {
     background-color: #EFEFEF;
     height: 100vh;
@@ -7,7 +9,7 @@ main {
 
     .left {
         width: 18vw;
-        background-image: linear-gradient(to right top, #fca61d, #fabf42, #fad666, #fbeb8a, #ffffaf);
+        background-color: $color-yellow;
         height: 75vh;
         padding: 2rem;
         display: flex;
@@ -17,6 +19,34 @@ main {
 
         p {
             width: 200px;
+        }
+
+        .conteudo {
+            padding: 120px 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+
+            img{
+                width: 150.5px;
+            }
+
+            .text-desk {
+                display: flex;
+                flex-direction: column;
+                gap: 32px;
+                h1 {
+                    font-size: 24px;
+                    span {
+                        font-weight: 700;
+                    }
+                    font-weight: 400;
+                }
+
+                p {
+                    font-size: 16px;
+                }
+            }
         }
     }
 

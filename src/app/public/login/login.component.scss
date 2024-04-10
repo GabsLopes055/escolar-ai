@@ -13,8 +13,16 @@ main {
         background-color: $color-yellow;
         border-radius: 10px 0 0 10px;
         display: flex;
-        align-items: center;
-        justify-content: center;
+        flex-direction: column;
+        padding: 120px, 80px;
+
+        .conteudo {
+            padding: 120px 80px;
+            display: flex;
+            flex-direction: column;
+            gap: 120px;
+        }
+
 
         .title-mob {
             display: none;
@@ -24,8 +32,18 @@ main {
             display: flex;
             flex-direction: column;
             gap: 15px;
-            h2 {
-                font-weight: 300;
+            h1 {
+                span {
+                    font-weight: 700;
+                }
+                font-weight: 400;
+            }
+
+            .text {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+                line-height: 24px;
             }
         }
     }

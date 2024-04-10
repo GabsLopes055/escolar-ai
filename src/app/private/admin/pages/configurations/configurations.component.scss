@@ -1,0 +1,18 @@
+@import "../../../../../assets/styles/colors.scss";
+
+main {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    .tab-central-custo {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+
+        .input-box {
+            width: 500px;
+        }
+    }
+}
