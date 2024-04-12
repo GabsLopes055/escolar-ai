@@ -9,6 +9,7 @@ import { SidebarComponent } from "../../../../shared/sidebar/sidebar.component";
 import { SidebarService } from '../../../../shared/sidebar/sidebar.service';
 import { SidebarNovaCentralCustoComponent } from './components/sidebar-nova-central-custo/sidebar-nova-central-custo.component';
 import { TableComponent } from "../../../../shared/table/table.component";
+import { PaginatorComponent } from '../../../../shared/paginator/paginator.component';
 
 @Component({
     selector: 'app-configurations',
@@ -16,7 +17,7 @@ import { TableComponent } from "../../../../shared/table/table.component";
     host: { class: 'main' },
     templateUrl: './configurations.component.html',
     styleUrl: './configurations.component.scss',
-    imports: [TabsComponent, InputIconComponent, ButtonComponent, CommonModule, SidebarComponent, TableComponent]
+    imports: [TabsComponent, InputIconComponent, ButtonComponent, CommonModule, SidebarComponent, TableComponent, PaginatorComponent]
 })
 export class ConfigurationsComponent {
 
