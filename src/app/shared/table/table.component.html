@@ -1,0 +1,11 @@
+<main>
+    <div class="header">
+        @for(item of headers; track item) {
+            <span>{{item}}</span>
+        }
+    </div>
+    <div class="body">
+
+        <ng-content></ng-content>
+    </div>
+</main>

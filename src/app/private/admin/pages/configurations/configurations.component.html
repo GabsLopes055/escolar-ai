@@ -2,11 +2,28 @@
     <app-tabs [tabs]="tabs" (change)="chosenTab($event)"></app-tabs>
         @if(opcaoSelecionada == 'central_de_custo') {
             <div class="tab-central-custo">
-                <tgt-button icon="keyboard_arrow_down" iconPosition="right" size="small" fieldButton="outline">Todos</tgt-button>
-                <div class="input-box">
-                    <tgt-input-icon icon="search" iconPosition="right" placeholder="Busque uma central..."></tgt-input-icon>
+                <div class="header">
+                    <tgt-button icon="keyboard_arrow_down" iconPosition="right" size="small" fieldButton="outline">Todos</tgt-button>
+                    <div class="input-box">
+                        <tgt-input-icon icon="search" iconPosition="right" placeholder="Busque uma central..."></tgt-input-icon>
+                    </div>
+                    <tgt-button icon="add" iconPosition="left" size="middle" color="secundary" (click)="adicionarCentralCusto()">Adicionar</tgt-button>
                 </div>
-                <tgt-button icon="add" iconPosition="left" size="middle" color="secundary">Adicionar</tgt-button>
+                <div class="body">
+                    <tgt-table [headers]="headers">
+                        @for(item of data; track item) {
+                            <div class="line">
+                                <span>{{item.nome}}</span>
+                                <span>{{item.createdAt}}</span>
+                                <span>{{item.updatedAt}}</span>
+                                <span>{{item.orcamento | currency: 'R$ '}}</span>
+                                <span>{{item.status}}</span>
+                                <span>Teste</span>
+                            </div>
+                        }
+                    </tgt-table>
+                </div>
+
             </div>
         }
 

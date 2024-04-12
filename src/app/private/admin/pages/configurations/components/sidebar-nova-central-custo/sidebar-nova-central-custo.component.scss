@@ -1,0 +1,18 @@
+.main {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    .tgt {
+        height: 50px;
+    }
+}
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    tgt-button {
+        width: 180px;
+    }
+}
