@@ -10,6 +10,11 @@ import { SidebarService } from '../../../../shared/sidebar/sidebar.service';
 import { SidebarNovaCentralCustoComponent } from './components/sidebar-nova-central-custo/sidebar-nova-central-custo.component';
 import { TableComponent } from "../../../../shared/table/table.component";
 import { PaginatorComponent } from '../../../../shared/paginator/paginator.component';
+import { ListComponent } from "../../../../shared/list/list.component";
+import { ItemListComponent } from '../../../../shared/list/components/item-list/item-list.component';
+import { HeaderColComponent } from "../../../../shared/list/components/header-col/header-col.component";
+import { ItemDataComponent } from "../../../../shared/list/components/item-data/item-data.component";
+import { HeaderListComponent } from "../../../../shared/list/components/header-list/header-list.component";
 
 @Component({
     selector: 'app-configurations',
@@ -17,7 +22,20 @@ import { PaginatorComponent } from '../../../../shared/paginator/paginator.compo
     host: { class: 'main' },
     templateUrl: './configurations.component.html',
     styleUrl: './configurations.component.scss',
-    imports: [TabsComponent, InputIconComponent, ButtonComponent, CommonModule, SidebarComponent, TableComponent, PaginatorComponent]
+    imports: [
+        TabsComponent,
+        InputIconComponent,
+        ButtonComponent,
+        CommonModule,
+        SidebarComponent,
+        TableComponent,
+        PaginatorComponent,
+        ListComponent,
+        ItemListComponent,
+        HeaderColComponent,
+        ItemDataComponent,
+        HeaderListComponent
+    ]
 })
 export class ConfigurationsComponent {
 
@@ -42,9 +60,9 @@ export class ConfigurationsComponent {
     private readonly menuService: MenuService,
     private readonly sidebarService: SidebarService
   ) {
-    navbarService.setTitle('Configurações');
+    this.navbarService.setTitle('Configurações');
     navbarService.showBtnViajar.next(true);
-    menuService.setSelected({icon: 'settings', label: 'Configurações', route: '/admin/settings', checked: true});
+    this.menuService.setSelected({icon: 'settings', label: 'Configurações', route: '/admin/settings', checked: true});
   }
 
   chosenTab(tab: string) {
