@@ -4,6 +4,7 @@ main {
     padding: 2rem;
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
     gap: 24px;
 
     .tab-central-custo {
@@ -15,6 +16,20 @@ main {
             flex-direction: row;
             justify-content: space-between;
             align-items: end;
+        }
+        .body {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+            gap: 16px;
+
+            .pag {
+                display: flex;
+                // width: 100%;
+                justify-content: end;
+                margin-right: 35px;
+            }
         }
 
 
