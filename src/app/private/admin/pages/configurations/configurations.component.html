@@ -10,7 +10,44 @@
                     <tgt-button icon="add" iconPosition="left" size="middle" color="secundary" (click)="adicionarCentralCusto()">Adicionar</tgt-button>
                 </div>
                 <div class="body">
-                    <tgt-table [headers]="headers">
+                    <tgt-list>
+                        <div header class="header-list">
+                            <tgt-header-list>
+                                <tgt-header-col >Nome</tgt-header-col>
+                                <tgt-header-col >Período</tgt-header-col>
+                                <tgt-header-col >Status</tgt-header-col>
+                                <tgt-header-col >Orçamento</tgt-header-col>
+                                <tgt-header-col ></tgt-header-col>
+
+                            </tgt-header-list>
+                        </div>
+                        <div body>
+                            <tgt-item-list>
+                                <tgt-item-data >Supervisor</tgt-item-data>
+                                <tgt-item-data >01/03/24 a 30/06/24 </tgt-item-data>
+                                <tgt-item-data >Ativa</tgt-item-data>
+                                <tgt-item-data >{{10000000 | currency: 'R$ '}}</tgt-item-data>
+                                <tgt-item-data >
+                                    <div class="w-button">
+                                        <tgt-button icon="trending_flat" iconPosition="left" size="middle" color="secundary"></tgt-button>
+                                    </div>
+                                </tgt-item-data>
+                            </tgt-item-list>
+                            <tgt-item-list>
+                                <tgt-item-data >Teste de inincio de header</tgt-item-data>
+                                <tgt-item-data >Teste</tgt-item-data>
+                                <tgt-item-data >Teste</tgt-item-data>
+                                <tgt-item-data >Teste</tgt-item-data>
+                                <tgt-item-data >
+                                    <div class="w-button">
+                                        <tgt-button icon="trending_flat" iconPosition="left" size="middle" color="secundary"></tgt-button>
+                                    </div>
+                                </tgt-item-data>
+                            </tgt-item-list>
+                        </div>
+                    </tgt-list>
+
+                    <!-- <tgt-table [headers]="headers">
                         @for(item of data; track item) {
                             <div class="line">
                                 <span>{{item.nome}}</span>
@@ -22,9 +59,10 @@
                             </div>
                         }
                     </tgt-table>
-                    <div class="pag">
-                        <tgt-paginator></tgt-paginator>
-                    </div>
+                -->
+                <div class="pag">
+                    <tgt-paginator></tgt-paginator>
+                </div> 
                 </div>
 
             </div>
