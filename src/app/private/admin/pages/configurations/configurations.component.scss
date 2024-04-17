@@ -7,58 +7,9 @@ main {
     flex-grow: 1;
     gap: 24px;
 
-    .tab-central-custo {
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
-        .header {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: end;
-        }
-        .body {
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-            justify-content: space-between;
-            gap: 16px;
-
-            .pag {
-                display: flex;
-                // width: 100%;
-                justify-content: end;
-                margin-right: 35px;
-            }
-        }
-
-
-        .input-box {
-            width: 500px;
-        }
-    }
+   
 }
 
-.line {
-    height: 56px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: solid 1px #CDCDCC;
-    transition: all .5s;
-    
-
-    span {
-        padding: .5rem;
-        width: 10%;
-        font-size: 14px;
-    }
-
-    &:hover {
-        background-color: #FFFAE5;
-    }
-}
 
 .w-button {
     width: 90px;

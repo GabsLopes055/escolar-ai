@@ -1,0 +1,20 @@
+<tgt-table>
+    <tgt-header-table header>
+        <tgt-header-table-data>Nome</tgt-header-table-data>
+        <tgt-header-table-data>Data de Criaçào</tgt-header-table-data>
+        <tgt-header-table-data>Data de finalização</tgt-header-table-data>
+        <tgt-header-table-data>Orçamento</tgt-header-table-data>
+        <tgt-header-table-data>Status</tgt-header-table-data>
+        <tgt-header-table-data></tgt-header-table-data>
+    </tgt-header-table>
+    @for(item of data; track item){
+    <tgt-item-table body>
+        <tgt-table-data>{{item.nome}}</tgt-table-data>
+        <tgt-table-data>{{item.createdAt}}</tgt-table-data>
+        <tgt-table-data>{{item.updatedAt}}</tgt-table-data>
+        <tgt-table-data>{{item.orcamento| currency: 'R$ '}}</tgt-table-data>
+        <tgt-table-data><tgt-status-circle [status]="item.status"></tgt-status-circle>{{item.status}}</tgt-table-data>
+        <tgt-table-data>Teste</tgt-table-data>
+    </tgt-item-table>
+    }
+</tgt-table>

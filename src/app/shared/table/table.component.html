@@ -1,11 +1,8 @@
 <main>
     <div class="header">
-        @for(item of headers; track item) {
-            <span>{{item}}</span>
-        }
+        <ng-content [select]="'header'"></ng-content>
     </div>
     <div class="body">
-
-        <ng-content></ng-content>
+        <ng-content [select]="'body'"></ng-content>
     </div>
 </main>

@@ -2,21 +2,10 @@ main {
     width: 100%;
 
     .header {
-        background-color: #F3F4F3;
-        height: 56px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        // padding: 1rem;
-
-        span {
-            padding: .5rem;
-            width: 10%;
-            font-size: 14px;
-        }
+        width: 100%;
     }
     .body {
+        width: 100%;
         display: flex;
         flex-direction: column;
 

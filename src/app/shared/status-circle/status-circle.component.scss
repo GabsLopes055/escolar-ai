@@ -1,0 +1,11 @@
+.status {
+    width: 16px;
+    height: 15px;
+    border-radius: 16px;
+    background-color: #18E345;
+
+    &.inativa {
+        background-color: #EE0D43;
+    }
+
+}
