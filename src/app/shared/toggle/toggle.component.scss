@@ -62,6 +62,7 @@ main {
   /* Anahtarın etkin hale gelmesindeki stil değişiklikleri */
   .toggle-switch .toggle-input:checked + .toggle-label {
     background-color: $color-yellow;
+    border: none;
   }
 
   
