@@ -1,20 +1,44 @@
-<tgt-table>
-    <tgt-header-table header>
-        <tgt-header-table-data>Nome</tgt-header-table-data>
-        <tgt-header-table-data>Data de Criaçào</tgt-header-table-data>
-        <tgt-header-table-data>Data de finalização</tgt-header-table-data>
-        <tgt-header-table-data>Orçamento</tgt-header-table-data>
-        <tgt-header-table-data>Status</tgt-header-table-data>
-        <tgt-header-table-data></tgt-header-table-data>
-    </tgt-header-table>
-    @for(item of data; track item){
-    <tgt-item-table body>
-        <tgt-table-data>{{item.nome}}</tgt-table-data>
-        <tgt-table-data>{{item.createdAt}}</tgt-table-data>
-        <tgt-table-data>{{item.updatedAt}}</tgt-table-data>
-        <tgt-table-data>{{item.orcamento| currency: 'R$ '}}</tgt-table-data>
-        <tgt-table-data><tgt-status-circle [status]="item.status"></tgt-status-circle>{{item.status}}</tgt-table-data>
-        <tgt-table-data>Teste</tgt-table-data>
-    </tgt-item-table>
-    }
-</tgt-table>
+<div class="tab-central-custo">
+    <div class="header">
+        <div class="back" (click)="back()">
+            <span class="material-symbols-outlined">
+                arrow_back
+            </span>
+            <span>Supervisores</span>
+        </div>
+        
+        <div class="input-box">
+            <tgt-input-icon icon="search" iconPosition="right" placeholder="Busque aqui..."></tgt-input-icon>
+        </div>
+        <tgt-button icon="edit" iconPosition="left" size="middle" color="secundary">Editar central</tgt-button>
+    </div>
+    <div class="body">
+        <tgt-table>
+            <tgt-header-table header>
+                <tgt-header-table-data>Nome</tgt-header-table-data>
+                <tgt-header-table-data>Data de Criaçào</tgt-header-table-data>
+                <tgt-header-table-data>Data de finalização</tgt-header-table-data>
+                <tgt-header-table-data>Orçamento</tgt-header-table-data>
+                <tgt-header-table-data>Status</tgt-header-table-data>
+                <tgt-header-table-data></tgt-header-table-data>
+            </tgt-header-table>
+            @for(item of data; track item){
+            <tgt-item-table body (click)="openHistorico(item.id)">
+                <tgt-table-data>{{item.nome}}</tgt-table-data>
+                <tgt-table-data>{{item.createdAt}}</tgt-table-data>
+                <tgt-table-data>{{item.updatedAt}}</tgt-table-data>
+                <tgt-table-data>{{item.orcamento| currency: 'R$ '}}</tgt-table-data>
+                <tgt-table-data><tgt-status-circle [status]="item.status"></tgt-status-circle>{{item.status}}</tgt-table-data>
+                <tgt-table-data>Teste</tgt-table-data>
+            </tgt-item-table>
+            }
+        </tgt-table>
+        
+        <!-- <central-custo-details></central-custo-details> -->
+   
+    <div class="pag">
+        <tgt-paginator></tgt-paginator>
+    </div> 
+    </div>
+
+</div>
