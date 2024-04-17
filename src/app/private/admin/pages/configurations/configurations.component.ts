@@ -15,6 +15,15 @@ import { ItemListComponent } from '../../../../shared/list/components/item-list/
 import { HeaderColComponent } from "../../../../shared/list/components/header-col/header-col.component";
 import { ItemDataComponent } from "../../../../shared/list/components/item-data/item-data.component";
 import { HeaderListComponent } from "../../../../shared/list/components/header-list/header-list.component";
+import { Status, StatusCircleComponent } from "../../../../shared/status-circle/status-circle.component";
+import { ItemTableComponent } from "../../../../shared/table/components/item-table/item-table.component";
+import { TableDataComponent } from "../../../../shared/table/components/table-data/table-data.component";
+import { HeaderTableComponent } from "../../../../shared/table/components/header-table/header-table.component";
+import { HeaderTableDataComponent } from "../../../../shared/table/components/header-table-data/header-table-data.component";
+import { CetralCustoComponent } from "./central-custo/central-custo.component";
+import { PerfilAcessoComponent } from "./perfil-acesso/perfil-acesso.component";
+import { CartoesComponent } from "./cartoes/cartoes.component";
+import { PlanosComponent } from "./planos/planos.component";
 
 @Component({
     selector: 'app-configurations',
@@ -34,26 +43,28 @@ import { HeaderListComponent } from "../../../../shared/list/components/header-l
         ItemListComponent,
         HeaderColComponent,
         ItemDataComponent,
-        HeaderListComponent
+        HeaderListComponent,
+        StatusCircleComponent,
+        ItemTableComponent,
+        TableDataComponent,
+        HeaderTableComponent,
+        HeaderTableDataComponent,
+        CetralCustoComponent,
+        PerfilAcessoComponent,
+        CartoesComponent,
+        PlanosComponent
     ]
 })
 export class ConfigurationsComponent {
-
-  headers: string[] = ['Nome', 'Data de Criaçào', 'Data de finalização','Orçamento', 'Status', 'Ações'];
-  data = [
-    {nome: 'Diretoria', createdAt: '15/03/2024', updatedAt: '15/03/2024', orcamento: 50000, status: 'ATIVO', actions: ''},
-    {nome: 'Marketing', createdAt: '03/03/2024', updatedAt: '15/03/2024', orcamento: 25000, status: 'ATIVO', actions: ''},
-    {nome: 'Gestores', createdAt: '02/03/2024',updatedAt: '15/03/2024', orcamento: 30000, status: 'ATIVO', actions: ''},
-    {nome: 'Supervireos', createdAt: '20/03/2024',updatedAt: '15/03/2024', orcamento: 15000, status: 'ATIVO', actions: ''},
-  ]
-
   tabs: Tab[] = [
     {icon: 'calculate', label: 'Central de custo', value: 'central_de_custo', selected: false},
+    {icon: 'person', label: 'Perfil de acesso', value: 'perfil_acesso', selected: false},
     {icon: 'credit_card', label: 'Cartões', value: 'cartoes', selected: false},
     {icon: 'style', label: 'Meu plano', value: 'meu_plano', selected: false},
   ]
 
   opcaoSelecionada = '';
+  Status: any;
 
   constructor(
     private readonly navbarService: NavbarService,
@@ -67,9 +78,5 @@ export class ConfigurationsComponent {
 
   chosenTab(tab: string) {
     this.opcaoSelecionada = tab;
-  }
-
-  adicionarCentralCusto() {
-    this.sidebarService.openSide(SidebarNovaCentralCustoComponent)
   }
 }

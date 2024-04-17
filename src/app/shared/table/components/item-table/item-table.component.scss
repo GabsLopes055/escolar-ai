@@ -1,0 +1,14 @@
+.line {
+    height: 56px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid 1px #CDCDCC;
+    padding: 0 8px;
+    transition: all .5s;
+
+    &:hover {
+        background-color: #FFFAE5;
+    }
+}
