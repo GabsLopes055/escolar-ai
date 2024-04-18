@@ -1,0 +1,26 @@
+<main [ngClass]="{active: iai == false}">
+    <div class="front">
+        <div class="content">
+            <div class="header-content">
+                <img src="assets/images/cards/chip.png" width="36" height="29" alt="">
+                <img src="assets/images/cards/mastercard.png" width="40" height="24" alt="">
+            </div>
+            <div class="body-content">
+                <div class="card-number">
+                    {{group.controls.numberCard.value}}
+                </div>
+                <div class="dados">
+                    <div class="name">{{ group.controls.name.value}}</div>
+                    <div class="mes">{{group.controls.mouth.value}}</div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="back">
+        <div class="tarja"></div>
+        <div class="number">
+            <span>{{group.controls.cvc.value}}</span>
+        </div>
+    </div>
+</main>

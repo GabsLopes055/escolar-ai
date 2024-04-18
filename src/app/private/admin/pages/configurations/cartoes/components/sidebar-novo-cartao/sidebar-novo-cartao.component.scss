@@ -1,0 +1,16 @@
+@import "../../../../../../../../assets/styles/space.scss";
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 24px;
+    .dados-cartao {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+}
