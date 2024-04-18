@@ -1,4 +1,4 @@
-<main [ngClass]="{active: iai == false}">
+<main [ngClass]="{active: group.controls.cvc.value?.length}">
     <div class="front">
         <div class="content">
             <div class="header-content">
@@ -7,11 +7,11 @@
             </div>
             <div class="body-content">
                 <div class="card-number">
-                    {{group.controls.numberCard.value}}
+                    {{group.controls.numberCard.value | cardNumber}}
                 </div>
                 <div class="dados">
                     <div class="name">{{ group.controls.name.value}}</div>
-                    <div class="mes">{{group.controls.mouth.value}}</div>
+                    <div class="mes">{{group.controls.mouth.value | mouthCard}}</div>
                 </div>
             </div>
         </div>
