@@ -1,0 +1,19 @@
+<sidebar title="Adicionar cartão">
+    <main>
+
+        <tgt-credit-card [group]="group"></tgt-credit-card>
+
+        <form [formGroup]="group" class="dados-cartao">
+            <tgt-input label="Número do cartão" mask="0000 0000 0000 0000" [control]="group.controls.numberCard"></tgt-input>
+
+            <tgt-input label="Nome no cartão" [control]="group.controls.name"></tgt-input>
+    
+            <section class="grid">
+                <tgt-input class="col-6" label="validade" mask="00/00" [control]="group.controls.mouth"></tgt-input>
+    
+                <tgt-input class="col-6" label="Código de segurança" mask="000" [control]="group.controls.cvc"></tgt-input>
+            </section>
+        </form>
+        
+    </main>
+</sidebar>

@@ -1,1 +1,53 @@
-@import "../../../assets/styles/space.scss"
+@import "../../../assets/styles/space.scss";
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.usuario {
+
+    .text {
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+
+        .name {
+            font-weight: bold;
+        }
+
+        .detail {
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 17.07px;
+            letter-spacing: 0.10000000149011612px;
+            text-align: center;
+
+        }
+    }
+
+    .data {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 17.07px;
+        letter-spacing: 0.10000000149011612px;
+        text-align: right;
+
+    }
+}
+
+.content {
+    width: 90%;
+    min-height: 20px;
+    padding: 1rem;
+    border-left: solid 1px #9C9B99;
+    margin-left: 2%;
+
+    .container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 16px;
+    }
+}

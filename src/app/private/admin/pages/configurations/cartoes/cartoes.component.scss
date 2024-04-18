@@ -1,0 +1,14 @@
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    width: 100%;
+    .header {
+        display: flex;
+        justify-content: end;
+        .btn-add {
+            width: 130px;
+        }
+    }
+
+}

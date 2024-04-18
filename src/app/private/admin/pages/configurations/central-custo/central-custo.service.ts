@@ -6,8 +6,8 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class CentralCustoService {
 
-  showlist = new BehaviorSubject(false);
-  showDetails = new BehaviorSubject(true);
+  showlist = new BehaviorSubject(true);
+  showDetails = new BehaviorSubject(false);
   idCentralSelected = new BehaviorSubject<number | null>(null)
 
   constructor() { }
