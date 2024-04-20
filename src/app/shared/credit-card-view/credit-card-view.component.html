@@ -1,16 +1,18 @@
 <main>
-    <div class="content">
-        <div class="header-content">
-            <img src="assets/images/cards/chip.png" width="36" height="29" alt="">
-            <img src="assets/images/cards/mastercard.png" width="40" height="24" alt="">
-        </div>
-        <div class="body-content">
-            <div class="card-number">
-                {{1234123412341224 | cardNumber}}
+    <div class="cartao">
+        <div class="content">
+            <div class="header-content">
+                <img src="assets/images/cards/chip.png" width="36" height="29" alt="">
+                <img src="assets/images/cards/mastercard.png" width="40" height="24" alt="">
             </div>
-            <div class="dados">
-                <div class="name">{{ 'Jonathan L M Suza'}}</div>
-                <div class="mes">{{'1123' | mouthCard}}</div>
+            <div class="body-content">
+                <div class="card-number">
+                    {{'1234123412341224' | cardNumber}}
+                </div>
+                <div class="dados">
+                    <div class="name">{{ 'Jonathan L M Suza'}}</div>
+                    <div class="mes">{{'1123' | mouthCard}}</div>
+                </div>
             </div>
         </div>
     </div>

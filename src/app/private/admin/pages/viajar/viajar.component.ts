@@ -16,8 +16,8 @@ export class ViajarComponent {
     private readonly navbarService: NavbarService,
     private readonly menuService: MenuService
   ) {
-    navbarService.setTitle('Viajar');
-    navbarService.showBtnViajar.next(false);
-    menuService.setSelected({icon: 'luggage', label: 'Viajar', route: '/admin/viajar', checked: false});
+    this.navbarService.setTitle('Viajar');
+    this.navbarService.showBtnViajar.next(false);
+    this.menuService.setSelected({icon: 'luggage', label: 'Viajar', route: '/admin/viajar', checked: true});
   }
 }

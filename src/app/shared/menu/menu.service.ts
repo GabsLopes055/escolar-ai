@@ -39,6 +39,7 @@ export class MenuService {
         {icon: 'luggage', label: 'Viajar', route: '/admin/viajar', checked: false},
         {icon: 'date_range', label: 'Reservas', route: '/admin/reservas', checked: false},
         {icon: 'task_alt', label: 'Aprovações', route: '/admin/aprovacoes', checked: false},
+        {icon: 'calculate', label: 'Central de Custo', route: '/admin/central-custo', checked: false},
         {icon: 'person_4', label: 'Viajantes', route: '/admin/viajantes', checked: false},
         {icon: 'settings', label: 'Configurações', route: '/admin/settings', checked: false},
       ])

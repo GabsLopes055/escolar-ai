@@ -129,6 +129,11 @@
                     border-radius: 300px;
                     color: $color-black;
 
+
+                    &:hover {
+                        color: $color-black!important;
+                    }
+
                 }
                 &:hover {
                     background: #393833;
@@ -193,6 +198,7 @@
 }
 
 .item_description_close {
+    display: none;
     width: 0px;
     overflow: hidden;
 }
