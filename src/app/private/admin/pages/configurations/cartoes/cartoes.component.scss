@@ -1,3 +1,5 @@
+@import "../../../../../../assets/styles/space.scss";
+
 main {
     display: flex;
     flex-direction: column;
@@ -8,6 +10,34 @@ main {
         justify-content: end;
         .btn-add {
             width: 130px;
+        }
+    }
+
+    .main {
+        height: 50vh;
+        overflow: auto;
+
+        .content {
+            height: 245px;
+            display: flex;
+            flex-direction: row;
+            gap: 16px;
+
+            .info {
+                display: flex;
+                flex-direction: row;
+
+                .data-info {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-around;
+
+                    section {
+                        display: flex;
+                        flex-direction: column;
+                    }
+                }
+            }
         }
     }
 

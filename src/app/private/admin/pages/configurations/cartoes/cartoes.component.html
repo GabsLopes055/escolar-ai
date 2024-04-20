@@ -5,10 +5,39 @@
         </div>
     </div>
     <tgt-divider></tgt-divider>
+   <div class="main">
+    @for(cartao of cartoes; track cartao) {
+        <div class="content">
+            <tgt-credit-card-view [cartao]="cartao"></tgt-credit-card-view>
 
-    <tgt-credit-card-view></tgt-credit-card-view>
-    <tgt-divider></tgt-divider>
+            <div class="info">
+                <div class="data-info">
+                    <section>
+                        <span>Nome completo</span>
+                        <span>{{cartao.nameCard}}</span>
+                    </section>
+                    <div class="detalhe grid">
+                        <section class="col-6">
+                            <span>Número do cartão</span>
+                            <span>{{cartao.cardNumber | cardNumber }}</span>
+                        </section>
+                        <section class="col-6">
+                            <span>Banderia</span>
+                            <span>{{ 'Mastercard' }}</span>
+                        </section>
+                    </div>
+                    <section>
+                        <span>Validade</span>
+                        <span>{{cartao.mouthValidate}}</span>
+                    </section>
+                </div>
+                <div class="actions"></div>
+            </div>
+        </div>
+        <tgt-divider></tgt-divider>
+    }
+   </div>
 
-    <tgt-credit-card-view></tgt-credit-card-view>
+
 
 </main>
