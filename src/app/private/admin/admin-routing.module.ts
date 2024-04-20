@@ -10,6 +10,7 @@ const routes: Routes = [
     {path: 'aprovacoes', loadComponent: () => import('./pages/aprovacoes/aprovacoes.component').then((c) => c.AprovacoesComponent)},
     {path: 'dashboard', loadComponent: () => import('./pages/dashboard/dashboard.component').then((c) => c.DashboardComponent)},
     {path: 'viajar', loadComponent: () => import('./pages/viajar/viajar.component').then((c) => c.ViajarComponent)},
+    {path: 'central-custo', loadComponent: () => import('./pages/central-custo/central-custo.component').then((c) => c.CentralCustoComponent)},
 ];
   
   @NgModule({

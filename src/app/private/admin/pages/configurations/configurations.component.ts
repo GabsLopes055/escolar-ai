@@ -57,7 +57,7 @@ import { PlanosComponent } from "./planos/planos.component";
 })
 export class ConfigurationsComponent {
   tabs: Tab[] = [
-    {icon: 'calculate', label: 'Central de custo', value: 'central_de_custo', selected: false},
+    // {icon: 'calculate', label: 'Central de custo', value: 'central_de_custo', selected: false},
     {icon: 'person', label: 'Perfil de acesso', value: 'perfil_acesso', selected: false},
     {icon: 'credit_card', label: 'Cartões', value: 'cartoes', selected: false},
     {icon: 'style', label: 'Meu plano', value: 'meu_plano', selected: false},
