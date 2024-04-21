@@ -92,7 +92,7 @@
             li {
                 width: 222px;
                 border-radius: 300px;
-                margin-bottom: 1rem;
+                margin-bottom: .3rem;
                 transition: all .5s;
                 a {
                     width: Fill (222px)px;
@@ -154,6 +154,8 @@
         width: 222px;
         border-radius: 300px;
         margin-bottom: 1rem;
+        display: flex;
+        flex-direction: column;
         transition: all .5s;
 
         a {
