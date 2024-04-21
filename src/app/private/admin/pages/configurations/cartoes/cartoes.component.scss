@@ -3,18 +3,21 @@
 main {
     display: flex;
     flex-direction: column;
+    height: 60vh;
+    overflow: auto;
     gap: 32px;
     width: 100%;
+
     .header {
         display: flex;
         justify-content: end;
+
         .btn-add {
             width: 130px;
         }
     }
 
     .main {
-        height: 50vh;
         overflow: auto;
 
         .content {
@@ -26,6 +29,7 @@ main {
             .info {
                 display: flex;
                 flex-direction: row;
+                height: 217px;
 
                 .data-info {
                     display: flex;
@@ -36,9 +40,33 @@ main {
                         display: flex;
                         flex-direction: column;
                     }
+
+                    .detalhe {
+                        width: 300px;
+                        gap: 32px;
+                    }
                 }
             }
         }
     }
+
+}
+
+.label {
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    text-align: left;
+}
+
+.value {
+    font-family: Montserrat;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    text-align: left;
 
 }

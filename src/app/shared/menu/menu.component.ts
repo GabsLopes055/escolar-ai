@@ -2,13 +2,14 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { MenuService } from './menu.service';
+import { DividerComponent } from "../divider/divider.component";
 
 @Component({
-  selector: 'menu',
-  standalone: true,
-  imports: [CommonModule, RouterLink],
-  templateUrl: './menu.component.html',
-  styleUrl: './menu.component.scss'
+    selector: 'menu',
+    standalone: true,
+    templateUrl: './menu.component.html',
+    styleUrl: './menu.component.scss',
+    imports: [CommonModule, RouterLink, DividerComponent]
 })
 export class MenuComponent implements OnInit{
 
