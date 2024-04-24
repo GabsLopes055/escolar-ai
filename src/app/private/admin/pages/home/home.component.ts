@@ -1,6 +1,7 @@
 import { MenuService } from './../../../../shared/menu/menu.service';
 import { Component } from '@angular/core';
 import { NavbarService } from '../../../../shared/navbar/navbar.service';
+import { UserService } from '../../../../shared/services/user/user.service';
 
 @Component({
   selector: 'app-home',
@@ -14,9 +15,12 @@ export class HomeComponent {
 
   constructor(
     private readonly navbarService: NavbarService,
-    private readonly menuService: MenuService
+    private readonly menuService: MenuService,
+    private readonly userService: UserService
   ) {
-    navbarService.setTitle('Hey, Jonathan');
+    const usuario = this.userService.user;
+    const firstName = usuario?.nome.split(" ")[0]
+    navbarService.setTitle(`Hey, ${firstName}`);
     navbarService.showBtnViajar.next(true);
     menuService.updateMenu();
   }

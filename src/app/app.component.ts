@@ -4,13 +4,14 @@ import { Menu, MenuComponent } from "./shared/menu/menu.component";
 import { NavbarComponent } from "./shared/navbar/navbar.component";
 import { MenuService } from './shared/menu/menu.service';
 import { AsyncPipe } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
     selector: 'app-root',
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss',
-    imports: [RouterOutlet, MenuComponent, NavbarComponent, AsyncPipe]
+    imports: [RouterOutlet, MenuComponent, NavbarComponent, AsyncPipe, HttpClientModule]
 })
 export class AppComponent {
   title = 'togotrip-angular';

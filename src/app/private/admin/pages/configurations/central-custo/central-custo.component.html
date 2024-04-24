@@ -19,7 +19,7 @@
     
                     </tgt-header-list>
                 </div>
-                <div body>
+                <div body class="bb">
                     @for(item of data; track item) {
                         <tgt-item-list>
                             <tgt-item-data >{{item.nome}}</tgt-item-data>
@@ -36,10 +36,11 @@
                 </div>
             </tgt-list>
        
+
+        </div>
         <div class="pag">
             <tgt-paginator></tgt-paginator>
         </div> 
-        </div>
     </div>
 }
 

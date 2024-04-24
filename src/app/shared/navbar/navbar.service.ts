@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { UserService } from '../services/user/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -7,8 +8,11 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class NavbarService {
   private _title = new BehaviorSubject<string>("");
   showBtnViajar = new BehaviorSubject(true);
+  
 
-  constructor() { }
+  constructor(
+  ) {
+   }
 
   get title(): Observable<string> {
     return this._title;
