@@ -1,6 +1,8 @@
 .tab-central-custo {
     display: flex;
     flex-direction: column;
+    height: 75vh;
+    overflow: auto;
     gap: 24px;
     .header {
         display: flex;
@@ -11,18 +13,23 @@
     .body {
         display: flex;
         flex-direction: column;
-        flex-grow: 1;
+        height: 70vh;
+        width: 100%;
+        overflow: auto;
         justify-content: space-between;
         gap: 16px;
 
-        .pag {
-            display: flex;
-            // width: 100%;
-            justify-content: end;
-            margin-right: 35px;
+        tgt-list {
+            width: 96%;
         }
-    }
 
+    }
+    .pag {
+        display: flex;
+        width: 90%;
+        justify-content: end;
+        margin-right: 35px;
+    }
 
     .input-box {
         width: 500px;

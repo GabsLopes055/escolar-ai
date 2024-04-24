@@ -14,15 +14,15 @@
     
     </div>
     <div class="content">
-        <form class="form">
+        <form [formGroup]="formLogin" (submit)="entrar()" class="form">
             <h1 class="title-desk"><strong>Hey, </strong>Bem Vindo!</h1>
             <h2>Entrar</h2>
-            <tgt-input-icon placeholder="username" [type]="'email'" icon="email"></tgt-input-icon>
-            <tgt-input-icon placeholder="password" [type]="'password'" icon="lock"></tgt-input-icon>
+            <tgt-input-icon [control]="this.formLogin.controls.email" placeholder="username" [type]="'email'" icon="email" ></tgt-input-icon>
+            <tgt-input-icon [control]="this.formLogin.controls.password" placeholder="password" [type]="'password'" icon="lock" ></tgt-input-icon>
             <div class="forgot">
                 <span><a href="#">Esqueci minha senha</a></span>
             </div>
-            <tgt-button [color]="'primary'" icon="login" iconPosition="right" (click)="entrar()">Entrar</tgt-button>
+            <tgt-button type="submit" [color]="'primary'" icon="login" iconPosition="right" (click)="entrar()">Entrar</tgt-button>
         </form>
         <div class="create">
             <span>Não possui uma conta? <a [routerLink]="['/register']" >Cadastre-se</a></span>

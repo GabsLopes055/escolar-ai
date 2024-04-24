@@ -1,34 +1,77 @@
 import { Component, OnInit } from '@angular/core';
 import { InputComponent } from "../../shared/input/input.component";
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ButtonComponent } from "../../shared/button/button.component";
 import { Router, RouterLink } from '@angular/router';
 import { InputIconComponent } from "../../shared/input-icon/input-icon.component";
 import { MenuService } from '../../shared/menu/menu.service';
+import { AuthService } from '../services/auth.service';
+import { AuthenticationRequest } from '../../models/authentication.interface';
+import { User } from '../../models/user.interface';
+import { UserService } from '../../shared/services/user/user.service';
 
 @Component({
-    selector: 'app-login',
-    standalone: true,
-    host: {class: 'main'},
-    templateUrl: './login.component.html',
-    styleUrl: './login.component.scss',
-    imports: [InputComponent, ButtonComponent, RouterLink, InputIconComponent]
+  selector: 'app-login',
+  standalone: true,
+  host: { class: 'main' },
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.scss',
+  imports: [
+    InputComponent,
+    ButtonComponent,
+    RouterLink,
+    InputIconComponent,
+    ReactiveFormsModule,
+    FormsModule,
+  ]
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
+
+  formLogin = new FormGroup({
+    email: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required)
+  });
 
   constructor(
     private readonly router: Router,
-    private readonly menuService: MenuService
-  ) {}
+    private readonly menuService: MenuService,
+    private readonly authService: AuthService,
+    private readonly userService: UserService
+  ) { }
 
   ngOnInit(): void {
 
   }
 
   entrar() {
-    window.sessionStorage.setItem('usuario','usuario');
-    this.router.navigate(['/admin/']);
-    this.menuService.updateMenu();
+    this.authService.logar(this.formLogin.value as AuthenticationRequest).subscribe({
+      next: response => {
+        window.sessionStorage.setItem('token', response.token);
+
+        const token = response.token.split(".")[1];
+        const payload = JSON.parse(atob(token));
+        const usuario: User = payload['usuario'];
+
+        this.userService.usuarioInstance = usuario;
+        this.userService.usuario.next(usuario);
+
+
+        this.router.navigate(['/admin/']);
+        this.menuService.updateMenu();
+      },
+      error: erro => {
+        console.log(erro);
+
+      }
+    });
+
   }
 
+}
+
+export interface Payload {
+  sub: "jonathan.souza@togotrip.com.br",
+  usuario: User
+  iat: number,
+  exp: number
 }

@@ -16,6 +16,7 @@ export class ButtonComponent {
   @Input() disabled: boolean = false;
   @Input() border: boolean = true
   @Input() size: 'small' | 'middle' = 'middle';
+  @Input() type: 'submit' | 'button' = 'button';
 
   protected hover = false;
 
