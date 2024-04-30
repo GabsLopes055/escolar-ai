@@ -15,7 +15,7 @@ import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
   styleUrl: './input.component.scss'
 })
 export class InputComponent {
-  @Input() type: 'text' | 'email' | 'password' | 'number' = 'text';
+  @Input() type: 'text' | 'email' | 'password' | 'number' | 'date' = 'text';
   @Input() label: string = '';
   @Input() control: FormControl = new FormControl();
   @Input() mask: string = '';

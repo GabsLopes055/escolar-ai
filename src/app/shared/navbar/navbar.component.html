@@ -29,7 +29,18 @@
 
     @if(isDetail) {
         <div class="user-detail">
-            <h3>Olá</h3>
+            <div class="item perfil">
+                <span class="material-symbols-outlined">
+                    person_4
+                </span>
+                <span class="label">Perfil</span>
+            </div>
+            <div class="item logout" (click)="logout()">
+                <span class="material-symbols-outlined">
+                    logout
+                </span>
+                <span class="label">Logout</span>
+            </div>
         </div>
     }
 

@@ -52,12 +52,40 @@ main {
         position: absolute;
         background-color: $color-off-white;
         width: 145px;
-        height: 150px;
+        // height: 150px;
         top: 75px;
         right: 15px;
-        padding: 1rem;
+        // padding: 1rem;
         box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
         animation: animation .5s;
+
+        .item {
+            cursor: pointer;
+            width: Fill (166px)px;
+            height: Hug (56px)px;
+            padding: 16px;
+            gap: 9px;
+            opacity: 0px;
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            transition: all .5s;
+
+            .label {
+                //styleName: M3/label/large;
+                font-size: 14px;
+                font-weight: 500;
+                line-height: 20px;
+                letter-spacing: 0.10000000149011612px;
+                text-align: center;
+
+            }
+
+            &:hover {
+                background-color: $color-yellow;
+            }
+        }
     }
 }
 
@@ -68,10 +96,10 @@ main {
 @keyframes animation {
     from {
         opacity: 0;
-        height: 0;
+        margin-top: -10px;
     }
     to {
         opacity: 1;
-        height: 150px;
+        margin-top: 0;
     }
 }

@@ -1,31 +1,49 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
-import { InputComponent } from '../../shared/input/input.component';
-import { ButtonComponent } from "../../shared/button/button.component";
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Subscription, debounceTime, distinctUntilChanged } from 'rxjs';
+import { ButtonComponent } from "../../shared/button/button.component";
+import { InputComponent } from '../../shared/input/input.component';
+import { AuthService } from '../services/auth.service';
+import { UserRequest } from '../../models/authentication.interface';
+import { OptionSelect, SelectComponent } from "../../shared/select/select.component";
 
 @Component({
     selector: 'app-register-full',
     standalone: true,
-    host: {class: 'main'},
+    host: { class: 'main' },
     templateUrl: './register-full.component.html',
     styleUrl: './register-full.component.scss',
-    imports: [InputComponent, ButtonComponent, ReactiveFormsModule, RouterLink]
+    imports: [InputComponent, ButtonComponent, ReactiveFormsModule, RouterLink, SelectComponent]
 })
 export class RegisterFullComponent implements OnInit, OnDestroy {
 
   id!: any;
   steps = 1;
-
+  nomeSolicitante = '';
   formGroup = new FormGroup({
     cnpj: new FormControl('89549403000106'),
     razaoSocial: new FormControl('To Go Trip LDTA'),
     nomeFantasia: new FormControl('To Go Trip'),
     inscEstadual: new FormControl('123153423'),
-    cnaePrimario: new FormControl('2321'),
-    cnaeSecundario: new FormControl('12211'),
-  })
+  });
+
+  formRequest = new FormGroup({
+    empresaId: new FormControl(),
+    nome: new FormControl(),
+    email: new FormControl(),
+    telefone: new FormControl(),
+    password: new FormControl(),
+    sexo: new FormControl(),
+    dataNascimento: new FormControl(),
+    cpf: new FormControl()
+  });
+
+  options: OptionSelect[] = [
+    {label: 'Masculino', value: 'MASCULINO'},
+    {label: 'Feminino', value: 'FEMININO'},
+    {label: 'Outros', value: 'OUTROS'},
+  ]
 
   senha = new FormControl(null);
 
@@ -35,18 +53,36 @@ export class RegisterFullComponent implements OnInit, OnDestroy {
 
   subscription = new Subscription();
 
-  constructor(private readonly activatedRoute: ActivatedRoute) {}
+  constructor(
+    private readonly activatedRoute: ActivatedRoute,
+    private readonly authService: AuthService
+    ) {}
 
   ngOnInit(): void {
 
-    /**
-     * @TODO O cliente acessará esta tela atraves do link no e-mail.
-     * No email a url tera o UUID do cliente. Onde ele dará continuidade no 
-     * cadastro.
-     * 
-     * abaixo eu irei pegar esse UUID. vou consultar a empresa no backend 
-     * e preencher a tela com as informações da empresa.
-     */
+    this.subscription.add(
+      this.activatedRoute.params.subscribe(data => {
+        this.id = data['id'];
+
+        this.authService.buscarSolicitacao(data['id']).subscribe({
+          next: solicitacao => {
+            this.formRequest.controls.nome.setValue(solicitacao.nome);
+            this.formRequest.controls.email.setValue(solicitacao.email);
+            this.nomeSolicitante = solicitacao.nome;
+
+            this.authService.buscarEmpresa(solicitacao.cnpj).subscribe({
+              next: empresa => {
+                this.formRequest.controls.empresaId.setValue(empresa.id);
+                this.formGroup.controls.cnpj.setValue(empresa.cnpj);
+                this.formGroup.controls.nomeFantasia.setValue(empresa.nomeFantasia);
+                this.formGroup.controls.razaoSocial.setValue(empresa.razaoSocial);
+                this.formGroup.controls.inscEstadual.setValue(empresa.inscricaoEstadual);
+              }
+            });
+          }
+        });
+      })
+    );
 
     this.senha.valueChanges.pipe(
       debounceTime(400),
@@ -69,27 +105,32 @@ export class RegisterFullComponent implements OnInit, OnDestroy {
       }
     })
 
-    this.subscription.add(
-      this.activatedRoute.params.subscribe(data => {
-        console.log(data['id'])
-        this.id = data['id'];
-      })
-    );
+
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 
+  cadastrar() {
+    this.authService.register(this.formRequest.value as UserRequest).subscribe({
+      next: () => {
+        this.steps = 4;
+      },
+      error: () => {
+        alert('Ocorreu um erro ao cadastrar');
+      }
+    });
+  }
+
   nextStep() {
     this.steps += 1;
+    if(this.steps == 4) {
+      this.cadastrar();
+    }
     if(this.steps < 3) {
       return;
     }
-
-    /**
-     * @TODO chama no backend
-     */
   }
 
   backStep() {
