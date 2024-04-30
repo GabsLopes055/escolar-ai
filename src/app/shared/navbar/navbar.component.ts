@@ -1,8 +1,9 @@
+import { MenuService } from './../menu/menu.service';
 import { Component } from '@angular/core';
 import { ButtonComponent } from "../button/button.component";
 import { NavbarService } from './navbar.service';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../services/user/user.service';
 
 @Component({
@@ -21,7 +22,9 @@ export class NavbarComponent {
 
     constructor(
         private readonly service: NavbarService,
-        private readonly userService: UserService
+        private readonly userService: UserService,
+        private readonly router: Router,
+        private readonly menuService:MenuService
     ) {
         this.title = service.title;
         const usuario = this.userService.user;
@@ -32,5 +35,12 @@ export class NavbarComponent {
 
     showHideDetail() {
         this.isDetail = !this.isDetail;
+    }
+
+    logout() {
+        window.sessionStorage.removeItem('token');
+        this.isDetail = false;
+        this.router.navigate(['/login']);
+        this.menuService._menu.next([]);
     }
 }

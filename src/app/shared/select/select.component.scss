@@ -1,0 +1,62 @@
+@import "../../../assets/styles/colors.scss";
+main {
+    width: 100%;
+    position: relative;
+
+    .input {
+        padding: 10px 16px;
+        border: solid 1.5px black;
+        border-radius: 41px;
+        cursor: pointer;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .modal {
+        box-shadow: 5px 5px 5px rgba($color: #000000, $alpha: .1);
+        border: solid 1px #ddd;
+        background-color: $color-White;
+        border-radius: 10px;
+        padding: 1rem;
+        position: absolute;
+        margin-top: 5px;
+        width: 92%;
+        max-height: 110px;
+        top: 20;
+        right: 0;
+        animation: initModal .5s;
+        z-index: 999;
+
+        .content {
+            max-height: 100px;
+            overflow: auto;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+
+            .value {
+                padding: 8px;
+                border-radius: 4px;
+                transition: all .4s;
+            }
+            .value:hover {
+                background-color: $color-yellow;
+            }
+        }
+    }
+}
+
+@keyframes initModal {
+    from {
+        opacity: 0;
+        margin-top: -50px;
+    }
+    to {
+        opacity: 1;
+        margin-top: 5;
+    }
+}

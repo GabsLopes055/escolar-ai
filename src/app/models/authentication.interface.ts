@@ -13,3 +13,11 @@ export interface Solicitacao {
     email: string;
     cnpj: string;
 }
+
+export interface UserRequest {
+    nome: string;
+    email: string;
+    telefone: string;
+    empresaId: number;
+    password: string;
+}
