@@ -42,7 +42,6 @@ export class RegisterFullComponent implements OnInit, OnDestroy {
   options: OptionSelect[] = [
     {label: 'Masculino', value: 'MASCULINO'},
     {label: 'Feminino', value: 'FEMININO'},
-    {label: 'Outros', value: 'OUTROS'},
   ]
 
   senha = new FormControl(null);
