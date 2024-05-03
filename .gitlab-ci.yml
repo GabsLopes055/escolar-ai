@@ -8,9 +8,9 @@ variables:
 
 build:
   stage: build
-  image: docker:20.10.6
+  image: docker:latest
   services:
-    - docker:20.10.6
+    - docker:latest
   script:
     - docker build -t togotrip-frontend .
     - docker tag togotrip-frontend $GCR_IMAGE_NAME
