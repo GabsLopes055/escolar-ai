@@ -10,7 +10,7 @@ COPY package.json ./
 # Instale as dependências
 
 RUN npm cache clean --force
-npm install -g npm@latest
+RUN npm install -g npm@latest
 RUN npm install
 
 # Copie os arquivos restantes para o diretório de trabalho
