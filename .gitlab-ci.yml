@@ -14,7 +14,7 @@ build:
   script:
     - docker build -t togotrip-frontend .
     - docker tag togotrip-frontend $GCR_IMAGE_NAME
-    - echo $GCP_SERVICE_ACCOUNT_KEY | gcloud auth activate-service-account ACCOUNT --key-file=_json_key
+    - echo $GCP_SERVICE_ACCOUNT_KEY | gcloud auth activate-service-account gitlab@inbound-rune-421414.iam.gserviceaccount.com --key-file=_json_key
     - docker push $GCR_IMAGE_NAME
 
 deploy:
