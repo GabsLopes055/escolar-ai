@@ -4,7 +4,7 @@ stages:
 
 variables:
   DOCKER_IMAGE_NAME: "togotrip-frontend"
-  GCR_IMAGE_NAME: "gcr.io/inbound-rune-421414/${DOCKER_IMAGE_NAME}"
+  GCR_IMAGE_NAME: "gcr.io/inbound-rune-421414/togotrip-frontend"
 
 build:
   stage: build
