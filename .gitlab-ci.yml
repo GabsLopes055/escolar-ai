@@ -6,7 +6,7 @@ variables:
   DOCKER_IMAGE_NAME: "togotrip-frontend:v1"
   GCR_IMAGE_NAME: "southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/$DOCKER_IMAGE_NAME"
 
-init:
+.pre:
     stage: init
     image: google/cloud-sdk:alpine
     script:
