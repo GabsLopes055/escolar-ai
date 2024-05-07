@@ -3,8 +3,8 @@ stages:
   - deploy
 
 variables:
-  DOCKER_IMAGE_NAME: "togotrip-frontend:v1"
-  GCR_IMAGE_NAME: "southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/$DOCKER_IMAGE_NAME"
+  DOCKER_IMAGE_NAME: "togotrip-frontend"
+  GCR_IMAGE_NAME: "southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend:v1"
 
 .pre:
     stage: init
@@ -21,14 +21,13 @@ build:
   script:
     - docker build -t $DOCKER_IMAGE_NAME .
     - docker tag $DOCKER_IMAGE_NAME $GCR_IMAGE_NAME
-    - echo $GCP_SERVICE_ACCOUNT_KEY | docker login -u _json_key --password-stdin https://gcr.io
     - docker push $GCR_IMAGE_NAME
 
-deploy:
-  stage: deploy
-  image: google/cloud-sdk:alpine
-  script:
-    - gcloud auth activate-service-account --key-file <(echo $GCP_SERVICE_ACCOUNT_KEY)
-    - gcloud config set project $GCP_PROJECT_ID
-    - gcloud container clusters get-credentials $GCP_CLUSTER_NAME --zone $GCP_ZONE
-    - kubectl set image deployment/your-deployment-name your-container-name=$GCR_IMAGE_NAME
+# deploy:
+#   stage: deploy
+#   image: google/cloud-sdk:alpine
+#   script:
+#     - gcloud auth activate-service-account --key-file <(echo $GCP_SERVICE_ACCOUNT_KEY)
+#     - gcloud config set project $GCP_PROJECT_ID
+#     - gcloud container clusters get-credentials $GCP_CLUSTER_NAME --zone $GCP_ZONE
+#     - kubectl set image deployment/your-deployment-name your-container-name=$GCR_IMAGE_NAME
