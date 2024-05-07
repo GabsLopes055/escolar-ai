@@ -21,7 +21,7 @@ build:
   script:
     - docker build -t $DOCKER_IMAGE_NAME .
     - docker tag $DOCKER_IMAGE_NAME $GCR_IMAGE_NAME
-    - docker push $GCR_IMAGE_NAME
+    - docker push southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend:v1
 
 # deploy:
 #   stage: deploy
