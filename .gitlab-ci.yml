@@ -12,6 +12,7 @@ variables:
     script:
         - gcloud config set projects inbound-rune-421414
         - gcloud auth activate-service-account --key-file $GCP_SERVICE_ACCOUNT_KEY
+        - gcloud auth configure-docker southamerica-east1-docker.pkg.dev
 
 build:
   stage: build
