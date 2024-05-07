@@ -15,7 +15,7 @@ variables:
 
 build:
   stage: build
-  image: docker:26.1.1
+  image: docker:latest
   services:
     - docker:19.03.12-dind
   script:
