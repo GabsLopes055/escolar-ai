@@ -15,10 +15,11 @@ build:
     - google/cloud-sdk:alpine
     - docker:latest
   script:
-    - apt-get update && apt-get install -y curl gnupg
-    - echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-    - curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
-    - apt-get update && apt-get install -y google-cloud-sdk
+    - apk --no-cache add curl # Instala o curl para baixar o Google Cloud SDK
+    - curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-359.0.0-linux-x86_64.tar.gz # Baixa o pacote do Google Cloud SDK
+    - tar zxvf google-cloud-sdk-359.0.0-linux-x86_64.tar.gz # Extrai o pacote
+    - ./google-cloud-sdk/install.sh --quiet # Instala o SDK
+    - source ~/.bashrc # A
     - gcloud config set project inbound-rune-421414
     - echo "$GCP_SERVICE_ACCOUNT_KEY" > service_account.json
     - gcloud auth activate-service-account --key-file service_account.json
