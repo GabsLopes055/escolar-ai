@@ -16,7 +16,7 @@ before_script:
 
 variables:
   DOCKER_IMAGE_NAME: "togotrip-frontend"
-  GCR_IMAGE_NAME: "southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend:v1"
+  GCR_IMAGE_NAME: "southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend:v2"
 
 build:
   stage: build
