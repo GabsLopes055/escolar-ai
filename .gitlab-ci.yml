@@ -21,7 +21,7 @@ build:
   services:
     - docker:latest
   script:
-    - docker login -u $GCP_SERVICE_ACCOUNT_KEY --password-stdin https://southamerica-east1-docker.pkg.dev
+    - docker-credential-gcr configure-docker southamerica-east1-docker.pkg.dev
     - docker build -t southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend:v1 .
     - docker push southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend:v1
 
