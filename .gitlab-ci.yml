@@ -12,6 +12,7 @@ before_script:
   - /root/google-cloud-sdk/install.sh --usage-reporting=false --path-update=true --bash-completion=true --disable-installation-options
   - /root/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file=service_account.json
   - /root/google-cloud-sdk/bin/gcloud config set project inbound-rune-421414
+  - /root/google-cloud-sdk/bin/gcloud auth configure-docker southamerica-east1-docker.pkg.dev
 
 variables:
   DOCKER_IMAGE_NAME: "togotrip-frontend"
