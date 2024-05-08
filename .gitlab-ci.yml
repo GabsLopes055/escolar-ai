@@ -14,7 +14,7 @@ build:
     - echo "$GCP_SERVICE_ACCOUNT_KEY" > service_account.json
     - gcloud auth activate-service-account --key-file service_account.json
     - gcloud auth configure-docker southamerica-east1-docker.pkg.dev --quiet
-    - service docker start
+    - sudo service docker start
     - docker build -t $GCR_IMAGE_NAME .
     - docker push $GCR_IMAGE_NAME
 
