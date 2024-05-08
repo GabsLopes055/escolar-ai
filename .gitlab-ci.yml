@@ -15,10 +15,10 @@ build:
     - google/cloud-sdk:alpine
     - docker:latest
   script:
-    - apt-get update && apt-get install -y curl gnupg
+    - yum update && yum install -y curl gnupg
     - echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
     - curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
-    - apt-get update && apt-get install -y google-cloud-sdk
+    - yum update && yum install -y google-cloud-sdk
     - gcloud config set project inbound-rune-421414
     - echo "$GCP_SERVICE_ACCOUNT_KEY" > service_account.json
     - gcloud auth activate-service-account --key-file service_account.json
