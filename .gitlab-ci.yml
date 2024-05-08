@@ -27,7 +27,7 @@ build:
         py3-docutils \
         py3-google-auth \
         py3-pip \
-        bash
+        bash \
     - pip3 install --upgrade pip
     - pip3 install --upgrade google-cloud-sdk
 
