@@ -10,8 +10,9 @@ variables:
 
 build:
   stage: build
-  image: google/cloud-sdk:latest
+  image: docker:latest
   services:
+    - google/cloud-sdk:alpine
     - docker:latest
   script:
     - gcloud config set project inbound-rune-421414
