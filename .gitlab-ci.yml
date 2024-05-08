@@ -5,12 +5,12 @@ stages:
   - deploy
 
 before_script:
-  - echo $GCP_SERVICE_ACCOUNT_KEY | base64 -d > key.json
+  - echo "$GCP_SERVICE_ACCOUNT_KEY" > service_account.json
   - apk add --update --no-cache curl python3 py3-crcmod bash libc6-compat
   - curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/google-cloud-sdk.tar.gz
   - tar xzf google-cloud-sdk.tar.gz -C /root
   - /root/google-cloud-sdk/install.sh --usage-reporting=false --path-update=true --bash-completion=true --disable-installation-options
-  - /root/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file=key.json
+  - /root/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file=service_account.json
   - /root/google-cloud-sdk/bin/gcloud config set project inbound-rune-421414
 
 variables:
