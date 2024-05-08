@@ -28,8 +28,8 @@ build:
     # - echo "$GCP_SERVICE_ACCOUNT_KEY" > service_account.json
     # - gcloud auth activate-service-account --key-file service_account.json
     # - gcloud auth configure-docker southamerica-east1-docker.pkg.dev --quiet
-    - docker build -t southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend:v1 .
-    - docker push southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend:v1
+    - docker build -t southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend:v2 .
+    - docker push southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend:v2
 
 
 # build:
