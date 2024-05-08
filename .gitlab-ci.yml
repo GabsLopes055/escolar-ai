@@ -11,6 +11,7 @@ variables:
     image: google/cloud-sdk:alpine
     script:
         - gcloud config set projects inbound-rune-421414
+        - gcloud auth login --cred-file=$GCP_SERVICE_ACCOUNT_KEY
         - gcloud auth activate-service-account --key-file $GCP_SERVICE_ACCOUNT_KEY
         - gcloud auth configure-docker southamerica-east1-docker.pkg.dev
         - gcloud get projects
@@ -21,7 +22,6 @@ build:
   services:
     - docker:latest
   script:
-    - docker login -u $GCP_SERVICE_ACCOUNT_KEY --password-stdin https://southamerica-east1-docker.pkg.dev
     - docker build -t southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend:v1 .
     - docker push southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend:v1
 
