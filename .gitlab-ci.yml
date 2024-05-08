@@ -17,6 +17,7 @@ build:
   script:
     - apk add --no-cache python3 # Instala o Python3
     - python3 --version # Verifica se o Python3 está instalado corretamente
+    - apk --no-cache add curl
     - curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-359.0.0-linux-x86_64.tar.gz # Baixa o pacote do Google Cloud SDK
     - tar zxvf google-cloud-sdk-359.0.0-linux-x86_64.tar.gz # Extrai o pacote
     - ./google-cloud-sdk/install.sh --quiet --disable-prompts # Instala o SDK
