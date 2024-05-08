@@ -6,6 +6,7 @@ stages:
 
 before_script:
   - echo $GCP_SERVICE_ACCOUNT_KEY | base64 -d > key.json
+  - apk add --update --no-cache curl python3 py3-crcmod bash libc6-compat
   - apk add google-cloud-sdk
   - gcloud auth activate-service-account --key-file=key.json
   - gcloud config set project inbound-rune-421414
