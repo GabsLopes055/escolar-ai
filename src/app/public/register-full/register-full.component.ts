@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Subscription, debounceTime, distinctUntilChanged } from 'rxjs';
 import { ButtonComponent } from "../../shared/button/button.component";
 import { InputComponent } from '../../shared/input/input.component';
@@ -54,7 +54,8 @@ export class RegisterFullComponent implements OnInit, OnDestroy {
 
   constructor(
     private readonly activatedRoute: ActivatedRoute,
-    private readonly authService: AuthService
+    private readonly authService: AuthService,
+    private readonly router:Router
     ) {}
 
   ngOnInit(): void {
@@ -69,15 +70,19 @@ export class RegisterFullComponent implements OnInit, OnDestroy {
             this.formRequest.controls.email.setValue(solicitacao.email);
             this.nomeSolicitante = solicitacao.nome;
 
-            this.authService.buscarEmpresa(solicitacao.cnpj).subscribe({
-              next: empresa => {
-                this.formRequest.controls.empresaId.setValue(empresa.id);
-                this.formGroup.controls.cnpj.setValue(empresa.cnpj);
-                this.formGroup.controls.nomeFantasia.setValue(empresa.nomeFantasia);
-                this.formGroup.controls.razaoSocial.setValue(empresa.razaoSocial);
-                this.formGroup.controls.inscEstadual.setValue(empresa.inscricaoEstadual);
-              }
+            if(solicitacao) {
+              this.authService.buscarEmpresa(solicitacao.cnpj).subscribe({
+                next: empresa => {
+                  this.formRequest.controls.empresaId.setValue(empresa.id);
+                  this.formGroup.controls.cnpj.setValue(empresa.cnpj);
+                  this.formGroup.controls.nomeFantasia.setValue(empresa.nomeFantasia);
+                  this.formGroup.controls.razaoSocial.setValue(empresa.razaoSocial);
+                  this.formGroup.controls.inscEstadual.setValue(empresa.inscricaoEstadual);
+                }
             });
+          }
+          }, error: () => {
+            this.router.navigate(['/login']);
           }
         });
       })
