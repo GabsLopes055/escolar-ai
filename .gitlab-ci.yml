@@ -10,6 +10,16 @@ before_script:
   - tar xzf google-cloud-sdk.tar.gz -C /root
   - /root/google-cloud-sdk/install.sh --usage-reporting=false --path-update=true --bash-completion=true --disable-installation-options
 
+  ###########################################
+
+    # Instalar o docker-credential-gcloud dentro do contêiner
+  - /root/google-cloud-sdk/bin/gcloud components install docker-credential-gcr
+
+    # Adicionar o diretório que contém o docker-credential-gcloud ao PATH
+  - export PATH=$PATH:/root/google-cloud-sdk/bin/
+
+  ###########################################
+
   - /root/google-cloud-sdk/bin/gcloud auth configure-docker southamerica-east1-docker.pkg.dev --quiet
   - /root/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file=service_account.json
   - /root/google-cloud-sdk/bin/gcloud config set project inbound-rune-421414 --quiet
