@@ -39,8 +39,10 @@ build:
     - docker build -t southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend:v1 .
     - docker push southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend:v1
 
+
 deploy:
   stage: deploy
+  image: docker:latest
   script:
     - echo "Realizando deploy... "
     # - gcloud app deploy togotrip-frontend-workload.yaml
