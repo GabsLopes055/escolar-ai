@@ -50,7 +50,7 @@ deploy:
     - /root/google-cloud-sdk/bin/gcloud container clusters get-credentials togotrip-frontend-cluster --location=us-central1
     # - /root/google-cloud-sdk/bin/gcloud app deploy togotrip-frontend-workload.yaml
     - ls
-    - kubectl apply -f togotrip-frontend-workload.yml
+    - kubectl rollout restart deployment togotrip-frontend-workload
     - echo "Deploy concluído."
   needs:
     - build
