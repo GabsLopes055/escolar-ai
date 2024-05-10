@@ -46,7 +46,7 @@ deploy:
   script:
     - echo "Realizando deploy... "
     # - gcloud app deploy togotrip-frontend-workload.yaml
-    - gcloud container clusters get-credentials togotrip-frontend-cluster --location=us-central1
+    - /root/google-cloud-sdk/bin/gcloud container clusters get-credentials togotrip-frontend-cluster --location=us-central1
     - kubectl apply -f togotrip-frontend-workload.yaml
     - echo "Deploy concluído."
   needs:
