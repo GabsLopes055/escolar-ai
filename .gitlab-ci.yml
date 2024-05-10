@@ -45,9 +45,10 @@ deploy:
   image: docker:latest
   script:
     - echo "Realizando deploy... "
-    # - gcloud app deploy togotrip-frontend-workload.yaml
+    # - /root/google-cloud-sdk/bin/gcloud components install kubectl --quiet
     - /root/google-cloud-sdk/bin/gcloud container clusters get-credentials togotrip-frontend-cluster --location=us-central1
-    - kubectl apply -f togotrip-frontend-workload.yaml
+    - /root/google-cloud-sdk/bin/gcloud app deploy togotrip-frontend-workload.yaml
+    # - kubectl apply -f togotrip-frontend-workload.yaml
     - echo "Deploy concluído."
   needs:
     - build
