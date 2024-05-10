@@ -1,19 +1,163 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  annotations:
+    autopilot.gke.io/resource-adjustment: '{"input":{"containers":[{"limits":{"cpu":"500m","ephemeral-storage":"500m","memory":"1Gi"},"requests":{"cpu":"500m","ephemeral-storage":"500m","memory":"1Gi"},"name":"togotrip-frontend-sha256-1"}]},"output":{"containers":[{"limits":{"cpu":"500m","ephemeral-storage":"10Mi","memory":"1Gi"},"requests":{"cpu":"500m","ephemeral-storage":"10Mi","memory":"1Gi"},"name":"togotrip-frontend-sha256-1"}]},"modified":true}'
+    autopilot.gke.io/warden-version: 2.8.74
+  labels:
+    app: togotrip-frontend-workload
+  managedFields:
+  - apiVersion: apps/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        f:replicas: {}
+    manager: vpa-recommender
+    operation: Update
+    subresource: scale
+  - apiVersion: apps/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:labels:
+          .: {}
+          f:app: {}
+      f:spec:
+        f:progressDeadlineSeconds: {}
+        f:revisionHistoryLimit: {}
+        f:selector: {}
+        f:strategy:
+          f:rollingUpdate:
+            .: {}
+            f:maxSurge: {}
+            f:maxUnavailable: {}
+          f:type: {}
+        f:template:
+          f:metadata:
+            f:labels:
+              .: {}
+              f:app: {}
+          f:spec:
+            f:containers:
+              k:{"name":"togotrip-frontend-sha256-1"}:
+                .: {}
+                f:env:
+                  .: {}
+                  k:{"name":"APP"}:
+                    .: {}
+                    f:name: {}
+                    f:valueFrom:
+                      .: {}
+                      f:configMapKeyRef: {}
+                f:image: {}
+                f:imagePullPolicy: {}
+                f:name: {}
+                f:resources:
+                  .: {}
+                  f:limits:
+                    f:ephemeral-storage: {}
+                    f:memory: {}
+                  f:requests:
+                    f:ephemeral-storage: {}
+                    f:memory: {}
+                f:terminationMessagePath: {}
+                f:terminationMessagePolicy: {}
+            f:dnsPolicy: {}
+            f:restartPolicy: {}
+            f:schedulerName: {}
+            f:securityContext: {}
+            f:terminationGracePeriodSeconds: {}
+    manager: GoogleCloudConsole
+    operation: Update
+  - apiVersion: apps/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          f:deployment.kubernetes.io/revision: {}
+      f:status:
+        f:availableReplicas: {}
+        f:conditions:
+          .: {}
+          k:{"type":"Available"}:
+            .: {}
+            f:lastTransitionTime: {}
+            f:lastUpdateTime: {}
+            f:message: {}
+            f:reason: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Progressing"}:
+            .: {}
+            f:lastTransitionTime: {}
+            f:lastUpdateTime: {}
+            f:message: {}
+            f:reason: {}
+            f:status: {}
+            f:type: {}
+        f:observedGeneration: {}
+        f:readyReplicas: {}
+        f:replicas: {}
+        f:updatedReplicas: {}
+    manager: kube-controller-manager
+    operation: Update
+    subresource: status
   name: togotrip-frontend-workload
+  namespace: default
+  resourceVersion: "5908451"
+  uid: ac4299fd-0e7a-4b66-b7c5-6f5285adc322
 spec:
-  replicas: 3  # Número de réplicas desejadas
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
   selector:
     matchLabels:
-      app: togotrip-frontend
+      app: togotrip-frontend-workload
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
   template:
     metadata:
+      creationTimestamp: null
       labels:
-        app: togotrip-frontend
+        app: togotrip-frontend-workload
     spec:
       containers:
-      - name: togotrip-frontend
-        image: southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend:latest  # Imagem Docker para o seu container
-        ports:
-        - containerPort: 8080  #
+      - env:
+        - name: APP
+          valueFrom:
+            configMapKeyRef:
+              key: APP
+              name: togotrip-frontend-workload-config-tkxg
+        image: southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend@sha256:6e6ac46bee9aae0d34c204573c690690aa2a1a7347fe747435d70e10f72f277b
+        imagePullPolicy: IfNotPresent
+        name: togotrip-frontend-sha256-1
+        resources:
+          limits:
+            cpu: 500m
+            ephemeral-storage: 10Mi
+            memory: 1Gi
+          requests:
+            cpu: 500m
+            ephemeral-storage: 10Mi
+            memory: 1Gi
+        securityContext:
+          capabilities:
+            drop:
+            - NET_RAW
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
+      terminationGracePeriodSeconds: 30
+      tolerations:
+      - effect: NoSchedule
+        key: kubernetes.io/arch
+        operator: Equal
+        value: amd64
