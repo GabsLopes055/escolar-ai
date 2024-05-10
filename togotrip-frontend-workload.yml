@@ -131,7 +131,7 @@ spec:
             configMapKeyRef:
               key: APP
               name: togotrip-frontend-workload-config-tkxg
-        image: southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend@sha256:6e6ac46bee9aae0d34c204573c690690aa2a1a7347fe747435d70e10f72f277b
+        image: southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend:latest
         imagePullPolicy: IfNotPresent
         name: togotrip-frontend-sha256-1
         resources:
