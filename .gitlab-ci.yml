@@ -36,7 +36,7 @@ build:
   services:
     - docker:latest
   script:
-    - /root/google-cloud-sdk/bin/gcloud artifacts docker images delete --location=southamerica-east1 togotrip-frontend
+    - /root/google-cloud-sdk/bin/gcloud artifacts docker images delete togotrip-frontend --location=southamerica-east1
     - docker build -t southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend:latest .
     - docker push southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend:latest
 
