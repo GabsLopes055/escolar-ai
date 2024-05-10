@@ -36,6 +36,7 @@ build:
   services:
     - docker:latest
   script:
+    - /root/google-cloud-sdk/bin/gcloud artifacts docker images delete --location=southamerica-east1 togotrip-frontend
     - docker build -t southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend:latest .
     - docker push southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend:latest
 
@@ -48,6 +49,7 @@ deploy:
     - /root/google-cloud-sdk/bin/gcloud components install kubectl --quiet
     - /root/google-cloud-sdk/bin/gcloud container clusters get-credentials togotrip-frontend-cluster --location=us-central1
     # - /root/google-cloud-sdk/bin/gcloud app deploy togotrip-frontend-workload.yaml
+    - ls
     - kubectl apply -f togotrip-frontend-workload.yaml
     - echo "Deploy concluído."
   needs:
