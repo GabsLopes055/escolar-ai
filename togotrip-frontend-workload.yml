@@ -104,7 +104,6 @@ metadata:
     subresource: status
   name: togotrip-frontend-workload
   namespace: default
-  resourceVersion: "5908451"
   uid: ac4299fd-0e7a-4b66-b7c5-6f5285adc322
 spec:
   progressDeadlineSeconds: 600
