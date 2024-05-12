@@ -37,6 +37,7 @@ build:
     - docker:latest
   script:
     - /root/google-cloud-sdk/bin/gcloud artifacts docker images delete southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend --delete-tags
+    - docker rmi $(docker images -q)
     - docker build --no-cache -t southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend:latest .
     - docker push southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend:latest
   cache:
