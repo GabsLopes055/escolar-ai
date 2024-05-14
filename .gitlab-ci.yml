@@ -10,6 +10,7 @@ before_script:
   - curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/google-cloud-sdk.tar.gz
   - tar xzf google-cloud-sdk.tar.gz -C /root
   - /root/google-cloud-sdk/install.sh --usage-reporting=false --path-update=true --bash-completion=true --disable-installation-options
+  - apk add --no-cache jq
 
   ###########################################
 
