@@ -13,7 +13,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        gap: 24px;
+        gap: 12px;
         
 
         .logo {
@@ -90,14 +90,14 @@
             list-style: none;
 
             li {
-                width: 222px;
+                width: 200px;
                 border-radius: 300px;
                 margin-bottom: .3rem;
                 transition: all .5s;
                 a {
                     width: Fill (222px)px;
-                    height: Fill (56px)px;
-                    padding: 16px 24px 16px 16px;
+                    height: 16px;
+                    padding: 16px;
                     gap: 12px;
                     opacity: 0px;
         
@@ -109,12 +109,12 @@
                     color: $color-off-white;
         
                     span {
-                        width: 24px;
-                        height: 24px;
+                        width: 20px;
+                        height: 20px;
                     }
         
                     .item-description {
-                        font-size: 14px;
+                        font-size: 12px;
                         font-weight: 600;
                         line-height: 24px;
                         letter-spacing: 0.5px;
@@ -151,7 +151,7 @@
     }
 
     .item-help {
-        width: 222px;
+        width: 200px;
         border-radius: 300px;
         margin-bottom: 1rem;
         display: flex;
@@ -160,7 +160,7 @@
 
         a {
             width: Fill (222px)px;
-            height: Fill (56px)px;
+            height: 16px;
             padding: 16px 24px 16px 16px;
             gap: 12px;
             opacity: 0px;
@@ -173,12 +173,12 @@
             transition: all .5s;
 
             span {
-                width: 24px;
-                height: 24px;
+                width: 20px;
+                height: 20px;
             }
 
             .item-description {
-                font-size: 14px;
+                font-size: 12px;
                 font-weight: 600;
                 line-height: 24px;
                 letter-spacing: 0.5px;
