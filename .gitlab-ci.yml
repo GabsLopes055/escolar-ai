@@ -38,8 +38,9 @@ build:
   script:
     - /root/google-cloud-sdk/bin/gcloud artifacts docker images delete southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend --delete-tags
     - docker image prune -a --force
-    - docker build --no-cache -t southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend:latest .
-    - docker push southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend:latest
+    - export VERSION=1.0.$((${VERSION##*.} + 1)) # Incrementa o número da versão
+    - docker build --no-cache -t southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend:$VERSION .
+    - docker push southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend:$VERSION
   cache:
       key: "$CI_COMMIT_REF_NAME" # Chave única para o cache baseada no nome do branch
       paths:
