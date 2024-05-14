@@ -2,6 +2,7 @@ image: google/cloud-sdk:latest
 
 stages:
   - build
+  - deploy
 
 before_script:
   - echo "$GCP_SERVICE_ACCOUNT_KEY" > service_account.json
@@ -35,6 +36,26 @@ build:
   services:
     - docker:latest
   script:
-    - docker build -t southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend:v1 .
-    - docker push southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend:v1
+    - /root/google-cloud-sdk/bin/gcloud artifacts docker images delete southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend --delete-tags
+    - docker image prune -a --force
+    - export VERSION=1.0.$((${VERSION##*.} + 1)) # Incrementa o número da versão
+    - docker build --no-cache -t southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend:$VERSION .
+    - docker push southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend:$VERSION
+  cache:
+      key: "$CI_COMMIT_REF_NAME" # Chave única para o cache baseada no nome do branch
+      paths:
+        - /root/google-cloud-sdk/
 
+deploy:
+  stage: deploy
+  image: docker:latest
+  script:
+    - echo "Realizando deploy... "
+    - /root/google-cloud-sdk/bin/gcloud components install kubectl --quiet
+    - /root/google-cloud-sdk/bin/gcloud container clusters get-credentials togotrip-frontend-cluster --location=us-central1
+    # - /root/google-cloud-sdk/bin/gcloud app deploy togotrip-frontend-workload.yaml
+    - ls
+    - kubectl rollout restart deployment togotrip-frontend-workload
+    - echo "Deploy concluído."
+  needs:
+    - build
