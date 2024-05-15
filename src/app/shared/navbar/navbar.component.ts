@@ -5,13 +5,14 @@ import { NavbarService } from './navbar.service';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../services/user/user.service';
+import { PerfilComponent } from "../perfil/perfil.component";
 
 @Component({
     selector: 'navbar',
     standalone: true,
     templateUrl: './navbar.component.html',
     styleUrl: './navbar.component.scss',
-    imports: [ButtonComponent, CommonModule, RouterLink]
+    imports: [ButtonComponent, CommonModule, RouterLink, PerfilComponent]
 })
 export class NavbarComponent {
 
