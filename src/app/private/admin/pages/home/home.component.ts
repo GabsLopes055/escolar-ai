@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     setTimeout(() =>{
       this.modalService.open(TourComponent);
-    }, 3000);
+    }, 800);
     
   }
 }

@@ -122,12 +122,12 @@
 
         <div class="footer-btn" [style.justify-content]="steps==1 ? 'end' : 'space-between'">
             @if(steps>1 && steps < 4){ <div class="btn-l">
-                <tgt-button [fieldButton]="'outline'" (click)="backStep()" [border]="false">Voltar</tgt-button>
+                <tgt-button [fieldButton]="'outline'" (click)="backStep()" [border]="false" size="small">Voltar</tgt-button>
         </div>
         }
         @if(steps != 4) {
         <div class="btn-l">
-            <tgt-button [icon]="'trending_flat'" iconPosition="right" (click)="nextStep()">Continuar</tgt-button>
+            <tgt-button [icon]="'trending_flat'" size="small" iconPosition="right" (click)="nextStep()">Continuar</tgt-button>
         </div>
         }
     </div>
