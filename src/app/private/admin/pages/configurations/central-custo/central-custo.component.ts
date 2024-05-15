@@ -56,6 +56,9 @@ export class CetralCustoComponent {
     {id: 2, nome: 'Marketing', createdAt: '03/03/2024', updatedAt: '15/03/2024', orcamento: 25000, status: Status.INATIVA, actions: ''},
     {id: 3, nome: 'Gestores', createdAt: '02/03/2024',updatedAt: '15/03/2024', orcamento: 30000, status: Status.ATIVA, actions: ''},
     {id: 4, nome: 'Supervireos', createdAt: '20/03/2024',updatedAt: '15/03/2024', orcamento: 15000, status: Status.ATIVA, actions: ''},
+    {id: 4, nome: 'Supervireos', createdAt: '20/03/2024',updatedAt: '15/03/2024', orcamento: 15000, status: Status.ATIVA, actions: ''},
+    {id: 4, nome: 'Supervireos', createdAt: '20/03/2024',updatedAt: '15/03/2024', orcamento: 15000, status: Status.ATIVA, actions: ''},
+    {id: 4, nome: 'Supervireos', createdAt: '20/03/2024',updatedAt: '15/03/2024', orcamento: 15000, status: Status.ATIVA, actions: ''},
   ]
 
   constructor(
