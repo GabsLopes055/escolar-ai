@@ -1,61 +1,61 @@
-# image: google/cloud-sdk:latest
+image: google/cloud-sdk:latest
 
-# stages:
-#   - build
-#   - deploy
+stages:
+  - build
+  - deploy
 
-# before_script:
-#   - echo "$GCP_SERVICE_ACCOUNT_KEY" > service_account.json
-#   - apk add --update --no-cache curl python3 py3-crcmod bash libc6-compat
-#   - curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/google-cloud-sdk.tar.gz
-#   - tar xzf google-cloud-sdk.tar.gz -C /root
-#   - /root/google-cloud-sdk/install.sh --usage-reporting=false --path-update=true --bash-completion=true --disable-installation-options
+before_script:
+  - echo "$GCP_SERVICE_ACCOUNT_KEY" > service_account.json
+  - apk add --update --no-cache curl python3 py3-crcmod bash libc6-compat
+  - curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/google-cloud-sdk.tar.gz
+  - tar xzf google-cloud-sdk.tar.gz -C /root
+  - /root/google-cloud-sdk/install.sh --usage-reporting=false --path-update=true --bash-completion=true --disable-installation-options
 
-#   ###########################################
+  ###########################################
 
-#     # Instalar o docker-credential-gcloud dentro do contêiner
-#   - /root/google-cloud-sdk/bin/gcloud components install docker-credential-gcr
+    # Instalar o docker-credential-gcloud dentro do contêiner
+  - /root/google-cloud-sdk/bin/gcloud components install docker-credential-gcr
 
-#     # Adicionar o diretório que contém o docker-credential-gcloud ao PATH
-#   - export PATH=$PATH:/root/google-cloud-sdk/bin/
+    # Adicionar o diretório que contém o docker-credential-gcloud ao PATH
+  - export PATH=$PATH:/root/google-cloud-sdk/bin/
 
-#   ###########################################
+  ###########################################
 
-#   - /root/google-cloud-sdk/bin/gcloud auth configure-docker southamerica-east1-docker.pkg.dev --quiet
-#   - /root/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file=service_account.json
-#   - /root/google-cloud-sdk/bin/gcloud config set project inbound-rune-421414 --quiet
+  - /root/google-cloud-sdk/bin/gcloud auth configure-docker southamerica-east1-docker.pkg.dev --quiet
+  - /root/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file=service_account.json
+  - /root/google-cloud-sdk/bin/gcloud config set project inbound-rune-421414 --quiet
 
 
-# variables:
-#   DOCKER_IMAGE_NAME: "togotrip-frontend"
-#   GCR_IMAGE_NAME: "southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend:v2"
+variables:
+  DOCKER_IMAGE_NAME: "togotrip-frontend"
+  GCR_IMAGE_NAME: "southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend:v2"
 
-# build:
-#   stage: build
-#   image: docker:latest
-#   services:
-#     - docker:latest
-#   script:
-#     - /root/google-cloud-sdk/bin/gcloud artifacts docker images delete southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend --delete-tags
-#     - docker image prune -a --force
-#     - export VERSION=1.0.$((${VERSION##*.} + 1)) # Incrementa o número da versão
-#     - docker build --no-cache -t southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend:$VERSION .
-#     - docker push southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend:$VERSION
-#   cache:
-#       key: "$CI_COMMIT_REF_NAME" # Chave única para o cache baseada no nome do branch
-#       paths:
-#         - /root/google-cloud-sdk/
+build:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:latest
+  script:
+    - /root/google-cloud-sdk/bin/gcloud artifacts docker images delete southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend --delete-tags
+    - docker image prune -a --force
+    - export VERSION=1.0.$((${VERSION##*.} + 1)) # Incrementa o número da versão
+    - docker build --no-cache -t southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend:$VERSION .
+    - docker push southamerica-east1-docker.pkg.dev/inbound-rune-421414/togotrip-frontend/togotrip-frontend:$VERSION
+  cache:
+      key: "$CI_COMMIT_REF_NAME" # Chave única para o cache baseada no nome do branch
+      paths:
+        - /root/google-cloud-sdk/
 
-# deploy:
-#   stage: deploy
-#   image: docker:latest
-#   script:
-#     - echo "Realizando deploy... "
-#     - /root/google-cloud-sdk/bin/gcloud components install kubectl --quiet
-#     - /root/google-cloud-sdk/bin/gcloud container clusters get-credentials togotrip-frontend-cluster --location=us-central1
-#     # - /root/google-cloud-sdk/bin/gcloud app deploy togotrip-frontend-workload.yaml
-#     - ls
-#     - kubectl rollout restart deployment togotrip-frontend-workload
-#     - echo "Deploy concluído."
-#   needs:
-#     - build
+deploy:
+  stage: deploy
+  image: docker:latest
+  script:
+    - echo "Realizando deploy... "
+    - /root/google-cloud-sdk/bin/gcloud components install kubectl --quiet
+    - /root/google-cloud-sdk/bin/gcloud container clusters get-credentials togotrip-frontend-cluster --location=us-central1
+    # - /root/google-cloud-sdk/bin/gcloud app deploy togotrip-frontend-workload.yaml
+    - ls
+    - kubectl rollout restart deployment togotrip-frontend-workload
+    - echo "Deploy concluído."
+  needs:
+    - build
