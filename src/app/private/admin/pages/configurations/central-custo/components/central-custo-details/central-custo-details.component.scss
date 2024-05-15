@@ -24,10 +24,9 @@
         gap: 16px;
 
         .pag {
-            display: flex;
-            // width: 100%;
-            justify-content: end;
-            margin-right: 35px;
+            position: absolute;
+            bottom: 20px;
+            right: 70px;
         }
     }
 

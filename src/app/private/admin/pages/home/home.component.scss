@@ -1,7 +1,7 @@
 @import '../../../../../assets/styles/space.scss';
 @import '../../../../../assets/styles/colors.scss';
 main {
-    padding: 2rem;
+    padding: 24px;
     .intro-text {
         font-family: Montserrat;
         font-size: 20px;
@@ -15,6 +15,7 @@ main {
         height: 70vh;
         overflow: auto;
         justify-content: start;
+        gap: 24px;
         .card {
             // width: 180px;
             height: 264px;

@@ -5,7 +5,7 @@
             <div class="input-box">
                 <tgt-input-icon icon="search" iconPosition="right" placeholder="Busque uma central..."></tgt-input-icon>
             </div>
-            <tgt-button icon="add" iconPosition="left" size="middle" color="secundary" (click)="adicionarCentralCusto()">Adicionar</tgt-button>
+            <tgt-button icon="add" iconPosition="left" size="small" color="secundary" (click)="adicionarCentralCusto()">Adicionar</tgt-button>
         </div>
         <div class="body">
             <tgt-list>
@@ -26,10 +26,13 @@
                             <tgt-item-data >{{item.createdAt}} à {{item.updatedAt}} </tgt-item-data>
                             <tgt-item-data ><tgt-status-circle [status]="item.status"></tgt-status-circle> {{item.status}}</tgt-item-data>
                             <tgt-item-data >{{item.orcamento| currency: 'R$ '}}</tgt-item-data>
-                            <tgt-item-data >
-                                <div class="w-button">
-                                    <tgt-button icon="trending_flat" iconPosition="left" size="middle" color="secundary" (click)="showDetails(item.id)"></tgt-button>
+                            <tgt-item-data>
+                                <div class="ft-btn">
+                                    <div class="w-button">
+                                        <tgt-button icon="trending_flat" iconPosition="left" size="small" color="secundary" (click)="showDetails(item.id)"></tgt-button>
+                                    </div>
                                 </div>
+
                             </tgt-item-data>
                         </tgt-item-list>
                     }                
@@ -38,9 +41,12 @@
        
 
         </div>
-        <div class="pag">
-            <tgt-paginator></tgt-paginator>
-        </div> 
+        <div class="pag-footer">
+            <div class="pag">
+                <tgt-paginator></tgt-paginator>
+            </div> 
+        </div>
+
     </div>
 }
 
