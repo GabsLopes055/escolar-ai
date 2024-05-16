@@ -6,6 +6,8 @@ import { UserService } from '../../../../shared/services/user/user.service';
 import { ButtonComponent } from "../../../../shared/button/button.component";
 import { Router, RouterLink } from '@angular/router';
 import { TourComponent } from './components/tour/tour.component';
+import { ToastService } from '../../../../shared/toast/toast.service';
+import { ToastComponent } from '../../../../shared/toast/toast.component';
 
 @Component({
     selector: 'app-home',
@@ -21,7 +23,8 @@ export class HomeComponent implements OnInit {
     private readonly navbarService: NavbarService,
     private readonly menuService: MenuService,
     private readonly userService: UserService,
-    private readonly modalService:ModalService
+    private readonly modalService:ModalService,
+    private readonly toast: ToastService
   ) {
     const usuario = this.userService.user;
     const firstName = usuario?.nome.split(" ")[0]
@@ -32,7 +35,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     setTimeout(() =>{
       this.modalService.open(TourComponent);
-    }, 800);
-    
+    }, 800);    
   }
 }
