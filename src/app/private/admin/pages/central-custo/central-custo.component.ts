@@ -18,7 +18,6 @@ export class CentralCustoComponent {
     private readonly menuService: MenuService
   ) {
     navbarService.setTitle('Central de custo');
-    // navbarService.showBtnViajar.next(false);
     menuService.setSelected({icon: 'calculate', label: 'Central de Custo', route: '/admin/central-custo', checked: true});
   }
 }

@@ -9,6 +9,7 @@ import { AuthService } from '../services/auth.service';
 import { AuthenticationRequest } from '../../models/authentication.interface';
 import { User } from '../../models/user.interface';
 import { UserService } from '../../shared/services/user/user.service';
+import { ToastService } from '../../shared/toast/toast.service';
 
 @Component({
   selector: 'app-login',
@@ -36,7 +37,8 @@ export class LoginComponent implements OnInit {
     private readonly router: Router,
     private readonly menuService: MenuService,
     private readonly authService: AuthService,
-    private readonly userService: UserService
+    private readonly userService: UserService,
+    private readonly toastService: ToastService
   ) { }
 
   ngOnInit(): void {
@@ -60,7 +62,7 @@ export class LoginComponent implements OnInit {
         this.menuService.updateMenu();
       },
       error: erro => {
-        console.log(erro);
+        this.toastService.notify({message: 'Usuário ou senha incorreto', type: 'ERROR'})
 
       }
     });
