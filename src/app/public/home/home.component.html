@@ -1,29 +1,46 @@
 <main>
-    <div class="header">
-        <video class="video" autoplay muted loop>
-            <source src="assets/video/RSA_Header_video_1080p_new.mp4" type="video/mp4">
-        </video>
-        <div class="menu">
-            <img src="assets/images/logo.svg" alt="" srcset="">
-            <ul>
-                <li><a href="#">Início</a></li>
-                <li><a href="#">Serviços</a></li>
-                <li><a href="#">Planos</a></li>
-                <li><a href="#">Contato</a></li>
-            </ul>
-            <div class="buttons">
-                <span class="btn" [routerLink]="'/register'">Cadastre-se</span>
-                <span class=" btn logar" [routerLink]="'/login'">Login</span>
-            </div>
-        </div>
-        <span class="texto-intro">
+  <div class="header">
+    <video class="video" autoplay muted loop>
+      <source src="assets/video/RSA_Header_video_1080p_new.mp4" type="video/mp4">
+    </video>
+    <div class="menu">
+      <img src="assets/images/logo.svg" alt="" srcset="">
+      <ul>
+        <li><a href="#about">Quem somos</a></li>
+        <li><a href="#">Serviços</a></li>
+        <li><a href="#">Planos</a></li>
+        <li><a href="#">Contato</a></li>
+      </ul>
+      <div class="buttons">
+        <span class="btn" [routerLink]="'/register'">Cadastre-se</span>
+        <span class=" btn logar" [routerLink]="'/login'">Login</span>
+      </div>
+    </div>
+    <span class="texto-intro">
             <div class="text">
                 Impulsione o sucesso da sua empresa
             </div>
             <div class="button">
                 <tgt-button color="secundary" size="small">Falar com um especialista</tgt-button>
             </div>
-            
+
         </span>
+  </div>
+  <div class="about" id="about">
+    <div class="header-about">
+        <span class="title">
+          QUEM SOMOS
+        </span>
+      <span class="text">
+        Em cada esquina desta terra encantada, há um conto esperando para ser contado,
+        uma aventura aguardando para ser vivida.
+        Os heróis corajosos se erguem para desafiar os perigos que espreitam nas
+        profundezas das florestas escuras,
+        enquanto os sábios buscam os segredos antigos guardados nas ruínas esquecidas.
+      </span>
     </div>
+    <div class="content-about">
+      <img class="imagem" src="assets/images/mockup_macbook.png" alt="macbook com a imagem do sistema">
+    </div>
+  </div>
 </main>

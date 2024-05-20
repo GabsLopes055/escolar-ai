@@ -1,113 +1,168 @@
 @import "../../../assets/styles/colors.scss";
 
 main {
-    background-color: #eeeeee00;
+  background-color: #eeeeee00;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+
+  .header {
+    position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-self: center;
+    height: 100vh;
 
-    .header {
-        position: relative;
+    .video {
+      position: absolute;
+      top: 0;
+      z-index: 0;
+      width: 100%;
+    }
+
+    .menu {
+      z-index: 1;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 110px 24px 110px;
+      background: linear-gradient(180deg, rgba(7, 6, 0, 0.45) -24.52%, rgba(7, 6, 0, 0) 100%);
+      transition: all .5s;
+
+      img {
+        cursor: pointer;
+      }
+
+      ul {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        gap: 35px;
 
-        .video {
-            position: absolute;
-            top: 0;
-            z-index: 0;
-            width: 100%;
-        }
-        .menu {
-            z-index: 1;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-            padding: 24px 110px 24px 110px;
-            background: linear-gradient(180deg, rgba(7, 6, 0, 0.45) -24.52%, rgba(7, 6, 0, 0) 100%);
+        li {
+          list-style: none;
+
+
+          a {
+            text-decoration: none;
+            color: #fff;
             transition: all .5s;
 
-            img {
-                cursor: pointer;
-            }
-
-            ul {
-                display: flex;
-                flex-direction: row;
-                gap: 35px;
-
-                li {
-                    list-style: none;
-                    
-
-                    a {
-                        text-decoration: none;
-                        color: #fff;
-                        transition: all .5s;
-
-                        &:hover {
-                            color: $color-yellow;
-                        }
-                    }
-
-                    
-                }
-            }
-
-            .buttons {
-                display: flex;
-                flex-direction: row;
-                gap: 8px;
-                color: #fff;
-                
-                .btn {
-                    padding: 8px 16px;
-                    cursor: pointer;
-                }
-                .logar {
-                    width: Hug (84px)px;
-                    height: Fixed (40px)px;
-                    gap: 8px;
-                    border-radius: 100px;
-                    border: 1px;
-                    border: 1px solid #FDFEFE;
-                    transition: all .5s;
-
-                    &:hover {
-                        background-color: $color-yellow;
-                        color:#000;
-                    }
-                    
-                }
-            }
-
             &:hover {
-                background-color: #000;
+              color: $color-yellow;
             }
-        }
-        .texto-intro {
-            z-index: 1;
-            width: 362px;
-            // height: 216px;
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-            
-            margin-top: 100px;
-            padding: 24px 120px 24px 120px;
+          }
 
-            .text {
-                font-family: Montserrat;
-                font-size: 48px;
-                font-weight: 300;
-                line-height: 72px;
-                text-align: left;
-                color: #fff ;
-            }
-            .button {
-                width: 70%;
-            }
+
         }
+      }
+
+      .buttons {
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+        color: #fff;
+
+        .btn {
+          padding: 8px 16px;
+          cursor: pointer;
+        }
+
+        .logar {
+          width: Hug (84px) px;
+          height: Fixed (40px) px;
+          gap: 8px;
+          border-radius: 100px;
+          border: 1px;
+          border: 1px solid #FDFEFE;
+          transition: all .5s;
+
+          &:hover {
+            background-color: $color-yellow;
+            color: #000;
+          }
+
+        }
+      }
+
     }
+
+    .texto-intro {
+      z-index: 1;
+      width: 362px;
+      // height: 216px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+
+      margin-top: 100px;
+      padding: 24px 120px 24px 120px;
+
+      .text {
+        font-family: Montserrat;
+        font-size: 48px;
+        font-weight: 300;
+        line-height: 72px;
+        text-align: left;
+        color: #fff;
+      }
+
+      .button {
+        width: 70%;
+      }
+    }
+  }
+
+  .about {
+    position: relative;
+    //height: 100vh;
+    background: #000;
+    padding: 70px 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    align-items: center;
+
+    .header-about {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 80%;
+      gap: 32px;
+      opacity: 0px;
+      color: #fff;
+
+      .title {
+        font-family: Montserrat;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 30px;
+        text-align: center;
+        color: $color-yellow;
+      }
+      .text {
+        font-family: Montserrat;
+        font-size: 20px;
+        font-weight: 200;
+        line-height: 30px;
+        text-align: center;
+
+      }
+    }
+
+    .content-about {
+      z-index: 1;
+      img {
+        width: 700px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 600px) {
+  img {
+    width: 200px; /* Define a largura máxima da imagem como 100% da largura do contêiner pai */
+    height: auto; /* Mantém a proporção da imagem */
+  }
 }
