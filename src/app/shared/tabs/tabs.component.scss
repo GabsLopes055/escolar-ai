@@ -5,7 +5,7 @@ main {
 
     .main-tabs {
         width: 100%;
-        border-bottom: solid 1px #CDCDCC;
+        //border-bottom: solid 1px #CDCDCC;
 
         .tabs {
             display: flex;
@@ -20,7 +20,7 @@ main {
                 gap: 4px;
                 justify-content: center;
                 align-items: center;
-                
+
                 .label {
                     font-size: 14px;
                     font-weight: 600;

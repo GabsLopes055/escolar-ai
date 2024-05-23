@@ -1,14 +1,14 @@
 <main>
   <div class="header">
-    <video class="video" autoplay muted loop>
+    <video class="video" [autoplay]="true" muted loop>
       <source src="assets/video/RSA_Header_video_1080p_new.mp4" type="video/mp4">
     </video>
     <div class="menu">
       <img src="assets/images/logo.svg" alt="" srcset="">
       <ul>
         <li><a href="#about">Quem somos</a></li>
-        <li><a href="#">Serviços</a></li>
-        <li><a href="#">Planos</a></li>
+        <li><a href="#services">Serviços</a></li>
+        <li><a href="#planos">Planos</a></li>
         <li><a href="#">Contato</a></li>
       </ul>
       <div class="buttons">
@@ -40,7 +40,286 @@
       </span>
     </div>
     <div class="content-about">
-      <img class="imagem" src="assets/images/mockup_macbook.png" alt="macbook com a imagem do sistema">
+      <img class="imagem" src="assets/images/mockupImac.png" alt="macbook com a imagem do sistema">
+    </div>
+  </div>
+
+  <div class="services" id="services">
+    <div class="header-service">
+      <div class="text-service">
+        <span class="title">SERVIÇOS</span>
+        <span class="text">Aprimoramos a gestão de viagens e despesas da sua empresa,
+          impulsionando  a produtividade, economizando tempo e recursos.
+          Descubra nossas  soluções agora:</span>
+      </div>
+
+    </div>
+    <div class="content-service">
+      <app-tabs [tabs]="tabs" [border]="false" [darkMode]="true" (change)="chosenTab($event)"></app-tabs>
+      @switch (opcaoSelecionada) {
+        @case('gestao_de_viagens') {
+          <div class="cards-service">
+            <div class="left">
+              <article>
+                <span class="title-article">Gestão de Viagens</span>
+                <span class="text-article">
+                Em questão de minutos,
+                seus colaboradores poderão concluir a compra de  passagens e reservar hotel.
+                Tudo de forma simples, sem  estresse e com um atendimento excepcional.
+              </span>
+              </article>
+              <article>
+                <span class="title-article">Passagens Aéreas</span>
+                <span class="text-article">
+                Aproveite para fazer reservas nos melhores hotéis do país,
+                com preços exclusivos. Com a Togo Trip,
+                você pode reservar em apenas alguns cliques,
+                garantindo os melhores lugares para seus colaboradores.
+              </span>
+              </article>
+              <article>
+                <span class="title-article">Reserva em Hotéis</span>
+                <span class="text-article">
+                Aproveite para fazer reservas nos melhores hotéis do país,
+                com preços  exclusivos. Com a Togo Trip,
+                você pode reservar em apenas alguns  cliques,
+                garantindo os melhores lugares para seus colaboradores.
+              </span>
+              </article>
+            </div>
+            <div class="right">
+              <img src="assets/images/aviaonoar.png" alt="" srcset="">
+            </div>
+
+          </div>
+        }
+        @case('gestao_de_despesas') {
+          <div class="cards-service">
+            <div class="left">
+              <article>
+                <span class="title-article">Aprovações de Viagens</span>
+                <span class="text-article">
+                Através da nossa plataforma sua empresa pode configurar diferentes
+                  políticas de viagens para colaboradores e estabelecer níveis de aprovações,
+                  proporcionando tranquilidade e transparência durante o processo de reserva de hotéis e passagens.
+              </span>
+              </article>
+              <article>
+                <span class="title-article">Centrais de Custos</span>
+                <span class="text-article">
+                  Por meio das centrais de custo,
+                  sua empresa terá controle sobre os  gastos por setores ou equipes.
+                  Você pode estabelecer limites  orçamentários e designar quem realizará
+                  reservas de passagens aéreas e  hotéis em centrais específicas.
+              </span>
+              </article>
+              <article>
+                <span class="title-article">Geração de Relatórios</span>
+                <span class="text-article">
+                Exporte relatórios abrangentes sobre as viagens corporativas,
+                  fundamentais para embasar decisões estratégicas.
+                  Monitore o volume de viagens por mês e ano,
+                  com detalhes individuais por colaborador e centrais de custos.
+              </span>
+              </article>
+            </div>
+            <div class="right">
+              <img src="assets/images/gdespesas.png" alt="" srcset="">
+            </div>
+          </div>
+        }
+        @case('gestao_de_equipe') {
+          <div class="cards-service">
+            <div class="left">
+              <article>
+                <span class="title-article">Gestão de Colaboradores</span>
+                <span class="text-article">
+                Sua empresa pode decidir as alocações de colaboradores
+                  em Centrais de  Custo e se Gestores apenas aprovarão
+                  ou também farão viagens,  flexibilizando os perfis dos colaboradores.
+              </span>
+              </article>
+              <article>
+                <span class="title-article">Controle de Acessos</span>
+                <span class="text-article">
+                  Personalize os perfis de acesso para seus colaboradores,
+                  podendo integrá-los como Gestores (responsáveis pela aprovação
+                  de solicitações de reservas) ou Viajantes (responsáveis por solicitar as reservas).
+              </span>
+              </article>
+              <article>
+                <span class="title-article">Relatórios de equipe</span>
+                <span class="text-article">
+                Tenha em os relatorios de cada equipe.
+              </span>
+              </article>
+            </div>
+            <div class="right">
+              <img src="assets/images/gequipe.png" alt="" srcset="">
+            </div>
+          </div>
+        }
+      }
+      <tgt-button icon="chat" color="secundary" size="small">Falar com Especialista</tgt-button>
+    </div>
+  </div>
+
+  <div id="planos">
+    <div class="header-planos">
+        <span class="title">
+          PLANOS
+        </span>
+      <span class="text">
+          Descomplicamos em tudo, inclusive nos planos. Conheça o plano
+        ideal para otimizar a gestão de viagens e despesas na sua empresa.
+      </span>
+    </div>
+    <div class="content-planos">
+      <div class="card">
+        <div class="card-header">
+          <img src="assets/images/basic.png" alt="" srcset="">
+          <span class="title-plan">Basic</span>
+        </div>
+        <div class="card-subheader">
+          <div class="valor-ano">
+            <span class="valor">R$ 1.200,00</span> <span class="info-value">/ano</span>
+          </div>
+          <div class="valor-mes">
+            <span class="valor">R$ 100,00</span> <span class="info-value">/mes</span>
+          </div>
+        </div>
+        <ul class="list">
+          <li>
+            <span class="material-symbols-outlined icon">
+            check_circle
+            </span>
+            <span class="value">5 usuários</span>
+          </li>
+          <li>
+            <span class="material-symbols-outlined icon">
+            check_circle
+            </span>
+            <span class="value">1 cartão de crédito</span>
+          </li>
+          <li>
+            <span class="material-symbols-outlined icon">
+            check_circle
+            </span>
+            <span class="value">5 centrais de custo</span>
+          </li>
+          <li>
+            <span class="material-symbols-outlined icon">
+            check_circle
+            </span>
+            <span class="value">5 justificativas</span>
+          </li>
+          <li>
+            <span class="material-symbols-outlined icon">
+            check_circle
+            </span>
+            <span class="value">Dashboard em rempo real</span>
+          </li>
+
+        </ul>
+        <tgt-button icon="chat" color="secundary" size="small" [border]="true">Falar com Especialista</tgt-button>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <img src="assets/images/business.png" alt="" srcset="">
+          <span class="title-plan">Business</span>
+        </div>
+        <div class="card-subheader">
+          <div class="valor-ano">
+            <span class="valor">R$ 3.600,00</span> <span class="info-value">/ano</span>
+          </div>
+          <div class="valor-mes">
+            <span class="valor">R$ 300,00</span> <span class="info-value">/mes</span>
+          </div>
+        </div>
+        <ul class="list">
+          <li>
+            <span class="material-symbols-outlined icon">
+            check_circle
+            </span>
+            <span class="value">5 usuários</span>
+          </li>
+          <li>
+            <span class="material-symbols-outlined icon">
+            check_circle
+            </span>
+            <span class="value">1 cartão de crédito</span>
+          </li>
+          <li>
+            <span class="material-symbols-outlined icon">
+            check_circle
+            </span>
+            <span class="value">5 centrais de custo</span>
+          </li>
+          <li>
+            <span class="material-symbols-outlined icon">
+            check_circle
+            </span>
+            <span class="value">5 justificativas</span>
+          </li>
+          <li>
+            <span class="material-symbols-outlined icon">
+            check_circle
+            </span>
+            <span class="value">Dashboard em rempo real</span>
+          </li>
+
+        </ul>
+        <tgt-button icon="chat" color="secundary" size="small" [border]="true">Falar com Especialista</tgt-button>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <img src="assets/images/standard.png" alt="" srcset="">
+          <span class="title-plan">Standard</span>
+        </div>
+        <div class="card-subheader">
+          <div class="valor-ano">
+            <span class="valor">R$ 2.400,00</span> <span class="info-value">/ano</span>
+          </div>
+          <div class="valor-mes">
+            <span class="valor">R$ 200,00</span> <span class="info-value">/mes</span>
+          </div>
+        </div>
+        <ul class="list">
+          <li>
+            <span class="material-symbols-outlined icon">
+            check_circle
+            </span>
+            <span class="value">5 usuários</span>
+          </li>
+          <li>
+            <span class="material-symbols-outlined icon">
+            check_circle
+            </span>
+            <span class="value">1 cartão de crédito</span>
+          </li>
+          <li>
+            <span class="material-symbols-outlined icon">
+            check_circle
+            </span>
+            <span class="value">5 centrais de custo</span>
+          </li>
+          <li>
+            <span class="material-symbols-outlined icon">
+            check_circle
+            </span>
+            <span class="value">5 justificativas</span>
+          </li>
+          <li>
+            <span class="material-symbols-outlined icon">
+            check_circle
+            </span>
+            <span class="value">Dashboard em rempo real</span>
+          </li>
+
+        </ul>
+        <tgt-button icon="chat" color="secundary" size="small" [border]="true">Falar com Especialista</tgt-button>
+      </div>
+
     </div>
   </div>
 </main>
