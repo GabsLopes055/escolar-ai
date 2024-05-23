@@ -1,22 +1,22 @@
 <sidebar title="Adicionar cartão">
     <main>
-        <form [formGroup]="group" class="dados-cartao">
-            <tgt-credit-card [group]="group"></tgt-credit-card>
-            <tgt-input label="Número do cartão" mask="0000 0000 0000 0000" [control]="group.controls.numberCard"></tgt-input>
+        <form [formGroup]="groupCard" class="dados-cartao">
+            <tgt-credit-card [group]="groupCard"></tgt-credit-card>
+            <tgt-input label="Número do cartão" mask="0000 0000 0000 0000" [control]="groupCard.controls.cardNumber"></tgt-input>
 
-            <tgt-input label="Nome no cartão" [control]="group.controls.name"></tgt-input>
-    
+            <tgt-input label="Nome no cartão" [control]="groupCard.controls.cardName"></tgt-input>
+
             <section class="grid">
-                <tgt-input class="col-6" label="validade" mask="00/00" [control]="group.controls.mouth"></tgt-input>
-    
-                <tgt-input class="col-6" label="Código de segurança" mask="000" [control]="group.controls.cvc"></tgt-input>
+                <tgt-input class="col-6" label="validade" mask="00/00" [control]="groupCard.controls.cardMouth"></tgt-input>
+
+                <tgt-input class="col-6" label="Código de segurança" mask="000" [control]="groupCard.controls.cardCvv"></tgt-input>
             </section>
         </form>
 
         <div class="footer-button">
-            <tgt-button fieldButton="outline" (click)="cancel()">Cancelar</tgt-button>
-            <tgt-button [color]="'secundary'" icon="add">Adicionar</tgt-button>
+            <tgt-button fieldButton="outline" (click)="cancel()" size="small">Cancelar</tgt-button>
+            <tgt-button [color]="'secundary'" icon="add" (click)="cadastrar()" size="small">Adicionar</tgt-button>
         </div>
-        
+
     </main>
 </sidebar>

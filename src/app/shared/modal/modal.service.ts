@@ -1,6 +1,7 @@
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { ApplicationRef, ComponentFactoryResolver, ComponentRef, Injectable, Injector, Type } from '@angular/core';
+import {Subject} from "rxjs";
 
 interface ComponentWithData {
   data: any;
@@ -12,6 +13,8 @@ interface ComponentWithData {
 export class ModalService {
   private overlayRef: OverlayRef | null = null;
 
+  private closeRef = new Subject();
+
   constructor(
     private overlay: Overlay,
     private componentFactoryResolver: ComponentFactoryResolver,
@@ -19,7 +22,9 @@ export class ModalService {
     private injector: Injector
   ) { }
 
-  openWithData<T extends ComponentWithData>(component: Type<T>, data?: any): ComponentRef<T> {
+  openWithData<T extends ComponentWithData>(component: Type<T>, data?: any): {
+    ref: ComponentRef<T>, closed: Subject<any>
+  } {
     // Close any existing side panel
     this.close();
 
@@ -34,7 +39,7 @@ export class ModalService {
     // Attach component to overlay
     const componentRef = this.overlayRef.attach<T>(componentPortal);
 
-    componentRef.instance.data = data; 
+    componentRef.instance.data = data;
 
     // Make sure to detach the component when overlay is detached
     this.overlayRef.detachments().subscribe(() => {
@@ -45,11 +50,13 @@ export class ModalService {
 
     // Insert component into Angular's component tree
     this.appRef.attachView(componentRef.hostView);
-
-    return componentRef;
+    this.closeRef = new Subject();
+    return {ref: componentRef, closed: this.closeRef};
   }
 
-  open(component: any): ComponentRef<any> {
+  open(component: any): {
+    ref: ComponentRef<any>, closed: Subject<any>
+  } {
     // Close any existing side panel
     this.close();
 
@@ -73,11 +80,15 @@ export class ModalService {
 
     // Insert component into Angular's component tree
     this.appRef.attachView(componentRef.hostView);
+    this.closeRef = new Subject();
 
-    return componentRef;
+    return {ref: componentRef, closed: this.closeRef};
   }
 
-  close() {
+  close(data?: any) {
+    if (data) {
+      this.closeRef.next(data);
+    }
     if (this.overlayRef) {
       this.overlayRef.dispose();
       this.overlayRef = null;

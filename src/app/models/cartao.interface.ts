@@ -1,6 +1,8 @@
 export interface Cartao {
+    id?: number;
     cardNumber: string;
-    mouthValidate: string;
-    nameCard: string;
-    cvv: string
+    cardMouth: string;
+    cardName: string;
+    cardCvv: string;
+    empresaId: number;
 }

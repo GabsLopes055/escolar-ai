@@ -8,6 +8,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    z-index: 999999;
 
     animation: initMain .8s;
 

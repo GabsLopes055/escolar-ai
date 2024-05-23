@@ -1,0 +1,19 @@
+<tgt-modal>
+  <main>
+    <div class="content">
+      <span class="title">Deseja realmente excluir o cartão?</span>
+      <span class="text">
+        Ao confirmar a exclusão do cartão você não poderá voltar atrás com esta ação.
+      </span>
+    </div>
+    <div class="actions">
+      <tgt-button fieldButton="outline" size="small" (click)="cancel()">
+        cancelar
+      </tgt-button>
+      <tgt-button color="error" size="small" (click)="delete()">
+        Sim, excluir
+      </tgt-button>
+    </div>
+  </main>
+
+</tgt-modal>

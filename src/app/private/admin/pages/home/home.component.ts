@@ -28,13 +28,13 @@ export class HomeComponent implements OnInit {
   ) {
     const usuario = this.userService.user;
     const firstName = usuario?.nome.split(" ")[0]
-    navbarService.setTitle(`Hey, ${firstName}`);
+    navbarService.setTitle(`Olá, ${firstName}`);
     navbarService.showBtnViajar.next(true);
     menuService.updateMenu();
   }
   ngOnInit(): void {
     setTimeout(() =>{
       this.modalService.open(TourComponent);
-    }, 800);    
+    }, 800);
   }
 }

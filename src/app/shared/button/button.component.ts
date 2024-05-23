@@ -34,9 +34,9 @@ export class ButtonComponent {
     secundary: '#fdd325',
     warning: '',
     success: '',
-    error: '#FA077C'
+    error: '#EE0D43'
   }
-    
+
 }
 type TypeColors = 'primary' | 'secundary' | 'warning' | 'success' | 'error';
 type Colors = {

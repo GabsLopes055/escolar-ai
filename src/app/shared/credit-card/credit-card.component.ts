@@ -15,10 +15,11 @@ export class CreditCardComponent {
 
   iai = false;
 
-  @Input() group = new FormGroup({
-    numberCard: new FormControl('0000000000000000'),
-    name: new FormControl('Jonathan L M Souza'),
-    cvc: new FormControl('423'),
-    mouth: new FormControl('06/35'),
+  @Input() group: any = new FormGroup({
+    cardNumber: new FormControl('0000000000000000'),
+    cardName: new FormControl('Jonathan L M Souza'),
+    cardCvv: new FormControl('423'),
+    cardMouth: new FormControl('06/35'),
+    empresaId: new FormControl()
   });
 }
