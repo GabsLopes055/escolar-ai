@@ -1,6 +1,6 @@
 {
   "name": "togotrip-angular",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --host 0.0.0.0",
@@ -19,6 +19,7 @@
     "@angular/platform-browser": "^17.2.0",
     "@angular/platform-browser-dynamic": "^17.2.0",
     "@angular/router": "^17.2.0",
+    "jwt-decode": "^4.0.0",
     "ngx-mask": "^17.0.6",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
