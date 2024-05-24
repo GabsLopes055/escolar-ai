@@ -2,14 +2,28 @@
 @import '../../../../../assets/styles/colors.scss';
 main {
     padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 43px;
+  .header {
+
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
     .intro-text {
-        font-family: Montserrat;
-        font-size: 20px;
-        font-weight: 400;
-        line-height: 48px;
-        text-align: left;
+      font-family: Montserrat;
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 48px;
+      text-align: left;
 
     }
+    tgt-button {
+      width: 150px;
+    }
+  }
+
 
     .cards {
         height: 70vh;
@@ -19,7 +33,7 @@ main {
         .card {
             // width: 180px;
             height: 264px;
-            
+
             padding: 24px;
             gap: 32px;
             border-radius: 16px;
@@ -29,8 +43,30 @@ main {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            
+
             gap: 32px;
+
+          .icon {
+            font-size: 32px;
+          }
+
+          .title {
+            font-family: Montserrat;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 24.38px;
+            text-align: left;
+
+          }
+
+          .text {
+            font-family: Montserrat;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 24px;
+            text-align: left;
+
+          }
             .footer {
                 width: 100%;
                 display: flex;
@@ -43,5 +79,5 @@ main {
 
         }
     }
-    
+
 }

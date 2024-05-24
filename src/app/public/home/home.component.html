@@ -1,15 +1,14 @@
 <main>
   <div class="header">
-    <video class="video" [autoplay]="true" muted loop>
-      <source src="assets/video/RSA_Header_video_1080p_new.mp4" type="video/mp4">
+    <video class="video" [autoplay]="true" muted loop src="assets/video/horizon2.mp4">
     </video>
     <div class="menu">
-      <img src="assets/images/logo.svg" alt="" srcset="">
+      <img src="assets/images/logo.svg">
       <ul>
         <li><a href="#about">Quem somos</a></li>
         <li><a href="#services">Serviços</a></li>
         <li><a href="#planos">Planos</a></li>
-        <li><a href="#">Contato</a></li>
+        <li><a href="#contato">Contato</a></li>
       </ul>
       <div class="buttons">
         <span class="btn" [routerLink]="'/register'">Cadastre-se</span>
@@ -182,10 +181,10 @@
         </div>
         <div class="card-subheader">
           <div class="valor-ano">
-            <span class="valor">R$ 1.200,00</span> <span class="info-value">/ano</span>
+            <span class="valor">R$ 1.249,00</span> <span class="info-value">/mes</span>
           </div>
           <div class="valor-mes">
-            <span class="valor">R$ 100,00</span> <span class="info-value">/mes</span>
+            <span class="valor">R$ 14.999,00</span> <span class="info-value">/ano</span>
           </div>
         </div>
         <ul class="list">
@@ -193,13 +192,13 @@
             <span class="material-symbols-outlined icon">
             check_circle
             </span>
-            <span class="value">5 usuários</span>
+            <span class="value">50 usuários</span>
           </li>
           <li>
             <span class="material-symbols-outlined icon">
             check_circle
             </span>
-            <span class="value">1 cartão de crédito</span>
+            <span class="value">2 cartão de crédito</span>
           </li>
           <li>
             <span class="material-symbols-outlined icon">
@@ -230,10 +229,10 @@
         </div>
         <div class="card-subheader">
           <div class="valor-ano">
-            <span class="valor">R$ 3.600,00</span> <span class="info-value">/ano</span>
+            <span class="valor">R$ 2.165,00</span> <span class="info-value">/mes</span>
           </div>
           <div class="valor-mes">
-            <span class="valor">R$ 300,00</span> <span class="info-value">/mes</span>
+            <span class="valor">R$ 25.999,00</span> <span class="info-value">/ano</span>
           </div>
         </div>
         <ul class="list">
@@ -241,31 +240,37 @@
             <span class="material-symbols-outlined icon">
             check_circle
             </span>
-            <span class="value">5 usuários</span>
+            <span class="value">usuários ilimitados</span>
           </li>
           <li>
             <span class="material-symbols-outlined icon">
             check_circle
             </span>
-            <span class="value">1 cartão de crédito</span>
+            <span class="value">cadastro de cartão de crédito ilimitado</span>
           </li>
           <li>
             <span class="material-symbols-outlined icon">
             check_circle
             </span>
-            <span class="value">5 centrais de custo</span>
+            <span class="value">centrais de custo ilimitado</span>
           </li>
           <li>
             <span class="material-symbols-outlined icon">
             check_circle
             </span>
-            <span class="value">5 justificativas</span>
+            <span class="value">justificativas ilimitadas</span>
           </li>
           <li>
             <span class="material-symbols-outlined icon">
             check_circle
             </span>
             <span class="value">Dashboard em rempo real</span>
+          </li>
+          <li>
+            <span class="material-symbols-outlined icon" style="color: #FFD200">
+            star
+            </span>
+            <span class="value">10 voos emergenciais por ano</span>
           </li>
 
         </ul>
@@ -278,10 +283,10 @@
         </div>
         <div class="card-subheader">
           <div class="valor-ano">
-            <span class="valor">R$ 2.400,00</span> <span class="info-value">/ano</span>
+            <span class="valor">R$ 1.599,00</span> <span class="info-value">/mes</span>
           </div>
           <div class="valor-mes">
-            <span class="valor">R$ 200,00</span> <span class="info-value">/mes</span>
+            <span class="valor">R$ 19.188,00</span> <span class="info-value">/ano</span>
           </div>
         </div>
         <ul class="list">
@@ -289,25 +294,25 @@
             <span class="material-symbols-outlined icon">
             check_circle
             </span>
-            <span class="value">5 usuários</span>
+            <span class="value">80 usuários</span>
           </li>
           <li>
             <span class="material-symbols-outlined icon">
             check_circle
             </span>
-            <span class="value">1 cartão de crédito</span>
+            <span class="value">5 cartão de crédito</span>
           </li>
           <li>
             <span class="material-symbols-outlined icon">
             check_circle
             </span>
-            <span class="value">5 centrais de custo</span>
+            <span class="value">15 centrais de custo</span>
           </li>
           <li>
             <span class="material-symbols-outlined icon">
             check_circle
             </span>
-            <span class="value">5 justificativas</span>
+            <span class="value">15 justificativas</span>
           </li>
           <li>
             <span class="material-symbols-outlined icon">
@@ -319,7 +324,66 @@
         </ul>
         <tgt-button icon="chat" color="secundary" size="small" [border]="true">Falar com Especialista</tgt-button>
       </div>
+    </div>
+  </div>
 
+  <div id="contato">
+    <div class="content-footer">
+      <div class="content">
+        <div class="left">
+          <img src="assets/images/logo.svg" style="width: 120px">
+          <div class="help">
+            <span class="title">
+              Precisa de ajuda?
+            </span>
+            <span class="text">
+              envie uma menssagem ou chame a gente no WhatsApp:
+            </span>
+          </div>
+          <ul>
+            <li>
+              <span class="material-symbols-outlined icon">
+              mail
+              </span>
+              <span> Enviar menssagem</span>
+            </li>
+            <li>
+              <span class="material-symbols-outlined icon">
+              chat
+              </span>
+              <span>Conversar</span>
+            </li>
+          </ul>
+        </div>
+        <div class="right">
+          <div class="social">
+            <div class="text">Siga a Togo Trip</div>
+            <div class="icones">
+              <img src="assets/images/linkedin.png" alt="" srcset="">
+              <img src="assets/images/instagram.png" alt="" srcset="">
+            </div>
+          </div>
+          <div class="contatos">
+            <span class="title">Contatos</span>
+            <div class="mail">
+              <span>{{'contato@togotrip.com.br'}}</span>
+              <span class="material-symbols-outlined cop">
+              content_copy
+              </span>
+            </div>
+            <span class="label">(41) 99752-6459</span>
+          </div>
+          <span class="link">
+            <a href="#">Política de Privacidade</a>
+          </span>
+          <span class="link">
+            <a href="#">Termos de Uso</a>
+          </span>
+        </div>
+      </div>
+      <div class="footer-page">
+        <span>Brasil - 2023-2024</span>
+      </div>
     </div>
   </div>
 </main>

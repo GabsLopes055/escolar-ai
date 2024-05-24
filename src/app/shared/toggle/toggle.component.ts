@@ -1,5 +1,5 @@
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Component, Input } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'toggle',
@@ -12,12 +12,15 @@ export class ToggleComponent {
  @Input() isChecked = false;
  @Input() icon = '';
  @Input() label = '';
- @Input() formControl: FormControl = new FormControl();
+ @Input() control: FormControl = new FormControl();
+
+ @Output() changeToggle = new EventEmitter();
 
 
 
 
  change() {
   this.isChecked = !this.isChecked;
+  this.changeToggle.emit(this.isChecked);
  }
 }

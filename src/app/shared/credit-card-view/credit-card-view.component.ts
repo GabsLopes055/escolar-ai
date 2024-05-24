@@ -14,8 +14,9 @@ export class CreditCardViewComponent {
 
     @Input() cartao: Cartao = {
         cardNumber: '5445 8211 7845 1234',
-        mouthValidate: '20/10/2025',
-        nameCard: 'Jonathan L M Souza',
-        cvv: '306'
+        cardMouth: '20/10/2025',
+        cardName: 'Jonathan L M Souza',
+        cardCvv: '306',
+        empresaId: 10
     }
 }

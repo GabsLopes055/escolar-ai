@@ -1,53 +1,63 @@
-@if(isList | async) {
-    <div class="tab-central-custo">
-        <div class="header">
-            <tgt-button icon="keyboard_arrow_down" iconPosition="right" size="small" fieldButton="outline">Todos</tgt-button>
-            <div class="input-box">
-                <tgt-input-icon icon="search" iconPosition="right" placeholder="Busque uma central..."></tgt-input-icon>
-            </div>
-            <tgt-button icon="add" iconPosition="left" size="small" color="secundary" (click)="adicionarCentralCusto()">Adicionar</tgt-button>
-        </div>
-        <div class="body">
-            <tgt-list>
-                <div header class="header-list">
-                    <tgt-header-list>
-                        <tgt-header-col >Nome</tgt-header-col>
-                        <tgt-header-col >Período</tgt-header-col>
-                        <tgt-header-col >Status</tgt-header-col>
-                        <tgt-header-col >Orçamento</tgt-header-col>
-                        <tgt-header-col ></tgt-header-col>
-    
-                    </tgt-header-list>
-                </div>
-                <div body class="bb">
-                    @for(item of data; track item) {
-                        <tgt-item-list>
-                            <tgt-item-data >{{item.nome}}</tgt-item-data>
-                            <tgt-item-data >{{item.createdAt}} à {{item.updatedAt}} </tgt-item-data>
-                            <tgt-item-data ><tgt-status-circle [status]="item.status"></tgt-status-circle> {{item.status}}</tgt-item-data>
-                            <tgt-item-data >{{item.orcamento| currency: 'R$ '}}</tgt-item-data>
-                            <tgt-item-data>
-                                <div class="ft-btn">
-                                    <div class="w-button">
-                                        <tgt-button icon="trending_flat" iconPosition="left" size="small" color="secundary" (click)="showDetails(item.id)"></tgt-button>
-                                    </div>
-                                </div>
+@if (isList | async) {
+  <div class="tab-central-custo">
+    <div class="header">
+      <tgt-button icon="keyboard_arrow_down" iconPosition="right" size="small"
+                  fieldButton="outline">Todos
+      </tgt-button>
+      <div class="input-box">
+        <tgt-input-icon icon="search" iconPosition="right"
+                        placeholder="Busque uma central..."></tgt-input-icon>
+      </div>
+      <tgt-button icon="add" iconPosition="left" size="small" color="secundary"
+                  (click)="adicionarCentralCusto()">Adicionar
+      </tgt-button>
+    </div>
+    <div class="body">
+      <tgt-list>
+        <div header class="header-list">
+          <tgt-header-list>
+            <tgt-header-col>Nome</tgt-header-col>
+            <tgt-header-col>Orçamento</tgt-header-col>
+            <tgt-header-col>Cartão</tgt-header-col>
+            <tgt-header-col>Status</tgt-header-col>
+            <tgt-header-col></tgt-header-col>
 
-                            </tgt-item-data>
-                        </tgt-item-list>
-                    }                
+          </tgt-header-list>
+        </div>
+        <div body class="bb">
+          @for (item of data; track item) {
+            <tgt-item-list>
+              <tgt-item-data>{{ item.nome }}</tgt-item-data>
+              <tgt-item-data>{{ item.valor| currency: 'R$ ' }}</tgt-item-data>
+              <tgt-item-data>{{ formatAndMaskString(item.cartao.cardNumber) }}</tgt-item-data>
+              <tgt-item-data>
+                <tgt-status-circle [status]="item.status"></tgt-status-circle>
+                {{ item.status }}
+              </tgt-item-data>
+              <tgt-item-data>
+                <div class="ft-btn">
+                  <div class="w-button">
+                    <tgt-button icon="trending_flat" iconPosition="left"
+                                size="small" color="secundary"
+                                (click)="showDetails(item.id)"></tgt-button>
+                  </div>
                 </div>
-            </tgt-list>
-       
 
+              </tgt-item-data>
+            </tgt-item-list>
+          }
         </div>
-        <div class="pag-footer">
-            <div class="pag">
-                <tgt-paginator></tgt-paginator>
-            </div> 
-        </div>
+      </tgt-list>
+
 
     </div>
+    <div class="pag-footer">
+      <div class="pag">
+        <tgt-paginator></tgt-paginator>
+      </div>
+    </div>
+
+  </div>
 }
 
 
@@ -55,8 +65,8 @@
 
 
 <!-- dividir -->
-@if(!(isList | async)) {
-    @defer {
-        <central-custo-details></central-custo-details>
-    }
+@if (!(isList | async)) {
+  @defer {
+    <central-custo-details></central-custo-details>
+  }
 }

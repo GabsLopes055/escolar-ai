@@ -2,6 +2,7 @@
 main {
     width: 100%;
     position: relative;
+    z-index: 9999999999;
 
     .input {
         padding: 10px 16px;
@@ -25,10 +26,10 @@ main {
         margin-top: 5px;
         width: 92%;
         max-height: 110px;
-        top: 20;
+        //top: 20px;
         right: 0;
         animation: initModal .5s;
-        z-index: 999;
+        z-index: 9999999;
 
         .content {
             max-height: 100px;
