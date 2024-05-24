@@ -1,17 +1,13 @@
 <sidebar title="Adicionar central de custo">
   <div class="sidebar">
     <div class="main">
-      <tgt-input label="Nome"
+      <tgt-input label="Nome" [control]="form.controls.nome"
       ></tgt-input>
       <toggle [icon]="'help'" [label]="'Teto orçamentário'" (changeToggle)="tetoChange($event)"></toggle>
       @if(tetoOrcamentario) {
-        <tgt-input label="Valor"
+        <tgt-input label="Valor" [control]="form.controls.valor" type="number"
         ></tgt-input>
-        <tgt-input label="Início periodo" type="date"
-        ></tgt-input>
-        <tgt-input label="Fim periodo" type="date"
-        ></tgt-input>
-        <tgt-select [label]="'Cartão*'" [options]="options"
+        <tgt-select [label]="'Selecione um cartão*'" [options]="options" [control]="form.controls.cartaoId"
                     class="col-6"></tgt-select>
       }
 
@@ -23,7 +19,7 @@
       <tgt-button color="primary" [fieldButton]="'outline'" (click)="close()">
         Cancelar
       </tgt-button>
-      <tgt-button color="secundary" [border]="false" icon="save">Salvar
+      <tgt-button color="secundary" [border]="false" icon="save" (click)="cadastrar()">Salvar
       </tgt-button>
     </div>
   </div>
