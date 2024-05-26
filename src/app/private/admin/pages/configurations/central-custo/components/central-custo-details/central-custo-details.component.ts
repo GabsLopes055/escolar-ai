@@ -13,13 +13,17 @@ import { ButtonComponent } from "../../../../../../../shared/button/button.compo
 import { CentralCustoService } from '../../central-custo.service';
 import { SidebarService } from '../../../../../../../shared/sidebar/sidebar.service';
 import { SidebarHistoricoComponent } from './components/sidebar-historico/sidebar-historico.component';
+import {
+  Tab,
+  TabsComponent
+} from "../../../../../../../shared/tabs/tabs.component";
 
 @Component({
     selector: 'central-custo-details',
     standalone: true,
     templateUrl: './central-custo-details.component.html',
     styleUrl: './central-custo-details.component.scss',
-    imports: [TableComponent, HeaderTableComponent, HeaderTableDataComponent, TableDataComponent, ItemTableComponent, StatusCircleComponent, CurrencyPipe, PaginatorComponent, InputIconComponent, ButtonComponent]
+  imports: [TableComponent, HeaderTableComponent, HeaderTableDataComponent, TableDataComponent, ItemTableComponent, StatusCircleComponent, CurrencyPipe, PaginatorComponent, InputIconComponent, ButtonComponent, TabsComponent]
 })
 export class CentralCustoDetailsComponent implements OnDestroy{
 
@@ -31,7 +35,14 @@ export class CentralCustoDetailsComponent implements OnDestroy{
     {id: 4, nome: 'Jonathan Souza', createdAt: '20/03/2024',updatedAt: '15/03/2024', orcamento: 15000, status: Status.ATIVA, actions: ''},
   ];
 
+  tabs: Tab[] = [
+    {icon: 'receipt_long', label: 'Histórico', value: 'historico', selected: false},
+    {icon: 'person', label: 'Equipe', value: 'equipe', selected: false},
+  ]
+
   subscription = new Subscription();
+
+  tabSelecionada: string = this.tabs[0].value;
 
   constructor(
     private readonly service: CentralCustoService,
@@ -46,10 +57,12 @@ export class CentralCustoDetailsComponent implements OnDestroy{
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
-
+  chosenTab(tab: string) {
+    this.tabSelecionada = tab;
+  }
   back() {
     this.service.showDetails.next(false);
-    this.service.showlist.next(true); 
+    this.service.showlist.next(true);
     this.service.idCentralSelected.next(null);
   }
 

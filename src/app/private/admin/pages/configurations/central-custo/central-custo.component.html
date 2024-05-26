@@ -1,9 +1,8 @@
 @if (isList | async) {
   <div class="tab-central-custo">
     <div class="header">
-      <tgt-button icon="keyboard_arrow_down" iconPosition="right" size="small"
-                  fieldButton="outline">Todos
-      </tgt-button>
+      <tgt-select [label]="'Status'" [options]="options"
+                  class="col-6"></tgt-select>
       <div class="input-box">
         <tgt-input-icon icon="search" iconPosition="right"
                         placeholder="Busque uma central..."></tgt-input-icon>
@@ -36,6 +35,12 @@
               </tgt-item-data>
               <tgt-item-data>
                 <div class="ft-btn">
+                  <div class="btn">
+                    <span class="material-symbols-outlined" (click)="delete(item.id)"
+                          >
+                      delete
+                    </span>
+                  </div>
                   <div class="w-button">
                     <tgt-button icon="trending_flat" iconPosition="left"
                                 size="small" color="secundary"

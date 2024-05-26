@@ -1,56 +1,54 @@
 <main>
-    <div class="header">
-        <div class="btn-add">
-            <tgt-button [color]="'secundary'" icon="add" (click)="addCard()">Adicionar</tgt-button>
-        </div>
+  <div class="header">
+    <div class="btn-add">
+      <tgt-button [color]="'secundary'" icon="add" (click)="addCard()">
+        Adicionar
+      </tgt-button>
     </div>
-   <div class="main">
-    @for(cartao of cartoes; track cartao) {
-        <div class="content">
-            <tgt-credit-card-view [cartao]="cartao"></tgt-credit-card-view>
+  </div>
+  <div class="main">
+    @for (cartao of cartoes; track cartao) {
+      <div class="content">
+        <tgt-credit-card-view [cartao]="cartao"></tgt-credit-card-view>
 
-            <div class="info">
-                <div class="data-info">
-                    <section>
-                        <span class="label">Nome completo</span>
-                        <span class="value">{{cartao.cardName}}</span>
-                    </section>
-                    <div class="detalhe grid">
-                        <section class="col-6">
-                            <span class="label">Número do cartão</span>
-                            <span class="value"> {{cartao.cardNumber | cardNumber }}</span>
-                        </section>
-                        <section class="col-6">
-                            <span class="label">Banderia</span>
-                            <span class="value">{{ 'Mastercard' }}</span>
-                        </section>
-                    </div>
-                    <section>
-                        <span class="label">Validade</span>
-                        <span class="value">{{cartao.cardMouth}}</span>
-                    </section>
-                </div>
-                <div class="actions"></div>
+        <div class="info">
+          <div class="data-info">
+            <section>
+              <span class="label">Nome completo</span>
+              <span class="value">{{ cartao.cardName }}</span>
+            </section>
+            <div class="detalhe grid">
+              <section class="col-6">
+                <span class="label">Número do cartão</span>
+                <span class="value"> {{ cartao.cardNumber | cardNumber }}</span>
+              </section>
+              <section class="col-6">
+                <span class="label">Banderia</span>
+                <span class="value">{{ 'Mastercard' }}</span>
+              </section>
             </div>
+            <section>
+              <span class="label">Validade</span>
+              <span class="value">{{ cartao.cardMouth }}</span>
+            </section>
+          </div>
+          <div class="actions"></div>
+        </div>
 
-            <div class="actions">
-              <div class="btn">
-              <span class="material-symbols-outlined">
-                edit
-              </span>
-              </div>
-              <div class="btn">
-              <span class="material-symbols-outlined" (click)="excluir(cartao.id)">
+        <div class="actions">
+
+          <div class="btn">
+              <span class="material-symbols-outlined"
+                    (click)="excluir(cartao.id)">
                 delete
               </span>
-              </div>
+          </div>
 
-            </div>
         </div>
-        <tgt-divider></tgt-divider>
+      </div>
+      <tgt-divider></tgt-divider>
     }
-   </div>
-
+  </div>
 
 
 </main>
