@@ -11,6 +11,29 @@ export interface User {
     empresaId: number
 }
 
+export interface UserEntity {
+  id: number;
+  nome: string;
+  email: string;
+  telefone: string;
+  cpf: string;
+  dataNascimento: Date;
+  role : Role;
+  sexo: string;
+  empresa: Empresa
+}
+
+export interface UserRequest {
+  nome: string;
+  email: string;
+  telefone: string;
+  cpf: string;
+  dataNascimento: Date;
+  role : Role;
+  sexo: string;
+  empresaId: number
+}
+
 export enum Role {
     ADMIN = 'ADMIN',
     MANAGER = 'MANAGER',

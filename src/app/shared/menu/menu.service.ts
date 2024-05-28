@@ -38,7 +38,7 @@ export class MenuService {
 
    updateMenu() {
       const usuario = this.userService.user;
-      if(usuario != null && usuario.role == Role.ADMIN) {
+      if(usuario != null && (usuario.role == Role.ADMIN || usuario.role == Role.MANAGER)) {
         this._menu.next([
           {icon: 'dashboard', label: 'Dashboard', route: '/admin/dashboard', checked: false},
           {icon: 'luggage', label: 'Viajar', route: '/admin/viajar', checked: false},
