@@ -122,7 +122,7 @@ export class CetralCustoComponent implements OnInit, OnDestroy{
   }
 
   ngOnDestroy(): void {
-    this.service.showlist.next(false);
+    // this.service.showlist.next(false);
   }
   adicionarCentralCusto() {
     const closeRef = this.sidebarService.openSide(SidebarNovaCentralCustoComponent);

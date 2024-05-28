@@ -1,0 +1,24 @@
+<sidebar title="Adicionar integrante">
+  <main>
+    <div class="body">
+      <tgt-input label="Nome" [control]="form.controls.nome"
+      ></tgt-input>
+      <tgt-input label="E-mail corporativo*" [control]="form.controls.email"
+      ></tgt-input>
+
+      <div class="perfil">
+        <span class="Label">Escolha o perfil de acesso:</span>
+        <div class="check-perfil">
+          <tgt-radio [value]="Role.MANAGER" [control]="form.controls.role">Gestor</tgt-radio>
+          <tgt-radio [value]="Role.USER" [control]="form.controls.role">Viajante</tgt-radio>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <tgt-button fieldButton="outline" size="small" (click)="cancelar()" >Cancelar</tgt-button>
+      <tgt-button icon="add" color="secundary" size="small" (click)="cadastrar()" >Adicionar</tgt-button>
+    </div>
+
+  </main>
+
+</sidebar>
