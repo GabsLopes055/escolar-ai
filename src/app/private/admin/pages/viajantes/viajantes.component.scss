@@ -50,10 +50,11 @@ main {
     align-items: center;
     border-radius: 50px;
     cursor: pointer;
-    transition: all .5s;
+    transition: background-color .5s;
 
     &:hover {
-      background-color: $color-yellow;
+      color: $color-White;
+      background-color: $color-delete;
     }
   }
 }

@@ -1,0 +1,55 @@
+<sidebar [title]="'Detalhes do integrante'">
+  <main>
+    <div class="header">
+      <div class="btn-edit" (click)="changeEdit()"
+           [style]="isEdit ? {cursor: 'not-allowed'} : {color: 'pointer'} "
+           [ngStyle]="isEdit ? {color: '#838280'} : {color: '#000'} ">
+      <span class="material-symbols-outlined">
+        edit
+      </span>
+        <span class="text">Editar</span>
+      </div>
+    </div>
+
+    @if (!isEdit) {
+      <div class="view">
+        <tgt-input-view [label]="'Nome Completo'"
+                        [value]="user.nome"></tgt-input-view>
+        <tgt-input-view [label]="'CPF'" [value]="user.cpf"></tgt-input-view>
+        <tgt-input-view [label]="'E-mail corporativo'"
+                        [value]="user.email"></tgt-input-view>
+        <tgt-input-view [label]="'Data de nascimento'"
+                        [value]="user.dataNascimento"></tgt-input-view>
+        <tgt-input-view [label]="'Gênero'" [value]="user.sexo"></tgt-input-view>
+        <tgt-input-view [label]="'Perfil de acesso'"
+                        [value]="user.role"></tgt-input-view>
+      </div>
+    } @else {
+      <div class="view-edit">
+        <tgt-input [label]="'Nome completo'" [control]="form.controls.nome"></tgt-input>
+        <tgt-input [label]="'CPF'" [control]="form.controls.cpf"></tgt-input>
+        <tgt-input [label]="'E-mail corporativo'" [control]="form.controls.email"></tgt-input>
+        <div class="grid col-12">
+          <tgt-select [label]="'Gênero*'" [options]="options" [control]="form.controls.sexo"
+                      class="col-6"></tgt-select>
+          <tgt-input [label]="'Data de nascimento'" type="date" class="col-6" [control]="form.controls.dataNascimento"></tgt-input>
+        </div>
+        <div class="grid col-12">
+          <span class="Label col-12">Perfil de acesso:</span>
+          <tgt-radio class="col-4" [value]="Role.MANAGER" [control]="form.controls.role">Gestor</tgt-radio>
+          <tgt-radio class="col-4" [value]="Role.USER" [control]="form.controls.role">Viajante</tgt-radio>
+        </div>
+      </div>
+    }
+
+  </main>
+
+  @if(isEdit) {
+    <footer class="grid col-12">
+      <tgt-button class="col-5" size="small" fieldButton="outline" (click)="cancelar()">Cancelar</tgt-button>
+      <tgt-button class="col-5" size="small" color="secundary">Cancelar</tgt-button>
+    </footer>
+  }
+
+
+</sidebar>

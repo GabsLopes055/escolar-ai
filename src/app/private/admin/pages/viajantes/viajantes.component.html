@@ -34,7 +34,7 @@
             </tgt-item-data>
             <tgt-item-data>
               <div class="ft-btn">
-                <div class="btn" (click)="delete()">
+                <div class="btn" (click)="delete(item.id)">
                     <span class="material-symbols-outlined"
                     >
                       delete
@@ -42,7 +42,7 @@
                 </div>
                 <div class="w-button">
                   <tgt-button icon="trending_flat" iconPosition="left"
-                              size="small" color="secundary"
+                              size="small" color="secundary" (click)="details(item.id)"
                               ></tgt-button>
                 </div>
               </div>

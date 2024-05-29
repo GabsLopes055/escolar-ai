@@ -15,4 +15,11 @@ export class ViajantesService {
   listarPorEmpresa(empresaId: number): Observable<User[]> {
     return this.http.get<User[]>(`${URL_BASE}/empresa/${empresaId}`);
   }
+
+  delete(id: number): Observable<User> {
+    return this.http.delete<User>(`${URL_BASE}/${id}`);
+  }
+  buscar(id: number): Observable<User> {
+    return this.http.get<User>(`${URL_BASE}/${id}`);
+  }
 }

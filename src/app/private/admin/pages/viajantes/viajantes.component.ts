@@ -1,26 +1,26 @@
 import {Component, OnInit} from '@angular/core';
-import { NavbarService } from '../../../../shared/navbar/navbar.service';
-import { MenuService } from '../../../../shared/menu/menu.service';
+import {NavbarService} from '../../../../shared/navbar/navbar.service';
+import {MenuService} from '../../../../shared/menu/menu.service';
 import {ButtonComponent} from "../../../../shared/button/button.component";
 import {CurrencyPipe} from "@angular/common";
 import {
-    HeaderColComponent
+  HeaderColComponent
 } from "../../../../shared/list/components/header-col/header-col.component";
 import {
-    HeaderListComponent
+  HeaderListComponent
 } from "../../../../shared/list/components/header-list/header-list.component";
 import {
-    InputIconComponent
+  InputIconComponent
 } from "../../../../shared/input-icon/input-icon.component";
 import {
-    ItemDataComponent
+  ItemDataComponent
 } from "../../../../shared/list/components/item-data/item-data.component";
 import {
-    ItemListComponent
+  ItemListComponent
 } from "../../../../shared/list/components/item-list/item-list.component";
 import {ListComponent} from "../../../../shared/list/list.component";
 import {
-    PaginatorComponent
+  PaginatorComponent
 } from "../../../../shared/paginator/paginator.component";
 import {
   OptionSelect,
@@ -30,13 +30,17 @@ import {
   Status,
   StatusCircleComponent
 } from "../../../../shared/status-circle/status-circle.component";
-import {Role, User} from "../../../../models/user.interface";
+import {User} from "../../../../models/user.interface";
 import {ViajantesService} from "./viajantes.service";
 import {UserService} from "../../../../shared/services/user/user.service";
 import {SidebarService} from "../../../../shared/sidebar/sidebar.service";
 import {CadastrarComponent} from "./components/cadastrar/cadastrar.component";
 import {ModalService} from "../../../../shared/modal/modal.service";
 import {ConfirmComponent} from "./components/confirm/confirm.component";
+import {ToastService} from "../../../../shared/toast/toast.service";
+import {
+  UpdateUserComponent
+} from "./components/update-user/update-user.component";
 
 @Component({
   selector: 'app-viajantes',
@@ -75,7 +79,8 @@ export class ViajantesComponent implements OnInit{
     private readonly viajantesService: ViajantesService,
     private readonly usuarioService: UserService,
     private readonly sidebarService: SidebarService,
-    private readonly modal: ModalService
+    private readonly modal: ModalService,
+    private readonly toast: ToastService
   ) {
     this.navbarService.setTitle('Integrantes');
     navbarService.showBtnViajar.next(true);
@@ -97,8 +102,26 @@ export class ViajantesComponent implements OnInit{
     this.sidebarService.openSide(CadastrarComponent);
   }
 
-  delete() {
+  details(id: number) {
+    this.sidebarService.openSideWithData(UpdateUserComponent, id);
+  }
+
+  delete(id: number) {
     const modalRef = this.modal.open(ConfirmComponent);
+    modalRef.closed.subscribe(value => {
+      if(value) {
+        this.viajantesService.delete(id).subscribe({
+          next: () => {
+            this.toast.notify({message: 'Usuário deletado com sucesso.', type: "SUCCESS"});
+            this.listenViajantes();
+
+          },
+          error: erro => {
+            this.toast.notify({message: `${erro.error.menssagem}`, type: "ERROR"});
+          },
+        })
+      }
+    })
   }
 
   // LISTEN
