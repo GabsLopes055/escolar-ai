@@ -24,7 +24,7 @@ export class SidebarService {
 
   openSideWithData<T extends ComponentWithData>(component: Type<T>, data?: any): {
     ref: ComponentRef<T>,
-    sub: Subject<any>
+    afterClosed: Subject<any>
   } {
     // Close any existing side panel
     this.closeSide();
@@ -52,7 +52,7 @@ export class SidebarService {
     // Insert component into Angular's component tree
     this.appRef.attachView(componentRef.hostView);
     this.closeRef = new Subject();
-    return {ref: componentRef, sub: this.closeRef};
+    return {ref: componentRef, afterClosed: this.closeRef};
   }
 
   openSide(component: any): {

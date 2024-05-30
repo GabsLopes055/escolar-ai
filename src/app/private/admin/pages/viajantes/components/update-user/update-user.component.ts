@@ -7,7 +7,11 @@ import {
 } from "../../../../../../shared/input-view/input-view.component";
 import {NgStyle} from "@angular/common";
 import {ViajantesService} from "../../viajantes.service";
-import {Role, User} from "../../../../../../models/user.interface";
+import {
+  Role,
+  User,
+  UserPutRequest
+} from "../../../../../../models/user.interface";
 import {InputComponent} from "../../../../../../shared/input/input.component";
 import {
   OptionSelect,
@@ -17,6 +21,7 @@ import {RadioComponent} from "../../../../../../shared/radio/radio.component";
 import {ButtonComponent} from "../../../../../../shared/button/button.component";
 import {SidebarService} from "../../../../../../shared/sidebar/sidebar.service";
 import {FormControl, FormGroup} from "@angular/forms";
+import {ToastService} from "../../../../../../shared/toast/toast.service";
 
 @Component({
   selector: 'app-update-user',
@@ -39,6 +44,7 @@ export class UpdateUserComponent implements OnInit{
 
   isEdit = false;
   user!: User;
+  dataNasci = '';
 
   options: OptionSelect[] = [
     {label: 'Masculino', value: 'MASCULINO'},
@@ -53,11 +59,16 @@ export class UpdateUserComponent implements OnInit{
     dataNascimento: new FormControl(),
     sexo: new FormControl(),
     role: new FormControl(),
+    telefone: new FormControl(),
+    empresaId: new FormControl(null),
+    password: new FormControl(null),
+
   });
 
   constructor(
     private readonly viajantesService: ViajantesService,
-    private readonly sidebar: SidebarService
+    private readonly sidebar: SidebarService,
+    private readonly toast: ToastService
   ) {
 
   }
@@ -66,10 +77,12 @@ export class UpdateUserComponent implements OnInit{
     this.viajantesService.buscar(this.data).subscribe({
       next: user => {
         this.user = user;
+        // this.converteData(user.dataNascimento)
         this.form.controls.id.setValue(user.id);
         this.form.controls.nome.setValue(user.nome);
         this.form.controls.cpf.setValue(user.cpf);
         this.form.controls.email.setValue(user.email);
+        this.form.controls.telefone.setValue(user.telefone);
         this.form.controls.dataNascimento.setValue(user.dataNascimento);
         this.form.controls.sexo.setValue(user.sexo);
         this.form.controls.role.setValue(user.role);
@@ -85,6 +98,28 @@ export class UpdateUserComponent implements OnInit{
 
   cancelar() {
     this.isEdit = false;
+  }
+
+  atualizar() {
+    console.log(this.form.value);
+    this.viajantesService.atualizar(this.form.value as any).subscribe({
+      next: () => {
+        this.toast.notify({message: 'Integrante atualizado com sucesso.', type: "SUCCESS"});
+        this.sidebar.closeSide(true);
+      },
+      error: () => {
+        this.toast.notify({message: 'Ocorreu um erro ao atualizar integrante.', type: "ERROR"});
+      },
+    })
+  }
+
+
+  converteData(date: Date) {
+    const day = date.getDay();
+    const month = date.getMonth() + 1
+    const year = date.getFullYear();
+
+    return `${day}/${month}/${year}`;
   }
 
   protected readonly Role = Role;

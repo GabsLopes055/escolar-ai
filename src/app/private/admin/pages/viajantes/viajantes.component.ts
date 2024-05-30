@@ -103,7 +103,12 @@ export class ViajantesComponent implements OnInit{
   }
 
   details(id: number) {
-    this.sidebarService.openSideWithData(UpdateUserComponent, id);
+    const sideRef = this.sidebarService.openSideWithData(UpdateUserComponent, id);
+    sideRef.afterClosed.subscribe(value => {
+      if(value) {
+        this.listenViajantes();
+      }
+    })
   }
 
   delete(id: number) {

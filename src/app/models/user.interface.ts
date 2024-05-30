@@ -35,6 +35,10 @@ export interface UserRequest {
   empresaId: number
 }
 
+export interface UserPutRequest extends UserRequest {
+  id?: number;
+}
+
 export enum Role {
     ADMIN = 'ADMIN',
     MANAGER = 'MANAGER',
