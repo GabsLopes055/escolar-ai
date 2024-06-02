@@ -1,0 +1,21 @@
+<tgt-modal>
+  <main>
+    <div class="card">
+      <div class="title">
+        <span class="material-symbols-outlined icon">help</span>
+        <span class="label">Suporte</span>
+      </div>
+      <div class="texto">
+        Por favor, informe seu e-mail e deixe sua observação. Enviaremos isso  para nossa equipe de suporte, que responderá o mais rápido possível.
+      </div>
+    </div>
+    <div class="form">
+      <tgt-input label="Assunto" [control]="form.controls.assunto"></tgt-input>
+      <tgt-textarea label="Descrição" [control]="form.controls.menssagem"></tgt-textarea>
+    </div>
+    <div class="buttons grid col-12">
+      <tgt-button fieldButton="outline" class="col-6" [border]="false" (click)="cancelar()">Cancelar</tgt-button>
+      <tgt-button color="secundary" class="col-6" icon="trending_flat" (click)="enviar()">Enviar</tgt-button>
+    </div>
+  </main>
+</tgt-modal>

@@ -3,7 +3,26 @@
     <span class="intro-text">
         Confira tudo que você irá encontrar por aqui:
     </span>
-    <tgt-button icon="help" color="secundary" size="small">Suport</tgt-button>
+    <tgt-button icon="help" color="secundary" size="small"
+                (click)="abrirChamado()">Suport
+    </tgt-button>
+  </div>
+
+  <div class="suport-card">
+    <div class="content-card">
+      <span class="material-symbols-outlined icon">live_help</span>
+      <span class="text">
+      Atendimentos do Suporte.
+    </span>
+    </div>
+
+    <div class="footer">
+      <div class="btn">
+        <tgt-button icon="trending_flat" iconPosition="left" size="small"
+                    color="secundary"
+                    [routerLink]="'/admin/suporte-atentimento'"></tgt-button>
+      </div>
+    </div>
   </div>
 
   <div class="content-card" style="width: 70vw">

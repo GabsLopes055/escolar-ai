@@ -1,3 +1,63 @@
 <main>
-    <h1>Vianjantes Testes</h1>
+  <div class="header">
+    <tgt-select [label]="'Status'" [options]="options"
+                class="col-6"></tgt-select>
+    <div class="input-box">
+      <tgt-input-icon icon="search" iconPosition="right"
+                      placeholder="Busque uma central..."></tgt-input-icon>
+    </div>
+    <tgt-button icon="add" iconPosition="left" size="small" color="secundary"
+               (click)="novoUsuario()" >Adicionar
+    </tgt-button>
+  </div>
+  <div class="body">
+    <tgt-list>
+      <div header class="header-list">
+        <tgt-header-list>
+          <tgt-header-col>Nome</tgt-header-col>
+          <tgt-header-col>E-mail</tgt-header-col>
+          <tgt-header-col>Perfil</tgt-header-col>
+          <tgt-header-col>Status</tgt-header-col>
+          <tgt-header-col></tgt-header-col>
+
+        </tgt-header-list>
+      </div>
+      <div body class="bb">
+        @for (item of data; track item) {
+          <tgt-item-list>
+            <tgt-item-data>{{ item.nome }}</tgt-item-data>
+            <tgt-item-data>{{ item.email }}</tgt-item-data>
+            <tgt-item-data>{{ item.role }}</tgt-item-data>
+            <tgt-item-data>
+              <tgt-status-circle [status]="Status.ATIVA"></tgt-status-circle>
+              {{ Status.ATIVA }}
+            </tgt-item-data>
+            <tgt-item-data>
+              <div class="ft-btn">
+                <div class="btn" (click)="delete(item.id)">
+                    <span class="material-symbols-outlined"
+                    >
+                      delete
+                    </span>
+                </div>
+                <div class="w-button">
+                  <tgt-button icon="trending_flat" iconPosition="left"
+                              size="small" color="secundary" (click)="details(item.id)"
+                              ></tgt-button>
+                </div>
+              </div>
+
+            </tgt-item-data>
+          </tgt-item-list>
+        }
+      </div>
+    </tgt-list>
+
+
+  </div>
+  <div class="pag-footer">
+    <div class="pag">
+      <tgt-paginator></tgt-paginator>
+    </div>
+  </div>
 </main>

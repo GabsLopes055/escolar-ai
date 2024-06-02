@@ -27,20 +27,20 @@ import {
   CentralDeCustoRequest
 } from "../../../../../../../models/central-de-custo.interface";
 import {ToastService} from "../../../../../../../shared/toast/toast.service";
+import {
+  TooltipDirective
+} from "../../../../../../../shared/directives/tooltip.directive";
 
 @Component({
   selector: 'app-sidebar-nova-central-custo',
   standalone: true,
   templateUrl: './sidebar-nova-central-custo.component.html',
   styleUrl: './sidebar-nova-central-custo.component.scss',
-  imports: [SidebarComponent, InputComponent, ToggleComponent, ButtonComponent, SelectComponent]
+  imports: [SidebarComponent, InputComponent, ToggleComponent, ButtonComponent, SelectComponent, TooltipDirective]
 })
 export class SidebarNovaCentralCustoComponent implements OnInit {
 
   options: OptionSelect[] = [
-    {label: 'Masculino', value: 'MASCULINO'},
-    {label: 'Feminino', value: 'FEMININO'},
-
   ];
   empresaId: number = 0;
 

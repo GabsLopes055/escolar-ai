@@ -1,5 +1,5 @@
 import {CommonModule} from '@angular/common';
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ButtonComponent} from '../../../../../shared/button/button.component';
 import {
   InputIconComponent
@@ -25,7 +25,7 @@ import {SidebarService} from '../../../../../shared/sidebar/sidebar.service';
 import {
   StatusCircleComponent
 } from '../../../../../shared/status-circle/status-circle.component';
-import {TabsComponent} from '../../../../../shared/tabs/tabs.component';
+import {Tab, TabsComponent} from '../../../../../shared/tabs/tabs.component';
 import {
   SidebarNovaCentralCustoComponent
 } from './components/sidebar-nova-central-custo/sidebar-nova-central-custo.component';
@@ -48,45 +48,70 @@ import {
 import {CentralCustoService} from './central-custo.service';
 import {CentralDeCusto} from "../../../../../models/central-de-custo.interface";
 import {UserService} from "../../../../../shared/services/user/user.service";
+import {
+  TooltipDirective
+} from "../../../../../shared/directives/tooltip.directive";
+import {ModalService} from "../../../../../shared/modal/modal.service";
+import {
+  ConfirmDeleteComponent
+} from "./components/confirm-delete/confirm-delete.component";
+import {
+  OptionSelect,
+  SelectComponent
+} from "../../../../../shared/select/select.component";
+import {ToastService} from "../../../../../shared/toast/toast.service";
 
 @Component({
     selector: 'central-custo',
     standalone: true,
     templateUrl: './central-custo.component.html',
     styleUrl: './central-custo.component.scss',
-    imports: [
-        TabsComponent,
-        InputIconComponent,
-        ButtonComponent,
-        CommonModule,
-        SidebarComponent,
-        PaginatorComponent,
-        ListComponent,
-        ItemListComponent,
-        HeaderColComponent,
-        ItemDataComponent,
-        HeaderListComponent,
-        StatusCircleComponent,
-        TableComponent,
-        HeaderTableComponent,
-        HeaderTableDataComponent,
-        ItemTableComponent,
-        TableDataComponent,
-        CentralCustoDetailsComponent
-    ]
+  imports: [
+    TabsComponent,
+    InputIconComponent,
+    ButtonComponent,
+    CommonModule,
+    SidebarComponent,
+    PaginatorComponent,
+    ListComponent,
+    ItemListComponent,
+    HeaderColComponent,
+    ItemDataComponent,
+    HeaderListComponent,
+    StatusCircleComponent,
+    TableComponent,
+    HeaderTableComponent,
+    HeaderTableDataComponent,
+    ItemTableComponent,
+    TableDataComponent,
+    CentralCustoDetailsComponent,
+    TooltipDirective,
+    SelectComponent
+  ]
 })
-export class CetralCustoComponent implements OnInit{
+export class CetralCustoComponent implements OnInit, OnDestroy{
 
   isList = this.service.showlist;
 
   data: CentralDeCusto[] = []
-  empresaId: number = 0
+  empresaId: number = 0;
+
+  options: OptionSelect[] = [
+    {label: 'Todos', value: ''},
+    {label: 'Ativos', value: 'ATIVO'},
+    {label: 'Inativos', value: 'INATIVO'},
+  ];
+
 
   constructor(
     private readonly sidebarService: SidebarService,
     private readonly service: CentralCustoService,
-    private readonly usuarioService: UserService
+    private readonly usuarioService: UserService,
+    private readonly modal: ModalService,
+    private readonly toast: ToastService
   ){}
+
+
 
   ngOnInit(): void {
     const empresaId = this.usuarioService.user?.empresaId;
@@ -96,6 +121,9 @@ export class CetralCustoComponent implements OnInit{
     }
   }
 
+  ngOnDestroy(): void {
+    // this.service.showlist.next(false);
+  }
   adicionarCentralCusto() {
     const closeRef = this.sidebarService.openSide(SidebarNovaCentralCustoComponent);
     closeRef.sub.subscribe(data => {
@@ -103,6 +131,25 @@ export class CetralCustoComponent implements OnInit{
         this.listenCentralCusto();
       }
     });
+  }
+
+  delete(id: number) {
+    const ref = this.modal.open(ConfirmDeleteComponent);
+    ref.closed.subscribe({
+      next: value => {
+        if (value) {
+          this.service.deletar(id).subscribe({
+            next: () => {
+              this.toast.notify({message: 'Central de custo deletada com sucesso.', type: "SUCCESS"});
+              this.listenCentralCusto();
+            },
+            error: () => {
+              this.toast.notify({message: 'Ocorreu um erro ao deletar Central de custo.', type: "ERROR"});
+            },
+          });
+        }
+      }
+    })
   }
 
   showDetails(id: number) {

@@ -1,0 +1,33 @@
+main {
+  display: flex;
+  flex-direction: column;
+  height: 82vh;
+  justify-content: space-between;
+
+  .body {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    .perfil {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+  .footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    tgt-button {
+      width: 45%;
+    }
+  }
+}
+
+.check-perfil {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+}

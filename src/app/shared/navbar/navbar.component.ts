@@ -6,13 +6,14 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../services/user/user.service';
 import { PerfilComponent } from "../perfil/perfil.component";
+import {TooltipDirective} from "../directives/tooltip.directive";
 
 @Component({
     selector: 'navbar',
     standalone: true,
     templateUrl: './navbar.component.html',
     styleUrl: './navbar.component.scss',
-    imports: [ButtonComponent, CommonModule, RouterLink, PerfilComponent]
+  imports: [ButtonComponent, CommonModule, RouterLink, PerfilComponent, TooltipDirective]
 })
 export class NavbarComponent {
 

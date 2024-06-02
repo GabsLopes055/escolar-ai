@@ -27,4 +27,8 @@ export class CentralCustoService {
   listarPorEmpresa(empresaId: number):Observable<CentralDeCusto[]> {
     return this.http.get<CentralDeCusto[]>(`${URL_BASE}/empresa/${empresaId}`);
   }
+
+  deletar(id: number): Observable<CentralDeCusto> {
+    return this.http.delete<CentralDeCusto>(`${URL_BASE}/${id}`);
+  }
 }

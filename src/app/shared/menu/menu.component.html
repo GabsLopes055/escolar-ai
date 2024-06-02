@@ -14,36 +14,38 @@
 
 
         </div>
-    
-    
+
+
         <ul class="items">
             @for(item of menu; track item){
-                <li class="item" [ngClass]="{li_close: !isOpen}">
+                <li class="item" [ngClass]="{li_close: !isOpen}"  [appTooltip]="item.label" [tooltipPosition]="'right'">
                     <a href="" [ngClass]="{selected: item.checked}" [routerLink]="item.route">
                         <span class="material-symbols-outlined">
                             {{item.icon}}
                         </span>
-            
+
                         <div class="item-description" [ngClass]="{item_description_close: !isOpen}">{{item.label}}</div>
                     </a>
                 </li>
             }
-            
+
         </ul>
     </div>
 
-    
 
-    <div class="item-help" [style.width]="isOpen ? '222px' : '56px'">
+
+    <div class="item-help" [style.width]="isOpen ? '222px' : '56px'" [appTooltip]="'Ajuda'" [tooltipPosition]="'right'">
         <tgt-divider [style.width]="'100%'"></tgt-divider>
         <a [routerLink]="['/admin/']" >
             <span class="material-symbols-outlined">
                 help
             </span>
 
-            <div class="item-description" [ngClass]="{item_description_close: !isOpen}">Ajuda</div>
+            <div class="item-description" [ngClass]="{item_description_close: !isOpen}"
+
+            >Ajuda</div>
         </a>
     </div>
-    
+
 
 </div>

@@ -1,10 +1,11 @@
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {TooltipDirective} from "../directives/tooltip.directive";
 
 @Component({
   selector: 'toggle',
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule],
+  imports: [ReactiveFormsModule, FormsModule, TooltipDirective],
   templateUrl: './toggle.component.html',
   styleUrl: './toggle.component.scss'
 })

@@ -3,13 +3,15 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { MenuService } from './menu.service';
 import { DividerComponent } from "../divider/divider.component";
+import {ButtonComponent} from "../button/button.component";
+import {TooltipDirective} from "../directives/tooltip.directive";
 
 @Component({
     selector: 'menu',
     standalone: true,
     templateUrl: './menu.component.html',
     styleUrl: './menu.component.scss',
-    imports: [CommonModule, RouterLink, DividerComponent]
+    imports: [CommonModule, RouterLink, DividerComponent, ButtonComponent, TooltipDirective]
 })
 export class MenuComponent implements OnInit{
 
@@ -23,10 +25,10 @@ export class MenuComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    
-    
+
+
     ;
-    
+
   }
 
   openClose() {

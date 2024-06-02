@@ -14,5 +14,6 @@ export const routes: Routes = [
     {path:'login', component: LoginComponent},
     {path:'register', loadComponent: () => import('./public/register/register.component').then((c)=>c.RegisterComponent)},
     {path:'register-empresa/:id', loadComponent: () => import('./public/register-full/register-full.component').then((c) => c.RegisterFullComponent)},
+    {path:'cadastrar/:id', loadComponent: () => import('./public/cadastrar/cadastrar.component').then((c) => c.CadastrarComponent)},
     {path: 'admin', loadChildren: () => import('./private/admin/admin.module').then(module => module.AdminModule), canActivate:[tokenGuard]}
 ];

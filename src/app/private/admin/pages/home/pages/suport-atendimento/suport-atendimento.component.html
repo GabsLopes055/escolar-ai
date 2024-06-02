@@ -1,0 +1,60 @@
+<main>
+  <div class="header">
+    <tgt-button icon="arrow_left_alt" iconPosition="left" [border]="false" size="small" fieldButton="outline"
+                (click)="voltar()" >voltar
+    </tgt-button>
+
+    <div class="input-box">
+      <!--      <tgt-input-icon icon="search" iconPosition="right"-->
+      <!--                      placeholder="Busque uma central..."></tgt-input-icon>-->
+    </div>
+    <tgt-button icon="refresh" iconPosition="left" size="small" fieldButton="outline"
+                (click)="listenChamados()" >refresh
+    </tgt-button>
+  </div>
+  <div class="body">
+    <tgt-list>
+      <div header style="width: 100%!important;">
+        <tgt-header-list>
+          <tgt-header-col>Nome</tgt-header-col>
+          <tgt-header-col>Assunto</tgt-header-col>
+          <tgt-header-col>E-mail</tgt-header-col>
+          <tgt-header-col>Empresa</tgt-header-col>
+          <tgt-header-col>Data Solicitação</tgt-header-col>
+          <tgt-header-col>Status</tgt-header-col>
+          <tgt-header-col></tgt-header-col>
+
+        </tgt-header-list>
+      </div>
+      <div body class="bb">
+        @for (item of data; track item) {
+          <tgt-item-list>
+            <tgt-item-data>{{ item.user.nome }}</tgt-item-data>
+            <tgt-item-data>{{ item.assunto }}</tgt-item-data>
+            <tgt-item-data>{{ item.user.email }} </tgt-item-data>
+            <tgt-item-data>{{ item.user.empresa.nomeFantasia }}</tgt-item-data>
+            <tgt-item-data>{{ item.createdAt | date: 'dd/MM/yyyy hh:mm:ss' }}</tgt-item-data>
+            <tgt-item-data>{{ item.status == StatusChamado.ABERTO ? 'pendente' : item.status }}</tgt-item-data>
+            <tgt-item-data>
+              <div class="ft-btn">
+                <div class="w-button">
+                  <tgt-button icon="search" iconPosition="left"
+                              size="small" color="secundary"
+                  ></tgt-button>
+                </div>
+              </div>
+
+            </tgt-item-data>
+          </tgt-item-list>
+        }
+      </div>
+    </tgt-list>
+
+
+  </div>
+  <div class="pag-footer">
+    <div class="pag">
+      <tgt-paginator></tgt-paginator>
+    </div>
+  </div>
+</main>
