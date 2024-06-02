@@ -4,11 +4,12 @@ input:-webkit-autofill {
 
 .main {
     // padding: 1rem;
+  height: 50px;
 }
 .input {
     position: relative;
     font-size: 14px;
-    
+
     &__label {
       position: absolute;
       left: 10px;
@@ -24,7 +25,7 @@ input:-webkit-autofill {
     }
     &__field {
       box-sizing: border-box;
-      
+
       display: block;
       width: 100%;
       border: 1px solid #5e5e5e;
@@ -32,7 +33,7 @@ input:-webkit-autofill {
       color: #5e5e5e;
       background: transparent;
       border-radius: 24px;
-      
+
       &:focus,
       &:not(:placeholder-shown) {
         & + .input__label {
@@ -45,4 +46,3 @@ input:-webkit-autofill {
       }
     }
   }
-  
