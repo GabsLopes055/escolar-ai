@@ -19,7 +19,7 @@
 
     </div>
     <div class="content">
-        @if(!isFeedback) {
+        @if(showForm) {
         <form class="form" [formGroup]="form" (submit)="register()">
             <h1 class="title-desk">Vamos começar!</h1>
             <h2>Registre-se</h2>
@@ -32,8 +32,12 @@
                 (click)="register()">Cadastrar</tgt-button>
         </form>
 
-        } @else {
-        <feedback-init-register></feedback-init-register>
+        }
+        @if(showFeedbackSuccess) {
+          <feedback-init-register></feedback-init-register>
+        }
+        @if(showFeedbackErro) {
+          <feedback-erro-register></feedback-erro-register>
         }
 
         <div class="create">
