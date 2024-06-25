@@ -1,0 +1,75 @@
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 80vh;
+  gap: 16px;
+
+  .end {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    .input-messagem {
+      position: relative;
+      .btn {
+        position: absolute;
+        bottom: 38px;
+        right: 10px;
+        height: 15px;
+        width: 45px;
+      }
+    }
+  }
+}
+.content-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: Hug (550px)px;
+  overflow: auto;
+  .label {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .left {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 8px;
+
+      img {
+        width: 32px;
+        height: 32px;
+      }
+
+      .name {
+        font-weight: bold;
+        font-size: 14px;
+      }
+    }
+    .right {
+      span {
+        font-size: 14px;
+        color: #6A6A66;
+      }
+    }
+  }
+  .container {
+    padding: 20px 0 8px 18px;
+    border-left: solid 1px #B5B4B2;
+    margin-left: 20px;
+    margin-top: 12px;
+
+    .texto {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 24px;
+      letter-spacing: 0.10000000149011612px;
+      text-align: left;
+      color: #6A6A66;
+    }
+  }
+}

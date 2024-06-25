@@ -28,6 +28,10 @@ import {
 import {DatePipe} from "@angular/common";
 import {SuportAtendimentoService} from "./suport-atendimento.service";
 import {Router} from "@angular/router";
+import {
+  DetalheAtendimentoComponent
+} from "./components/detalhe-atendimento/detalhe-atendimento.component";
+import {SidebarService} from "../../../../../../shared/sidebar/sidebar.service";
 
 @Component({
   selector: 'app-suport-atendimento',
@@ -60,7 +64,8 @@ export class SuportAtendimentoComponent implements OnInit{
     private readonly toast: ToastService,
     private readonly modal: ModalService,
     private readonly service: SuportAtendimentoService,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly sidebar: SidebarService
   ) {
     const usuario = this.userService.user;
     this.idUser = usuario?.id;
@@ -84,6 +89,10 @@ export class SuportAtendimentoComponent implements OnInit{
 
   voltar() {
     this.router.navigate(['/admin']);
+  }
+
+  openDetalhe(id: number) {
+    this.sidebar.openSideWithData(DetalheAtendimentoComponent, id);
   }
 
   protected readonly StatusChamado = StatusChamado;
