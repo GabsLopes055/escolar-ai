@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { UserService } from '../services/user/user.service';
 
 @Component({
@@ -8,21 +8,28 @@ import { UserService } from '../services/user/user.service';
   templateUrl: './perfil.component.html',
   styleUrl: './perfil.component.scss'
 })
-export class PerfilComponent {
+export class PerfilComponent implements OnInit{
 
   iniciais: string = '';
+  @Input() nome:string = '';
   constructor(
     private readonly userService: UserService,
-  ) {
-    const usuario = this.userService.user;
-    this.iniciais = this.obterIniciais(usuario?.nome as string).toUpperCase()
+  ) {}
+
+  ngOnInit(): void {
+    if(!this.nome.length) {
+      const usuario = this.userService.user;
+      this.iniciais = this.obterIniciais(usuario?.nome as string).toUpperCase()
+    } else {
+      this.iniciais = this.obterIniciais(this.nome).toUpperCase()
+    }
   }
 
 
   obterIniciais(nomeCompleto: string) {
     // Dividir o nome completo em partes
     let partesNome = nomeCompleto.split(" ");
-    
+
     // Obter a primeira letra do primeiro nome
     let primeiraLetraPrimeiroNome = partesNome[0][0];
 

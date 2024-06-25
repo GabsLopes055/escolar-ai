@@ -1,0 +1,38 @@
+<sidebar [title]="'Detalhe do atendimento'">
+  <main>
+
+    <div class="content-cards">
+      @for (menssagem of menssagens; track menssagem) {
+        <div class="card">
+          <div class="label">
+            <div class="left">
+              <tgt-perfil [nome]="menssagem.user.nome"></tgt-perfil>
+              @if(usuario?.email == menssagem.user.email) {
+
+                <span class="name">Você</span>
+              } @else {
+                <span class="name">{{ menssagem.user.nome }}</span>
+              }
+            </div>
+            <div class="right">
+              <span>{{ menssagem.createdAt | date: 'dd/MM/yyyy hh:mm' }}</span>
+            </div>
+          </div>
+          <div class="container">
+            <span class="texto">{{ menssagem.menssagem }}</span>
+          </div>
+        </div>
+      }
+    </div>
+    <div class="end">
+      <div class="input-messagem">
+        <tgt-textarea [linhas]="5" [control]="textAreaControl"></tgt-textarea>
+        <div class="btn">
+          <tgt-button icon="send" color="secundary" size="small" (click)="responderChamado()"></tgt-button>
+        </div>
+      </div>
+      <tgt-button size="small">Finalizar atendimento</tgt-button>
+    </div>
+
+  </main>
+</sidebar>

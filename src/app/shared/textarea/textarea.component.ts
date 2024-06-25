@@ -17,5 +17,7 @@ export class TextareaComponent {
   @Input() label: string = '';
   @Input() control: FormControl = new FormControl();
   @Input() mask: string = '';
+  @Input() linhas: number = 10;
   @Input() readonly: boolean = false;
+  @Input() border: boolean = true;
 }
