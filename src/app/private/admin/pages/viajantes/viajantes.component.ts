@@ -113,7 +113,7 @@ export class ViajantesComponent implements OnInit{
 
   delete(id: number) {
     const modalRef = this.modal.open(ConfirmComponent);
-    modalRef.closed.subscribe(value => {
+    modalRef.afterClosed.subscribe(value => {
       if(value) {
         this.viajantesService.delete(id).subscribe({
           next: () => {

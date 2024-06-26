@@ -135,7 +135,7 @@ export class CetralCustoComponent implements OnInit, OnDestroy{
 
   delete(id: number) {
     const ref = this.modal.open(ConfirmDeleteComponent);
-    ref.closed.subscribe({
+    ref.afterClosed.subscribe({
       next: value => {
         if (value) {
           this.service.deletar(id).subscribe({

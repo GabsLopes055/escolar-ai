@@ -30,8 +30,13 @@ export interface ChamadoRequest {
   userId: number
 }
 
+export interface FinalizarChamadoRequest {
+  chamadoId: number;
+  notaAvaliacao: number;
+}
+
 export enum StatusChamado {
   ABERTO = "ABERTO",
-  EM_ABERTO = "EM_ABERTO",
+  EM_ATENDIMENTO = "EM_ATENDIMENTO",
   FECHADO = "FECHADO",
 }

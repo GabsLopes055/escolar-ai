@@ -59,7 +59,7 @@ export class CartoesComponent implements OnInit{
 
   excluir(id?: number) {
     const ref = this.modalService.open(ConfirmComponent);
-    ref.closed.subscribe({
+    ref.afterClosed.subscribe({
       next: data => {
         if (data) {
           if(id) {
