@@ -55,7 +55,7 @@ export class ModalService {
   }
 
   open(component: any): {
-    ref: ComponentRef<any>, closed: Subject<any>
+    ref: ComponentRef<any>, afterClosed: Subject<any>
   } {
     // Close any existing side panel
     this.close();
@@ -82,7 +82,7 @@ export class ModalService {
     this.appRef.attachView(componentRef.hostView);
     this.closeRef = new Subject();
 
-    return {ref: componentRef, closed: this.closeRef};
+    return {ref: componentRef, afterClosed: this.closeRef};
   }
 
   close(data?: any) {

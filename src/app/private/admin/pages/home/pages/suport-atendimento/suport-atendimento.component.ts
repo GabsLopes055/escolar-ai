@@ -91,8 +91,8 @@ export class SuportAtendimentoComponent implements OnInit{
     this.router.navigate(['/admin']);
   }
 
-  openDetalhe(id: number) {
-    this.sidebar.openSideWithData(DetalheAtendimentoComponent, id);
+  openDetalhe(id: number, status: StatusChamado) {
+    this.sidebar.openSideWithData(DetalheAtendimentoComponent, {id: id, status: status});
   }
 
   protected readonly StatusChamado = StatusChamado;

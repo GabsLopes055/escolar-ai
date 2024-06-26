@@ -24,15 +24,40 @@
         </div>
       }
     </div>
-    <div class="end">
-      <div class="input-messagem">
-        <tgt-textarea [linhas]="5" [control]="textAreaControl"></tgt-textarea>
-        <div class="btn">
-          <tgt-button icon="send" color="secundary" size="small" (click)="responderChamado()"></tgt-button>
+    @if(data.status != StatusChamado.FECHADO) {
+      <div class="end">
+        <div class="input-messagem">
+          <tgt-textarea [linhas]="5" [control]="textAreaControl"></tgt-textarea>
+          <div class="btn">
+            <tgt-button icon="send" color="secundary" size="small" (click)="responderChamado()"></tgt-button>
+          </div>
         </div>
+        <tgt-button size="small"
+                    (click)="finalizarAtendimento()"
+        >Finalizar atendimento</tgt-button>
       </div>
-      <tgt-button size="small">Finalizar atendimento</tgt-button>
-    </div>
+    } @else {
+      <div class="avaliacao">
+        @if(nota == null || nota == 0) {
+          <span>Por favor, avalie nosso atendimento!</span>
+        } @else {
+          <span>Obrigado por avaliar nosso atendimento!</span>
+        }
+
+
+
+        <tgt-avaliacao-stars [control]="notaAvalicao"></tgt-avaliacao-stars>
+        @if(nota == null || nota == 0) {
+          <div class="btn">
+            <tgt-button size="small" color="secundary"
+                        (click)="avaliar()"
+            >Enviar avaliação</tgt-button>
+          </div>
+        }
+
+
+      </div>
+    }
 
   </main>
 </sidebar>
