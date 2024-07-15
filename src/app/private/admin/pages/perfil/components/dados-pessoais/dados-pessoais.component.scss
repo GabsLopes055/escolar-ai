@@ -1,0 +1,53 @@
+main {
+
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  margin: 0 auto;
+
+  tgt-input-view {
+    width: 100%;
+    // margin: 20px;
+  }
+
+  .actions {
+    height: auto;
+    width: 80%;
+  }
+
+  .edit {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+  }
+
+  .edit > tgt-button:first-child {
+    margin: 0px 24px 0px 24px;
+  }
+
+  .form {
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+
+    .first-colum {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+
+    }
+
+    .second-column {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+  }
+
+}

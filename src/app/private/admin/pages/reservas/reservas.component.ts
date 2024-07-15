@@ -12,6 +12,7 @@ import { Tab, TabsComponent } from '../../../../shared/tabs/tabs.component';
   styleUrl: './reservas.component.scss'
 })
 export class ReservasComponent {
+
   tabs: Tab[] = [
     {icon: 'flight', label: 'Voos', value: 'voos', selected: false},
     {icon: 'domain', label: 'Hotéis', value: 'hoteis', selected: false},

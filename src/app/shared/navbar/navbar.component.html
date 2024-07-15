@@ -30,11 +30,11 @@
 
     @if(isDetail) {
         <div class="user-detail">
-            <div class="item perfil">
+            <div class="item perfil" (click)="visualizarPerfil()">
                 <span class="material-symbols-outlined">
                     person_4
                 </span>
-                <span class="label">Perfil</span>
+                <span class="label" >Perfil</span>
             </div>
             <div class="item logout" (click)="logout()">
                 <span class="material-symbols-outlined">

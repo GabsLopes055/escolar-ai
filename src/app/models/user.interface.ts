@@ -1,4 +1,5 @@
 import {Empresa} from "./empresa.interface";
+import { FiltroDeBusca } from "./filtro-busca.interface";
 
 export interface User {
     id: number;
@@ -53,9 +54,15 @@ export interface SolicitacaoUser {
   empresa: Empresa;
   role: Role;
 }
-export interface SolicitacaoUserRequest {
-  nome: string;
-  email: string;
-  empresaId: number;
-  role: Role;
+export interface SolicitacaoUserRequest extends FiltroDeBusca {
+  nome?: string | null;
+  email?: string | null;
+  role?: Role | null;
+  statusUser?: Status | null;
+  empresaId?: number | null;
+}
+
+export enum Status {
+  ATIVA = 'ATIVA',
+  INATIVA = 'INATIVA'
 }

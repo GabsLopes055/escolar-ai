@@ -10,7 +10,7 @@ import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 })
 export class TabsComponent implements OnInit{
 
-  @Input() tabs: Tab[] = []
+  @Input() tabs: Tab[] = [];
   @Input() border: boolean = true;
   @Input() darkMode: boolean = false;
   @Output() change = new EventEmitter();

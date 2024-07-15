@@ -1,37 +1,23 @@
-import {Component, OnInit} from '@angular/core';
-import {NavbarService} from "../../../../../../shared/navbar/navbar.service";
-import {MenuService} from "../../../../../../shared/menu/menu.service";
-import {UserService} from "../../../../../../shared/services/user/user.service";
-import {ModalService} from "../../../../../../shared/modal/modal.service";
-import {ToastService} from "../../../../../../shared/toast/toast.service";
-import {
-  PaginatorComponent
-} from "../../../../../../shared/paginator/paginator.component";
-import {ButtonComponent} from "../../../../../../shared/button/button.component";
-import {
-  ItemDataComponent
-} from "../../../../../../shared/list/components/item-data/item-data.component";
-import {
-  ItemListComponent
-} from "../../../../../../shared/list/components/item-list/item-list.component";
-import {
-  HeaderColComponent
-} from "../../../../../../shared/list/components/header-col/header-col.component";
-import {
-  HeaderListComponent
-} from "../../../../../../shared/list/components/header-list/header-list.component";
-import {ListComponent} from "../../../../../../shared/list/list.component";
-import {
-  Chamado,
-  StatusChamado
-} from "../../../../../../models/chamado.interface";
-import {DatePipe} from "@angular/common";
-import {SuportAtendimentoService} from "./suport-atendimento.service";
-import {Router} from "@angular/router";
-import {
-  DetalheAtendimentoComponent
-} from "./components/detalhe-atendimento/detalhe-atendimento.component";
-import {SidebarService} from "../../../../../../shared/sidebar/sidebar.service";
+import { DatePipe } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { Chamado, StatusChamado } from '../../../../../../models/chamado.interface';
+import { ButtonComponent } from '../../../../../../shared/button/button.component';
+import { HeaderColComponent } from '../../../../../../shared/list/components/header-col/header-col.component';
+import { HeaderListComponent } from '../../../../../../shared/list/components/header-list/header-list.component';
+import { ItemDataComponent } from '../../../../../../shared/list/components/item-data/item-data.component';
+import { ItemListComponent } from '../../../../../../shared/list/components/item-list/item-list.component';
+import { ListComponent } from '../../../../../../shared/list/list.component';
+import { MenuService } from '../../../../../../shared/menu/menu.service';
+import { ModalService } from '../../../../../../shared/modal/modal.service';
+import { NavbarService } from '../../../../../../shared/navbar/navbar.service';
+import { PaginatorComponent } from '../../../../../../shared/paginator/paginator.component';
+import { UserService } from '../../../../../../shared/services/user/user.service';
+import { SidebarService } from '../../../../../../shared/sidebar/sidebar.service';
+import { ToastService } from '../../../../../../shared/toast/toast.service';
+import { DetalheAtendimentoComponent } from './components/detalhe-atendimento/detalhe-atendimento.component';
+import { SuportAtendimentoService } from './suport-atendimento.service';
 
 @Component({
   selector: 'app-suport-atendimento',
