@@ -43,21 +43,21 @@ export class PerfilComponent {
     switch(this.usuario?.role){
       case ('ADMIN') :
         this.tabs = [
-          {icon: '', label: 'Dados Pessoais', value: 'dados-pessoais', selected: false},
+          {icon: 'person', label: 'Dados Pessoais', value: 'dados-pessoais', selected: false},
           {icon: 'source_environment', label: 'Dados Empresariais', value: 'dados-empresariais', selected: false},
           {icon: 'notifications', label: 'Notificações', value: 'notificacoes', selected: false}
         ];
         break;
       case('MANAGER'):
         this.tabs = [
-          {icon: '', label: 'Dados Pessoais', value: 'dados-pessoais', selected: false},
+          {icon: 'person', label: 'Dados Pessoais', value: 'dados-pessoais', selected: false},
           // {icon: 'source_environment', label: 'Dados Empresariais', value: 'dados-empresariais', selected: false},
           {icon: 'notifications', label: 'Notificações', value: 'notificacoes', selected: false}
         ];
         break
       case('USER') :
         this.tabs = [
-        {icon: '', label: 'Dados Pessoais', value: 'dados-pessoais', selected: false},
+        {icon: 'person', label: 'Dados Pessoais', value: 'dados-pessoais', selected: false},
         // {icon: 'source_environment', label: 'Dados Empresariais', value: 'dados-empresariais', selected: false},
         {icon: 'notifications', label: 'Notificações', value: 'notificacoes', selected: false}
       ];
@@ -70,11 +70,5 @@ export class PerfilComponent {
   abrirTab(value: any) {
     this.abrirTabSelecionada = value
   }
-
-  // tabs: Tab[] = [
-  //   {icon: '', label: 'Dados Pessoais', value: 'dados-pessoais', selected: false},
-  //   {icon: 'source_environment', label: 'Dados Empresariais', value: 'dados-empresariais', selected: false},
-  //   {icon: 'notifications', label: 'Notificações', value: 'notificacoes', selected: false}
-  // ];
 
 }

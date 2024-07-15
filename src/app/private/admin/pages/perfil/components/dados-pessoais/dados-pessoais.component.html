@@ -1,32 +1,78 @@
 <main>
   <div class="actions">
+    @if(!mostrarFormEdit) {
     <div class="edit">
       <tgt-button [icon]="'vpn_key'" [color]="'primary'" [size]="'small'" [iconPosition]="'left'"
-        [fieldButton]="'outline'" [disabled]="false" [border]="true" [type]="'button'">
+        (click)="abrirFormPassword()" [fieldButton]="'outline'" [disabled]="false" [border]="true" [type]="'button'">
         Alterar Senha
       </tgt-button>
       <tgt-button [icon]="'edit'" [color]="'secundary'" [size]="'small'" [iconPosition]="'left'" [fieldButton]="'field'"
-        [disabled]="false" [border]="true" [type]="'button'">
+        (click)="abrirFormEditar()" [disabled]="false" [border]="true" [type]="'button'">
         Editar
       </tgt-button>
     </div>
     <div class="form">
-      <tgt-input-view [label]="'Nome Completo'" [value]="'john@gmail.com'" [mask]="''"></tgt-input-view>
-      <tgt-input-view [label]="'CPF'" [value]="'john@gmail.com'" [mask]="''"></tgt-input-view>
-      <tgt-input-view [label]="'E-mail Corporativo'" [value]="'john@gmail.com'" [mask]="''"></tgt-input-view>
+      <tgt-input-view [label]="'Nome Completo'" [value]="usuario.nome"></tgt-input-view>
+      <tgt-input-view [label]="'CPF'" [value]="usuario.cpf" [mask]="''"></tgt-input-view>
+      <tgt-input-view [label]="'E-mail Corporativo'" [value]="usuario.username" [mask]="''"></tgt-input-view>
       <div class="first-colum">
-        <tgt-input-view [label]="'Nome Completo'" [value]="'john@gmail.com'" [mask]="''"></tgt-input-view>
+        <tgt-input-view [label]="'Data Nascimento'" [value]="usuario.dataNascimento" [mask]="''"></tgt-input-view>
         &nbsp;
         &nbsp;
-        <tgt-input-view [label]="'Nome Completo'" [value]="'john@gmail.com'" [mask]="''"></tgt-input-view>
+        <tgt-input-view [label]="'Gênero'" [value]="usuario.sexo" [mask]="''"></tgt-input-view>
       </div>
       <div class="second-column">
-        <tgt-input-view [label]="'Nome Completo'" [value]="'john@gmail.com'" [mask]="''"></tgt-input-view>
+        <tgt-input-view [label]="'Central de Custo'" [value]="'Retornar o nome da central de custo'"
+          [mask]="''"></tgt-input-view>
         &nbsp;
         &nbsp;
-        <tgt-input-view [label]="'Nome Completo'" [value]="'john@gmail.com'" [mask]="''"></tgt-input-view>
+        <tgt-input-view [label]="'Perfil de Acesso'" [value]="usuario.role" [mask]="''"></tgt-input-view>
       </div>
-
     </div>
+    } @else {
+    <div class="form">
+      <tgt-input [label]="'Nome Completo'" [control]="formEditarUsuario.controls.nome"></tgt-input>
+      <tgt-input [label]="'CPF'" [control]="formEditarUsuario.controls.cpf" [mask]="'000.000.000-00'"></tgt-input>
+      <tgt-input [label]="'E-mail Corporativo'" [control]="formEditarUsuario.controls.email"></tgt-input>
+      <div class="first-colum">
+        <tgt-input [label]="'Data Nascimento'" [control]="formEditarUsuario.controls.dataNascimento"></tgt-input>
+        &nbsp;
+        &nbsp;
+        <tgt-input [label]="'Gênero'" [control]="formEditarUsuario.controls.sexo"></tgt-input>
+      </div>
+      <div class="second-column">
+        <tgt-input [label]="'Central de Custo'" [control]="formEditarUsuario.controls.email"></tgt-input>
+        &nbsp;
+        &nbsp;
+        <tgt-input [label]="'Perfil de Acesso'" [control]="formEditarUsuario.controls.role"></tgt-input>
+      </div>
+    </div>
+    }
+
+    @if(mostrarFormPassword) {
+    <div class="form">
+      <tgt-input-view [label]="'Nome Completo'" [value]="usuario.nome"></tgt-input-view>
+      <tgt-input-view [label]="'CPF'" [value]="usuario.cpf" [mask]="''"></tgt-input-view>
+      <tgt-input-view [label]="'E-mail Corporativo'" [value]="usuario.username" [mask]="''"></tgt-input-view>
+    </div>
+    }
+
+
+    @if(mostrarFormEdit) {
+    <div class="edit">
+      <tgt-button [color]="'primary'" [size]="'small'" [iconPosition]="'left'" [fieldButton]="'outline'"
+        (click)="cancelarEditar()" [disabled]="false" [border]="false" [type]="'button'">
+        Cancelar
+      </tgt-button>
+      <tgt-button [color]="'secundary'" [size]="'small'" [iconPosition]="'left'" [fieldButton]="'field'"
+        (click)="atualizar()" (click)="atualizar()" [disabled]="false" [border]="true" [type]="'button'">
+        Salvar
+      </tgt-button>
+    </div>
+    }
+
+
+
+
   </div>
 </main>
