@@ -20,19 +20,28 @@ main {
 
     .main {
         overflow: auto;
+        // padding: 0px 20px 0px 20px;
 
         .content {
             height: 245px;
             display: flex;
             flex-direction: row;
             gap: 16px;
+            justify-content: space-between;
+
+
+            .cartao {
+              display: flex;
+              flex-direction: row;
+            }
 
             .info {
-                display: flex;
-                flex-direction: row;
-                height: 217px;
+              display: flex;
+              flex-direction: row;
+              height: 217px;
 
-                .data-info {
+              .data-info {
+                  // background-color: antiquewhite;
                     display: flex;
                     flex-direction: column;
                     justify-content: space-around;
@@ -52,7 +61,7 @@ main {
             display: flex;
             flex-direction: row;
             gap:16px;
-            margin-top: 8px;
+            margin: 20px 20px 0px 0px;
 
             .btn {
               width: 40px;

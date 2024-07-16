@@ -8,9 +8,9 @@
   </div>
   <div class="main">
     @for (cartao of cartoes; track cartao) {
-      <div class="content">
+    <div class="content">
+      <div class="cartao">
         <tgt-credit-card-view [cartao]="cartao"></tgt-credit-card-view>
-
         <div class="info">
           <div class="data-info">
             <section>
@@ -32,21 +32,18 @@
               <span class="value">{{ cartao.cardMouth }}</span>
             </section>
           </div>
-          <div class="actions"></div>
-        </div>
-
-        <div class="actions">
-
-          <div class="btn">
-              <span class="material-symbols-outlined"
-                    (click)="excluir(cartao.id)">
-                delete
-              </span>
-          </div>
-
         </div>
       </div>
-      <tgt-divider></tgt-divider>
+      <div class="actions">
+        <div class="btn">
+          <span class="material-symbols-outlined" (click)="excluir(cartao.id)">
+            delete
+          </span>
+        </div>
+
+      </div>
+    </div>
+    <tgt-divider></tgt-divider>
     }
   </div>
 

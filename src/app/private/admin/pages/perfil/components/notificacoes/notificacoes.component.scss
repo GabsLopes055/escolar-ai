@@ -40,6 +40,11 @@ main {
     height: auto;
     gap: 20px;
     width: 80%;
+
+    .label {
+      font-size: 18px;
+      font-weight: 700;
+    }
   }
 
   .toggles {
