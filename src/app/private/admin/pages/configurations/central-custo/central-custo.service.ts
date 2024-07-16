@@ -4,8 +4,10 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../../../../environments/environment";
 import {
   CentralDeCusto,
-  CentralDeCustoRequest
+  CentralDeCustoRequest,
+  CentralDeCustoSolicitacao
 } from "../../../../../models/central-de-custo.interface";
+import { EntityPaginated } from '../../../../../models/filtro-busca.interface';
 
 const URL_BASE = `${environment.BACKEND_API}/central-custo`;
 
@@ -24,8 +26,8 @@ export class CentralCustoService {
     return this.http.post<CentralDeCusto>(`${URL_BASE}`,centralDeCustoRequest);
   }
 
-  listarPorEmpresa(empresaId: number):Observable<CentralDeCusto[]> {
-    return this.http.get<CentralDeCusto[]>(`${URL_BASE}/empresa/${empresaId}`);
+  listarPor(filtro: CentralDeCustoSolicitacao):Observable<EntityPaginated<CentralDeCusto[]>> {
+    return this.http.post<EntityPaginated<CentralDeCusto[]>>(`${URL_BASE}/listar`, filtro);
   }
 
   deletar(id: number): Observable<CentralDeCusto> {

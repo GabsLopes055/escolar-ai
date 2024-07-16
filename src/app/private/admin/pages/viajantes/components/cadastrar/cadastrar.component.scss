@@ -12,7 +12,20 @@ main {
     .perfil {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      margin: 0px 20px 0px 20px;
+      height: auto;
+      gap: 26px;
+
+      .permissao {
+        display: flex;
+        flex-direction: column;
+        padding: 14px 0px;
+      }
+
+      .label {
+        font-size: 14px;
+        font-weight: 700;
+      }
     }
   }
   .footer {

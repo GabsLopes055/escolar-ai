@@ -1,0 +1,49 @@
+main {
+
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 30vh;
+  margin: 0 auto;
+
+  section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    gap: 30px;
+    width: 70%;
+
+    .header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .label {
+      font-size: 14px;
+      font-weight: 700;
+  }
+  }
+
+  .toggle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px 0px 5px 0px;
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+  }
+
+}

@@ -23,7 +23,18 @@ import {
     standalone: true,
     templateUrl: './central-custo-details.component.html',
     styleUrl: './central-custo-details.component.scss',
-  imports: [TableComponent, HeaderTableComponent, HeaderTableDataComponent, TableDataComponent, ItemTableComponent, StatusCircleComponent, CurrencyPipe, PaginatorComponent, InputIconComponent, ButtonComponent, TabsComponent]
+  imports: [
+    TableComponent,
+    HeaderTableComponent,
+    HeaderTableDataComponent,
+    TableDataComponent,
+    ItemTableComponent,
+    StatusCircleComponent,
+    CurrencyPipe,
+    PaginatorComponent,
+    InputIconComponent,
+    ButtonComponent,
+    TabsComponent]
 })
 export class CentralCustoDetailsComponent implements OnDestroy{
 

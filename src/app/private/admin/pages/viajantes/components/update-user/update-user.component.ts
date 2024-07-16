@@ -22,6 +22,7 @@ import {ButtonComponent} from "../../../../../../shared/button/button.component"
 import {SidebarService} from "../../../../../../shared/sidebar/sidebar.service";
 import {FormControl, FormGroup} from "@angular/forms";
 import {ToastService} from "../../../../../../shared/toast/toast.service";
+import { Data } from '@angular/router';
 
 @Component({
   selector: 'app-update-user',
@@ -44,7 +45,7 @@ export class UpdateUserComponent implements OnInit{
 
   isEdit = false;
   user!: User;
-  dataNasci = '';
+  dataNascimento: any;
 
   options: OptionSelect[] = [
     {label: 'Masculino', value: 'MASCULINO'},
@@ -86,8 +87,15 @@ export class UpdateUserComponent implements OnInit{
         this.form.controls.dataNascimento.setValue(user.dataNascimento);
         this.form.controls.sexo.setValue(user.sexo);
         this.form.controls.role.setValue(user.role);
+
+        this.dataNascimento = this.formataData(user.dataNascimento)
+
       }
     })
+  }
+
+  formataData(data: any): string {
+    return data.getUTCDate() + "/" + data.getUTCMonth() + 1 + "/" + data.getUTCFullYear();
   }
 
   changeEdit() {

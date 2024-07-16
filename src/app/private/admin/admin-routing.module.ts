@@ -17,6 +17,7 @@ const routes: Routes = [
     {path: 'dashboard', loadComponent: () => import('./pages/dashboard/dashboard.component').then((c) => c.DashboardComponent), canActivate:[tokenGuard]},
     {path: 'viajar', loadComponent: () => import('./pages/viajar/viajar.component').then((c) => c.ViajarComponent), canActivate:[tokenGuard]},
     {path: 'central-custo', loadComponent: () => import('./pages/central-custo/central-custo.component').then((c) => c.CentralCustoComponent), canActivate:[tokenGuard]},
+    {path: 'perfil', loadComponent: () => import('./pages/perfil/perfil.component').then((c) => c.PerfilComponent), canActivate: [tokenGuard]},
     {path: 'suporte-atentimento', loadComponent: () => import('./pages/home/pages/suport-atendimento/suport-atendimento.component').then((c) => c.SuportAtendimentoComponent), canActivate:[tokenGuard]},
 ];
 

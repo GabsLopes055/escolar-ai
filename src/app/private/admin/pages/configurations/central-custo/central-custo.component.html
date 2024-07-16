@@ -1,10 +1,10 @@
 @if (isList | async) {
   <div class="tab-central-custo">
     <div class="header">
-      <tgt-select [label]="'Status'" [options]="options"
+      <tgt-select [label]="'Status'" [options]="options" [control]="select"
                   class="col-6"></tgt-select>
       <div class="input-box">
-        <tgt-input-icon icon="search" iconPosition="right"
+        <tgt-input-icon icon="search" iconPosition="right" [control]="pesquisa"
                         placeholder="Busque uma central..."></tgt-input-icon>
       </div>
       <tgt-button icon="add" iconPosition="left" size="small" color="secundary"
@@ -59,7 +59,7 @@
     </div>
     <div class="pag-footer">
       <div class="pag">
-        <tgt-paginator></tgt-paginator>
+        <tgt-paginator [pageSize]="tamanhoPagina" [currentPage]="paginaAtual" [totalItems]="totalRegistro" (changePage)="changePages($event)"></tgt-paginator>
       </div>
     </div>
 

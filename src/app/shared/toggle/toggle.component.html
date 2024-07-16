@@ -1,6 +1,6 @@
 <main>
   <div class="toggle-switch">
-    <input class="toggle-input" type="checkbox" [checked]="isChecked" [formControl]="control">
+    <input class="toggle-input" type="checkbox" [checked]="isChecked" [formControl]="control" [disabled]="disabled">
     <label class="toggle-label" (click)="change()"></label>
   </div>
   <div class="label">

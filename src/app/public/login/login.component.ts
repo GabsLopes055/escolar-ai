@@ -57,13 +57,11 @@ export class LoginComponent implements OnInit {
         this.userService.usuarioInstance = usuario;
         this.userService.usuario.next(usuario);
 
-
         this.router.navigate(['/admin/']);
         this.menuService.updateMenu();
       },
       error: erro => {
         this.toastService.notify({message: 'Usuário ou senha incorreto', type: 'ERROR'})
-
       }
     });
 

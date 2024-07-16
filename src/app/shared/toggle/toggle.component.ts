@@ -10,18 +10,19 @@ import {TooltipDirective} from "../directives/tooltip.directive";
   styleUrl: './toggle.component.scss'
 })
 export class ToggleComponent {
- @Input() isChecked = false;
+ @Input() isChecked!: boolean;
  @Input() icon = '';
+ @Input() disabled!: boolean;
  @Input() label = '';
  @Input() control: FormControl = new FormControl();
 
  @Output() changeToggle = new EventEmitter();
 
-
-
-
  change() {
-  this.isChecked = !this.isChecked;
-  this.changeToggle.emit(this.isChecked);
+  if(!this.disabled) {
+    this.isChecked = !this.isChecked;
+    this.control.setValue(this.isChecked)
+    this.changeToggle.emit(this.isChecked);
+  }
  }
 }

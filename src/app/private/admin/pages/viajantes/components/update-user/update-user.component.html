@@ -1,57 +1,84 @@
 <sidebar [title]="'Detalhes do integrante'">
   <main>
     <div class="header">
-      <div class="btn-edit" (click)="changeEdit()"
-           [style]="isEdit ? {cursor: 'not-allowed'} : {color: 'pointer'} "
-           [ngStyle]="isEdit ? {color: '#838280'} : {color: '#000'} ">
-      <span class="material-symbols-outlined">
-        edit
-      </span>
+      <div class="btn-edit" (click)="changeEdit()" [style]="isEdit ? {cursor: 'not-allowed'} : {color: 'pointer'} "
+        [ngStyle]="isEdit ? {color: '#838280'} : {color: '#000'} ">
+        <span class="material-symbols-outlined">
+          edit
+        </span>
         <span class="text">Editar</span>
       </div>
     </div>
 
     @if (!isEdit) {
-      <div class="view">
-        <tgt-input-view [label]="'Nome Completo'"
-                        [value]="user.nome"></tgt-input-view>
-        <tgt-input-view [label]="'CPF'" [value]="user.cpf"></tgt-input-view>
-        <tgt-input-view [label]="'E-mail corporativo'"
-                        [value]="user.email"></tgt-input-view>
-        <tgt-input-view [label]="'Telefone'"
-                        [value]="user.telefone"></tgt-input-view>
-        <tgt-input-view [label]="'Data de nascimento'"
-                        [value]="dataNasci"></tgt-input-view>
-        <tgt-input-view [label]="'Gênero'" [value]="user.sexo"></tgt-input-view>
-        <tgt-input-view [label]="'Perfil de acesso'"
-                        [value]="user.role"></tgt-input-view>
-      </div>
+    <div class="view">
+      <tgt-input-view [label]="'Nome Completo'" [value]="user.nome"></tgt-input-view>
+      <tgt-input-view [label]="'CPF'" [value]="user.cpf"></tgt-input-view>
+      <tgt-input-view [label]="'E-mail corporativo'" [value]="user.email"></tgt-input-view>
+      <tgt-input-view [label]="'Telefone'" [value]="user.telefone"></tgt-input-view>
+      <tgt-input-view [label]="'Data de nascimento'" [value]="dataNascimento"></tgt-input-view>
+      <tgt-input-view [label]="'Gênero'" [value]="user.sexo"></tgt-input-view>
+      <tgt-input-view [label]="'Perfil de acesso'" [value]="user.role"></tgt-input-view>
+    </div>
     } @else {
-      <div class="view-edit">
-        <tgt-input [label]="'Nome completo'" [control]="form.controls.nome"></tgt-input>
-        <tgt-input [label]="'CPF'" [control]="form.controls.cpf" [mask]="'000.000.000-00'"></tgt-input>
-        <tgt-input [label]="'E-mail corporativo'" [control]="form.controls.email"></tgt-input>
-        <tgt-input [label]="'Telefone'" [control]="form.controls.telefone" mask="(00) 00000-0000"></tgt-input>
-        <div class="grid col-12">
-          <tgt-select [label]="'Gênero*'" [options]="options" [control]="form.controls.sexo"
-                      class="col-6"></tgt-select>
-          <tgt-input [label]="'Data de nascimento'" type="date" class="col-6" [control]="form.controls.dataNascimento"></tgt-input>
-        </div>
-        <div class="grid col-12">
-          <span class="Label col-12">Perfil de acesso:</span>
-          <tgt-radio class="col-4" [value]="Role.MANAGER" [control]="form.controls.role">Gestor</tgt-radio>
-          <tgt-radio class="col-4" [value]="Role.USER" [control]="form.controls.role">Viajante</tgt-radio>
-        </div>
+    <div class="view-edit">
+      <tgt-input [label]="'Nome completo'" [control]="form.controls.nome"></tgt-input>
+      <tgt-input [label]="'CPF'" [control]="form.controls.cpf" [mask]="'000.000.000-00'"></tgt-input>
+      <tgt-input [label]="'E-mail corporativo'" [control]="form.controls.email"></tgt-input>
+      <tgt-input [label]="'Telefone'" [control]="form.controls.telefone" mask="(00) 00000-0000"></tgt-input>
+      <div class="grid col-12">
+        <tgt-select [label]="'Gênero*'" [options]="options" [control]="form.controls.sexo" class="col-6"></tgt-select>
+        <tgt-input [label]="'Data de nascimento'" type="date" class="col-6"
+          [control]="form.controls.dataNascimento"></tgt-input>
       </div>
+      <div class="perfil">
+
+        <div class="permissao">
+          <tgt-radio [value]="Role.ADMIN" [control]="form.controls.role">
+            <p class="label">Administrador</p>
+            <h5>Gerenciam os perfis de acesso, definindo quem será Administrador, Gestor ou Passageiro.</h5>
+          </tgt-radio>
+          <div class="label">
+          </div>
+        </div>
+
+        <div class="permissao">
+          <tgt-radio [value]="Role.MANAGER" [control]="form.controls.role">
+            <p class="label">Gestor</p>
+            <h5>Solicitam reservas de viagens para terceiros. Se o Administrador permitir, solicitam reservas para si
+              mesmos e aprovam solicitações de viagens.</h5>
+          </tgt-radio>
+          <div class="label">
+          </div>
+        </div>
+
+        <div class="permissao">
+          <tgt-radio [value]="Role.USER" [control]="form.controls.role">
+            <p class="label">Viajante</p>
+            <h5>Acompanham as viagens em que foram incluídos como passageiros. Se o Administrador permitir, também podem
+              solicitar reservas para si mesmos.</h5>
+          </tgt-radio>
+          <div class="label">
+          </div>
+        </div>
+
+      </div>
+      <!-- <div class="grid col-12"> -->
+
+      <!-- <span class="Label col-12">Perfil de acesso:</span>
+          <tgt-radio class="col-4" [value]="Role.MANAGER" [control]="form.controls.role">Gestor</tgt-radio>
+          <tgt-radio class="col-4" [value]="Role.USER" [control]="form.controls.role">Viajante</tgt-radio> -->
+      <!-- </div> -->
+    </div>
     }
 
   </main>
 
   @if(isEdit) {
-    <footer class="grid col-12">
-      <tgt-button class="col-5" size="small" fieldButton="outline" (click)="cancelar()">Cancelar</tgt-button>
-      <tgt-button class="col-5" size="small" icon="save" color="secundary" (click)="atualizar()">Salvar</tgt-button>
-    </footer>
+  <footer class="grid col-12">
+    <tgt-button class="col-5" size="small" fieldButton="outline" (click)="cancelar()">Cancelar</tgt-button>
+    <tgt-button class="col-5" size="small" icon="save" color="secundary" (click)="atualizar()">Salvar</tgt-button>
+  </footer>
   }
 
 
