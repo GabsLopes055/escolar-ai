@@ -6,24 +6,17 @@ import { User } from '../../../../../../models/user.interface';
 import { UserService } from '../../../../../../shared/services/user/user.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { InputComponent } from '../../../../../../shared/input/input.component';
+import { DatePipe } from '@angular/common';
+import { OptionSelect, SelectComponent } from '../../../../../../shared/select/select.component';
 
 @Component({
   selector: 'app-dados-pessoais',
   standalone: true,
-  imports: [
-    ButtonComponent,
-    InputViewComponent,
-    InputComponent
-  ],
+  imports: [ButtonComponent, InputViewComponent, InputComponent, DatePipe, SelectComponent],
   templateUrl: './dados-pessoais.component.html',
-  styleUrl: './dados-pessoais.component.scss'
+  styleUrl: './dados-pessoais.component.scss',
 })
 export class DadosPessoaisComponent implements OnInit {
-
-
-  mostrarFormEdit: boolean = false
-  mostrarFormPassword: boolean = false
-
   usuario: any;
   formEditarUsuario = new FormGroup({
     id: new FormControl(),
@@ -38,53 +31,79 @@ export class DadosPessoaisComponent implements OnInit {
     password: new FormControl(null),
   });
 
+  formEditarSenha = new FormGroup({
+    senhaAntiga: new FormControl(),
+    senhaNova: new FormControl(),
+    confirmacaoNovaSenha: new FormControl(),
+  });
+
+  // optionSexoUsuario: OptionSelect[] = [
+  //   'Masculino' = 'MASCULINO',
+  //   value: any;
+  // ]
+
   constructor(
     private readonly perfilUsuario: PerfilService,
     private readonly userService: UserService
-  ){
-  }
-  ngOnInit(): void {
-    this.buscarUsuarioId(this.userService.user?.id)
+  ) {}
+
+  ngOnInit() {
+    this.buscarUsuarioId(this.userService.user?.id);
   }
 
-  buscarUsuarioId(idUsuario: any){
+  buscarUsuarioId(idUsuario: any) {
     this.perfilUsuario.buscar(idUsuario).subscribe({
-      next: usuario => {
-        this.usuario = usuario
+      next: (usuario) => {
+        this.usuario = usuario;
         this.formEditarUsuario.controls.id.setValue(usuario.id);
         this.formEditarUsuario.controls.nome.setValue(usuario.nome);
         this.formEditarUsuario.controls.cpf.setValue(usuario.cpf);
         this.formEditarUsuario.controls.email.setValue(usuario.email);
         this.formEditarUsuario.controls.telefone.setValue(usuario.telefone);
-        this.formEditarUsuario.controls.dataNascimento.setValue(usuario.dataNascimento);
+        this.formEditarUsuario.controls.dataNascimento.setValue(
+          usuario.dataNascimento
+        );
         this.formEditarUsuario.controls.sexo.setValue(usuario.sexo);
         this.formEditarUsuario.controls.role.setValue(usuario.role);
-
-      }
-    })
-  }
-
-  cancelarEditar() {
-    this.mostrarFormEdit = false;
-    this.mostrarFormPassword = false
+      },
+    });
   }
 
   abrirFormEditar() {
-    if(!this.mostrarFormEdit) {
-      this.mostrarFormEdit = !this.mostrarFormEdit;
-    }
+    this.mostrarForm('edit');
   }
 
   abrirFormPassword() {
-    if(!this.mostrarFormPassword) {
-      this.mostrarFormPassword = !this.mostrarFormPassword
-    }
-    this.mostrarFormEdit = false
-    console.log(this.mostrarFormEdit)
+    this.mostrarForm('password');
+  }
+
+  cancelarEditar() {
+    this.mostrarForm('view');
+  }
+
+  private mostrarForm(formType: 'view' | 'edit' | 'password') {
+    this.mostrarFormEdit = formType === 'edit';
+    this.mostrarFormPassword = formType === 'password';
+    this.vizualizarInformacoesUsuario = formType === 'view';
+    this.footerActions = formType !== 'view';
   }
 
   atualizar() {
-    console.log("atualizar")
+
+    if(this.mostrarFormPassword) {
+      console.log('atualizar senha')
+    }
+
+    if(this.mostrarFormEdit) {
+      console.log('atualizar informacoes usuario')
+      console.log(this.formEditarSenha.value)
+    }
+
   }
 
+  // Variáveis para controle da exibição dos formulários e ações do footer
+  vizualizarInformacoesUsuario = true;
+  mostrarFormEdit = false;
+  mostrarFormPassword = false;
+  footerActions = false;
 }

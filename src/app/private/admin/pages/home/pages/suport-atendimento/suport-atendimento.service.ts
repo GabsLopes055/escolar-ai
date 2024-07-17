@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../../../../../environments/environment";
 import {Observable} from "rxjs";
-import {Chamado} from "../../../../../../models/chamado.interface";
+import {Chamado, FiltroDeBuscaChamado} from "../../../../../../models/chamado.interface";
+import { EntityPaginated } from '../../../../../../models/filtro-busca.interface';
 
 const URL_BASE= `${environment.BACKEND_API}/chamado`;
 
@@ -13,7 +14,7 @@ export class SuportAtendimentoService {
 
   constructor(private readonly http: HttpClient) { }
 
-  findall(idUser: number): Observable<Chamado[]> {
-    return this.http.get<Chamado[]>(`${URL_BASE}/chamados/${idUser}`);
+  findall(filtro: FiltroDeBuscaChamado): Observable<EntityPaginated<Chamado>> {
+    return this.http.post<EntityPaginated<Chamado>>(`${URL_BASE}/chamados/listar-por-filtro`, filtro);
   }
 }

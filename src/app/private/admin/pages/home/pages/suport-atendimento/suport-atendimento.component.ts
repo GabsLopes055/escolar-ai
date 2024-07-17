@@ -1,8 +1,9 @@
+import { Status } from './../../../../../../shared/status-circle/status-circle.component';
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Chamado, StatusChamado } from '../../../../../../models/chamado.interface';
+import { Chamado, FiltroDeBuscaChamado, StatusChamado } from '../../../../../../models/chamado.interface';
 import { ButtonComponent } from '../../../../../../shared/button/button.component';
 import { HeaderColComponent } from '../../../../../../shared/list/components/header-col/header-col.component';
 import { HeaderListComponent } from '../../../../../../shared/list/components/header-list/header-list.component';
@@ -18,6 +19,10 @@ import { SidebarService } from '../../../../../../shared/sidebar/sidebar.service
 import { ToastService } from '../../../../../../shared/toast/toast.service';
 import { DetalheAtendimentoComponent } from './components/detalhe-atendimento/detalhe-atendimento.component';
 import { SuportAtendimentoService } from './suport-atendimento.service';
+import { FormControl } from '@angular/forms';
+import { debounceTime } from 'rxjs';
+import { InputIconComponent } from '../../../../../../shared/input-icon/input-icon.component';
+import { StatusCircleComponent } from '../../../../../../shared/status-circle/status-circle.component';
 
 @Component({
   selector: 'app-suport-atendimento',
@@ -30,23 +35,37 @@ import { SuportAtendimentoService } from './suport-atendimento.service';
     HeaderColComponent,
     HeaderListComponent,
     ListComponent,
-    DatePipe
+    DatePipe,
+    StatusCircleComponent,
+    InputIconComponent,
   ],
   host: { class: 'main' },
   templateUrl: './suport-atendimento.component.html',
   styleUrl: './suport-atendimento.component.scss'
 })
-export class SuportAtendimentoComponent implements OnInit{
+export class SuportAtendimentoComponent implements OnInit {
 
-  data: Chamado[] = [];
   idUser: number | undefined = 0;
+  pagina: number = 1;
+  tamanhoPagina: number = 6;
+  filtro: FiltroDeBuscaChamado = {
+    status: null,
+    email: null,
+    userId: null,
+    pagina: this.pagina,
+    tamanhoPagina: this.tamanhoPagina,
+  };
 
+  data: any = [];
+  totalCount: number = 0;
+
+  pesquisa = new FormControl();
 
   constructor(
     private readonly navbarService: NavbarService,
     private readonly menuService: MenuService,
     private readonly userService: UserService,
-    private readonly modalService:ModalService,
+    private readonly modalService: ModalService,
     private readonly toast: ToastService,
     private readonly modal: ModalService,
     private readonly service: SuportAtendimentoService,
@@ -55,31 +74,72 @@ export class SuportAtendimentoComponent implements OnInit{
   ) {
     const usuario = this.userService.user;
     this.idUser = usuario?.id;
-    const firstName = usuario?.nome.split(" ")[0]
     navbarService.setTitle(`Ajuda`);
     navbarService.showBtnViajar.next(true);
     menuService.updateMenu();
   }
 
   ngOnInit(): void {
+    this.campoPesquisa();
     this.listenChamados();
   }
 
   listenChamados() {
-    this.service.findall(this.idUser as number).subscribe({
-      next: value => {
-        this.data = value;
-      }
+
+    this.filtro.userId = this.idUser;
+
+    this.service.findall(this.filtro).subscribe({
+      next: (value) => {
+        this.data = value.itens;
+        this.totalCount = value.totalCount;
+
+        this.updatePagination();
+      },
     });
+  }
+
+  campoPesquisa() {
+    this.pesquisa.valueChanges.pipe(debounceTime(700)).subscribe((value) => {
+      if (value === '') {
+        this.filtro.email = null;
+      } else {
+        this.filtro.email = value;
+      }
+      this.filtro.pagina = 1;  // redefine a pagina para nova pesquisa
+      this.listenChamados();
+    });
+  }
+
+  setFilterStatus(status: StatusChamado | null) {
+    this.filtro.status = status;
+    this.listenChamados();
+  }
+
+  refresh() {
+    this.filtro.email = null;
+    this.filtro.status = null;
+    this.listenChamados();
   }
 
   voltar() {
     this.router.navigate(['/admin']);
   }
 
-  openDetalhe(id: number, status: StatusChamado) {
-    this.sidebar.openSideWithData(DetalheAtendimentoComponent, {id: id, status: status});
+  openDetalhe(id: number) {
+    this.sidebar.openSideWithData(DetalheAtendimentoComponent, { id: id });
   }
 
+  changePage(pagina: number) {
+    this.filtro.pagina = pagina;
+    this.listenChamados();
+  }
+
+  private updatePagination() {
+    if (this.pagina > Math.ceil(this.totalCount / this.tamanhoPagina)) {
+      this.pagina = 1;
+    }
+  }
+
+  protected readonly status = Status;
   protected readonly StatusChamado = StatusChamado;
 }
