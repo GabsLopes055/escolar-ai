@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 
 
 import {DetalheAtendimentoService} from "./detalhe-atendimento.service";
-import {DatePipe} from "@angular/common";
+import {DatePipe, JsonPipe} from "@angular/common";
 import {FormControl} from "@angular/forms";
 import {
   SidebarComponent
@@ -44,6 +44,7 @@ import {
     ButtonComponent,
     DatePipe,
     AvaliacaoStarsComponent,
+    JsonPipe,
   ],
   templateUrl: './detalhe-atendimento.component.html',
   styleUrl: './detalhe-atendimento.component.scss'
