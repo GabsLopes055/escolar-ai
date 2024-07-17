@@ -3,8 +3,10 @@ import {
   Component,
   EventEmitter,
   Input,
+  OnChanges,
   OnInit,
-  Output
+  Output,
+  SimpleChanges
 } from '@angular/core';
 
 @Component({
@@ -14,40 +16,38 @@ import {
   templateUrl: './paginator.component.html',
   styleUrl: './paginator.component.scss'
 })
-export class PaginatorComponent implements OnInit, AfterViewInit{
+export class PaginatorComponent implements OnChanges {
   @Input() totalItems!: number;
   @Input() pageSize!: number;
   @Input() currentPage: number = 1;
 
-
   @Output() changePage = new EventEmitter<number>();
 
-  protected pages = Math.ceil(this.totalItems / this.pageSize);
+  pages: number = 1;
 
-  constructor() {
+  ngOnChanges(changes: SimpleChanges): void { // monitora a mudança do total de itens e pagina atual
+    if (changes['totalItems'] || changes['pageSize']) {
+      this.updatePages();
+    }
   }
 
-  ngAfterViewInit(): void {
-    setTimeout(() => {
-      this.pages = Math.ceil(this.totalItems / this.pageSize);
-    },500)
-
+  private updatePages() {
+    this.pages = Math.max(Math.ceil(this['totalItems'] / this['pageSize']), 1); //Garante que o número de páginas nunca seja menor que 1
+    if (this.currentPage > this.pages) {
+      this.currentPage = this.pages;
+      this.changePage.emit(this.currentPage);
+    }
   }
-
-  ngOnInit(): void {
-    this.totalItems = Math.ceil(this.totalItems / this.pageSize)*10;
-  }
-
 
   changePageNext() {
-    if(this.currentPage < this.pages) {
+    if (this.currentPage < this.pages) {
       this.currentPage++;
       this.changePage.emit(this.currentPage);
     }
   }
 
   changePageBack() {
-    if(this.currentPage > 1) {
+    if (this.currentPage > 1) {
       this.currentPage--;
       this.changePage.emit(this.currentPage);
     }

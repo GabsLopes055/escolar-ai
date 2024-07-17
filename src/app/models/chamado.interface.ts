@@ -1,3 +1,4 @@
+import { FiltroDeBusca } from "./filtro-busca.interface";
 import {User, UserEntity} from "./user.interface";
 
 export interface Chamado {
@@ -39,4 +40,10 @@ export enum StatusChamado {
   ABERTO = "ABERTO",
   EM_ATENDIMENTO = "EM_ATENDIMENTO",
   FECHADO = "FECHADO",
+}
+
+export interface FiltroDeBuscaChamado extends FiltroDeBusca {
+  status?: StatusChamado | null;
+  email?: string | null;
+  userId?: number | null;
 }

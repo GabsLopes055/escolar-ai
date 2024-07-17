@@ -1,5 +1,4 @@
 main {
-
   padding: 24px;
   display: flex;
   flex-direction: column;
@@ -10,7 +9,6 @@ main {
 
   tgt-input-view {
     width: 100%;
-    // margin: 20px;
   }
 
   .actions {
@@ -22,14 +20,14 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: end;
-  }
 
-  .edit > tgt-button:first-child {
-    margin: 0px 24px 0px 24px;
+    tgt-button:first-child {
+      margin-right: 24px;
+    }
   }
 
   .form {
-    padding: 20px 0px 20px 0px;
+    padding: 20px 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -39,15 +37,19 @@ main {
       display: flex;
       flex-direction: row;
       justify-content: space-evenly;
-
+      width: 100%;
     }
 
-    .second-column {
+    .first-colum-edit {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      width: 100%;
+
+      tgt-input {
+        flex: 1;
+        margin-right: 10px;
+      }
     }
-
   }
-
 }

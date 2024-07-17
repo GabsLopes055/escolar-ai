@@ -44,6 +44,11 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: end;
+
+    tgt-button {
+      width: 10%;
+    }
+
   }
 
 }

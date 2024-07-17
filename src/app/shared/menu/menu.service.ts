@@ -3,15 +3,18 @@ import { BehaviorSubject, Subject } from 'rxjs';
 import { Menu } from './menu.component';
 import { UserService } from '../services/user/user.service';
 import { Role, User } from '../../models/user.interface';
+import { PerfilAcessoService } from '../../private/admin/pages/configurations/perfil-acesso/perfil-acesso.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MenuService {
+
   _menu = new BehaviorSubject<Menu[]>([]);
 
   constructor(
-    private readonly userService: UserService
+    private readonly userService: UserService,
+    private readonly perfilAcessoService: PerfilAcessoService
   ) {
     this.updateMenu();
   }
@@ -37,8 +40,10 @@ export class MenuService {
    }
 
    updateMenu() {
+
       const usuario = this.userService.user;
-      if(usuario != null && (usuario.role == Role.ADMIN || usuario.role == Role.MANAGER)) {
+
+      if(usuario != null && usuario.role == Role.ADMIN) {
         this._menu.next([
           {icon: 'dashboard', label: 'Dashboard', route: '/admin/dashboard', checked: false},
           {icon: 'luggage', label: 'Viajar', route: '/admin/viajar', checked: false},
@@ -50,13 +55,68 @@ export class MenuService {
         ])
       }
 
-      if(usuario != null && usuario.role == Role.USER) {
-        this._menu.next([
-          {icon: 'luggage', label: 'Viajar', route: '/admin/viajar', checked: false},
-          {icon: 'date_range', label: 'Reservas', route: '/admin/reservas', checked: false},
-          {icon: 'person_4', label: 'Viajantes', route: '/admin/viajantes', checked: false},
-        ])
+      if(usuario != null && (usuario.role == Role.MANAGER || usuario.role == Role.USER)) {
+
+
+        this.perfilAcessoService.buscar(this.userService.usuarioInstance?.empresaId).subscribe({
+
+          next: (permissoes) => {
+
+            let menu: Menu[] = [];
+
+            if(usuario != null && usuario.role == Role.MANAGER) {
+              menu.push({icon: 'dashboard', label: 'Dashboard', route: '/admin/dashboard', checked: false});
+              menu.push({icon: 'luggage', label: 'Viajar', route: '/admin/viajar', checked: false});
+              menu.push({icon: 'date_range', label: 'Reservas', route: '/admin/reservas', checked: false});
+              menu.push({icon: 'task_alt', label: 'Aprovações', route: '/admin/aprovacoes', checked: false})
+
+              if(permissoes.gestorCriaCentral) {
+                menu.push({icon: 'calculate', label: 'Central de Custo', route: '/admin/central-custo', checked: false});
+              }
+
+              if(permissoes.gestorConvida) {
+                menu.push({icon: 'person_4', label: 'Integrantes', route: '/admin/viajantes', checked: false});
+              }
+
+              menu.push({icon: 'settings', label: 'Configurações', route: '/admin/settings', checked: false});
+
+            } else {
+
+              menu.push({icon: 'date_range', label: 'Reservas', route: '/admin/reservas', checked: false});
+
+              if(permissoes.passageiroReserva) {
+                menu.push({icon: 'luggage', label: 'Viajar', route: '/admin/viajar', checked: false});
+              }
+
+              // menu.push({icon: 'person_4', label: 'Viajantes', route: '/admin/viajantes', checked: false});
+            }
+
+            this._menu.next(menu);
+
+          }
+        })
+
       }
+
+
+      // if(usuario != null && (usuario.role == Role.ADMIN || usuario.role == Role.MANAGER)) {
+      //   this._menu.next([
+      //     {icon: 'dashboard', label: 'Dashboard', route: '/admin/dashboard', checked: false},
+      //     {icon: 'luggage', label: 'Viajar', route: '/admin/viajar', checked: false},
+      //     {icon: 'date_range', label: 'Reservas', route: '/admin/reservas', checked: false},
+      //     {icon: 'calculate', label: 'Central de Custo', route: '/admin/central-custo', checked: false},
+      //     {icon: 'person_4', label: 'Integrantes', route: '/admin/viajantes', checked: false},
+      //     {icon: 'settings', label: 'Configurações', route: '/admin/settings', checked: false},
+      //   ])
+      // }
+
+      // if(usuario != null && usuario.role == Role.USER) {
+      //   this._menu.next([
+      //     {icon: 'luggage', label: 'Viajar', route: '/admin/viajar', checked: false},
+      //     {icon: 'date_range', label: 'Reservas', route: '/admin/reservas', checked: false},
+      //     {icon: 'person_4', label: 'Viajantes', route: '/admin/viajantes', checked: false},
+      //   ])
+      // }
 
    }
 }

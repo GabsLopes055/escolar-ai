@@ -5,11 +5,11 @@
     </tgt-button>
 
     <div class="input-box">
-      <!--      <tgt-input-icon icon="search" iconPosition="right"-->
-      <!--                      placeholder="Busque uma central..."></tgt-input-icon>-->
+           <tgt-input-icon icon="search" iconPosition="right" [control]="pesquisa"
+                           placeholder="Pesquise por um chamado"></tgt-input-icon>
     </div>
     <tgt-button icon="refresh" iconPosition="left" size="small" fieldButton="outline"
-                (click)="listenChamados()" >refresh
+                (click)="refresh()" >refresh
     </tgt-button>
   </div>
   <div class="body">
@@ -34,13 +34,17 @@
             <tgt-item-data>{{ item.user.email }} </tgt-item-data>
             <tgt-item-data>{{ item.user.empresa.nomeFantasia }}</tgt-item-data>
             <tgt-item-data>{{ item.createdAt | date: 'dd/MM/yyyy hh:mm:ss' }}</tgt-item-data>
-            <tgt-item-data>{{ item.status == StatusChamado.ABERTO ? 'pendente' : item.status }}</tgt-item-data>
+            <tgt-item-data>
+              <tgt-status-circle [status]="item.status == 'FECHADO' || item.status == 'EM_ATENDIMENTO' ? status.ATIVA : status.INATIVA"></tgt-status-circle>
+              {{ item.status }}
+            </tgt-item-data>
+            <!--  -->
             <tgt-item-data>
               <div class="ft-btn">
                 <div class="w-button">
                   <tgt-button icon="search" iconPosition="left"
                               size="small" color="secundary"
-                              (click)="openDetalhe(item.id, item.status)"
+                              (click)="openDetalhe(item.id)"
                   ></tgt-button>
                 </div>
               </div>
@@ -55,7 +59,8 @@
   </div>
   <div class="pag-footer">
     <div class="pag">
-      <tgt-paginator></tgt-paginator>
+      <tgt-paginator [pageSize]="tamanhoPagina" [currentPage]="pagina" [totalItems]="totalCount"
+        (changePage)="changePage($event)"></tgt-paginator>
     </div>
   </div>
 </main>

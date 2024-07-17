@@ -51,14 +51,12 @@ export class PerfilComponent {
       case('MANAGER'):
         this.tabs = [
           {icon: 'person', label: 'Dados Pessoais', value: 'dados-pessoais', selected: false},
-          // {icon: 'source_environment', label: 'Dados Empresariais', value: 'dados-empresariais', selected: false},
           {icon: 'notifications', label: 'Notificações', value: 'notificacoes', selected: false}
         ];
         break
       case('USER') :
         this.tabs = [
         {icon: 'person', label: 'Dados Pessoais', value: 'dados-pessoais', selected: false},
-        // {icon: 'source_environment', label: 'Dados Empresariais', value: 'dados-empresariais', selected: false},
         {icon: 'notifications', label: 'Notificações', value: 'notificacoes', selected: false}
       ];
       break

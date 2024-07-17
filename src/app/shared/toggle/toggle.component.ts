@@ -14,7 +14,7 @@ export class ToggleComponent {
  @Input() icon = '';
  @Input() disabled!: boolean;
  @Input() label = '';
- @Input() control: FormControl = new FormControl();
+ @Input() control!: FormControl;
 
  @Output() changeToggle = new EventEmitter();
 

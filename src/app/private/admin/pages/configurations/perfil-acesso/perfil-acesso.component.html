@@ -4,7 +4,7 @@
     <div class="header">
       <h3>Configure seus perfis de acesso:</h3>
       <tgt-button [icon]="'edit'" [color]="'secundary'" [size]="'small'" [iconPosition]="'left'" [fieldButton]="'field'"
-      [disabled]="edit ? true : false" [border]="true" [type]="'button'" (click)="editarInformacoes()">
+      [disabled]="edit ? true : false" [border]="true" [type]="'button'" (click)="editarInformacoes()" >
       Editar
     </tgt-button>
     </div>
@@ -14,14 +14,14 @@
     <p class="label">Passageiro</p>
     <section class="passageiro">
       <div class="toggle">
-        <toggle [disabled]="desabilitarToggle" (changeToggle)="habilitarToggle($event)" [control]="controlToggle"></toggle>
+        <toggle [disabled]="this.permissoes.controls['passageiroViaja'].value" (changeToggle)="retornoPassageiroViaja($event)" [control]="$any(this.permissoes.controls['passageiroViaja'])"></toggle>
         <div class="descricao">
           <p>Viajar</p>
           <h6>Podem ser incluídos como passageiro em reservas de viagens.</h6>
         </div>
       </div>
       <div class="toggle">
-        <toggle (changeToggle)="habilitarToggle($event)"></toggle>
+        <toggle [disabled]="!edit" (changeToggle)="retornoPassageiroReserva($event)" [control]="$any(this.permissoes.controls['passageiroReserva'])"></toggle>
         <div class="descricao">
           <p>Reservar</p>
           <h6>Podem solicitar reservas de viagens em seu nome.</h6>
@@ -33,26 +33,34 @@
 
     <section class="passageiro">
       <div class="toggle">
-        <toggle [disabled]="desabilitarToggle" (changeToggle)="habilitarToggle($event)" [control]="controlToggle"></toggle>
+        <toggle [disabled]="this.permissoes.controls['gestorReserva'].value" (changeToggle)="retornoGestorReserva($event)" [control]="$any(this.permissoes.controls['gestorReserva'])"></toggle>
         <div class="descricao">
           <p>Reservar</p>
           <h6>Podem solicitar reservas de viagens para terceiros.</h6>
         </div>
       </div>
       <div class="toggle">
-        <toggle (changeToggle)="habilitarToggle($event)"></toggle>
-        <div class="descricao">
-          <p>Convidar integrantes</p>
-          <h6>Lorem</h6>
-        </div>
-      </div>
-      <div class="toggle">
-        <toggle (changeToggle)="habilitarToggle($event)"></toggle>
+        <toggle [disabled]="!edit" (changeToggle)="retornoGestorViaja($event)" [control]="$any(this.permissoes.controls['gestorViaja'])"></toggle>
         <div class="descricao">
           <p>Viajar</p>
           <h6>Podem solicitar reservas de viagens em seu nome e de terceiros.</h6>
         </div>
       </div>
+      <div class="toggle">
+        <toggle [disabled]="!edit" (changeToggle)="retornoGestorConvida($event)" [control]="$any(this.permissoes.controls['gestorConvida'])"></toggle>
+        <div class="descricao">
+          <p>Convidar colaboradores</p>
+          <h6>Adicionar colaboradores com perfil de Gestor ou Passageiro.</h6>
+        </div>
+      </div>
+      <div class="toggle">
+        <toggle [disabled]="!edit" (changeToggle)="retornoGestorCriaCentralCusto($event)" [control]="$any(this.permissoes.controls['gestorCriaCentral'])"></toggle>
+        <div class="descricao">
+          <p>Criar Centrais de Custo</p>
+          <h6>Administrar Centrais de Custos.</h6>
+        </div>
+      </div>
+
     </section>
 
     @if(edit) {
@@ -60,7 +68,7 @@
         <tgt-button [color]="'primary'" [size]="'small'" [iconPosition]="'left'" [fieldButton]="'outline'" [disabled]="false" [border]="false" [type]="'button'" (click)="cancelar()">
           Cancelar
         </tgt-button>
-        <tgt-button [color]="'secundary'" [size]="'small'" [iconPosition]="'left'" [fieldButton]="'field'" [disabled]="false" [border]="true" [type]="'button'">
+        <tgt-button [color]="'secundary'" [size]="'small'" [iconPosition]="'left'" [fieldButton]="'field'" [disabled]="false" [border]="true" [type]="'button'" (click)="alterarPermissoes()">
           Salvar
         </tgt-button>
       </div>

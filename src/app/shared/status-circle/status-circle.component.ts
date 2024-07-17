@@ -9,7 +9,7 @@ import { Component, Input } from '@angular/core';
   styleUrl: './status-circle.component.scss'
 })
 export class StatusCircleComponent {
-  @Input() status: Status = Status.ATIVA;
+  @Input() status!: Status;
 }
 export enum Status {
   ATIVA = 'ATIVA',
