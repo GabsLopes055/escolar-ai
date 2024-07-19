@@ -1,4 +1,4 @@
-import { Component, Input, input } from '@angular/core';
+import { Component, EventEmitter, Input, input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { DividerComponent } from "../divider/divider.component";
 import { FormControl } from '@angular/forms';
 
@@ -9,13 +9,25 @@ import { FormControl } from '@angular/forms';
     styleUrl: './select.component.scss',
     imports: [DividerComponent]
 })
-export class SelectComponent {
+export class SelectComponent implements OnChanges {
   isOpenModal = false;
 
   @Input() label: string = 'Selecione';
   @Input() options: OptionSelect[] = [];
   @Input() control: FormControl = new FormControl();
 
+  @Output() changeValue = new EventEmitter();
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['control'] && this.control.value) {
+      const selectedOption = this.options.find(
+        (option) => option.value === this.control.value,
+      );
+      if (selectedOption) {
+        this.label = selectedOption.label;
+      }
+    }
+  }
 
   openModal() {
     this.isOpenModal = !this.isOpenModal;
@@ -25,6 +37,7 @@ export class SelectComponent {
     this.label = option.label;
     this.isOpenModal = false;
     this.control.setValue(option.value);
+    this.changeValue.emit(this.control.value);
   }
 }
 export interface OptionSelect {
