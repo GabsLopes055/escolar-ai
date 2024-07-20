@@ -3,7 +3,11 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Chamado, FiltroDeBuscaChamado, StatusChamado } from '../../../../../../models/chamado.interface';
+import {
+  Chamado,
+  FiltroDeBuscaChamado,
+  StatusChamado,
+} from '../../../../../../models/chamado.interface';
 import { ButtonComponent } from '../../../../../../shared/button/button.component';
 import { HeaderColComponent } from '../../../../../../shared/list/components/header-col/header-col.component';
 import { HeaderListComponent } from '../../../../../../shared/list/components/header-list/header-list.component';
@@ -23,6 +27,8 @@ import { FormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs';
 import { InputIconComponent } from '../../../../../../shared/input-icon/input-icon.component';
 import { StatusCircleComponent } from '../../../../../../shared/status-circle/status-circle.component';
+import { ChipsComponent } from '../../../../../../shared/chips/chips.component';
+import { AbrirChamadoComponent } from '../../components/abrir-chamado/abrir-chamado.component';
 
 @Component({
   selector: 'app-suport-atendimento',
@@ -38,12 +44,16 @@ import { StatusCircleComponent } from '../../../../../../shared/status-circle/st
     DatePipe,
     StatusCircleComponent,
     InputIconComponent,
+    ChipsComponent,
   ],
   host: { class: 'main' },
   templateUrl: './suport-atendimento.component.html',
-  styleUrl: './suport-atendimento.component.scss'
+  styleUrl: './suport-atendimento.component.scss',
 })
 export class SuportAtendimentoComponent implements OnInit {
+  chamadosPendentes!: number;
+  chamadosEmAtendimento!: number;
+  chamadosFinalizados!: number;
 
   idUser: number | undefined = 0;
   pagina: number = 1;
@@ -55,6 +65,10 @@ export class SuportAtendimentoComponent implements OnInit {
     pagina: this.pagina,
     tamanhoPagina: this.tamanhoPagina,
   };
+
+  selectEmAtendimento!: boolean;
+  selectAberto!: boolean;
+  selectFechado!: boolean;
 
   data: any = [];
   totalCount: number = 0;
@@ -76,7 +90,12 @@ export class SuportAtendimentoComponent implements OnInit {
     this.idUser = usuario?.id;
     navbarService.setTitle(`Suporte`);
     navbarService.showBtnViajar.next(true);
-    menuService.setSelected({icon: 'headset_mic', label: 'Suporte', route: '/admin/suporte-atentimento', checked: true})
+    menuService.setSelected({
+      icon: 'headset_mic',
+      label: 'Suporte',
+      route: '/admin/suporte-atentimento',
+      checked: true,
+    });
     // menuService.updateMenu();
   }
 
@@ -86,13 +105,24 @@ export class SuportAtendimentoComponent implements OnInit {
   }
 
   listenChamados() {
-
     this.filtro.userId = this.idUser;
 
     this.service.findall(this.filtro).subscribe({
       next: (value) => {
         this.data = value.itens;
         this.totalCount = value.totalCount;
+
+        this.chamadosPendentes = value.itens.filter(
+          (item: any) => item.status == StatusChamado.ABERTO
+        ).length;
+
+        this.chamadosFinalizados = value.itens.filter(
+          (item: any) => item.status == StatusChamado.FECHADO
+        ).length;
+
+        this.chamadosEmAtendimento = value.itens.filter(
+          (item: any) => item.status == StatusChamado.EM_ATENDIMENTO
+        ).length;
 
         this.updatePagination();
       },
@@ -106,24 +136,40 @@ export class SuportAtendimentoComponent implements OnInit {
       } else {
         this.filtro.email = value;
       }
-      this.filtro.pagina = 1;  // redefine a pagina para nova pesquisa
+      this.filtro.pagina = 1; // redefine a pagina para nova pesquisa
       this.listenChamados();
     });
   }
 
   setFilterStatus(status: StatusChamado | null) {
+    this.selectAberto = false;
+    this.selectEmAtendimento = false;
+    this.selectFechado = false;
+
+    if (status == StatusChamado.EM_ATENDIMENTO) {
+      this.selectEmAtendimento = true;
+    } else if (status == StatusChamado.FECHADO) {
+      this.selectFechado = true;
+    } else if (status == StatusChamado.ABERTO) {
+      this.selectAberto = true;
+    }
     this.filtro.status = status;
     this.listenChamados();
   }
 
   refresh() {
+    this.selectAberto = false;
+    this.selectEmAtendimento = false;
+    this.selectFechado = false;
+
+    this.pesquisa.setValue('');
     this.filtro.email = null;
     this.filtro.status = null;
     this.listenChamados();
   }
 
-  voltar() {
-    this.router.navigate(['/admin']);
+  abrirChamado() {
+    this.sidebar.openSide(AbrirChamadoComponent)
   }
 
   openDetalhe(data: any) {

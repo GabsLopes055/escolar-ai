@@ -45,6 +45,7 @@ export class NavbarComponent {
 
   visualizarPerfil() {
     this.router.navigate(['/admin/perfil'])
+    this.showHideDetail();
   }
 
   logout() {

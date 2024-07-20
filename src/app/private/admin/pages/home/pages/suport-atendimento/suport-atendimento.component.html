@@ -1,15 +1,29 @@
 <main>
   <div class="header">
-    <tgt-button icon="arrow_left_alt" iconPosition="left" [border]="false" size="small" fieldButton="outline"
-                (click)="voltar()" >voltar
-    </tgt-button>
-
-    <div class="input-box">
-           <tgt-input-icon icon="search" iconPosition="right" [control]="pesquisa"
-                           placeholder="Pesquise por um chamado"></tgt-input-icon>
+    <div class="input">
+      <div class="input-box">
+        <tgt-input-icon icon="search" iconPosition="right" [control]="pesquisa"
+          placeholder="Pesquise por um chamado"></tgt-input-icon>
+      </div>
     </div>
-    <tgt-button icon="refresh" iconPosition="left" size="small" fieldButton="outline"
-                (click)="refresh()" >refresh
+    <div class="button">
+      <tgt-button icon="add" iconPosition="left" size="small" fieldButton="field" color="secundary" (click)="abrirChamado()" >Novo Chamado
+      </tgt-button>
+    </div>
+  </div>
+
+  <div class="header-chips">
+    <div class="buttons">
+      <tgt-chips [label]="'Em Atendimento(' + chamadosEmAtendimento + ')'"
+        (click)="setFilterStatus(StatusChamado.EM_ATENDIMENTO)" [select]="selectEmAtendimento"></tgt-chips>
+
+      <tgt-chips [label]="'Abertos ('+ chamadosPendentes +')'"
+        (click)="setFilterStatus(StatusChamado.ABERTO)" [select]="selectAberto"></tgt-chips>
+
+      <tgt-chips [label]="'Finalizados ('+ chamadosFinalizados +')'"
+        (click)="setFilterStatus(StatusChamado.FECHADO)" [select]="selectFechado"></tgt-chips>
+    </div>
+    <tgt-button icon="refresh" [border]="false" iconPosition="left" size="small" fieldButton="outline" (click)="refresh()">refresh
     </tgt-button>
   </div>
   <div class="body">
@@ -28,29 +42,28 @@
       </div>
       <div body class="bb">
         @for (item of data; track item) {
-          <tgt-item-list>
-            <tgt-item-data>{{ item.user.nome }}</tgt-item-data>
-            <tgt-item-data>{{ item.assunto }}</tgt-item-data>
-            <tgt-item-data>{{ item.user.email }} </tgt-item-data>
-            <tgt-item-data>{{ item.user.empresa.nomeFantasia }}</tgt-item-data>
-            <tgt-item-data>{{ item.createdAt | date: 'dd/MM/yyyy hh:mm:ss' }}</tgt-item-data>
-            <tgt-item-data>
-              <tgt-status-circle [status]="item.status == 'FECHADO' || item.status == 'EM_ATENDIMENTO' ? status.ATIVA : status.INATIVA"></tgt-status-circle>
-              {{ item.status }}
-            </tgt-item-data>
-            <!--  -->
-            <tgt-item-data>
-              <div class="ft-btn">
-                <div class="w-button">
-                  <tgt-button icon="search" iconPosition="left"
-                              size="small" color="secundary"
-                              (click)="openDetalhe(item)"
-                  ></tgt-button>
-                </div>
+        <tgt-item-list>
+          <tgt-item-data>{{ item.user.nome }}</tgt-item-data>
+          <tgt-item-data>{{ item.assunto }}</tgt-item-data>
+          <tgt-item-data>{{ item.user.email }} </tgt-item-data>
+          <tgt-item-data>{{ item.user.empresa.nomeFantasia }}</tgt-item-data>
+          <tgt-item-data>{{ item.createdAt | date: 'dd/MM/yyyy hh:mm:ss' }}</tgt-item-data>
+          <tgt-item-data>
+            <tgt-status-circle
+              [status]="item.status == 'FECHADO' || item.status == 'EM_ATENDIMENTO' ? status.ATIVA : status.INATIVA"></tgt-status-circle>
+            {{ item.status }}
+          </tgt-item-data>
+          <!--  -->
+          <tgt-item-data>
+            <div class="ft-btn">
+              <div class="w-button">
+                <tgt-button icon="chat" iconPosition="left" size="small" color="secundary"
+                  (click)="openDetalhe(item)"></tgt-button>
               </div>
+            </div>
 
-            </tgt-item-data>
-          </tgt-item-list>
+          </tgt-item-data>
+        </tgt-item-list>
         }
       </div>
     </tgt-list>

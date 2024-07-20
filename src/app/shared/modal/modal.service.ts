@@ -3,13 +3,16 @@ import { ComponentPortal } from '@angular/cdk/portal';
 import { ApplicationRef, ComponentFactoryResolver, ComponentRef, Injectable, Injector, Type } from '@angular/core';
 import {Subject} from "rxjs";
 
+
 interface ComponentWithData {
   data: any;
 }
 
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class ModalService {
   private overlayRef: OverlayRef | null = null;
 
@@ -81,7 +84,6 @@ export class ModalService {
     // Insert component into Angular's component tree
     this.appRef.attachView(componentRef.hostView);
     this.closeRef = new Subject();
-
     return {ref: componentRef, afterClosed: this.closeRef};
   }
 
