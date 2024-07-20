@@ -2,78 +2,56 @@
 @import '../../../../../assets/styles/colors.scss';
 
 main {
-  padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 43px;
   height: 80vh;
   overflow: auto;
+  justify-content: center;
+  align-items: center;
 
-  .header {
+  .card-superior,
+  .card-inferior {
+    width: 70%;
+  }
 
+  .card-superior {
+    height: 260px;
+    padding: 34px;
+    border-radius: 16px;
     display: flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
+    background-color: $color-yellow;
+    box-sizing: border-box;
 
-    .intro-text {
-      font-family: Montserrat;
-      font-size: 20px;
-      font-weight: 400;
-      line-height: 48px;
-      text-align: left;
-
-    }
-
-    tgt-button {
-      width: 150px;
+    h3 {
+      font-size: 18px;
+      font-weight: 800;
     }
   }
 
-  .suport-card {
+  .card-inferior {
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
     justify-content: space-between;
-    align-items: center;
-    padding: 24px;
-    background-color: #F3F4F3;
-    border-radius: 16px;
 
-    .content-card {
+    .cards {
       display: flex;
       flex-direction: row;
-      align-items: center;
-      gap: 16px;
-
-      font-size: 20px;
-      font-weight: 500;
-    }
-  }
-
-  .cards {
-    //height: 60vh;
-    //overflow: auto;
-    justify-content: start;
-    gap: 24px;
-
-    .card {
-      // width: 180px;
-      height: 264px;
-
-      padding: 24px;
-      gap: 32px;
-      border-radius: 16px;
-      opacity: 0px;
-      background-color: $color-off-white;
-
-      display: flex;
-      flex-direction: column;
       justify-content: space-between;
+      align-items: center;
+      width: calc(33.333% - 20px);
+      padding: 18px;
+      border-radius: 16px;
+      background-color: $color-off-white;
+      box-sizing: border-box;
 
-      gap: 32px;
-
-      .icon {
-        font-size: 32px;
+      .card-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
       }
 
       .title {
@@ -82,30 +60,121 @@ main {
         font-weight: 500;
         line-height: 24.38px;
         text-align: left;
-
       }
 
-      .text {
-        font-family: Montserrat;
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 24px;
-        text-align: left;
-
+      .card-footer {
+        margin-top: 10px;
       }
-
-      .footer {
-        width: 100%;
-        display: flex;
-        justify-content: end;
-
-        .btn {
-          align-items: end;
-          width: 48px;
-        }
-      }
-
     }
   }
-
 }
+
+
+// main {
+//   padding: 24px;
+//   display: flex;
+//   flex-direction: column;
+//   gap: 43px;
+//   height: 80vh;
+//   overflow: auto;
+
+//   .header {
+
+//     display: flex;
+//     flex-direction: row;
+//     width: 100%;
+//     justify-content: space-between;
+
+//     .intro-text {
+//       font-family: Montserrat;
+//       font-size: 20px;
+//       font-weight: 400;
+//       line-height: 48px;
+//       text-align: left;
+
+//     }
+
+//     tgt-button {
+//       width: 150px;
+//     }
+//   }
+
+//   .suport-card {
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: space-between;
+//     align-items: center;
+//     padding: 24px;
+//     background-color: #F3F4F3;
+//     border-radius: 16px;
+
+//     .content-card {
+//       display: flex;
+//       flex-direction: row;
+//       align-items: center;
+//       gap: 16px;
+
+//       font-size: 20px;
+//       font-weight: 500;
+//     }
+//   }
+
+//   .cards {
+//     //height: 60vh;
+//     //overflow: auto;
+//     justify-content: start;
+//     gap: 24px;
+
+//     .card {
+//       // width: 180px;
+//       // height: 264px;
+
+//       // padding: 24px;
+//       // gap: 32px;
+//       border-radius: 16px;
+//       opacity: 0px;
+//       background-color: $color-off-white;
+
+//       display: flex;
+//       flex-direction: column;
+//       justify-content: space-between;
+
+//       gap: 32px;
+
+//       .icon {
+//         font-size: 32px;
+//       }
+
+//       .title {
+//         font-family: Montserrat;
+//         font-size: 16px;
+//         font-weight: 500;
+//         line-height: 24.38px;
+//         text-align: left;
+
+//       }
+
+//       .text {
+//         font-family: Montserrat;
+//         font-size: 14px;
+//         font-weight: 400;
+//         line-height: 24px;
+//         text-align: left;
+
+//       }
+
+//       .footer {
+//         width: 100%;
+//         display: flex;
+//         justify-content: end;
+
+//         .btn {
+//           align-items: end;
+//           width: 48px;
+//         }
+//       }
+
+//     }
+//   }
+
+// }

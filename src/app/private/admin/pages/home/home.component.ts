@@ -9,6 +9,7 @@ import {ToastService} from '../../../../shared/toast/toast.service';
 import {
   AbrirChamadoComponent
 } from "./components/abrir-chamado/abrir-chamado.component";
+import { TourComponent } from './components/tour/tour.component';
 
 @Component({
     selector: 'app-home',
@@ -28,9 +29,10 @@ export class HomeComponent implements OnInit {
     private readonly toast: ToastService,
     private readonly modal: ModalService
   ) {
-    const usuario = this.userService.user;
-    const firstName = usuario?.nome.split(" ")[0]
-    navbarService.setTitle(`Olá, ${firstName}`);
+    // const usuario = this.userService.user;
+    // const firstName = usuario?.nome.split(" ")[0];
+    navbarService.setTitle("Ajuda");
+    this.menuService.setSelected({icon: 'help', label: 'Ajuda', route: '/admin', checked: true})
     navbarService.showBtnViajar.next(true);
     menuService.updateMenu();
   }
@@ -39,7 +41,6 @@ export class HomeComponent implements OnInit {
     //   this.modalService.open(TourComponent);
     // }, 800);
   }
-
 
   abrirChamado() {
     this.modal.open(AbrirChamadoComponent);

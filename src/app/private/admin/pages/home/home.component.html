@@ -1,14 +1,181 @@
 <main>
-  <div class="header">
+
+  <div class="card-superior">
+    <h3>Precisa de ajuda?</h3>
+    <br>
+    <label>Aqui você encontra todas as informações que você precisa para <br>
+      utilizar a plataforma com a máxima eficiência.</label>
+  </div>
+
+  <div class="card-inferior">
+    <div class="cards">
+      <div class="card-header">
+        <span class="material-symbols-outlined icon">
+          dashboard
+        </span>
+        <span class="title">
+          <h3>Dashboard</h3>
+        </span>
+      </div>
+      <div class="card-footer">
+        <div class="btn">
+          <tgt-button icon="trending_flat" iconPosition="left" size="small" color="success"></tgt-button>
+        </div>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card-header">
+        <span class="material-symbols-outlined icon">
+          luggage
+        </span>
+        <span class="title">
+          <h3>Viajar</h3>
+        </span>
+      </div>
+      <div class="card-footer">
+        <div class="btn">
+          <tgt-button icon="trending_flat" iconPosition="left" size="small" color="success"></tgt-button>
+        </div>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card-header">
+        <span class="material-symbols-outlined icon">
+          date_range
+        </span>
+        <span class="title">
+          <h3>Reservas</h3>
+        </span>
+      </div>
+      <div class="card-footer">
+        <div class="btn">
+          <tgt-button icon="trending_flat" iconPosition="left" size="small" color="success"
+            [routerLink]="'/admin/dashboard'"></tgt-button>
+        </div>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card-header">
+        <span class="material-symbols-outlined icon">
+          task_alt
+        </span>
+        <span class="title">
+          <h3>Aprovações</h3>
+        </span>
+      </div>
+      <div class="card-footer">
+        <div class="btn">
+          <tgt-button icon="trending_flat" iconPosition="left" size="small" color="success"></tgt-button>
+        </div>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card-header">
+        <span class="material-symbols-outlined icon">
+          person_4
+        </span>
+        <span class="title">
+          <h3>Pessoas</h3>
+        </span>
+      </div>
+      <div class="card-footer">
+        <div class="btn">
+          <tgt-button icon="trending_flat" iconPosition="left" size="small" color="success"
+            [routerLink]="'/admin/dashboard'"></tgt-button>
+        </div>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card-header">
+        <span class="material-symbols-outlined icon">
+          calculate
+        </span>
+        <span class="title">
+          <h3>Central de custo</h3>
+        </span>
+      </div>
+      <div class="card-footer">
+        <div class="btn">
+          <tgt-button icon="trending_flat" iconPosition="left" size="small" color="success"
+            [routerLink]="'/admin/dashboard'"></tgt-button>
+        </div>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card-header">
+        <span class="material-symbols-outlined icon">
+          settings
+        </span>
+        <span class="title">
+          <h3>Configurações</h3>
+        </span>
+      </div>
+      <div class="card-footer">
+        <div class="btn">
+          <tgt-button icon="trending_flat" iconPosition="left" size="small" color="success"
+            [routerLink]="'/admin/dashboard'"></tgt-button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+<!-- <div class="dashboard">
+      <span class="title">Dashboard</span>
+      <div class="btn">
+        <tgt-button icon="trending_flat" iconPosition="left" size="small" color="secundary"
+          [routerLink]="'/admin/dashboard'"></tgt-button>
+      </div>
+    </div>
+
+    <div class="dashboard">
+      <span class="title">Dashboard</span>
+      <div class="btn">
+        <tgt-button icon="trending_flat" iconPosition="left" size="small" color="secundary"
+          [routerLink]="'/admin/dashboard'"></tgt-button>
+      </div>
+    </div>
+
+    <div class="dashboard">
+      <span class="title">Dashboard</span>
+      <div class="btn">
+        <tgt-button icon="trending_flat" iconPosition="left" size="small" color="secundary"
+          [routerLink]="'/admin/dashboard'"></tgt-button>
+      </div>
+    </div>
+
+    <div class="dashboard">
+      <span class="title">Dashboard</span>
+      <div class="btn">
+        <tgt-button icon="trending_flat" iconPosition="left" size="small" color="secundary"
+          [routerLink]="'/admin/dashboard'"></tgt-button>
+      </div>
+    </div>
+
+    <div class="dashboard">
+      <span class="title">Dashboard</span>
+      <div class="btn">
+        <tgt-button icon="trending_flat" iconPosition="left" size="small" color="secundary"
+          [routerLink]="'/admin/dashboard'"></tgt-button>
+      </div>
+    </div> -->
+
+<!-- <div class="header">
     <span class="intro-text">
         Confira tudo que você irá encontrar por aqui:
     </span>
     <tgt-button icon="help" color="secundary" size="small"
                 (click)="abrirChamado()">Suport
     </tgt-button>
-  </div>
+  </div> -->
 
-  <div class="suport-card">
+<!-- <div class="suport-card">
     <div class="content-card">
       <span class="material-symbols-outlined icon">live_help</span>
       <span class="text">
@@ -23,9 +190,9 @@
                     [routerLink]="'/admin/suporte-atentimento'"></tgt-button>
       </div>
     </div>
-  </div>
+  </div> -->
 
-  <div class="content-card" style="width: 70vw">
+<!-- <div class="content-card" style="width: 70vw">
     <div class="cards grid col-12">
 
       <div class="card dashboard col-3">
@@ -141,6 +308,4 @@
         </div>
       </div>
     </div>
-  </div>
-
-</main>
+  </div> -->

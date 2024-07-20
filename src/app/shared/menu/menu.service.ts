@@ -24,7 +24,10 @@ export class MenuService {
    }
 
    setSelected(menu?: Menu) {
-    let lista:Menu[] = []
+
+
+    let lista:Menu[] = [];
+
     this._menu.subscribe(menu => lista = menu);
 
     lista = lista.map(item => {
@@ -52,8 +55,11 @@ export class MenuService {
           {icon: 'calculate', label: 'Central de Custo', route: '/admin/central-custo', checked: false},
           {icon: 'person_4', label: 'Integrantes', route: '/admin/viajantes', checked: false},
           {icon: 'settings', label: 'Configurações', route: '/admin/settings', checked: false},
+          {icon: 'headset_mic', label: 'Suporte', route: '/admin/suporte-atendimento', checked: false}
         ])
       }
+
+
 
       if(usuario != null && (usuario.role == Role.MANAGER || usuario.role == Role.USER)) {
 

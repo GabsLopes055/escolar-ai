@@ -1,18 +1,18 @@
 <main>
-    <div class="input" (click)="openModal()">
-        <span class="label">{{label}}</span>
-        <span class="material-symbols-outlined">
-            arrow_drop_down
-        </span>
-    </div>
-    @if (isOpenModal) {
-        <div class="modal">
-            <div class="content">
-                @for(option of options; track option) {
-                    <span class="value" (click)="select(option)">{{option.label}}</span>
-                }
-            </div>
-        </div>
-    }
+  <div class="input" (click)="openModal()">
+      <span class="label">{{label}}</span>
+      <span class="material-symbols-outlined">
+          arrow_drop_down
+      </span>
+  </div>
+  @if (isOpenModal) {
+      <div class="modal">
+          <div class="content">
+              @for(option of options; track option) {
+                  <span class="value" (click)="select(option)">{{option.label}}</span>
+              }
+          </div>
+      </div>
+  }
 
 </main>
