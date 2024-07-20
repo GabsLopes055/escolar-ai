@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 
 
 import {DetalheAtendimentoService} from "./detalhe-atendimento.service";
-import {DatePipe} from "@angular/common";
+import {DatePipe, JsonPipe} from "@angular/common";
 import {FormControl} from "@angular/forms";
 import {
   SidebarComponent
@@ -16,7 +16,7 @@ import {
 import {
   ButtonComponent
 } from "../../../../../../../../shared/button/button.component";
-import {User} from "../../../../../../../../models/user.interface";
+import {User, UserEntity} from "../../../../../../../../models/user.interface";
 import {
   MenssagemChamado, MenssagemChamadoRequest, StatusChamado
 } from "../../../../../../../../models/chamado.interface";
@@ -44,6 +44,7 @@ import {
     ButtonComponent,
     DatePipe,
     AvaliacaoStarsComponent,
+    JsonPipe,
   ],
   templateUrl: './detalhe-atendimento.component.html',
   styleUrl: './detalhe-atendimento.component.scss'
@@ -60,6 +61,9 @@ export class DetalheAtendimentoComponent implements OnInit {
   notaAvalicao = new FormControl();
 
   nota: any = 0;
+
+  usuarioSolicitanteChamado!: UserEntity;
+  usuarioSupporte!:User;
 
   constructor(
     private readonly userService: UserService,
@@ -86,6 +90,7 @@ export class DetalheAtendimentoComponent implements OnInit {
   listenChamado() {
     this.service.buscar(this.data.id).subscribe({
       next: value => {
+        this.usuarioSolicitanteChamado = value.user;
         this.nota = value.notaAtendimento;
         if(parseInt(value.notaAtendimento) > 0) {
           this.notaAvalicao.setValue(parseInt(value.notaAtendimento));

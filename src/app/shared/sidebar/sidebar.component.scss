@@ -22,7 +22,7 @@
     animation: initModal .5s;
 
     .modal-header {
-        height: 72px;
+        height: 8%;
         border-bottom: solid 1px #CDCDCC;
         display: flex;
         align-items: center;
@@ -50,6 +50,11 @@
 
     .modal-content {
         padding: 1rem;
+      height: 88%!important;
+
+      .modalbody {
+      height: 100%;
+      }
     }
 }
 

@@ -125,8 +125,8 @@ export class SuportAtendimentoComponent implements OnInit {
     this.router.navigate(['/admin']);
   }
 
-  openDetalhe(id: number) {
-    this.sidebar.openSideWithData(DetalheAtendimentoComponent, { id: id });
+  openDetalhe(data: any) {
+    this.sidebar.openSideWithData(DetalheAtendimentoComponent, data);
   }
 
   changePage(pagina: number) {

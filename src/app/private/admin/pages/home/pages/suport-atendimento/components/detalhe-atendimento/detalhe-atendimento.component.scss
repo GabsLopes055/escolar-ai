@@ -2,7 +2,7 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 80vh;
+  height: 100%;
   gap: 16px;
 
   .end {
@@ -28,40 +28,29 @@ main {
   gap: 16px;
   height: Hug (550px)px;
   overflow: auto;
-  .label {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
 
-    .left {
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap: 5px;
+
+    .label {
+      width: 100%;
       display: flex;
       flex-direction: row;
       align-items: center;
-      gap: 8px;
-
-      img {
-        width: 32px;
-        height: 32px;
-      }
+      gap: 12px;
 
       .name {
-        font-weight: bold;
-        font-size: 14px;
-      }
-    }
-    .right {
-      span {
-        font-size: 14px;
-        color: #6A6A66;
+        font-size: 12px;
       }
     }
   }
+
   .container {
-    padding: 20px 0 8px 18px;
-    border-left: solid 1px #B5B4B2;
-    margin-left: 20px;
-    margin-top: 12px;
+    background-color: #ddd;
+    padding: 10px 15px 10px 15px;
 
     .texto {
       font-size: 14px;
@@ -69,8 +58,16 @@ main {
       line-height: 24px;
       letter-spacing: 0.10000000149011612px;
       text-align: left;
-      color: #6A6A66;
+      color: #201F1A;
     }
+  }
+
+  .time {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14.63px;
+    text-align: left;
+
   }
 }
 
