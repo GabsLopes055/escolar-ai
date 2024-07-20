@@ -38,7 +38,7 @@ import { Data } from '@angular/router';
 })
 export class UpdateUserComponent implements OnInit {
   @Input() data!: number;
-
+  dataNascimento: any;
   isEdit = false;
   user!: User;
 

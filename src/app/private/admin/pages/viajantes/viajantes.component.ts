@@ -91,17 +91,12 @@ export class ViajantesComponent implements OnInit {
   ) {
     this.navbarService.setTitle('Integrantes');
     navbarService.showBtnViajar.next(true);
-    this.menuService.setSelected({
-      icon: 'person_4',
-      label: 'Viajantes',
-      route: '/admin/viajantes',
-      checked: true,
-    });
-    this.campoPesquisa();
-    this.campoSelect();
+    this.menuService.setSelected({icon:'person_4', label: 'Viajantes', route: '/admin/viajantes', checked: true});
   }
 
   ngOnInit(): void {
+    this.campoPesquisa();
+    this.campoSelect();
     const empresaId = this.usuarioService.user?.empresaId;
     if (empresaId) {
       this.empresaId = parseInt(String(empresaId));

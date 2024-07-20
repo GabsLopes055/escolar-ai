@@ -74,9 +74,10 @@ export class SuportAtendimentoComponent implements OnInit {
   ) {
     const usuario = this.userService.user;
     this.idUser = usuario?.id;
-    navbarService.setTitle(`Ajuda`);
+    navbarService.setTitle(`Suporte`);
     navbarService.showBtnViajar.next(true);
-    menuService.updateMenu();
+    menuService.setSelected({icon: 'headset_mic', label: 'Suporte', route: '/admin/suporte-atentimento', checked: true})
+    // menuService.updateMenu();
   }
 
   ngOnInit(): void {
@@ -125,8 +126,8 @@ export class SuportAtendimentoComponent implements OnInit {
     this.router.navigate(['/admin']);
   }
 
-  openDetalhe(id: number) {
-    this.sidebar.openSideWithData(DetalheAtendimentoComponent, { id: id });
+  openDetalhe(data: any) {
+    this.sidebar.openSideWithData(DetalheAtendimentoComponent, data);
   }
 
   changePage(pagina: number) {
