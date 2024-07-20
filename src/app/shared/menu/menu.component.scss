@@ -14,7 +14,7 @@
         flex-direction: column;
         justify-content: center;
         gap: 12px;
-        
+
 
         .logo {
             display: flex;
@@ -25,7 +25,7 @@
             span {
                 cursor: pointer;
 
-                
+
             }
             .hamb {
                 color: $color-off-white;
@@ -100,19 +100,19 @@
                     padding: 16px;
                     gap: 12px;
                     opacity: 0px;
-        
+
                     display: flex;
                     align-items: center;
                     text-decoration: none;
                     transition: all .5s;
-        
+
                     color: $color-off-white;
-        
+
                     span {
                         width: 20px;
                         height: 20px;
                     }
-        
+
                     .item-description {
                         font-size: 12px;
                         font-weight: 600;
@@ -150,7 +150,15 @@
         align-items: center;
     }
 
+
     .item-help {
+
+      .active{
+        background-color: $color-yellow;
+        color: $color-black;
+        border-radius: 300px;
+      }
+
         width: 200px;
         border-radius: 300px;
         margin-bottom: 1rem;
@@ -186,7 +194,7 @@
             }
 
             &:hover {
-                color: $color-yellow;
+                color: $color-black;
             }
         }
 

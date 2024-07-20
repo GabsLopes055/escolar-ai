@@ -16,7 +16,7 @@
       <tgt-input-view [label]="'CPF'" [value]="user.cpf"></tgt-input-view>
       <tgt-input-view [label]="'E-mail corporativo'" [value]="user.email"></tgt-input-view>
       <tgt-input-view [label]="'Telefone'" [value]="user.telefone"></tgt-input-view>
-      <tgt-input-view [label]="'Data de nascimento'" [value]="dataNascimento"></tgt-input-view>
+      <tgt-input-view [label]="'Data de nascimento'" [value]="user.dataNascimento | date: 'dd/MM/yyyy'"></tgt-input-view>
       <tgt-input-view [label]="'Gênero'" [value]="user.sexo"></tgt-input-view>
       <tgt-input-view [label]="'Perfil de acesso'" [value]="user.role"></tgt-input-view>
     </div>

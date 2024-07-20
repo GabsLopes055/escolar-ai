@@ -24,6 +24,7 @@ export class MenuService {
    }
 
    setSelected(menu?: Menu) {
+
     let lista:Menu[] = []
     this._menu.subscribe(menu => lista = menu);
 
