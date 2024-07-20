@@ -16,7 +16,7 @@ import {
 import {
   ButtonComponent
 } from "../../../../../../../../shared/button/button.component";
-import {User} from "../../../../../../../../models/user.interface";
+import {User, UserEntity} from "../../../../../../../../models/user.interface";
 import {
   MenssagemChamado, MenssagemChamadoRequest, StatusChamado
 } from "../../../../../../../../models/chamado.interface";
@@ -62,6 +62,9 @@ export class DetalheAtendimentoComponent implements OnInit {
 
   nota: any = 0;
 
+  usuarioSolicitanteChamado!: UserEntity;
+  usuarioSupporte!:User;
+
   constructor(
     private readonly userService: UserService,
     private readonly service: DetalheAtendimentoService,
@@ -87,6 +90,7 @@ export class DetalheAtendimentoComponent implements OnInit {
   listenChamado() {
     this.service.buscar(this.data.id).subscribe({
       next: value => {
+        this.usuarioSolicitanteChamado = value.user;
         this.nota = value.notaAtendimento;
         if(parseInt(value.notaAtendimento) > 0) {
           this.notaAvalicao.setValue(parseInt(value.notaAtendimento));

@@ -2,25 +2,33 @@
   <main>
 
     <div class="content-cards">
-      @for (menssagem of menssagens; track menssagem) {
+      @for (menssagem of menssagens; track menssagem; let i = $index) {
         <div class="card">
-          <div class="label">
-            <div class="left">
-              <tgt-perfil [nome]="menssagem.user.nome"></tgt-perfil>
-              @if(usuario?.email == menssagem.user.email) {
 
-                <span class="name">Você</span>
+          <div class="label">
+            @if(usuario?.email != menssagem.user.email) {
+              <tgt-perfil [nome]="menssagem.user.nome" size="small" border="none"></tgt-perfil>
+            }
+
+              @if(usuario?.email == menssagem.user.email) {
               } @else {
                 <span class="name">{{ menssagem.user.nome }}</span>
               }
-            </div>
-            <div class="right">
-              <span>{{ menssagem.createdAt | date: 'dd/MM/yyyy hh:mm' }}</span>
-            </div>
           </div>
-          <div class="container">
+
+          <div class="container" [style.border-radius]="usuario?.email == menssagem.user.email ? '12px 12px 0px 12px' : '12px 12px 12px 0px'"
+               [style.width]="usuario?.email == menssagem.user.email ? '60%' : '88%'"
+               [style.background-color]="usuario?.email == menssagem.user.email ? '#FFD200' : '#F3F4F3'"
+          >
             <span class="texto">{{ menssagem.menssagem }}</span>
           </div>
+
+          <div class="time" [style.width]="usuario?.email == menssagem.user.email ? 'auto' : '93%'">
+            <span>{{ menssagem.createdAt | date: 'dd/MM/yyyy hh:mm' }}</span>
+          </div>
+
+
+
         </div>
       }
     </div>

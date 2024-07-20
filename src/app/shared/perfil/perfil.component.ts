@@ -12,6 +12,8 @@ export class PerfilComponent implements OnInit{
 
   iniciais: string = '';
   @Input() nome:string = '';
+  @Input() size: 'middle' | 'small' = 'middle';
+  @Input() border: 'true' | 'none' = 'true';
   constructor(
     private readonly userService: UserService,
   ) {}
