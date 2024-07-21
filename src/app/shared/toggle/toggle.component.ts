@@ -10,7 +10,7 @@ import {TooltipDirective} from "../directives/tooltip.directive";
   styleUrl: './toggle.component.scss'
 })
 export class ToggleComponent {
- @Input() isChecked!: boolean;
+ @Input() isChecked: boolean = false;
  @Input() icon = '';
  @Input() disabled!: boolean;
  @Input() label = '';

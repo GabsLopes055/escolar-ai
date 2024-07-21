@@ -1,8 +1,8 @@
 <main>
-  <div class="input" (click)="openModal()">
+  <div class="input" (click)="openModal()" [style.border]="border ? '' : 'none'">
       <span class="label">{{label}}</span>
       <span class="material-symbols-outlined">
-          arrow_drop_down
+          {{icon}}
       </span>
   </div>
   @if (isOpenModal) {

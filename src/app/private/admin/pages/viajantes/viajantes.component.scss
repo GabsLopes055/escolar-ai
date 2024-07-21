@@ -20,6 +20,12 @@ main {
   justify-content: space-between;
   gap: 16px;
 
+  .usuarioNaoEcontrado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
 }
 
 .pag-footer {

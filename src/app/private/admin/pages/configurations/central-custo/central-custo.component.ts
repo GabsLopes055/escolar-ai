@@ -67,7 +67,6 @@ import { debounceTime } from 'rxjs';
   ],
 })
 export class CetralCustoComponent implements OnInit, OnDestroy {
-
   isList = this.service.showlist;
   empresaId: number = 0;
   paginaAtual: number = 1;
@@ -183,16 +182,15 @@ export class CetralCustoComponent implements OnInit, OnDestroy {
 
   changePages(pagina: number) {
     this.filtro.pagina = pagina;
-    this.listenCentralCusto()
+    this.listenCentralCusto();
   }
 
   campoSelect() {
     this.select.valueChanges.pipe(debounceTime(700)).subscribe((value) => {
-      console.log("retornar com o filtro: " + value)
+      console.log('retornar com o filtro: ' + value);
       // this.filtro.statusUser = value
       // this.listenViajantes()
     });
-
   }
 
   campoPesquisa() {

@@ -102,7 +102,6 @@ export class ViajantesComponent implements OnInit {
       this.empresaId = parseInt(String(empresaId));
       this.listenViajantes();
     }
-
   }
 
   protected readonly Status = Status;

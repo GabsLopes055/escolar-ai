@@ -15,9 +15,9 @@ export class SelectComponent implements OnChanges {
   @Input() label: string = 'Selecione';
   @Input() options: OptionSelect[] = [];
   @Input() control: FormControl = new FormControl();
-
+  @Input() icon: string = 'arrow_drop_down';
   @Output() changeValue = new EventEmitter();
-
+  @Input() border: boolean = true
   ngOnChanges(changes: SimpleChanges) {
     if (changes['control'] && this.control.value) {
       const selectedOption = this.options.find(
