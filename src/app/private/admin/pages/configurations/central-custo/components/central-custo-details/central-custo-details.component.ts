@@ -202,6 +202,15 @@ export class CentralCustoDetailsComponent implements OnDestroy {
 
   vincularUsuario() {
     const sideRef = this.sidebarService.openSideWithData(VincularUsuarioComponent);
+    sideRef.afterClosed.subscribe((value) => {
+      console.log(value)
+      if(value) {
+        this.toast.notify({
+          message: 'Verificar Endpoint para desvincular usuario',
+          type: 'INFO',
+        });
+      }
+    })
   }
 
   desvincularUsuario(id: number) {
@@ -209,7 +218,7 @@ export class CentralCustoDetailsComponent implements OnDestroy {
     modalRef.afterClosed.subscribe((value) => {
       if (value) {
         this.toast.notify({
-          message: 'Verificar Endpoint para desvincular',
+          message: 'Verificar Endpoint para vincular usuario',
           type: 'INFO',
         });
         // this.viajantesService.delete(id).subscribe({

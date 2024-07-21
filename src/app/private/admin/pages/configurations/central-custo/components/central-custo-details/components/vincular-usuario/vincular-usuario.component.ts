@@ -21,6 +21,9 @@ import { TableDataComponent } from '../../../../../../../../../shared/table/comp
 import { TableComponent } from '../../../../../../../../../shared/table/table.component';
 import { ToggleComponent } from '../../../../../../../../../shared/toggle/toggle.component';
 import { ViajantesService } from '../../../../../../viajantes/viajantes.service';
+import { ItemListComponent } from '../../../../../../../../../shared/list/components/item-list/item-list.component';
+import { ItemDataComponent } from "../../../../../../../../../shared/list/components/item-data/item-data.component";
+import { SidebarService } from '../../../../../../../../../shared/sidebar/sidebar.service';
 
 @Component({
   selector: 'app-vincular-usuario',
@@ -39,12 +42,14 @@ import { ViajantesService } from '../../../../../../viajantes/viajantes.service'
     ItemTableComponent,
     TableComponent,
     CheckboxComponent,
-    ToggleComponent
-  ],
+    ToggleComponent,
+    ItemDataComponent
+],
   templateUrl: './vincular-usuario.component.html',
   styleUrl: './vincular-usuario.component.scss'
 })
 export class VincularUsuarioComponent {
+
 
   @Input() data!: any;
 
@@ -54,6 +59,7 @@ export class VincularUsuarioComponent {
   pagina: number = 1; // pagina atual
   usuarios: any[] = [];
   controlToggle = new FormControl();
+  vincularSelect: boolean = false;
 
   filtro: SolicitacaoUserRequest = {
     pagina: this.pagina,
@@ -67,15 +73,16 @@ export class VincularUsuarioComponent {
 
 
   constructor(
-    private readonly viajantesService: ViajantesService
+    private readonly viajantesService: ViajantesService,
+    private readonly sibebarService: SidebarService
   ) {
-    this.listenViajantes()
+    this.listenViajantes();
+    this.campoPesquisa();
   }
 
   listenViajantes() {
     this.viajantesService.listarPor(this.filtro).subscribe({
       next: (integrantes) => {
-        console.log(integrantes)
         this.totalItems = integrantes.totalCount;
         this.usuarios = integrantes.itens;
       },
@@ -89,8 +96,23 @@ export class VincularUsuarioComponent {
       } else {
         this.filtro.nome = value;
       }
+      console.log(this.filtro)
       this.listenViajantes();
     });
+  }
+
+  vincularUsuario() {
+    this.sibebarService.closeSide(true)
+  }
+
+  desabilitarBotao() {
+    if(!this.vincularSelect) {
+      this.vincularSelect = !this.vincularSelect
+    }
+  }
+
+  cancelar(){
+    this.sibebarService.closeSide()
   }
 
 
