@@ -38,6 +38,7 @@ import { ModalService } from '../../../../../../../shared/modal/modal.service';
 import { ToastService } from '../../../../../../../shared/toast/toast.service';
 import { DesvincularUsuarioComponent } from './components/desvincular-usuario/desvincular-usuario.component';
 import { VincularUsuarioComponent } from './components/vincular-usuario/vincular-usuario.component';
+import { SolicitacaoAprovacaoComponent } from '../../../../../../../shared/solicitacao-aprovacao/solicitacao-aprovacao.component';
 
 @Component({
   selector: 'central-custo-details',
@@ -273,6 +274,10 @@ export class CentralCustoDetailsComponent implements OnDestroy {
 
   openHistorico(id: number) {
     this.sidebarService.openSideWithData(SidebarHistoricoComponent, id);
+  }
+
+  openHistoricoSolicitacoes() {
+    this.sidebarService.openSide(SolicitacaoAprovacaoComponent);
   }
 
   changePages(pagina: number) {

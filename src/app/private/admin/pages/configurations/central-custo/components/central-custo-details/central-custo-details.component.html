@@ -15,12 +15,23 @@
       class="col-6"></tgt-select>
   </div>
   <app-tabs [tabs]="tabs" (change)="chosenTab($event)"></app-tabs>
-  <div class="filtro-status">
-    <tgt-select [label]="'Status'" [options]="options" [control]="select" class="col-6"></tgt-select>
-    @if(tabSelecionada == 'equipe') {
-    <tgt-button [icon]="'add'" [border]="false" [color]="'success'" (click)="vincularUsuario()">Vincular
-      Pessoa</tgt-button>
-    }
+  <div class="filtro">
+    <div class="status">
+      <tgt-select [label]="'Status'" [options]="options" [control]="select" class="col-6"></tgt-select>
+      @if(tabSelecionada == 'solicitacoes') {
+        <tgt-select [label]="'Status'" [options]="options" [control]="select" class="col-6"></tgt-select>
+      }
+    </div>
+
+    <div>
+      @if(tabSelecionada == 'solicitacoes') {
+        <tgt-button [border]="false" [color]="'success'" [fieldButton]="'outline'" [icon]="'refresh'">Refresh</tgt-button>
+      }
+      @if(tabSelecionada == 'equipe') {
+      <tgt-button [icon]="'add'" [border]="false" [color]="'success'" [fieldButton]="'outline'" (click)="vincularUsuario()">Vincular
+        Pessoa</tgt-button>
+      }
+    </div>
   </div>
   @switch (tabSelecionada) {
   @case ('historico') {
@@ -59,7 +70,30 @@
   }
   @case ('solicitacoes') {
   <div class="solicitacoes">
-    <h3>Solicitações</h3>
+    <tgt-table>
+      <tgt-header-table header>
+        <tgt-header-table-data>Nome</tgt-header-table-data>
+        <tgt-header-table-data>Data de Criaçào</tgt-header-table-data>
+        <tgt-header-table-data>Data de finalização</tgt-header-table-data>
+        <tgt-header-table-data>Orçamento</tgt-header-table-data>
+        <tgt-header-table-data>Status</tgt-header-table-data>
+        <tgt-header-table-data>Ações</tgt-header-table-data>
+      </tgt-header-table>
+      @for (item of data; track item) {
+      <tgt-item-table body>
+        <tgt-table-data>{{ item.nome }}</tgt-table-data>
+        <tgt-table-data>{{ item.createdAt }}</tgt-table-data>
+        <tgt-table-data>{{ item.updatedAt }}</tgt-table-data>
+        <tgt-table-data>{{ item.orcamento| currency: 'R$ ' }}</tgt-table-data>
+        <tgt-table-data>
+          <tgt-status-circle [status]="item.status"></tgt-status-circle>
+          {{ item.status }}
+        </tgt-table-data>
+        <tgt-table-data><tgt-button icon="chat" iconPosition="left" size="small" color="secundary"
+            (click)="openHistoricoSolicitacoes()"></tgt-button></tgt-table-data>
+      </tgt-item-table>
+      }
+    </tgt-table>
   </div>
   }
   @case ('equipe') {
@@ -195,9 +229,7 @@
   }
 
   <div class="pag">
-    <div class="pag">
       <tgt-paginator [pageSize]="tamanhoPagina" [currentPage]="pagina" [totalItems]="totalItems"
         (changePage)="changePages($event)"></tgt-paginator>
-    </div>
   </div>
 </div>

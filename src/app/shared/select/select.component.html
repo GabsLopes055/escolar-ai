@@ -9,7 +9,7 @@
       <div class="modal">
           <div class="content">
               @for(option of options; track option) {
-                  <span class="value" (click)="select(option)">{{option.label}}</span>
+                  <span class="value" (click)="optionSelect(option)">{{option.label}}</span>
               }
           </div>
       </div>

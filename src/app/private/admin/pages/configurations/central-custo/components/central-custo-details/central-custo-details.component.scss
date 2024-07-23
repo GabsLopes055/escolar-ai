@@ -23,7 +23,8 @@
   .body {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
+    width: 100%;
+    overflow: auto;
     justify-content: space-between;
     gap: 16px;
 
@@ -63,15 +64,23 @@
     width: 500px;
   }
 
-  .filtro-status {
+  .filtro {
     display: inline-flex;
     align-items: center;
     width: auto;
     justify-content: space-between;
+
+    .status {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+    }
+
     tgt-select {
       display: block;
     }
   }
+
   .pag {
     position: absolute;
     bottom: 20px;

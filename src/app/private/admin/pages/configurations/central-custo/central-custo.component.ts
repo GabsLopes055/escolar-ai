@@ -36,7 +36,9 @@ import {
 import { ToastService } from '../../../../../shared/toast/toast.service';
 import { EntityPaginated } from '../../../../../models/filtro-busca.interface';
 import { FormControl } from '@angular/forms';
-import { debounceTime } from 'rxjs';
+import { debounceTime, map, Observable } from 'rxjs';
+import { CartoesService } from '../cartoes/cartoes.service';
+import { AdicionarCartaoComponent } from './components/central-custo-details/components/adicionar-cartao/adicionar-cartao.component';
 
 @Component({
   selector: 'central-custo',
@@ -95,7 +97,8 @@ export class CetralCustoComponent implements OnInit, OnDestroy {
     private readonly service: CentralCustoService,
     private readonly usuarioService: UserService,
     private readonly modal: ModalService,
-    private readonly toast: ToastService
+    private readonly toast: ToastService,
+    private readonly cartoesService: CartoesService
   ) {
     this.campoPesquisa();
     this.campoSelect();
@@ -112,15 +115,27 @@ export class CetralCustoComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     // this.service.showlist.next(false);
   }
+
   adicionarCentralCusto() {
-    const closeRef = this.sidebarService.openSide(
-      SidebarNovaCentralCustoComponent
-    );
-    closeRef.sub.subscribe((data) => {
-      if (data) {
-        this.listenCentralCusto();
+    this.cartaoAdicionado().subscribe(cartao => {
+      console.log(cartao)
+      if (cartao) {
+        const ref = this.modal.open(AdicionarCartaoComponent);
+      } else {
+        const closeRef = this.sidebarService.openSide(SidebarNovaCentralCustoComponent);
+        closeRef.sub.subscribe(data => {
+          if (data) {
+            this.listenCentralCusto();
+          }
+        });
       }
     });
+  }
+
+  cartaoAdicionado(): Observable<boolean> {
+    return this.cartoesService.listar(this.empresaId).pipe(
+      map(cartoes => cartoes.length < 0)
+    );
   }
 
   delete(id: number) {

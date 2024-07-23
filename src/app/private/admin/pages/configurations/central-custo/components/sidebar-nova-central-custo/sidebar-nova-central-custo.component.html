@@ -1,7 +1,7 @@
 <sidebar title="Adicionar central de custo">
   <div class="sidebar">
     <div class="main">
-      <tgt-input label="Nome" [control]="form.controls.nome"
+      <tgt-input label="Nome da Central" [control]="form.controls.nome"
       ></tgt-input>
       <toggle [icon]="'help'" [label]="'Teto orçamentário'" (changeToggle)="tetoChange($event)"></toggle>
       @if(tetoOrcamentario) {
@@ -11,7 +11,7 @@
                     class="col-6"></tgt-select>
       }
 
-<!--      <toggle [icon]="'help'" [label]="'Ativo'"></toggle>-->
+     <toggle [icon]="'help'" [label]="'Ativo'"></toggle>
     </div>
 
 

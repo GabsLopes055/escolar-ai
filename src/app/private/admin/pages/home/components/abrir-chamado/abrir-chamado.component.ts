@@ -71,6 +71,6 @@ export class AbrirChamadoComponent implements OnInit {
   }
 
   cancelar() {
-    this.modal.close(true);
+    this.modal.close();
   }
 }
