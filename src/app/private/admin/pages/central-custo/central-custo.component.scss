@@ -76,9 +76,10 @@ main {
     border-radius: 50px;
     cursor: pointer;
     transition: all .5s;
-
+    // background-color: aqua;
     &:hover {
-      background-color: $color-yellow;
+      color: white;
+      background-color: $color-delete;
     }
   }
 }

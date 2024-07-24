@@ -6,22 +6,20 @@
           [control]="pesquisa"></tgt-input-icon>
       </div>
 
-      <div class="users">
+      <div class="users" (scroll)="listarScroll($event)">
         @for (usuario of usuarios; track usuario) {
-
         <div class="checkbox">
           <div class="item">
-            <tgt-checkbox (click)="desabilitarBotao()"></tgt-checkbox>
+            <tgt-checkbox (checkedChange)="checkBox($event, usuario.role, usuario.id)"></tgt-checkbox>
             <div class="user-info">
               <span>{{ usuario.nome }}</span>
-              <h6 class="user-role">{{ usuario.role }}</h6>
+              <h6 class="user-role">{{ retornarNomePermissao(usuario.role) }}</h6>
             </div>
           </div>
           <div class="toggle">
             @if(usuario.role == 'MANAGER') {
-
               <h6>Aprovador</h6>
-              <toggle [control]="controlToggle"></toggle>
+              <toggle [control]="controlToggle" [disabled]="!habilitarToggle"></toggle>
             }
           </div>
         </div>
@@ -121,7 +119,7 @@
 
     <footer class="grid col-12">
       <tgt-button class="col-5" size="small" fieldButton="outline" (click)="cancelar()">Cancelar</tgt-button>
-      <tgt-button class="col-5" size="small" icon="add" color="secundary" [disabled]="!vincularSelect" (click)="vincularUsuario()" >Vincular</tgt-button>
+      <tgt-button class="col-5" size="small" icon="add" color="secundary" (click)="vincularUsuario()" [disabled]="this.vincularUsuarioRequest.length === 0 ? true : false">Vincular</tgt-button>
     </footer>
   </main>
 </sidebar>

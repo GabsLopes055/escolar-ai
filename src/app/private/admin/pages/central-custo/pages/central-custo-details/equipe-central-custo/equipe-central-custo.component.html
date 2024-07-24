@@ -21,7 +21,7 @@
     <tgt-item-list>
       <tgt-item-data>{{ item.user.nome }}</tgt-item-data>
       <tgt-item-data>{{ item.user.email }}</tgt-item-data>
-      <tgt-item-data>{{ item.user.role }}</tgt-item-data>
+      <tgt-item-data>{{ retornarNomePermissao(item.user.role) }}</tgt-item-data>
       <tgt-item-data>
         <tgt-status-circle [status]="Status.ATIVO"></tgt-status-circle>
         {{ Status.ATIVO }}

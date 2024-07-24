@@ -12,7 +12,7 @@ export class CheckboxComponent {
   @Input() checked = false;
   @Output() checkedChange = new EventEmitter<boolean>();
 
-  onChange(event: Event) {
+  onChange(event: any) {
     const input = event.target as HTMLInputElement;
     this.checked = input.checked;
     this.checkedChange.emit(this.checked);

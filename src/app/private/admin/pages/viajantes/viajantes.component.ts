@@ -208,6 +208,28 @@ export class ViajantesComponent implements OnInit {
     });
   }
 
+  retornarNomePermissao(role: string): string {
+    let permissao: string = '';
+
+    if (role == 'ADMIN') {
+      permissao = 'Administrador';
+    }
+
+    if (role == 'USER') {
+      permissao = 'Passageiro';
+    }
+
+    if (role == 'SUPPORT') {
+      permissao = 'Suporte';
+    }
+
+    if (role == 'MANAGER') {
+      permissao = 'Gestor';
+    }
+
+    return permissao;
+  }
+
   changePage(pagina: number) {
     this.filtro.pagina = pagina;
     this.listenViajantes();

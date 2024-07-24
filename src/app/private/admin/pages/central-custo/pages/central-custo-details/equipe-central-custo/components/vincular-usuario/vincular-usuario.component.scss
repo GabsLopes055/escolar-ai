@@ -7,6 +7,7 @@ main {
   height: 100%;
   gap: 24px;
   justify-content: space-between;
+  overflow-y: auto;
 
   .header {
     padding: 20px 0px 30px 0px;
@@ -16,6 +17,8 @@ main {
     display: flex;
     flex-direction: column;
     gap: 18px;
+    max-height: 300px;
+    overflow-y: auto;
 
     .usuarioNaoEcontrado {
       display: flex;
@@ -30,6 +33,7 @@ main {
     justify-content: space-between;
     align-items: center;
     gap: 10px;
+    height: auto;
 
     .item {
       display: flex;
@@ -43,34 +47,40 @@ main {
       flex-direction: row;
       align-items: center;
     }
-  }
 
-  // .users :hover {
-  //   background-color: $color-yellow;
-  // }
-
-  .user-info {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-
-    span {
-      font-size: 14px;
-    }
+    // &:hover {
+    //   background-color: #FFFAE5;
+    // }
   }
 
 
-  .user-name {
-    font-size: 16px;
-    font-weight: bold;
+}
+
+// .users :hover {
+//   background-color: $color-yellow;
+// }
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  span {
+    font-size: 14px;
   }
+}
 
-  footer {
-    display: flex;
-    justify-content: space-between;
 
-    tgt-button {
-      width: 45%;
-    }
+.user-name {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+
+  tgt-button {
+    width: 45%;
   }
 }

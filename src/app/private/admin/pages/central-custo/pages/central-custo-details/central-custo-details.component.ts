@@ -83,6 +83,7 @@ export class CentralCustoDetailsComponent implements OnDestroy {
   usuarios: any[] = [];
   subscription = new Subscription();
   tabSelecionada: string = this.tabs[0].value;
+  centralCustoSelecionada = 0
 
   filtro: SolicitacaoUserRequest = {
     pagina: this.pagina,
@@ -93,7 +94,6 @@ export class CentralCustoDetailsComponent implements OnDestroy {
     statusUser: null,
     empresaId: null,
   };
-  centralCustoSelecionada = 0
   constructor(
     private readonly service: CentralCustoService,
     private readonly sidebarService: SidebarService,
@@ -102,11 +102,6 @@ export class CentralCustoDetailsComponent implements OnDestroy {
     private readonly toast: ToastService,
     private readonly serviceEquipe: CentralCustoDetailsService
   ) {
-    this.subscription.add(
-      this.service.idCentralSelected.subscribe((valor) => {
-        console.log(valor);
-      })
-    );
   }
   protected readonly Status = Status;
 

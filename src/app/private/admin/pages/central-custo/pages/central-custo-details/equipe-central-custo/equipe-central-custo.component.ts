@@ -77,6 +77,7 @@ export class EquipeCentralCustoComponent implements OnInit {
     private readonly sidebarService: SidebarService
   ) {
     this.serviceCentralCusto.idCentralSelected.subscribe((id) => {
+      console.log(id)
       this.centralCustoSelecionada = id as number;
     });
   }
@@ -87,10 +88,13 @@ export class EquipeCentralCustoComponent implements OnInit {
 
   listenEquipeCentral() {
     this.filtroEquipeCentral.centralCustoId = this.centralCustoSelecionada;
-    this.serviceEqupe
-      .listarEquipesCentralCusto(this.filtroEquipeCentral)
+
+    console.log(this.filtroEquipeCentral)
+
+    this.serviceEqupe.listarEquipesCentralCusto(this.filtroEquipeCentral)
       .subscribe({
         next: (equipe) => {
+          console.log(equipe)
           this.totalItems = equipe.totalCount;
           this.usuarios = equipe.itens;
         },
@@ -103,6 +107,10 @@ export class EquipeCentralCustoComponent implements OnInit {
     );
     sideRef.afterClosed.subscribe((value) => {
       if (value) {
+        this.toast.notify({
+          message: 'Integrante vinculado com sucesso!',
+          type: 'SUCCESS',
+        });
         this.listenEquipeCentral();
       }
     });
@@ -145,6 +153,28 @@ export class EquipeCentralCustoComponent implements OnInit {
         // });
       }
     });
+  }
+
+  retornarNomePermissao(role: string): string {
+    let permissao: string = '';
+
+    if (role == 'ADMIN') {
+      permissao = 'Administrador';
+    }
+
+    if (role == 'USER') {
+      permissao = 'Passageiro';
+    }
+
+    if (role == 'SUPPORT') {
+      permissao = 'Suporte';
+    }
+
+    if (role == 'MANAGER') {
+      permissao = 'Gestor';
+    }
+
+    return permissao;
   }
 
   campoSelect() {
