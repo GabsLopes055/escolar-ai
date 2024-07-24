@@ -12,6 +12,6 @@ export class StatusCircleComponent {
   @Input() status!: Status;
 }
 export enum Status {
-  ATIVA = 'ATIVA',
-  INATIVA = 'INATIVA'
+  ATIVO = 'ATIVO',
+  INATIVO = 'INATIVO'
 }

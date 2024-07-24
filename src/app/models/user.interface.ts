@@ -63,6 +63,6 @@ export interface SolicitacaoUserRequest extends FiltroDeBusca {
 }
 
 export enum Status {
-  ATIVA = 'ATIVA',
-  INATIVA = 'INATIVA'
+  ATIVO = 'ATIVO',
+  INATIVO = 'INATIVO'
 }

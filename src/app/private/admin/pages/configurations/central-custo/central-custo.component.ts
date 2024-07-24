@@ -118,7 +118,6 @@ export class CetralCustoComponent implements OnInit, OnDestroy {
 
   adicionarCentralCusto() {
     this.cartaoAdicionado().subscribe(cartao => {
-      console.log(cartao)
       if (cartao) {
         const ref = this.modal.open(AdicionarCartaoComponent);
       } else {

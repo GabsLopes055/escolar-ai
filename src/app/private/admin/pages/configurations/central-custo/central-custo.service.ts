@@ -33,4 +33,5 @@ export class CentralCustoService {
   deletar(id: number): Observable<CentralDeCusto> {
     return this.http.delete<CentralDeCusto>(`${URL_BASE}/${id}`);
   }
+
 }

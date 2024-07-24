@@ -83,8 +83,9 @@ export class MenuService {
               if(permissoes.gestorConvida) {
                 menu.push({icon: 'person_4', label: 'Colaboradores', route: '/admin/viajantes', checked: false});
               }
-
-              menu.push({icon: 'settings', label: 'Configurações', route: '/admin/settings', checked: false});
+              if(permissoes.gestorVerMenu) {
+                menu.push({icon: 'settings', label: 'Configurações', route: '/admin/settings', checked: false});
+              }
 
             } else {
 

@@ -60,6 +60,13 @@
           <h6>Administrar Centrais de Custos.</h6>
         </div>
       </div>
+      <div class="toggle">
+        <toggle [disabled]="!edit" (changeToggle)="retornoGestorVerConfiguracoes($event)" [control]="$any(this.permissoes.controls['gestorVerMenu'])"></toggle>
+        <div class="descricao">
+          <p>Permitir Gestor acessar configurações.</p>
+          <h6>Administrar Configurações.</h6>
+        </div>
+      </div>
 
     </section>
 

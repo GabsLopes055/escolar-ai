@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { CentralCustoService } from './../../../../central-custo.service';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs';
 
@@ -24,6 +25,9 @@ import { ViajantesService } from '../../../../../../viajantes/viajantes.service'
 import { ItemListComponent } from '../../../../../../../../../shared/list/components/item-list/item-list.component';
 import { ItemDataComponent } from "../../../../../../../../../shared/list/components/item-data/item-data.component";
 import { SidebarService } from '../../../../../../../../../shared/sidebar/sidebar.service';
+import { UserService } from '../../../../../../../../../shared/services/user/user.service';
+import { CentralCustoDetailsComponent } from '../../central-custo-details.component';
+import { CentralCustoDetailsService } from '../../central-custo-details.service';
 
 @Component({
   selector: 'app-vincular-usuario',
@@ -48,7 +52,7 @@ import { SidebarService } from '../../../../../../../../../shared/sidebar/sideba
   templateUrl: './vincular-usuario.component.html',
   styleUrl: './vincular-usuario.component.scss'
 })
-export class VincularUsuarioComponent {
+export class VincularUsuarioComponent implements OnInit {
 
 
   @Input() data!: any;
@@ -60,6 +64,8 @@ export class VincularUsuarioComponent {
   usuarios: any[] = [];
   controlToggle = new FormControl();
   vincularSelect: boolean = false;
+
+
 
   filtro: SolicitacaoUserRequest = {
     pagina: this.pagina,
@@ -74,15 +80,28 @@ export class VincularUsuarioComponent {
 
   constructor(
     private readonly viajantesService: ViajantesService,
-    private readonly sibebarService: SidebarService
+    private readonly sibebarService: SidebarService,
+    private readonly usuarioService: UserService,
+    private readonly centralCustoDetailService: CentralCustoDetailsService,
+    private readonly service: CentralCustoService,
   ) {
-    this.listenViajantes();
+
+  }
+  ngOnInit(): void {
+    const empresaId = this.usuarioService.user?.empresaId;
+    if (empresaId) {
+      this.filtro.empresaId = parseInt(String(empresaId));
+      this.listenViajantes();
+    }
+
     this.campoPesquisa();
   }
 
   listenViajantes() {
     this.viajantesService.listarPor(this.filtro).subscribe({
       next: (integrantes) => {
+        console.log(this.filtro)
+        console.log(integrantes)
         this.totalItems = integrantes.totalCount;
         this.usuarios = integrantes.itens;
       },
@@ -102,7 +121,19 @@ export class VincularUsuarioComponent {
   }
 
   vincularUsuario() {
-    this.sibebarService.closeSide(true)
+
+    this.service.idCentralSelected.subscribe(id => {
+      this.centralCustoDetailService.cadastrarUsuarioEquipeCentralCusto({centralDeCustoId: id, userId: 14, aprovador: true}).subscribe({
+        next: (value) => {
+          console.log('aqui')
+        }, error: (error) => {
+        }
+      })
+    })
+
+
+    this.sibebarService.closeSide(true);
+
   }
 
   desabilitarBotao() {

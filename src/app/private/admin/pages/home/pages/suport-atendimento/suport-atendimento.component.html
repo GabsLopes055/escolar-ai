@@ -50,7 +50,7 @@
           <tgt-item-data>{{ item.createdAt | date: 'dd/MM/yyyy hh:mm:ss' }}</tgt-item-data>
           <tgt-item-data>
             <tgt-status-circle
-              [status]="item.status == 'FECHADO' || item.status == 'EM_ATENDIMENTO' ? status.ATIVA : status.INATIVA"></tgt-status-circle>
+              [status]="item.status == 'FECHADO' || item.status == 'EM_ATENDIMENTO' ? status.ATIVO : status.INATIVO"></tgt-status-circle>
             {{ item.status }}
           </tgt-item-data>
           <!--  -->

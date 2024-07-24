@@ -39,6 +39,8 @@ import { ToastService } from '../../../../../../../shared/toast/toast.service';
 import { DesvincularUsuarioComponent } from './components/desvincular-usuario/desvincular-usuario.component';
 import { VincularUsuarioComponent } from './components/vincular-usuario/vincular-usuario.component';
 import { SolicitacaoAprovacaoComponent } from '../../../../../../../shared/solicitacao-aprovacao/solicitacao-aprovacao.component';
+import { CentralCustoDetailsService } from './central-custo-details.service';
+import { CentralCustoEquipeFiltro } from '../../../../../../../models/central-de-custo.interface';
 
 @Component({
   selector: 'central-custo-details',
@@ -73,7 +75,7 @@ export class CentralCustoDetailsComponent implements OnDestroy {
       createdAt: '15/03/2024',
       updatedAt: '15/03/2024',
       orcamento: 50000,
-      status: Status.ATIVA,
+      status: Status.ATIVO,
       actions: '',
     },
     {
@@ -82,7 +84,7 @@ export class CentralCustoDetailsComponent implements OnDestroy {
       createdAt: '03/03/2024',
       updatedAt: '15/03/2024',
       orcamento: 25000,
-      status: Status.INATIVA,
+      status: Status.INATIVO,
       actions: '',
     },
     {
@@ -91,7 +93,7 @@ export class CentralCustoDetailsComponent implements OnDestroy {
       createdAt: '02/03/2024',
       updatedAt: '15/03/2024',
       orcamento: 30000,
-      status: Status.ATIVA,
+      status: Status.ATIVO,
       actions: '',
     },
     {
@@ -100,7 +102,7 @@ export class CentralCustoDetailsComponent implements OnDestroy {
       createdAt: '20/03/2024',
       updatedAt: '15/03/2024',
       orcamento: 15000,
-      status: Status.ATIVA,
+      status: Status.ATIVO,
       actions: '',
     },
   ];
@@ -155,13 +157,24 @@ export class CentralCustoDetailsComponent implements OnDestroy {
     empresaId: null,
   };
 
+  centralCustoSelecionada = 0
+
+  filtroEquipeCentral: CentralCustoEquipeFiltro = {
+    pagina: this.pagina,
+    tamanhoPagina: this.tamanhoPagina,
+    email: null,
+    statusUser: null,
+    centralCustoId: null
+  }
+
   constructor(
     private readonly service: CentralCustoService,
     private readonly sidebarService: SidebarService,
     private readonly viajantesService: ViajantesService,
     private readonly usuarioService: UserService,
     private readonly modal: ModalService,
-    private readonly toast: ToastService
+    private readonly toast: ToastService,
+    private readonly serviceEquipe: CentralCustoDetailsService
   ) {
     this.subscription.add(
       this.service.idCentralSelected.subscribe((valor) => {
@@ -171,6 +184,9 @@ export class CentralCustoDetailsComponent implements OnDestroy {
   }
 
   ngOnInit(): void {
+    this.service.idCentralSelected.subscribe(id => {
+      this.centralCustoSelecionada = id as number;
+    })
     this.campoPesquisa();
     this.campoSelect();
     const empresaId = this.usuarioService.user?.empresaId;
@@ -178,6 +194,7 @@ export class CentralCustoDetailsComponent implements OnDestroy {
       this.empresaId = parseInt(String(empresaId));
       this.listenViajantes();
     }
+    this.listenEquipeCentral();
   }
 
   listenViajantes() {
@@ -204,12 +221,17 @@ export class CentralCustoDetailsComponent implements OnDestroy {
   vincularUsuario() {
     const sideRef = this.sidebarService.openSideWithData(VincularUsuarioComponent);
     sideRef.afterClosed.subscribe((value) => {
-      console.log(value)
       if(value) {
-        this.toast.notify({
-          message: 'Verificar Endpoint para desvincular usuario',
-          type: 'INFO',
-        });
+        this.listenViajantes()
+      }
+    })
+  }
+
+  listenEquipeCentral(){
+    this.filtroEquipeCentral.centralCustoId = this.centralCustoSelecionada;
+    this.serviceEquipe.listarEquipesCentralCusto(this.filtroEquipeCentral).subscribe({
+      next: (equipe) => {
+        console.log(equipe.itens)
       }
     })
   }

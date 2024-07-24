@@ -2,6 +2,9 @@
 
 main {
   padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 
@@ -10,6 +13,12 @@ main {
   flex-direction: row;
   justify-content: space-between;
   align-items: end;
+
+  .filtros {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+  }
 }
 
 .body {
