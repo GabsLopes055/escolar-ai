@@ -1,0 +1,19 @@
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  .header {
+    padding-top: 24px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .pag-footer {
+    position: absolute;
+    bottom: 20px;
+    right: 70px;
+  }
+}

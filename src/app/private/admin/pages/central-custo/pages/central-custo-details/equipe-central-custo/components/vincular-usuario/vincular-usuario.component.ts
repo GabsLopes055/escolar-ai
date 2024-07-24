@@ -1,33 +1,27 @@
-import { CentralCustoService } from './../../../../central-custo.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs';
-
-import { SolicitacaoUserRequest } from '../../../../../../../../../models/user.interface';
+import { CentralCustoDetailsService } from '../../../central-custo-details.service';
 import { ButtonComponent } from '../../../../../../../../../shared/button/button.component';
-import { CheckboxComponent } from '../../../../../../../../../shared/checkbox/checkbox.component';
-import { DividerComponent } from '../../../../../../../../../shared/divider/divider.component';
-import { InputIconComponent } from '../../../../../../../../../shared/input-icon/input-icon.component';
-import { InputComponent } from '../../../../../../../../../shared/input/input.component';
-import { ListComponent } from '../../../../../../../../../shared/list/list.component';
 import { SidebarComponent } from '../../../../../../../../../shared/sidebar/sidebar.component';
-import {
-  HeaderTableDataComponent,
-} from '../../../../../../../../../shared/table/components/header-table-data/header-table-data.component';
-import {
-  HeaderTableComponent,
-} from '../../../../../../../../../shared/table/components/header-table/header-table.component';
-import { ItemTableComponent } from '../../../../../../../../../shared/table/components/item-table/item-table.component';
+import { DividerComponent } from '../../../../../../../../../shared/divider/divider.component';
+import { InputComponent } from '../../../../../../../../../shared/input/input.component';
+import { InputIconComponent } from '../../../../../../../../../shared/input-icon/input-icon.component';
+import { ListComponent } from '../../../../../../../../../shared/list/list.component';
 import { TableDataComponent } from '../../../../../../../../../shared/table/components/table-data/table-data.component';
+import { HeaderTableComponent } from '../../../../../../../../../shared/table/components/header-table/header-table.component';
+import { HeaderTableDataComponent } from '../../../../../../../../../shared/table/components/header-table-data/header-table-data.component';
+import { ItemTableComponent } from '../../../../../../../../../shared/table/components/item-table/item-table.component';
 import { TableComponent } from '../../../../../../../../../shared/table/table.component';
+import { CheckboxComponent } from '../../../../../../../../../shared/checkbox/checkbox.component';
 import { ToggleComponent } from '../../../../../../../../../shared/toggle/toggle.component';
+import { ItemDataComponent } from '../../../../../../../../../shared/list/components/item-data/item-data.component';
+import { SolicitacaoUserRequest } from '../../../../../../../../../models/user.interface';
 import { ViajantesService } from '../../../../../../viajantes/viajantes.service';
-import { ItemListComponent } from '../../../../../../../../../shared/list/components/item-list/item-list.component';
-import { ItemDataComponent } from "../../../../../../../../../shared/list/components/item-data/item-data.component";
 import { SidebarService } from '../../../../../../../../../shared/sidebar/sidebar.service';
 import { UserService } from '../../../../../../../../../shared/services/user/user.service';
-import { CentralCustoDetailsComponent } from '../../central-custo-details.component';
-import { CentralCustoDetailsService } from '../../central-custo-details.service';
+import { CentralCustoService } from '../../../../../central-custo.service';
+import { EquipeCentralCustoService } from '../../equipe-central-custo.service';
 
 @Component({
   selector: 'app-vincular-usuario',
@@ -82,7 +76,7 @@ export class VincularUsuarioComponent implements OnInit {
     private readonly viajantesService: ViajantesService,
     private readonly sibebarService: SidebarService,
     private readonly usuarioService: UserService,
-    private readonly centralCustoDetailService: CentralCustoDetailsService,
+    private readonly centralCustoDetailService: EquipeCentralCustoService,
     private readonly service: CentralCustoService,
   ) {
 

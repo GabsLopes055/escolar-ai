@@ -109,7 +109,7 @@ export class ViajantesComponent implements OnInit {
     navbarService.showBtnViajar.next(true);
     this.menuService.setSelected({
       icon: 'person_4',
-      label: 'Viajantes',
+      label: 'Colaboradores',
       route: '/admin/viajantes',
       checked: true,
     });

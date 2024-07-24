@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { ButtonComponent } from '../../../../../../../../../shared/button/button.component';
-import { ModalComponent } from '../../../../../../../../../shared/modal/modal.component';
-import { DividerComponent } from '../../../../../../../../../shared/divider/divider.component';
-import { ModalService } from '../../../../../../../../../shared/modal/modal.service';
+
 import { Router } from '@angular/router';
+import { ButtonComponent } from '../../../../../../shared/button/button.component';
+import { ModalComponent } from '../../../../../../shared/modal/modal.component';
+import { DividerComponent } from '../../../../../../shared/divider/divider.component';
+import { ModalService } from '../../../../../../shared/modal/modal.service';
+
 
 @Component({
   selector: 'app-adicionar-cartao',

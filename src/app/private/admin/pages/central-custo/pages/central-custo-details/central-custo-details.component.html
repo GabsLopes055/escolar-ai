@@ -1,0 +1,40 @@
+<main>
+  <div class="tab-central-custo">
+    <div class="header">
+      <div class="back" (click)="back()">
+        <span class="material-symbols-outlined">
+          arrow_back
+        </span>
+        <span>Supervisores</span>
+      </div>
+
+      <div class="input-box">
+        <tgt-input-icon icon="search" iconPosition="right" placeholder="Busque aqui..."
+          [control]="pesquisa"></tgt-input-icon>
+      </div>
+      <tgt-select [label]="'Opções'" [border]="false" icon="more_vert" [options]="actionsCentral"
+        class="col-6"></tgt-select>
+    </div>
+    <app-tabs [tabs]="tabs" (change)="chosenTab($event)"></app-tabs>
+
+  </div>
+  @switch (tabSelecionada) {
+
+  @case ('historico') {
+  <div class="body">
+    <historico-central-custo></historico-central-custo>
+  </div>
+  }
+
+  @case ('solicitacoes') {
+    <div class="body">
+      <solicitacoes-central-custo></solicitacoes-central-custo>
+    </div>
+  }
+  @case ('equipe') {
+  <div class="body">
+    <equipe-central-custo></equipe-central-custo>
+  </div>
+  }
+  }
+</main>

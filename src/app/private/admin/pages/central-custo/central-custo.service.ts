@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {HttpClient} from "@angular/common/http";
-import {environment} from "../../../../../../environments/environment";
+import {environment} from "../../../../../environments/environment";
 import {
   CentralDeCusto,
   CentralDeCustoRequest,
   CentralDeCustoSolicitacao
-} from "../../../../../models/central-de-custo.interface";
-import { EntityPaginated } from '../../../../../models/filtro-busca.interface';
+} from "../../../../models/central-de-custo.interface";
+import { EntityPaginated } from '../../../../models/filtro-busca.interface';
 
 const URL_BASE = `${environment.BACKEND_API}/central-custo`;
 

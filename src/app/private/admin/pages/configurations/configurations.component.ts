@@ -7,7 +7,6 @@ import { ButtonComponent } from '../../../../shared/button/button.component';
 import { CommonModule } from '@angular/common';
 import { SidebarComponent } from "../../../../shared/sidebar/sidebar.component";
 import { SidebarService } from '../../../../shared/sidebar/sidebar.service';
-import { SidebarNovaCentralCustoComponent } from './central-custo/components/sidebar-nova-central-custo/sidebar-nova-central-custo.component';
 import { TableComponent } from "../../../../shared/table/table.component";
 import { PaginatorComponent } from '../../../../shared/paginator/paginator.component';
 import { ListComponent } from "../../../../shared/list/list.component";
@@ -20,7 +19,6 @@ import { ItemTableComponent } from "../../../../shared/table/components/item-tab
 import { TableDataComponent } from "../../../../shared/table/components/table-data/table-data.component";
 import { HeaderTableComponent } from "../../../../shared/table/components/header-table/header-table.component";
 import { HeaderTableDataComponent } from "../../../../shared/table/components/header-table-data/header-table-data.component";
-import { CetralCustoComponent } from "./central-custo/central-custo.component";
 import { PerfilAcessoComponent } from "./perfil-acesso/perfil-acesso.component";
 import { CartoesComponent } from "./cartoes/cartoes.component";
 import { PlanosComponent } from "./planos/planos.component";
@@ -49,7 +47,6 @@ import { PlanosComponent } from "./planos/planos.component";
         TableDataComponent,
         HeaderTableComponent,
         HeaderTableDataComponent,
-        CetralCustoComponent,
         PerfilAcessoComponent,
         CartoesComponent,
         PlanosComponent
