@@ -2,7 +2,7 @@ import { CentralCustoDetailsComponent } from './pages/central-custo-details/cent
 import { Component } from '@angular/core';
 import { NavbarService } from '../../../../shared/navbar/navbar.service';
 import { MenuService } from '../../../../shared/menu/menu.service';
-import { debounceTime, map, Observable } from 'rxjs';
+import { debounceTime, map, Observable, Subscriber, Subscription } from 'rxjs';
 import { TabsComponent } from '../../../../shared/tabs/tabs.component';
 import { InputIconComponent } from '../../../../shared/input-icon/input-icon.component';
 import { ButtonComponent } from '../../../../shared/button/button.component';
@@ -74,6 +74,8 @@ export class CentralCustoComponent {
   pesquisa = new FormControl();
   select = new FormControl();
 
+  subscription = new Subscription();
+
   filtro: CentralDeCustoSolicitacao = {
     pagina: this.paginaAtual,
     tamanhoPagina: this.tamanhoPagina,
@@ -108,15 +110,17 @@ export class CentralCustoComponent {
   }
 
   ngOnInit(): void {
+
     const empresaId = this.usuarioService.user?.empresaId;
     if (empresaId) {
       this.empresaId = parseInt(String(empresaId));
       this.listenCentralCusto();
     }
+
   }
 
   ngOnDestroy(): void {
-    // this.service.showlist.next(false);
+    this.subscription.unsubscribe();
   }
 
   adicionarCentralCusto() {
@@ -165,10 +169,11 @@ export class CentralCustoComponent {
     });
   }
 
-  showDetails(id: number) {
+  showDetails(id: number, nome: string) {
     this.service.showDetails.next(true);
     this.service.showlist.next(false);
     this.service.idCentralSelected.next(id);
+    this.service.nomeCentralSelected.next(nome)
   }
 
   listenCentralCusto() {

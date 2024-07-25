@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ListComponent } from '../../../../../../../shared/list/list.component';
 import { HeaderListComponent } from '../../../../../../../shared/list/components/header-list/header-list.component';
 import { HeaderColComponent } from '../../../../../../../shared/list/components/header-col/header-col.component';
@@ -24,7 +24,7 @@ import {
 import { FormControl } from '@angular/forms';
 import { PaginatorComponent } from '../../../../../../../shared/paginator/paginator.component';
 import { UpdateUserComponent } from '../../../../viajantes/components/update-user/update-user.component';
-import { debounceTime } from 'rxjs';
+import { debounceTime, Subscription } from 'rxjs';
 import { DesvincularUsuarioComponent } from './components/desvincular-usuario/desvincular-usuario.component';
 
 @Component({
@@ -44,13 +44,15 @@ import { DesvincularUsuarioComponent } from './components/desvincular-usuario/de
   templateUrl: './equipe-central-custo.component.html',
   styleUrl: './equipe-central-custo.component.scss',
 })
-export class EquipeCentralCustoComponent implements OnInit {
+export class EquipeCentralCustoComponent implements OnInit, OnDestroy {
   tamanhoPagina: number = 6; // total de itens por pagina
   totalItems!: number; // total de registros
   pagina: number = 1; // pagina atual
   usuarios: any[] = [];
   centralCustoSelecionada = 0;
   select = new FormControl();
+
+  subscription = new Subscription();
 
   options: OptionSelect[] = [
     { label: 'Todos', value: null },
@@ -63,7 +65,7 @@ export class EquipeCentralCustoComponent implements OnInit {
     tamanhoPagina: this.tamanhoPagina,
     email: null,
     statusUser: null,
-    centralCustoId: null,
+    centralDeCustoId: null,
   };
 
   protected readonly Status = Status;
@@ -71,34 +73,47 @@ export class EquipeCentralCustoComponent implements OnInit {
   constructor(
     private readonly modal: ModalService,
     private readonly toast: ToastService,
-    private readonly serviceEqupe: EquipeCentralCustoService,
+    private readonly serviceEquipe: EquipeCentralCustoService,
     private readonly serviceCentralCusto: CentralCustoService,
-    private readonly serviceEquipe: CentralCustoDetailsService,
-    private readonly sidebarService: SidebarService
-  ) {
-    this.serviceCentralCusto.idCentralSelected.subscribe((id) => {
-      console.log(id)
-      this.centralCustoSelecionada = id as number;
-    });
+    private readonly sidebarService: SidebarService,
+    private readonly serviceCentralCustoDetail: CentralCustoDetailsService
+  ) {}
+
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
+
+
   ngOnInit(): void {
+
+    this.subscription.add(
+      this.serviceCentralCustoDetail.filtroDeBuscaTexto.subscribe(value => {
+        this.filtroEquipeCentral.email = value;
+        this.listenEquipeCentral();
+      })
+    );
+
     this.listenEquipeCentral();
     this.campoSelect();
   }
 
   listenEquipeCentral() {
-    this.filtroEquipeCentral.centralCustoId = this.centralCustoSelecionada;
+    this.subscription.add(
+      this.serviceCentralCusto.idCentralSelected.subscribe((id) => {
+        this.centralCustoSelecionada = id as number;
 
-    console.log(this.filtroEquipeCentral)
 
-    this.serviceEqupe.listarEquipesCentralCusto(this.filtroEquipeCentral)
-      .subscribe({
-        next: (equipe) => {
-          console.log(equipe)
-          this.totalItems = equipe.totalCount;
-          this.usuarios = equipe.itens;
-        },
-      });
+        this.filtroEquipeCentral.centralDeCustoId = id;
+        this.serviceEquipe.listarEquipesCentralCusto(this.filtroEquipeCentral)
+        .subscribe({
+          next: (equipe) => {
+            this.totalItems = equipe.totalCount;
+            this.usuarios = equipe.itens;
+          },
+        });
+      })
+    );
   }
 
   vincularUsuario() {
@@ -132,25 +147,21 @@ export class EquipeCentralCustoComponent implements OnInit {
     const modalRef = this.modal.open(DesvincularUsuarioComponent);
     modalRef.afterClosed.subscribe((value) => {
       if (value) {
-        this.toast.notify({
-          message: 'Verificar Endpoint para vincular usuario',
-          type: 'INFO',
+        this.serviceEquipe.delete(id).subscribe({
+          next: () => {
+            this.toast.notify({
+              message: 'Colaborador desvinculado com sucesso!',
+              type: 'SUCCESS',
+            });
+            this.listenEquipeCentral();
+          },
+          error: (erro) => {
+            this.toast.notify({
+              message: `${erro.error.menssagem}`,
+              type: 'ERROR',
+            });
+          },
         });
-        // this.viajantesService.delete(id).subscribe({
-        //   next: () => {
-        //     this.toast.notify({
-        //       message: 'Usuário deletado com sucesso.',
-        //       type: 'SUCCESS',
-        //     });
-        //     this.listenViajantes();
-        //   },
-        //   error: (erro) => {
-        //     this.toast.notify({
-        //       message: `${erro.error.menssagem}`,
-        //       type: 'ERROR',
-        //     });
-        //   },
-        // });
       }
     });
   }

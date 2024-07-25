@@ -2,7 +2,7 @@ import { InputViewComponent } from './../../../../../../shared/input-view/input-
 import { Component, OnInit } from '@angular/core';
 import { ButtonComponent } from '../../../../../../shared/button/button.component';
 import { PerfilService } from '../../perfil.service';
-import { User } from '../../../../../../models/user.interface';
+import { Role, User } from '../../../../../../models/user.interface';
 import { UserService } from '../../../../../../shared/services/user/user.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { InputComponent } from '../../../../../../shared/input/input.component';
@@ -37,10 +37,17 @@ export class DadosPessoaisComponent implements OnInit {
     confirmacaoNovaSenha: new FormControl(),
   });
 
-  // optionSexoUsuario: OptionSelect[] = [
-  //   'Masculino' = 'MASCULINO',
-  //   value: any;
-  // ]
+  optionsSexo: OptionSelect[] = [
+    { label: 'Masculino', value: 'MASCULINO' },
+    { label: 'Feminino', value: 'FEMININO' },
+  ];
+
+  optionsPerfil: OptionSelect[] = [
+    { label: 'Administrador', value: Role.ADMIN },
+    { label: 'Gestor', value: Role.MANAGER },
+    { label: 'Viajante', value: Role.USER },
+    { label: 'Suporte', value: Role.SUPPORT },
+  ];
 
   constructor(
     private readonly perfilUsuario: PerfilService,
@@ -60,9 +67,7 @@ export class DadosPessoaisComponent implements OnInit {
         this.formEditarUsuario.controls.cpf.setValue(usuario.cpf);
         this.formEditarUsuario.controls.email.setValue(usuario.email);
         this.formEditarUsuario.controls.telefone.setValue(usuario.telefone);
-        this.formEditarUsuario.controls.dataNascimento.setValue(
-          usuario.dataNascimento
-        );
+        this.formEditarUsuario.controls.dataNascimento.setValue(usuario.dataNascimento);
         this.formEditarUsuario.controls.sexo.setValue(usuario.sexo);
         this.formEditarUsuario.controls.role.setValue(usuario.role);
       },
@@ -100,6 +105,8 @@ export class DadosPessoaisComponent implements OnInit {
     }
 
   }
+
+  protected readonly Role = Role
 
   // Variáveis para controle da exibição dos formulários e ações do footer
   vizualizarInformacoesUsuario = true;

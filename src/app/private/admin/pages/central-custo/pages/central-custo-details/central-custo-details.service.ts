@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 
 @Injectable({
@@ -6,5 +7,6 @@ import { Injectable } from '@angular/core';
 })
 export class CentralCustoDetailsService {
 
+  filtroDeBuscaTexto = new BehaviorSubject<string | null>(null)
 
 }

@@ -18,6 +18,7 @@ import { ToggleComponent } from '../../../../../../../../../shared/toggle/toggle
 import { ItemDataComponent } from '../../../../../../../../../shared/list/components/item-data/item-data.component';
 import {
   SolicitacaoUserRequest,
+  User,
   UserEntity,
 } from '../../../../../../../../../models/user.interface';
 import { ViajantesService } from '../../../../../../viajantes/viajantes.service';
@@ -89,11 +90,13 @@ export class VincularUsuarioComponent implements OnInit {
     const empresaId = this.usuarioService.user?.empresaId;
     if (empresaId) {
       this.filtro.empresaId = parseInt(String(empresaId));
-      this.listenViajantes();
     }
 
     this.service.idCentralSelected.subscribe((id) => {
       this.centralCustoId = id as number;
+      if (id) {
+        this.listenViajantes();
+      }
     });
 
     this.campoPesquisa();
@@ -103,7 +106,9 @@ export class VincularUsuarioComponent implements OnInit {
     this.viajantesService.listarPor(this.filtro).subscribe({
       next: (integrantes) => {
         this.totalItems = integrantes.totalCount;
-        this.usuarios = integrantes.itens;
+        this.usuarios = integrantes.itens.map(item => {
+          return {item, control: new FormControl(false)}
+        });
       },
     });
   }
@@ -120,8 +125,9 @@ export class VincularUsuarioComponent implements OnInit {
   }
 
   vincularUsuario() {
-    if (!(this.vincularUsuarioRequest.length === 0)) {
+    if (this.vincularUsuarioRequest.length !== 0) {
       this.vincularUsuarioRequest.forEach((element) => {
+        console.log(element)
         this.centralCustoDetailService
           .cadastrarUsuarioEquipeCentralCusto(element)
           .subscribe({
@@ -146,82 +152,43 @@ export class VincularUsuarioComponent implements OnInit {
     }
   }
 
-  checkBox(event: any, role: string, id: number) {
+  checkBox(usuario: any) {
+
     const isChecked = event;
-    const aprovador = role === 'MANAGER' ? true : false;
+    // const aprovador = usuario.item.role === 'MANAGER' ? true : false;
 
-    const request: CentralCustoEquipeRequest = {
-      centralDeCustoId: this.centralCustoId,
-      userId: id,
-      aprovador: aprovador,
-    };
-
-    if (role == 'MANAGER') {
+    if (usuario.item.role == 'MANAGER') {
       if (isChecked) {
         if (!this.habilitarToggle) {
           this.habilitarToggle = true;
-
+          // console.log(usuario.control)
           // preciso pegar o valor do toggle, se esta marcado ou nao
           // depois de pegar esse valor, passar para o aprovador do request
         }
       } else {
-        this.controlToggle.setValue(false);
         this.habilitarToggle = false;
       }
     }
 
+    const request: CentralCustoEquipeRequest = {
+      centralDeCustoId: this.centralCustoId,
+      userId: usuario.item.id,
+      aprovador: usuario.control.value,
+    };
+
     // Adiciona ou remove o request do array
     if (isChecked) {
       // Adiciona o novo request ao array, se ja não estiver no array
-      if (
-        !this.vincularUsuarioRequest.some((request) => request.userId === id)
-      ) {
+      if (!this.vincularUsuarioRequest.some((request) => request.userId === usuario.item.id)) {
+
         this.vincularUsuarioRequest.push(request);
       }
     } else {
       // Remove o request do array se o checkbox for desmarcado
       this.vincularUsuarioRequest = this.vincularUsuarioRequest.filter(
-        (request) => request.userId !== id
+        (request) => request.userId !== usuario.item.id
       );
     }
-
-    // let aprovador;
-
-    // if (role == 'MANAGER') {
-    //   aprovador = true;
-
-    //   if (event) {
-    //     if (!this.vincularSelect) {
-    //       this.vincularSelect = !this.vincularSelect;
-    //     }
-    //   } else {
-    //     this.controlToggle.setValue(false);
-    //     this.vincularSelect = false;
-
-    //   }
-    // } else {
-    //   aprovador = false;
-    // }
-
-    // if(!event) {
-    //   // Opcional: Remover a solicitação se necessário
-    //   this.vincularUsuarioRequest = this.vincularUsuarioRequest.filter(
-    //     (request) => request.userId !== id
-    //   );
-
-    //   // console.log(this.vincularUsuarioRequest)
-    // }
-
-    // // Crie a nova solicitação e adicione ao array
-    // const vincular: CentralCustoEquipeRequest = {
-    //   centralDeCustoId: this.centralCustoId, // Substitua com o valor real
-    //   userId: id, // O ID do usuário
-    //   aprovador: aprovador, // Ou false, conforme a lógica
-    // };
-
-    // this.vincularUsuarioRequest.push(vincular);
-
-    // console.log(this.vincularUsuarioRequest);
   }
 
   listarScroll(event: any) {
@@ -230,6 +197,17 @@ export class VincularUsuarioComponent implements OnInit {
       this.filtro.tamanhoPagina = this.tamanhoPagina += this.tamanhoPagina;
       this.listenViajantes();
     }
+  }
+
+  toggleCheck(event: any, usuario: any) {
+
+    this.vincularUsuarioRequest = this.vincularUsuarioRequest.map(_usuario => {
+      if(usuario.item.id == _usuario.userId) {
+        _usuario.aprovador = event;
+      }
+      return _usuario;
+    });
+
   }
 
   retornarNomePermissao(role: string): string {

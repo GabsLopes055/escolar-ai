@@ -22,4 +22,8 @@ export class EquipeCentralCustoService {
     listarEquipesCentralCusto(filtroEquipeCentralBusco: CentralCustoEquipeFiltro) : Observable<EntityPaginated<CentralCustoEquipeEntity>> {
       return this.http.post<EntityPaginated<CentralCustoEquipeEntity>>(`${URL}/listar`, filtroEquipeCentralBusco);
     }
+
+    delete(id: number): Observable<CentralCustoEquipeEntity> {
+      return this.http.delete<CentralCustoEquipeEntity>(`${URL}/${id}`);
+    }
 }

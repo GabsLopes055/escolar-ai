@@ -9,6 +9,7 @@ import { ModalService } from '../../../../../../shared/modal/modal.service';
 import { ToastService } from '../../../../../../shared/toast/toast.service';
 import { AbrirChamadoService } from './abrir-chamado.service';
 import { ChamadoRequest } from '../../../../../../models/chamado.interface';
+import { SidebarService } from '../../../../../../shared/sidebar/sidebar.service';
 
 @Component({
   selector: 'app-abrir-chamado',
@@ -31,7 +32,8 @@ export class AbrirChamadoComponent implements OnInit {
     private readonly userService: UserService,
     private readonly modal: ModalService,
     private readonly toast: ToastService,
-    private readonly service: AbrirChamadoService
+    private readonly service: AbrirChamadoService,
+    private readonly sidebarService: SidebarService
   ) {}
 
   ngOnInit(): void {
@@ -53,7 +55,7 @@ export class AbrirChamadoComponent implements OnInit {
             message: 'Chamado registrado com sucesso',
             type: 'SUCCESS',
           });
-          this.modal.close();
+          this.sidebarService.closeSide();
         },
         error: () => {
           this.toast.notify({
@@ -71,6 +73,10 @@ export class AbrirChamadoComponent implements OnInit {
   }
 
   cancelar() {
-    this.modal.close();
+    /**
+     * Apenas a service do sidebar que estava fechando esta modal
+     * o porque ninguém sabe.
+     */
+    this.sidebarService.closeSide();
   }
 }

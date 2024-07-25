@@ -19,7 +19,7 @@
       }
     </div>
     <div class="buttons grid col-12">
-      <tgt-button fieldButton="outline" class="col-6" [border]="false" (click)="cancelar()">Cancelar</tgt-button>
+      <tgt-button fieldButton="outline" class="col-6" [border]="false" [type]="'button'" (click)="cancelar()">Cancelar</tgt-button>
       <tgt-button color="secundary" class="col-6" icon="trending_flat" [disabled]="!form.valid"
         (click)="enviar()">Enviar</tgt-button>
     </div>

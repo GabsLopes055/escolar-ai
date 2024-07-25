@@ -19,6 +19,8 @@ export class CentralCustoService {
   showlist = new BehaviorSubject(true);
   showDetails = new BehaviorSubject(false);
   idCentralSelected = new BehaviorSubject<number | null>(null)
+  nomeCentralSelected = new BehaviorSubject<string | null>(null)
+
 
   constructor(private readonly http: HttpClient) { }
 

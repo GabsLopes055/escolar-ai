@@ -169,7 +169,7 @@ export class SuportAtendimentoComponent implements OnInit {
   }
 
   abrirChamado() {
-    this.sidebar.openSide(AbrirChamadoComponent)
+    this.sidebar.openSide(AbrirChamadoComponent);
   }
 
   openDetalhe(data: any) {

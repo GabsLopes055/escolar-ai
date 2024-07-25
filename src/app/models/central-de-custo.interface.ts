@@ -40,7 +40,7 @@ export interface CentralCustoEquipeRequest {
 export interface CentralCustoEquipeFiltro extends FiltroDeBusca {
   email: string | null,
   statusUser: Status | null,
-  centralCustoId: number | null
+  centralDeCustoId: number | null
 }
 
 export enum statusCentralCusto {
