@@ -117,9 +117,9 @@ export class EquipeCentralCustoComponent implements OnInit, OnDestroy {
   }
 
   vincularUsuario() {
-    const sideRef = this.sidebarService.openSideWithData(
-      VincularUsuarioComponent
-    );
+
+    const sideRef = this.sidebarService.openSideWithData(VincularUsuarioComponent);
+
     sideRef.afterClosed.subscribe((value) => {
       if (value) {
         this.toast.notify({

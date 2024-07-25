@@ -65,7 +65,7 @@ export class PerfilAcessoComponent implements OnInit {
 
   preencherPermissoes() {
 
-    this.cancelar()
+    this.cancelar();
 
     this.perfilService.buscar(this.empresaId).subscribe({
       next: (value) => {
@@ -117,6 +117,7 @@ export class PerfilAcessoComponent implements OnInit {
 
   cancelar() {
     this.edit = false;
+    // this.preencherPermissoes();
   }
 
   retornoPassageiroViaja(retorno: FormControl) {
