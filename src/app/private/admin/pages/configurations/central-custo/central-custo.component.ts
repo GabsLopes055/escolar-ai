@@ -1,3 +1,4 @@
+
 import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ButtonComponent } from '../../../../../shared/button/button.component';
@@ -12,14 +13,12 @@ import { SidebarComponent } from '../../../../../shared/sidebar/sidebar.componen
 import { SidebarService } from '../../../../../shared/sidebar/sidebar.service';
 import { StatusCircleComponent } from '../../../../../shared/status-circle/status-circle.component';
 import { Tab, TabsComponent } from '../../../../../shared/tabs/tabs.component';
-import { SidebarNovaCentralCustoComponent } from './components/sidebar-nova-central-custo/sidebar-nova-central-custo.component';
 import { TableComponent } from '../../../../../shared/table/table.component';
 import { HeaderTableComponent } from '../../../../../shared/table/components/header-table/header-table.component';
 import { HeaderTableDataComponent } from '../../../../../shared/table/components/header-table-data/header-table-data.component';
 import { ItemTableComponent } from '../../../../../shared/table/components/item-table/item-table.component';
 import { TableDataComponent } from '../../../../../shared/table/components/table-data/table-data.component';
-import { CentralCustoDetailsComponent } from './components/central-custo-details/central-custo-details.component';
-import { CentralCustoService } from './central-custo.service';
+import { CentralCustoService } from '../../central-custo/central-custo.service';
 import {
   CentralDeCusto,
   CentralDeCustoSolicitacao,
@@ -28,7 +27,6 @@ import {
 import { UserService } from '../../../../../shared/services/user/user.service';
 import { TooltipDirective } from '../../../../../shared/directives/tooltip.directive';
 import { ModalService } from '../../../../../shared/modal/modal.service';
-import { ConfirmDeleteComponent } from './components/confirm-delete/confirm-delete.component';
 import {
   OptionSelect,
   SelectComponent,
@@ -36,7 +34,8 @@ import {
 import { ToastService } from '../../../../../shared/toast/toast.service';
 import { EntityPaginated } from '../../../../../models/filtro-busca.interface';
 import { FormControl } from '@angular/forms';
-import { debounceTime } from 'rxjs';
+import { debounceTime, map, Observable } from 'rxjs';
+import { CartoesService } from '../cartoes/cartoes.service';
 
 @Component({
   selector: 'central-custo',
@@ -61,13 +60,11 @@ import { debounceTime } from 'rxjs';
     HeaderTableDataComponent,
     ItemTableComponent,
     TableDataComponent,
-    CentralCustoDetailsComponent,
     TooltipDirective,
     SelectComponent,
   ],
 })
 export class CetralCustoComponent implements OnInit, OnDestroy {
-
   isList = this.service.showlist;
   empresaId: number = 0;
   paginaAtual: number = 1;
@@ -96,7 +93,8 @@ export class CetralCustoComponent implements OnInit, OnDestroy {
     private readonly service: CentralCustoService,
     private readonly usuarioService: UserService,
     private readonly modal: ModalService,
-    private readonly toast: ToastService
+    private readonly toast: ToastService,
+    private readonly cartoesService: CartoesService
   ) {
     this.campoPesquisa();
     this.campoSelect();
@@ -113,41 +111,52 @@ export class CetralCustoComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     // this.service.showlist.next(false);
   }
-  adicionarCentralCusto() {
-    const closeRef = this.sidebarService.openSide(
-      SidebarNovaCentralCustoComponent
+
+  // adicionarCentralCusto() {
+  //   this.cartaoAdicionado().subscribe(cartao => {
+  //     if (cartao) {
+  //       const ref = this.modal.open(AdicionarCartaoComponent);
+  //     } else {
+  //       const closeRef = this.sidebarService.openSide(SidebarNovaCentralCustoComponent);
+  //       closeRef.sub.subscribe(data => {
+  //         if (data) {
+  //           this.listenCentralCusto();
+  //         }
+  //       });
+  //     }
+  //   });
+  // }
+
+  cartaoAdicionado(): Observable<boolean> {
+    return this.cartoesService.listar(this.empresaId).pipe(
+      map(cartoes => cartoes.length < 0)
     );
-    closeRef.sub.subscribe((data) => {
-      if (data) {
-        this.listenCentralCusto();
-      }
-    });
   }
 
-  delete(id: number) {
-    const ref = this.modal.open(ConfirmDeleteComponent);
-    ref.afterClosed.subscribe({
-      next: (value) => {
-        if (value) {
-          this.service.deletar(id).subscribe({
-            next: () => {
-              this.toast.notify({
-                message: 'Central de custo deletada com sucesso.',
-                type: 'SUCCESS',
-              });
-              this.listenCentralCusto();
-            },
-            error: () => {
-              this.toast.notify({
-                message: 'Ocorreu um erro ao deletar Central de custo.',
-                type: 'ERROR',
-              });
-            },
-          });
-        }
-      },
-    });
-  }
+  // delete(id: number) {
+  //   const ref = this.modal.open(ConfirmDeleteComponent);
+  //   ref.afterClosed.subscribe({
+  //     next: (value) => {
+  //       if (value) {
+  //         this.service.deletar(id).subscribe({
+  //           next: () => {
+  //             this.toast.notify({
+  //               message: 'Central de custo deletada com sucesso.',
+  //               type: 'SUCCESS',
+  //             });
+  //             this.listenCentralCusto();
+  //           },
+  //           error: () => {
+  //             this.toast.notify({
+  //               message: 'Ocorreu um erro ao deletar Central de custo.',
+  //               type: 'ERROR',
+  //             });
+  //           },
+  //         });
+  //       }
+  //     },
+  //   });
+  // }
 
   showDetails(id: number) {
     this.service.showDetails.next(true);
@@ -183,16 +192,14 @@ export class CetralCustoComponent implements OnInit, OnDestroy {
 
   changePages(pagina: number) {
     this.filtro.pagina = pagina;
-    this.listenCentralCusto()
+    this.listenCentralCusto();
   }
 
   campoSelect() {
     this.select.valueChanges.pipe(debounceTime(700)).subscribe((value) => {
-      console.log("retornar com o filtro: " + value)
-      // this.filtro.statusUser = value
-      // this.listenViajantes()
+      this.filtro.statusCentralCusto = value
+      this.listenCentralCusto()
     });
-
   }
 
   campoPesquisa() {

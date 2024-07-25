@@ -9,6 +9,7 @@ export interface perfilAcesso extends Empresa {
   gestorReserva: boolean;
   gestorViaja: boolean;
   gestorCriaCentral: boolean;
+  gestorVerMenu: boolean;
 }
 
 export interface perfilAcessoRequest {
@@ -19,5 +20,6 @@ export interface perfilAcessoRequest {
   gestorConvida: boolean;
   gestorViaja: boolean;
   gestorCriaCentral: boolean;
+  gestorVerMenu: boolean;
   empresaId: number;
 }

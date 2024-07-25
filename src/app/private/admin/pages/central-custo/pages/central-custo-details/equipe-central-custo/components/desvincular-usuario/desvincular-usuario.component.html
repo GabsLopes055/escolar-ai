@@ -1,0 +1,20 @@
+<tgt-modal>
+  <main>
+    <div class="content">
+      <span class="title">Desvincular colaborador</span>
+      <tgt-divider></tgt-divider>
+      <span class="text">
+        Ao confirmar, você não poderá voltar atrás com esta ação.
+      </span>
+    </div>
+    <div class="actions">
+      <tgt-button fieldButton="outline" size="small" (click)="cancel()">
+        Cancelar
+      </tgt-button>
+      <tgt-button color="error" size="small" (click)="desvincularUsuario()">
+        Sim, desvincular
+      </tgt-button>
+    </div>
+  </main>
+
+</tgt-modal>

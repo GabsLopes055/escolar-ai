@@ -1,13 +1,21 @@
-import { Component, EventEmitter, Input, input, OnChanges, Output, SimpleChanges } from '@angular/core';
-import { DividerComponent } from "../divider/divider.component";
+import {
+  Component,
+  EventEmitter,
+  Input,
+  input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
+import { DividerComponent } from '../divider/divider.component';
 import { FormControl } from '@angular/forms';
 
 @Component({
-    selector: 'tgt-select',
-    standalone: true,
-    templateUrl: './select.component.html',
-    styleUrl: './select.component.scss',
-    imports: [DividerComponent]
+  selector: 'tgt-select',
+  standalone: true,
+  templateUrl: './select.component.html',
+  styleUrl: './select.component.scss',
+  imports: [DividerComponent],
 })
 export class SelectComponent implements OnChanges {
   isOpenModal = false;
@@ -15,13 +23,14 @@ export class SelectComponent implements OnChanges {
   @Input() label: string = 'Selecione';
   @Input() options: OptionSelect[] = [];
   @Input() control: FormControl = new FormControl();
-
+  @Input() icon: string = 'arrow_drop_down';
+  @Input() border: boolean = true;
   @Output() changeValue = new EventEmitter();
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['control'] && this.control.value) {
       const selectedOption = this.options.find(
-        (option) => option.value === this.control.value,
+        (option) => option.value === this.control.value
       );
       if (selectedOption) {
         this.label = selectedOption.label;
@@ -33,7 +42,7 @@ export class SelectComponent implements OnChanges {
     this.isOpenModal = !this.isOpenModal;
   }
 
-  select(option: OptionSelect) {
+  optionSelect(option: OptionSelect) {
     this.label = option.label;
     this.isOpenModal = false;
     this.control.setValue(option.value);

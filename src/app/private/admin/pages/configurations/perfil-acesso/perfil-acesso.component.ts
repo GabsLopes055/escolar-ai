@@ -45,6 +45,7 @@ export class PerfilAcessoComponent implements OnInit {
     gestorConvida: new FormControl(),
     empresaId: new FormControl(),
     gestorCriaCentral: new FormControl(),
+    gestorVerMenu: new FormControl(),
   });
 
   constructor(
@@ -76,6 +77,7 @@ export class PerfilAcessoComponent implements OnInit {
         this.permissoes.controls['gestorReserva'].setValue(value.gestorReserva);
         this.permissoes.controls['gestorViaja'].setValue(value.gestorViaja);
         this.permissoes.controls['gestorCriaCentral'].setValue(value.gestorCriaCentral)
+        this.permissoes.controls['gestorVerMenu'].setValue(value.gestorVerMenu);
         this.permissoes.controls['empresaId'].setValue(this.empresaId);
       },
       error: () => {
@@ -138,6 +140,10 @@ export class PerfilAcessoComponent implements OnInit {
   }
   retornoGestorCriaCentralCusto(retorno: any) {
     this.permissoes.controls['gestorCriaCentral'].setValue(retorno);
+  }
+
+  retornoGestorVerConfiguracoes(retorno: any) {
+    this.permissoes.controls['gestorVerMenu'].setValue(retorno);
   }
 
   protected readonly status!: Status;

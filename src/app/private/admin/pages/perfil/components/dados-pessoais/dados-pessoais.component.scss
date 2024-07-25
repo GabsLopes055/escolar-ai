@@ -45,8 +45,10 @@ main {
       flex-direction: row;
       justify-content: space-between;
       width: 100%;
+      gap: 10px;
 
-      tgt-input {
+      tgt-input,
+      tgt-select {
         flex: 1;
         margin-right: 10px;
       }

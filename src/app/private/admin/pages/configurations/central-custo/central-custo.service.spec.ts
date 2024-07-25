@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { CentralCustoService } from './central-custo.service';
+import { CentralCustoService } from '../../central-custo/central-custo.service';
 
 describe('CentralCustoService', () => {
   let service: CentralCustoService;

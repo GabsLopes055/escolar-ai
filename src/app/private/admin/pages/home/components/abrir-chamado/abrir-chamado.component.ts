@@ -1,34 +1,30 @@
-import {Component, OnInit} from '@angular/core';
-import {ModalComponent} from "../../../../../../shared/modal/modal.component";
-import {InputComponent} from "../../../../../../shared/input/input.component";
-import {
-  TextareaComponent
-} from "../../../../../../shared/textarea/textarea.component";
-import {ButtonComponent} from "../../../../../../shared/button/button.component";
-import {FormControl, FormGroup} from "@angular/forms";
-import {UserService} from "../../../../../../shared/services/user/user.service";
-import {ModalService} from "../../../../../../shared/modal/modal.service";
-import {ToastService} from "../../../../../../shared/toast/toast.service";
-import {AbrirChamadoService} from "./abrir-chamado.service";
-import {ChamadoRequest} from "../../../../../../models/chamado.interface";
+import { Component, OnInit } from '@angular/core';
+import { ModalComponent } from '../../../../../../shared/modal/modal.component';
+import { InputComponent } from '../../../../../../shared/input/input.component';
+import { TextareaComponent } from '../../../../../../shared/textarea/textarea.component';
+import { ButtonComponent } from '../../../../../../shared/button/button.component';
+import { FormControl, FormGroup, MaxLengthValidator, Validators } from '@angular/forms';
+import { UserService } from '../../../../../../shared/services/user/user.service';
+import { ModalService } from '../../../../../../shared/modal/modal.service';
+import { ToastService } from '../../../../../../shared/toast/toast.service';
+import { AbrirChamadoService } from './abrir-chamado.service';
+import { ChamadoRequest } from '../../../../../../models/chamado.interface';
+import { SidebarService } from '../../../../../../shared/sidebar/sidebar.service';
 
 @Component({
   selector: 'app-abrir-chamado',
   standalone: true,
-  imports: [
-    ModalComponent,
-    InputComponent,
-    TextareaComponent,
-    ButtonComponent
-  ],
+  imports: [ModalComponent, InputComponent, TextareaComponent, ButtonComponent],
   templateUrl: './abrir-chamado.component.html',
-  styleUrl: './abrir-chamado.component.scss'
+  styleUrl: './abrir-chamado.component.scss',
 })
-export class AbrirChamadoComponent implements OnInit{
+export class AbrirChamadoComponent implements OnInit {
+
+  contagemCaracteres: any = 0
 
   form = new FormGroup({
-    assunto: new FormControl(),
-    menssagem: new FormControl(),
+    assunto: new FormControl('', Validators.required),
+    menssagem: new FormControl('', [Validators.required, Validators.maxLength(300)]),
     userId: new FormControl(),
   });
 
@@ -36,31 +32,51 @@ export class AbrirChamadoComponent implements OnInit{
     private readonly userService: UserService,
     private readonly modal: ModalService,
     private readonly toast: ToastService,
-    private readonly service: AbrirChamadoService
-  ) {
-  }
+    private readonly service: AbrirChamadoService,
+    private readonly sidebarService: SidebarService
+  ) {}
 
   ngOnInit(): void {
     const user = this.userService.user;
-    console.log(user)
     if (user) {
       this.form.controls.userId.setValue(user.id);
     }
   }
 
+  contagem() {
+    this.contagemCaracteres = this.form.controls.menssagem.value?.length;
+  }
+
   enviar() {
-    this.service.abrirChamado(this.form.value as ChamadoRequest).subscribe({
-      next: () => {
-        this.toast.notify({message: 'Chamado registrado com sucesso', type: "SUCCESS"});
-        this.modal.close();
-      },
-      error: () => {
-        this.toast.notify({message: 'Ocorreu um erro ao abrir um chamado', type: "ERROR"});
-      }
-    });
+    if (this.form.valid) {
+      this.service.abrirChamado(this.form.value as ChamadoRequest).subscribe({
+        next: () => {
+          this.toast.notify({
+            message: 'Chamado registrado com sucesso',
+            type: 'SUCCESS',
+          });
+          this.sidebarService.closeSide();
+        },
+        error: () => {
+          this.toast.notify({
+            message: 'Ocorreu um erro ao abrir um chamado',
+            type: 'ERROR',
+          });
+        },
+      });
+    } else {
+      this.toast.notify({
+        message: 'Preencha o formulário corretamente !',
+        type: 'ERROR',
+      });
+    }
   }
 
   cancelar() {
-    this.modal.close();
+    /**
+     * Apenas a service do sidebar que estava fechando esta modal
+     * o porque ninguém sabe.
+     */
+    this.sidebarService.closeSide();
   }
 }

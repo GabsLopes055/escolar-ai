@@ -14,23 +14,37 @@ main {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    .title {
-      display: flex;
-      flex-direction: row;
-      gap: 8px;
+  }
 
-      font-size: 20px;
-      font-weight: 500;
-      line-height: 30px;
-      text-align: left;
+  .contagem {
+    font-size: 0.625rem;
+    color: #666;
+    margin-top: 0.25rem;
+  }
 
-    }
-    .texto {
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 24px;
-      text-align: left;
+  h6 {
+    color: red; // Cor da mensagem de erro
+    font-size: 0.75rem; // Tamanho um pouco maior para visibilidade
+    margin-top: 0.5rem;
+  }
 
-    }
+  .title {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 30px;
+    text-align: left;
+
+  }
+
+  .texto {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+
   }
 }

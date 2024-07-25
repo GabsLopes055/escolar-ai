@@ -1,12 +1,8 @@
 <main>
   <div class="toggle-switch">
-    <input class="toggle-input" type="checkbox"
-    [checked]="isChecked"
-    [formControl]="control"
-    [disabled]="disabled">
+    <input class="toggle-input" type="checkbox" [checked]="isChecked" [formControl]="control" [disabled]="disabled">
     <label class="toggle-label" (click)="change()" [style.opacity]="disabled ? 0.5 : 1"
-    [style.cursor]="disabled ? 'not-allowed' : 'pointer'"
-    ></label>
+      [style.cursor]="disabled ? 'not-allowed' : 'pointer'"></label>
   </div>
   <div class="label">
     <span>{{label}}</span>

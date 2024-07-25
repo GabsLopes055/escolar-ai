@@ -49,11 +49,11 @@ export class MenuService {
       if(usuario != null && usuario.role == Role.ADMIN) {
         this._menu.next([
           {icon: 'dashboard', label: 'Dashboard', route: '/admin/dashboard', checked: false},
-          {icon: 'luggage', label: 'Viajar', route: '/admin/viajar', checked: false},
-          {icon: 'date_range', label: 'Reservas', route: '/admin/reservas', checked: false},
+          {icon: 'luggage', label: 'Solicitar Viagens', route: '/admin/viajar', checked: false},
+          {icon: 'date_range', label: 'Minhas Reservas', route: '/admin/reservas', checked: false},
           {icon: 'task_alt', label: 'Aprovações', route: '/admin/aprovacoes', checked: false},
           {icon: 'calculate', label: 'Central de Custo', route: '/admin/central-custo', checked: false},
-          {icon: 'person_4', label: 'Integrantes', route: '/admin/viajantes', checked: false},
+          {icon: 'person_4', label: 'Colaboradores', route: '/admin/viajantes', checked: false},
           {icon: 'settings', label: 'Configurações', route: '/admin/settings', checked: false},
           {icon: 'headset_mic', label: 'Suporte', route: '/admin/suporte-atendimento', checked: false}
         ])
@@ -72,8 +72,8 @@ export class MenuService {
 
             if(usuario != null && usuario.role == Role.MANAGER) {
               menu.push({icon: 'dashboard', label: 'Dashboard', route: '/admin/dashboard', checked: false});
-              menu.push({icon: 'luggage', label: 'Viajar', route: '/admin/viajar', checked: false});
-              menu.push({icon: 'date_range', label: 'Reservas', route: '/admin/reservas', checked: false});
+              menu.push({icon: 'luggage', label: 'Solicitar Viagens', route: '/admin/viajar', checked: false});
+              menu.push({icon: 'date_range', label: 'Minhas Reservas', route: '/admin/reservas', checked: false});
               menu.push({icon: 'task_alt', label: 'Aprovações', route: '/admin/aprovacoes', checked: false})
 
               if(permissoes.gestorCriaCentral) {
@@ -81,21 +81,22 @@ export class MenuService {
               }
 
               if(permissoes.gestorConvida) {
-                menu.push({icon: 'person_4', label: 'Integrantes', route: '/admin/viajantes', checked: false});
+                menu.push({icon: 'person_4', label: 'Colaboradores', route: '/admin/viajantes', checked: false});
               }
-
-              menu.push({icon: 'settings', label: 'Configurações', route: '/admin/settings', checked: false});
+              if(permissoes.gestorVerMenu) {
+                menu.push({icon: 'settings', label: 'Configurações', route: '/admin/settings', checked: false});
+              }
 
             } else {
 
-              menu.push({icon: 'date_range', label: 'Reservas', route: '/admin/reservas', checked: false});
+              menu.push({icon: 'date_range', label: 'Minhas Reservas', route: '/admin/reservas', checked: false});
 
               if(permissoes.passageiroReserva) {
-                menu.push({icon: 'luggage', label: 'Viajar', route: '/admin/viajar', checked: false});
+                menu.push({icon: 'luggage', label: 'Solicitar Viagens', route: '/admin/viajar', checked: false});
               }
-
-              // menu.push({icon: 'person_4', label: 'Viajantes', route: '/admin/viajantes', checked: false});
             }
+
+            console.log('passei aqui')
 
             this._menu.next(menu);
 

@@ -1,0 +1,22 @@
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  .header {
+    padding-top: 24px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+
+    .filtros {
+      display: flex;
+      flex-direction: row;
+      gap: 24px
+    }
+
+  }
+
+}

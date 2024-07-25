@@ -16,14 +16,14 @@
       <div class="toggle">
         <toggle [disabled]="this.permissoes.controls['passageiroViaja'].value" (changeToggle)="retornoPassageiroViaja($event)" [control]="$any(this.permissoes.controls['passageiroViaja'])"></toggle>
         <div class="descricao">
-          <p>Viajar</p>
+          <p>Permitir visualizar minhas reservas</p>
           <h6>Podem ser incluídos como passageiro em reservas de viagens.</h6>
         </div>
       </div>
       <div class="toggle">
         <toggle [disabled]="!edit" (changeToggle)="retornoPassageiroReserva($event)" [control]="$any(this.permissoes.controls['passageiroReserva'])"></toggle>
         <div class="descricao">
-          <p>Reservar</p>
+          <p>Permitir solicitar viagens</p>
           <h6>Podem solicitar reservas de viagens em seu nome.</h6>
         </div>
       </div>
@@ -35,29 +35,36 @@
       <div class="toggle">
         <toggle [disabled]="this.permissoes.controls['gestorReserva'].value" (changeToggle)="retornoGestorReserva($event)" [control]="$any(this.permissoes.controls['gestorReserva'])"></toggle>
         <div class="descricao">
-          <p>Reservar</p>
+          <p>Permitir solicitar viagens</p>
           <h6>Podem solicitar reservas de viagens para terceiros.</h6>
         </div>
       </div>
       <div class="toggle">
         <toggle [disabled]="!edit" (changeToggle)="retornoGestorViaja($event)" [control]="$any(this.permissoes.controls['gestorViaja'])"></toggle>
         <div class="descricao">
-          <p>Viajar</p>
+          <p>Permitir visualizar minhas reservas</p>
           <h6>Podem solicitar reservas de viagens em seu nome e de terceiros.</h6>
         </div>
       </div>
       <div class="toggle">
         <toggle [disabled]="!edit" (changeToggle)="retornoGestorConvida($event)" [control]="$any(this.permissoes.controls['gestorConvida'])"></toggle>
         <div class="descricao">
-          <p>Convidar colaboradores</p>
+          <p>Permitir convidar colaboradores</p>
           <h6>Adicionar colaboradores com perfil de Gestor ou Passageiro.</h6>
         </div>
       </div>
       <div class="toggle">
         <toggle [disabled]="!edit" (changeToggle)="retornoGestorCriaCentralCusto($event)" [control]="$any(this.permissoes.controls['gestorCriaCentral'])"></toggle>
         <div class="descricao">
-          <p>Criar Centrais de Custo</p>
+          <p>Permitir criar central de custo</p>
           <h6>Administrar Centrais de Custos.</h6>
+        </div>
+      </div>
+      <div class="toggle">
+        <toggle [disabled]="!edit" (changeToggle)="retornoGestorVerConfiguracoes($event)" [control]="$any(this.permissoes.controls['gestorVerMenu'])"></toggle>
+        <div class="descricao">
+          <p>Permitir Gestor acessar configurações.</p>
+          <h6>Administrar Configurações.</h6>
         </div>
       </div>
 

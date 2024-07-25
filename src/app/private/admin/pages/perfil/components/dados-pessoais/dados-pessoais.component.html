@@ -44,11 +44,11 @@
       <div class="first-colum-edit">
         <tgt-input [label]="'Data Nascimento'" [control]="formEditarUsuario.controls.dataNascimento"
           [type]="'date'"></tgt-input>
-        <tgt-input [label]="'Gênero'" [control]="formEditarUsuario.controls.sexo"></tgt-input>
+          <tgt-select [label]="'Gênero*'" [options]="optionsSexo" [control]="formEditarUsuario.controls.sexo" class="col-6"></tgt-select>
       </div>
       <div class="first-colum-edit">
         <tgt-input [label]="'Central de Custo'" [control]="formEditarUsuario.controls.email" [mask]="''"></tgt-input>
-        <tgt-input [label]="'Perfil de Acesso'" [control]="formEditarUsuario.controls.role"></tgt-input>
+        <tgt-select [label]="'Perfil*'" [options]="optionsPerfil" [control]="formEditarUsuario.controls.role" class="col-6"></tgt-select>
       </div>
     </div>
     }
