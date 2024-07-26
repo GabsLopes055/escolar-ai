@@ -1,0 +1,169 @@
+main {
+  padding: 24px 0px;
+  overflow-y: scroll;
+  height: auto;
+  max-height: 700px;
+
+  .informacoes-viagem {
+    width: 100%;
+    height: auto;
+    background-color: #F3F4F3;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 0px;
+    gap: 24px;
+    font-size: 18px;
+    font-weight: 600;
+
+    .divisoria {
+      border-left: 1px solid #B5B4B2;
+    }
+  }
+
+  .inputs {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    gap: 24px;
+    position: relative;
+    z-index: 2;
+
+    tgt-input {
+      flex: 1;
+    }
+
+    tgt-button {
+      flex-shrink: 0;
+    }
+  }
+
+  .filtros {
+    padding: 14px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+
+    .filtro-select {
+      display: flex;
+      flex-direction: row;
+      gap: 24px;
+    }
+
+    .filtro-button {
+      align-items: center;
+    }
+  }
+
+  .hoteis {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 0px;
+    gap: 24px;
+
+    .cards {
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      border: 1px solid #CDCDCC;
+      border-radius: 16px;
+      // width: 80%;
+
+      .hotelImagem img {
+        border-radius: 16px 0px 0px 16px;
+        width: 100%;
+        height: 100%;
+      }
+
+      .card-hotel {
+        height: auto;
+        width: 80%;
+        gap: 24px;
+        padding: 52px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .cards-content {
+
+          display: flex;
+          flex-direction: column;
+          align-items: start;
+          gap: 34px;
+
+          .beneficios-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+          }
+
+          .beneficios-item {
+            display: flex;
+            align-items: center;
+          }
+
+          .beneficios-item span {
+            font-size: 16px;
+            margin-left: 5px;
+            /* Espaço entre o ícone e o texto */
+          }
+
+          label {
+            font-size: 20px;
+            font-weight: 500;
+          }
+        }
+
+        .cards-info {
+          display: flex;
+          flex-direction: column;
+          gap: 24px;
+
+          .preco {
+            justify-content: end;
+
+            h2 {
+              font-weight: 600;
+            }
+          }
+
+          .total {
+            color: #6A6A66;
+          }
+
+          .preco,
+          .total {
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+          }
+        }
+      }
+    }
+
+    .hoteisEmpty {
+      position: fixed;
+      bottom: 0;
+      left: 200px;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 100px;
+      z-index: 0;
+
+      label {
+        font-weight: 700;
+      }
+    }
+  }
+}

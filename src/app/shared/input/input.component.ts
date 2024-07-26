@@ -20,6 +20,7 @@ export class InputComponent implements OnChanges {
   @Input() control: FormControl = new FormControl();
   @Input() mask: string = '';
   @Input() readonly: boolean = false;
+  @Input() placeholder: string = '';
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['control'] && this.control.value && this.type === 'date') {
