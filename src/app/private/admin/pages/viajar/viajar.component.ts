@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavbarService } from '../../../../shared/navbar/navbar.service';
 import { MenuService } from '../../../../shared/menu/menu.service';
 import { Tab, TabsComponent } from '../../../../shared/tabs/tabs.component';
@@ -19,7 +19,7 @@ import { PacotesComponent } from './components/pacotes/pacotes.component';
   templateUrl: './viajar.component.html',
   styleUrl: './viajar.component.scss'
 })
-export class ViajarComponent {
+export class ViajarComponent implements OnInit {
 
   opcaoSelecionada = '';
 
@@ -32,10 +32,12 @@ export class ViajarComponent {
   constructor(
     private readonly navbarService: NavbarService,
     private readonly menuService: MenuService
-  ) {
+  ) {}
+
+  ngOnInit(): void {
     this.navbarService.setTitle('Solicitar Viagem');
     this.navbarService.showBtnViajar.next(false);
-    this.menuService.setSelected({icon: 'luggage', label: 'Viajar', route: '/admin/viajar', checked: true});
+    this.menuService.setSelected({icon: 'luggage', label: 'Solicitar Viagens', route: '/admin/viajar', checked: true});
   }
 
   chosenTab(tab: string) {

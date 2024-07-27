@@ -1,20 +1,21 @@
 <main>
   @if(inputs) {
-    <div class="inputs">
-      <tgt-input [label]="'Destino'" [control]="formInputs.controls.destino"></tgt-input>
-      <tgt-input [label]="'Check in'" [control]="formInputs.controls.checkIn" [type]="'date'"></tgt-input>
-      <tgt-input [label]="'Check out'" [control]="formInputs.controls.checkOut" [type]="'date'"></tgt-input>
-      <tgt-button [border]="false" [color]="'secundary'" [icon]="'search'" [type]="'button'" [size]="'small'"
+  <div class="inputs">
+    <tgt-input [label]="'Destino'" [control]="formInputs.controls.destino"></tgt-input>
+    <tgt-input [label]="'Check in'" [control]="formInputs.controls.checkIn" [type]="'date'"></tgt-input>
+    <tgt-input [label]="'Check out'" [control]="formInputs.controls.checkOut" [type]="'date'"></tgt-input>
+    <tgt-button [border]="false" [color]="'secundary'" [icon]="'search'" [type]="'button'" [size]="'small'"
       [disabled]="!formInputs.valid" (click)="pesquisarHoteis()"></tgt-button>
-    </div>
+  </div>
   } @else {
-    <div class="informacoes-viagem">
-      <p>{{formInputs.controls.destino.value}}</p>
-      <p>|</p>
-      <p>{{formInputs.controls.checkIn.value | date: 'dd/MM'}}  -  {{formInputs.controls.checkOut.value | date: 'dd/MM'}}</p>
-      <span class="material-symbols-outlined">search</span>
-      <span>Buscar</span>
-    </div>
+  <div class="informacoes-viagem">
+    <p>{{formInputs.controls.destino.value}}</p>
+    <p>|</p>
+    <p>{{formInputs.controls.checkIn.value | date: 'dd/MM'}} - {{formInputs.controls.checkOut.value | date: 'dd/MM'}}
+    </p>
+    <span class="material-symbols-outlined">search</span>
+    <span>Buscar</span>
+  </div>
   }
   <div class="filtros">
     <div class="filtro-select">
@@ -28,15 +29,14 @@
         [size]="'small'">Filtros</tgt-button>
     </div>
   </div>
+
   <div class="hoteis">
 
     @for (hotel of hoteis; track hotel) {
 
     <div class="cards">
 
-      <div class="hotelImagem">
-        <img src="../../../../../../../assets/images/hoteis/hotel_1.jpg" alt="">
-      </div>
+      <img src="{{hotel.fotos[0].caminho}}" alt="">
 
       <div class="card-hotel">
 
@@ -53,6 +53,7 @@
             }
           </div>
         </div>
+
         <div class="cards-info">
           <div class="preco">
             <h2>R${{hotel.valor}}</h2>
@@ -63,7 +64,8 @@
             <h6>Total</h6>
           </div>
           <div class="verPrecos">
-            <tgt-button [color]="'success'" [type]="'button'" [size]="'small'">Ver Preços</tgt-button>
+            <tgt-button [color]="'success'" [fieldButton]="'outline'" [type]="'button'" [size]="'small'">Ver
+              Preços</tgt-button>
           </div>
         </div>
       </div>
@@ -201,5 +203,6 @@
 
     </div>
     }
+
   </div>
 </main>

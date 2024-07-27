@@ -1,8 +1,12 @@
 main {
   padding: 24px 0px;
-  overflow-y: scroll;
+  width: 100%;
   height: auto;
-  max-height: 700px;
+  max-height: 90vh;
+  overflow: hidden;
+  // height: auto;
+  // max-height: 700px;
+
 
   .informacoes-viagem {
     width: 100%;
@@ -61,13 +65,15 @@ main {
   }
 
   .hoteis {
-    position: relative;
-    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 24px 0px;
     gap: 24px;
+    width: 100%;
+    height: auto;
+    max-height: 530px;
+    overflow: auto;
 
     .cards {
       display: flex;
@@ -75,29 +81,29 @@ main {
       align-items: stretch;
       border: 1px solid #CDCDCC;
       border-radius: 16px;
-      // width: 80%;
+      width: 70%;
 
-      .hotelImagem img {
+      img {
         border-radius: 16px 0px 0px 16px;
-        width: 100%;
-        height: 100%;
+        width: 220px;
+        // height: 220px;
       }
 
       .card-hotel {
         height: auto;
-        width: 80%;
+        width: 100%;
         gap: 24px;
-        padding: 52px;
+        padding: 30px 30px;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        align-items: center;
 
         .cards-content {
-
           display: flex;
           flex-direction: column;
           align-items: start;
-          gap: 34px;
+          gap: 14px;
 
           .beneficios-grid {
             display: grid;
@@ -111,7 +117,7 @@ main {
           }
 
           .beneficios-item span {
-            font-size: 16px;
+            font-size: 12px;
             margin-left: 5px;
             /* Espaço entre o ícone e o texto */
           }
@@ -126,6 +132,7 @@ main {
           display: flex;
           flex-direction: column;
           gap: 24px;
+          width: auto;
 
           .preco {
             justify-content: end;

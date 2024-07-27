@@ -32,27 +32,32 @@ export class HoteisComponent implements OnInit, OnDestroy {
   subscription = new Subscription();
 
   constructor() {}
+
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 
   ngOnInit(): void {
+    this.pesquisarHoteis();
     this.subscription.add();
   }
 
   pesquisarHoteis() {
 
-    this.inputs = false;
-
-    console.log(this.formInputs.value)
-
     if (this.formInputs.valid) {
+
+      this.inputs = false;
 
       this.hoteis = [
         {
           nome: 'Nicckey Palace Hotel',
           valor: 200.0,
           total: 600,
+          fotos: [
+            {caminho: '../../../../../../../assets/images/hoteis/hotel_1.jpg'},
+            {caminho: '../../../../../../../assets/images/hoteis/hotel_2.jpg'},
+            {caminho: '../../../../../../../assets/images/hoteis/hotel_3.jpg'}
+          ],
           beneficios: [
             { icon: 'hotel', label: 'Hotel 3 Estrelas' },
             { icon: 'hotel', label: 'Estacionamento gratuito' },
@@ -69,6 +74,11 @@ export class HoteisComponent implements OnInit, OnDestroy {
           nome: 'Nicckey Palace Hotel',
           valor: 200.0,
           total: 600,
+          fotos: [
+            {caminho: '../../../../../../../assets/images/hoteis/hotel_1.jpg'},
+            {caminho: '../../../../../../../assets/images/hoteis/hotel_2.jpg'},
+            {caminho: '../../../../../../../assets/images/hoteis/hotel_3.jpg'}
+          ],
           beneficios: [
             { icon: 'hotel', label: 'Hotel 3 Estrelas' },
             { icon: 'hotel', label: 'Estacionamento gratuito' },
@@ -85,6 +95,11 @@ export class HoteisComponent implements OnInit, OnDestroy {
           nome: 'Nicckey Palace Hotel',
           valor: 200.0,
           total: 600,
+          fotos: [
+            {caminho: '../../../../../../../assets/images/hoteis/hotel_1.jpg'},
+            {caminho: '../../../../../../../assets/images/hoteis/hotel_2.jpg'},
+            {caminho: '../../../../../../../assets/images/hoteis/hotel_3.jpg'}
+          ],
           beneficios: [
             { icon: 'hotel', label: 'Hotel 3 Estrelas' },
             { icon: 'hotel', label: 'Estacionamento gratuito' },
@@ -101,6 +116,11 @@ export class HoteisComponent implements OnInit, OnDestroy {
           nome: 'Nicckey Palace Hotel',
           valor: 200.0,
           total: 600,
+          fotos: [
+            {caminho: '../../../../../../../assets/images/hoteis/hotel_1.jpg'},
+            {caminho: '../../../../../../../assets/images/hoteis/hotel_2.jpg'},
+            {caminho: '../../../../../../../assets/images/hoteis/hotel_3.jpg'}
+          ],
           beneficios: [
             { icon: 'hotel', label: 'Hotel 3 Estrelas' },
             { icon: 'hotel', label: 'Estacionamento gratuito' },
@@ -114,7 +134,6 @@ export class HoteisComponent implements OnInit, OnDestroy {
           ],
         },
       ];
-
     }
   }
 }

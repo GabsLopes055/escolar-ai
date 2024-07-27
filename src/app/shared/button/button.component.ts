@@ -14,7 +14,7 @@ export class ButtonComponent {
   @Input() fieldButton: 'outline' | 'field' = 'field';
   @Input() color: TypeColors = 'primary';
   @Input() disabled: boolean = false;
-  @Input() border: boolean = true
+  @Input() border: boolean = true;
   @Input() size: 'small' | 'middle' = 'middle';
   @Input() type: 'submit' | 'button' = 'button';
 
