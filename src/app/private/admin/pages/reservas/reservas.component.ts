@@ -24,7 +24,7 @@ export class ReservasComponent {
   ) {
     navbarService.setTitle('Reservas');
     navbarService.showBtnViajar.next(true);
-    menuService.setSelected({icon: 'date_range', label: 'Reservas', route: '/admin/reservas', checked: true});
+    menuService.setSelected({icon: 'date_range', label: 'Minhas Reservas', route: '/admin/reservas', checked: true});
   }
 
   chosenTab(tab: string) {

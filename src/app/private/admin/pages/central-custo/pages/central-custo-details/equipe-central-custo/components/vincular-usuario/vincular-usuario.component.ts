@@ -53,17 +53,16 @@ import { ToastService } from '../../../../../../../../../shared/toast/toast.serv
   styleUrl: './vincular-usuario.component.scss',
 })
 export class VincularUsuarioComponent implements OnInit {
-  @Input() data!: any;
+  @Input() data: any;
 
   pesquisa = new FormControl();
-  tamanhoPagina: number = 5; // total de itens por pagina
+
+  tamanhoPagina: number = 50; // total de itens por pagina
   totalItems!: number; // total de registros
   pagina: number = 1; // pagina atual
+
   usuarios: any[] = [];
-  controlToggle = new FormControl();
-  habilitarToggle: boolean = false;
   centralCustoId!: number;
-  valorToggle: any;
 
   filtro: SolicitacaoUserRequest = {
     pagina: this.pagina,
@@ -106,8 +105,12 @@ export class VincularUsuarioComponent implements OnInit {
     this.viajantesService.listarPor(this.filtro).subscribe({
       next: (integrantes) => {
         this.totalItems = integrantes.totalCount;
-        this.usuarios = integrantes.itens.map(item => {
-          return {item, control: new FormControl(false)}
+        this.usuarios = integrantes.itens.map((item) => {
+          return {
+            item,
+            control: new FormControl(false),
+            statusToggle: false,
+          };
         });
       },
     });
@@ -127,7 +130,6 @@ export class VincularUsuarioComponent implements OnInit {
   vincularUsuario() {
     if (this.vincularUsuarioRequest.length !== 0) {
       this.vincularUsuarioRequest.forEach((element) => {
-        console.log(element)
         this.centralCustoDetailService
           .cadastrarUsuarioEquipeCentralCusto(element)
           .subscribe({
@@ -152,21 +154,18 @@ export class VincularUsuarioComponent implements OnInit {
     }
   }
 
-  checkBox(usuario: any) {
+  checkBox(usuario: any, event: any) {
 
     const isChecked = event;
-    // const aprovador = usuario.item.role === 'MANAGER' ? true : false;
 
     if (usuario.item.role == 'MANAGER') {
       if (isChecked) {
-        if (!this.habilitarToggle) {
-          this.habilitarToggle = true;
-          // console.log(usuario.control)
-          // preciso pegar o valor do toggle, se esta marcado ou nao
-          // depois de pegar esse valor, passar para o aprovador do request
+        if (!usuario.statusToggle) {
+          usuario.statusToggle = true;
         }
       } else {
-        this.habilitarToggle = false;
+        usuario.statusToggle = false;
+        usuario.control.setValue(false);
       }
     }
 
@@ -180,9 +179,9 @@ export class VincularUsuarioComponent implements OnInit {
     if (isChecked) {
       // Adiciona o novo request ao array, se ja não estiver no array
       if (!this.vincularUsuarioRequest.some((request) => request.userId === usuario.item.id)) {
-
         this.vincularUsuarioRequest.push(request);
       }
+
     } else {
       // Remove o request do array se o checkbox for desmarcado
       this.vincularUsuarioRequest = this.vincularUsuarioRequest.filter(
@@ -200,14 +199,14 @@ export class VincularUsuarioComponent implements OnInit {
   }
 
   toggleCheck(event: any, usuario: any) {
-
-    this.vincularUsuarioRequest = this.vincularUsuarioRequest.map(_usuario => {
-      if(usuario.item.id == _usuario.userId) {
-        _usuario.aprovador = event;
+    this.vincularUsuarioRequest = this.vincularUsuarioRequest.map(
+      (_usuario) => {
+        if (usuario.item.id == _usuario.userId) {
+          _usuario.aprovador = event;
+        }
+        return _usuario;
       }
-      return _usuario;
-    });
-
+    );
   }
 
   retornarNomePermissao(role: string): string {
