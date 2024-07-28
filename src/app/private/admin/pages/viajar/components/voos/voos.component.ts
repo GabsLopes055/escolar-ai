@@ -1,28 +1,46 @@
-import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { SelectComponent } from '../../../../../../shared/select/select.component';
-import { ButtonComponent } from '../../../../../../shared/button/button.component';
-import { InputComponent } from '../../../../../../shared/input/input.component';
+import { DatePipe, NgClass } from '@angular/common';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ChipsComponent } from "../../../../../../shared/chips/chips.component";
+import { Subscription } from 'rxjs';
+
+import { ButtonComponent } from '../../../../../../shared/button/button.component';
+import { ChipsComponent } from '../../../../../../shared/chips/chips.component';
+import { InputComponent } from '../../../../../../shared/input/input.component';
+import { SelectComponent } from '../../../../../../shared/select/select.component';
+import { VoosIdaComponent } from './components/voos-ida/voos-ida.component';
+import { VoosVoltaComponent } from './components/voos-volta/voos-volta.component';
+import { VoosService } from './voos.service';
+import { VoosEscolhidosComponent } from "./components/voos-escolhidos/voos-escolhidos.component";
 
 @Component({
   selector: 'voos',
   standalone: true,
-  imports: [InputComponent, ButtonComponent, SelectComponent, DatePipe, ChipsComponent],
+  imports: [
+    InputComponent,
+    ButtonComponent,
+    SelectComponent,
+    DatePipe,
+    ChipsComponent,
+    NgClass,
+    VoosIdaComponent,
+    VoosVoltaComponent,
+    VoosEscolhidosComponent
+],
   templateUrl: './voos.component.html',
   styleUrl: './voos.component.scss',
 })
-export class VoosComponent implements OnInit {
-
-  ngOnInit(): void {
-  }
+export class VoosComponent implements OnInit, OnDestroy {
 
   inputs: boolean = true;
 
   voosIda: any[] = [];
   voosVolta: any[] = [];
-  panel: boolean = false;
+
+  mostrarVoosIda: boolean = false;
+  mostrarVoosVolta: boolean = false;
+  mostrarVooSelecionados: boolean = false;
+
+  subscriptions = new Subscription();
 
   formInputs = new FormGroup({
     origem: new FormControl('', Validators.required),
@@ -31,15 +49,57 @@ export class VoosComponent implements OnInit {
     checkOut: new FormControl('', Validators.required),
   });
 
-  pesquisarVoos() {
-    this.inputs = false
-    this.criarVoos();
+  voosSelecionados: any = [];
+
+  constructor(private readonly vooService: VoosService) {}
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
+    // this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
-  abriTarifas() {
-    if(!this.panel) {
-      this.panel = !this.panel;
-    }
+  ngOnInit(): void {
+    this.vooService.vooIda.next([])
+    this.vooService.vooVolta.next([])
+    this.criarVoos();
+    this.subscriptions.add()
+    this.monitoraVoosSelecionados();
+  }
+
+  monitoraVoosSelecionados() {
+
+    this.vooService.vooIda.subscribe(() => {
+      this.mostrarVoosIda = false;
+      this.mostrarVoosVolta = true;
+    })
+    // this.subscriptions.push(
+    // );
+    this.vooService.vooVolta.subscribe((voos: any) => {
+      this.mostrarVoosVolta = false;
+      if(voos.length > 0) {
+        this.mostrarVooSelecionados = true;
+      }
+    })
+
+    // this.subscriptions.push(
+    // );
+  };
+
+  pesquisarVoos() {
+
+    // if (this.formInputs.valid) {
+      this.inputs = false;
+      this.mostrarVoosIda = true;
+    // }
+  }
+
+  trocarVoos() {
+
+    const origem = this.formInputs.controls.origem.value;
+    const destino = this.formInputs.controls.destino.value;
+
+    this.formInputs.controls.origem.setValue(destino);
+    this.formInputs.controls.destino.setValue(origem);
   }
 
   criarVoos() {
