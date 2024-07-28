@@ -10,7 +10,7 @@
   } @else {
   <div class="informacoes-viagem">
     <p>{{formInputs.controls.destino.value}}</p>
-    <p>|</p>
+    <img src="../../../../../../../assets/images/voos/Divider.png" alt="" srcset="">
     <p>{{formInputs.controls.checkIn.value | date: 'dd/MM'}} - {{formInputs.controls.checkOut.value | date: 'dd/MM'}}
     </p>
     <span class="material-symbols-outlined">search</span>
@@ -36,7 +36,9 @@
 
     <div class="cards">
 
-      <img src="{{hotel.fotos[0].caminho}}" alt="">
+      @for (imagem of hotel.fotos; track imagem) {
+      <img src="{{imagem.caminho}}" alt="">
+      }
 
       <div class="card-hotel">
 
@@ -64,8 +66,7 @@
             <h6>Total</h6>
           </div>
           <div class="verPrecos">
-            <tgt-button [color]="'success'" [fieldButton]="'outline'" [type]="'button'" [size]="'small'">Ver
-              Preços</tgt-button>
+            <tgt-button [color]="'success'" [fieldButton]="'outline'" [type]="'button'" [size]="'small'">Ver Preços</tgt-button>
           </div>
         </div>
       </div>
