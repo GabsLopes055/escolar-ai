@@ -37,7 +37,9 @@ export class VoosComponent implements OnInit {
   }
 
   abriTarifas() {
-    this.panel = true
+    if(!this.panel) {
+      this.panel = !this.panel;
+    }
   }
 
   criarVoos() {

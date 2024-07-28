@@ -31,7 +31,7 @@
       <tgt-select [label]="'Companhias aéreas'"></tgt-select>
     </div>
     <div class="filtro-button">
-      <tgt-button [border]="false" [color]="'success'" [icon]="'tune'" [type]="'button'"
+      <tgt-button [border]="false" [color]="'success'" [fieldButton]="'outline'" [icon]="'tune'" [type]="'button'"
         [size]="'small'">Filtros</tgt-button>
     </div>
   </div>
@@ -83,37 +83,202 @@
           <span>Tarifa a partir de</span>
           <p>{{vooIda.tarifa}}</p>
         </div>
-        <div class="expandir" (click)="abriTarifas()">
-          <span class="material-symbols-outlined painel">keyboard_arrow_down</span>
+        <div >
+          <span class="expandir" class="material-symbols-outlined painel">keyboard_arrow_down</span>
         </div>
       </div>
-      @if(panel) {
-        <div class="ofertas">
-          <div class="servicos">
-
-            <span>{{vooIda.nomeAviao}} inclui:</span>
-            @for(item of vooIda.servicos; track item) {
-              <tgt-chips [label]="item.servico"> </tgt-chips>
-            }
-          </div>
+    </div>
+    @if(panel) {
+    <div class="ofertas">
+      <div class="servicos">
+        <div class="aviao">
+          <span>{{vooIda.nomeAviao}}</span>
+          inclui:
+        </div>
+        @for(item of vooIda.servicos; track item) {
+        <tgt-chips [label]="item.servico"> </tgt-chips>
+        }
+      </div>
+      <div class="cards">
+        <div>
           <span>4 tarifas disponíveis:</span>
-          <div class="cards">
-            <div class="light">
-              <h1>Light</h1>
+        </div>
+        <div class="card">
+          <div class="light">
+            <div class="header">
+              <div class="title">
+                <img src="../../../../../../../assets/images/voos/cards/light.png" alt="">
+                <span>Light</span>
+              </div>
+              <div class="benecicios">
+                <span class="material-symbols-outlined painel">check_circle_outline</span>
+                <span>Bolsa ou mochila pequena</span>
+              </div>
+              <div class="benecicios">
+                <span class="material-symbols-outlined painel">check_circle_outline</span>
+                <span>Bagagem de mão 10 kg</span>
+              </div>
+              <div class="benecicios">
+                <span class="material-symbols-outlined painel">check_circle_outline</span>
+                <span>Remarcação com taxa</span>
+              </div>
             </div>
-            <div class="standart">
-              <h1>Standart</h1>
+
+            <div class="footer">
+
+              <a href="#">Mais detalhes</a>
+
+              <div class="preco">
+                <div>
+                  <span>{{vooIda.tarifa}}</span>
+                  <p>por passageiro</p>
+                </div>
+                <tgt-button [border]="true" [color]="'success'" [fieldButton]="'outline'" [type]="'button'" [size]="'small'">Escolher</tgt-button>
+              </div>
             </div>
-            <div class="full">
-              <h1>Full</h1>
+          </div>
+          <div class="standart">
+            <div class="header">
+              <div class="title">
+                <img src="../../../../../../../assets/images/voos/cards/standart.png" alt="">
+                <span>Standart</span>
+              </div>
+              <div class="benecicios">
+                <span class="material-symbols-outlined painel">check_circle_outline</span>
+                <span>Bolsa ou mochila pequena</span>
+              </div>
+              <div class="benecicios">
+                <span class="material-symbols-outlined painel">check_circle_outline</span>
+                <span>Bagagem de mão 10 kg</span>
+              </div>
+              <div class="benecicios">
+                <span class="material-symbols-outlined painel">check_circle_outline</span>
+                <span>1 bagagem despachada 23 kg</span>
+              </div>
+              <div class="benecicios">
+                <span class="material-symbols-outlined painel">check_circle_outline</span>
+                <span>Remarcação com taxa</span>
+              </div>
+              <div class="benecicios">
+                <span class="material-symbols-outlined painel">check_circle_outline</span>
+                <span>Solicitação de UPG com trechos</span>
+              </div>
             </div>
-            <div class="premium">
-              <h1>Premium</h1>
+
+            <div class="footer">
+
+              <a href="#">Mais detalhes</a>
+
+              <div class="preco">
+                <div>
+                  <p class="label-preco">R$ 5.758,64</p>
+                  <span>+R$ 364,30</span>
+                  <p>por passageiro</p>
+                </div>
+                <tgt-button [border]="true" [color]="'success'" [fieldButton]="'outline'" [type]="'button'" [size]="'small'">Escolher</tgt-button>
+              </div>
+            </div>
+          </div>
+          <div class="full">
+            <div class="header">
+              <div class="title">
+                <img src="../../../../../../../assets/images/voos/cards/full.png" alt="">
+                <span>Full</span>
+              </div>
+              <div class="benecicios">
+                <span class="material-symbols-outlined painel">check_circle_outline</span>
+                <span>Bolsa ou mochila pequena</span>
+              </div>
+              <div class="benecicios">
+                <span class="material-symbols-outlined painel">check_circle_outline</span>
+                <span>Bagagem de mão 10 kg</span>
+              </div>
+              <div class="benecicios">
+                <span class="material-symbols-outlined painel">check_circle_outline</span>
+                <span>1 bagagem despachada 23 kg</span>
+              </div>
+              <div class="benecicios">
+                <span class="material-symbols-outlined painel">check_circle_outline</span>
+                <span>Remarcação com taxa</span>
+              </div>
+              <div class="benecicios">
+                <span class="material-symbols-outlined painel">check_circle_outline</span>
+                <span>Seleção de assento Comum</span>
+              </div>
+              <div class="benecicios">
+                <span class="material-symbols-outlined painel">check_circle_outline</span>
+                <span>Reembolso total</span>
+              </div>
+              <div class="benecicios">
+                <span class="material-symbols-outlined painel">check_circle_outline</span>
+                <span>Solicitação de UPG com trechos</span>
+              </div>
+            </div>
+
+            <div class="footer">
+
+              <a href="#">Mais detalhes</a>
+
+              <div class="preco">
+                <div>
+                  <p class="label-preco">R$ 5.758,64</p>
+                  <span>+R$ 598,30</span>
+                  <p>por passageiro</p>
+                </div>
+                <tgt-button [border]="true" [color]="'success'" [fieldButton]="'outline'" [type]="'button'" [size]="'small'">Escolher</tgt-button>
+              </div>
+            </div>
+          </div>
+          <div class="premium">
+            <div class="header">
+              <div class="title">
+                <img src="../../../../../../../assets/images/voos/cards/premium.png" alt="">
+                <span>Premium</span>
+              </div>
+              <div class="benecicios">
+                <span class="material-symbols-outlined painel">check_circle_outline</span>
+                <span>Bolsa ou mochila pequena</span>
+              </div>
+              <div class="benecicios">
+                <span class="material-symbols-outlined painel">check_circle_outline</span>
+                <span>Bagagem de mão 10 kg</span>
+              </div>
+              <div class="benecicios">
+                <span class="material-symbols-outlined painel">check_circle_outline</span>
+                <span>2 bagagem despachada 23 kg</span>
+              </div>
+              <div class="benecicios">
+                <span class="material-symbols-outlined painel">check_circle_outline</span>
+                <span>Remarcação com taxa</span>
+              </div>
+              <div class="benecicios">
+                <span class="material-symbols-outlined painel">check_circle_outline</span>
+                <span>Poltrona-cama</span>
+              </div>
+              <div class="benecicios">
+                <span class="material-symbols-outlined painel">check_circle_outline</span>
+                <span>Reembolso total</span>
+              </div>
+            </div>
+
+            <div class="footer">
+
+              <a href="#">Mais detalhes</a>
+
+              <div class="preco">
+                <div>
+                  <p class="label-preco">R$ 5.758,64</p>
+                  <span>+R$ 33.390,79</span>
+                  <p>por passageiro</p>
+                </div>
+                <tgt-button [border]="false" [color]="'secundary'" [type]="'button'" [size]="'small'">Escolher</tgt-button>
+              </div>
             </div>
           </div>
         </div>
-        }
+      </div>
     </div>
+    }
 
 
 
