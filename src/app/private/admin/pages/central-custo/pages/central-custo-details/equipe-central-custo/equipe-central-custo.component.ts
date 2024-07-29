@@ -45,6 +45,7 @@ import { DesvincularUsuarioComponent } from './components/desvincular-usuario/de
   styleUrl: './equipe-central-custo.component.scss',
 })
 export class EquipeCentralCustoComponent implements OnInit, OnDestroy {
+
   tamanhoPagina: number = 6; // total de itens por pagina
   totalItems!: number; // total de registros
   pagina: number = 1; // pagina atual

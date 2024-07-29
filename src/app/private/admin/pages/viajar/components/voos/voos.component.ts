@@ -7,10 +7,10 @@ import { ButtonComponent } from '../../../../../../shared/button/button.componen
 import { ChipsComponent } from '../../../../../../shared/chips/chips.component';
 import { InputComponent } from '../../../../../../shared/input/input.component';
 import { SelectComponent } from '../../../../../../shared/select/select.component';
-import { VoosIdaComponent } from './components/voos-ida/voos-ida.component';
 import { VoosVoltaComponent } from './components/voos-volta/voos-volta.component';
 import { VoosService } from './voos.service';
 import { VoosEscolhidosComponent } from "./components/voos-escolhidos/voos-escolhidos.component";
+import { VoosIdaComponent } from './components/voos-ida/voos-ida.component';
 
 @Component({
   selector: 'voos',
@@ -87,10 +87,10 @@ export class VoosComponent implements OnInit, OnDestroy {
 
   pesquisarVoos() {
 
-    // if (this.formInputs.valid) {
+    if (this.formInputs.valid) {
       this.inputs = false;
       this.mostrarVoosIda = true;
-    // }
+    }
   }
 
   trocarVoos() {
@@ -583,7 +583,403 @@ export class VoosComponent implements OnInit, OnDestroy {
             icon: 'power',
           },
         ],
-      },
+      },{
+        origem: [
+          {
+            cidade: 'Nova York',
+            nomeAeroporto: 'John F. Kennedy',
+            siglaAeroporto: 'JFK',
+            horaChegada: '06:15',
+          },
+        ],
+        destino: [
+          {
+            cidade: 'São Paulo',
+            nomeAeroporto: 'Guarulhos International',
+            siglaAeroporto: 'GRU',
+            horaSaida: '21:15',
+          },
+        ],
+        duracao: '09h50m',
+        paradas: [
+          {
+            aeroporto: 'MCW',
+          },
+        ],
+        tarifa: 'R$5.758,64',
+        nomeAviao: 'Boing B767-400',
+        operadoPor: 'LATAM Airlines Brasil',
+        servicos: [
+          {
+            servico: 'Bebidas alcoólicas e não alcoólicas',
+            icon: 'wine_bar',
+          },
+          {
+            servico: 'Entretenimento a bordo',
+            icon: 'movie',
+          },
+          {
+            servico: 'Serviço de alimentação',
+            icon: 'dinner_dining',
+          },
+          {
+            servico: 'Tomada elétrica',
+            icon: 'power',
+          },
+        ],
+      },{
+        origem: [
+          {
+            cidade: 'Nova York',
+            nomeAeroporto: 'John F. Kennedy',
+            siglaAeroporto: 'JFK',
+            horaChegada: '06:15',
+          },
+        ],
+        destino: [
+          {
+            cidade: 'São Paulo',
+            nomeAeroporto: 'Guarulhos International',
+            siglaAeroporto: 'GRU',
+            horaSaida: '21:15',
+          },
+        ],
+        duracao: '09h50m',
+        paradas: [
+          {
+            aeroporto: 'MCW',
+          },
+        ],
+        tarifa: 'R$5.758,64',
+        nomeAviao: 'Boing B767-400',
+        operadoPor: 'LATAM Airlines Brasil',
+        servicos: [
+          {
+            servico: 'Bebidas alcoólicas e não alcoólicas',
+            icon: 'wine_bar',
+          },
+          {
+            servico: 'Entretenimento a bordo',
+            icon: 'movie',
+          },
+          {
+            servico: 'Serviço de alimentação',
+            icon: 'dinner_dining',
+          },
+          {
+            servico: 'Tomada elétrica',
+            icon: 'power',
+          },
+        ],
+      },{
+        origem: [
+          {
+            cidade: 'Nova York',
+            nomeAeroporto: 'John F. Kennedy',
+            siglaAeroporto: 'JFK',
+            horaChegada: '06:15',
+          },
+        ],
+        destino: [
+          {
+            cidade: 'São Paulo',
+            nomeAeroporto: 'Guarulhos International',
+            siglaAeroporto: 'GRU',
+            horaSaida: '21:15',
+          },
+        ],
+        duracao: '09h50m',
+        paradas: [
+          {
+            aeroporto: 'MCW',
+          },
+        ],
+        tarifa: 'R$5.758,64',
+        nomeAviao: 'Boing B767-400',
+        operadoPor: 'LATAM Airlines Brasil',
+        servicos: [
+          {
+            servico: 'Bebidas alcoólicas e não alcoólicas',
+            icon: 'wine_bar',
+          },
+          {
+            servico: 'Entretenimento a bordo',
+            icon: 'movie',
+          },
+          {
+            servico: 'Serviço de alimentação',
+            icon: 'dinner_dining',
+          },
+          {
+            servico: 'Tomada elétrica',
+            icon: 'power',
+          },
+        ],
+      },{
+        origem: [
+          {
+            cidade: 'Nova York',
+            nomeAeroporto: 'John F. Kennedy',
+            siglaAeroporto: 'JFK',
+            horaChegada: '06:15',
+          },
+        ],
+        destino: [
+          {
+            cidade: 'São Paulo',
+            nomeAeroporto: 'Guarulhos International',
+            siglaAeroporto: 'GRU',
+            horaSaida: '21:15',
+          },
+        ],
+        duracao: '09h50m',
+        paradas: [
+          {
+            aeroporto: 'MCW',
+          },
+        ],
+        tarifa: 'R$5.758,64',
+        nomeAviao: 'Boing B767-400',
+        operadoPor: 'LATAM Airlines Brasil',
+        servicos: [
+          {
+            servico: 'Bebidas alcoólicas e não alcoólicas',
+            icon: 'wine_bar',
+          },
+          {
+            servico: 'Entretenimento a bordo',
+            icon: 'movie',
+          },
+          {
+            servico: 'Serviço de alimentação',
+            icon: 'dinner_dining',
+          },
+          {
+            servico: 'Tomada elétrica',
+            icon: 'power',
+          },
+        ],
+      },{
+        origem: [
+          {
+            cidade: 'Nova York',
+            nomeAeroporto: 'John F. Kennedy',
+            siglaAeroporto: 'JFK',
+            horaChegada: '06:15',
+          },
+        ],
+        destino: [
+          {
+            cidade: 'São Paulo',
+            nomeAeroporto: 'Guarulhos International',
+            siglaAeroporto: 'GRU',
+            horaSaida: '21:15',
+          },
+        ],
+        duracao: '09h50m',
+        paradas: [
+          {
+            aeroporto: 'MCW',
+          },
+        ],
+        tarifa: 'R$5.758,64',
+        nomeAviao: 'Boing B767-400',
+        operadoPor: 'LATAM Airlines Brasil',
+        servicos: [
+          {
+            servico: 'Bebidas alcoólicas e não alcoólicas',
+            icon: 'wine_bar',
+          },
+          {
+            servico: 'Entretenimento a bordo',
+            icon: 'movie',
+          },
+          {
+            servico: 'Serviço de alimentação',
+            icon: 'dinner_dining',
+          },
+          {
+            servico: 'Tomada elétrica',
+            icon: 'power',
+          },
+        ],
+      },{
+        origem: [
+          {
+            cidade: 'Nova York',
+            nomeAeroporto: 'John F. Kennedy',
+            siglaAeroporto: 'JFK',
+            horaChegada: '06:15',
+          },
+        ],
+        destino: [
+          {
+            cidade: 'São Paulo',
+            nomeAeroporto: 'Guarulhos International',
+            siglaAeroporto: 'GRU',
+            horaSaida: '21:15',
+          },
+        ],
+        duracao: '09h50m',
+        paradas: [
+          {
+            aeroporto: 'MCW',
+          },
+        ],
+        tarifa: 'R$5.758,64',
+        nomeAviao: 'Boing B767-400',
+        operadoPor: 'LATAM Airlines Brasil',
+        servicos: [
+          {
+            servico: 'Bebidas alcoólicas e não alcoólicas',
+            icon: 'wine_bar',
+          },
+          {
+            servico: 'Entretenimento a bordo',
+            icon: 'movie',
+          },
+          {
+            servico: 'Serviço de alimentação',
+            icon: 'dinner_dining',
+          },
+          {
+            servico: 'Tomada elétrica',
+            icon: 'power',
+          },
+        ],
+      },{
+        origem: [
+          {
+            cidade: 'Nova York',
+            nomeAeroporto: 'John F. Kennedy',
+            siglaAeroporto: 'JFK',
+            horaChegada: '06:15',
+          },
+        ],
+        destino: [
+          {
+            cidade: 'São Paulo',
+            nomeAeroporto: 'Guarulhos International',
+            siglaAeroporto: 'GRU',
+            horaSaida: '21:15',
+          },
+        ],
+        duracao: '09h50m',
+        paradas: [
+          {
+            aeroporto: 'MCW',
+          },
+        ],
+        tarifa: 'R$5.758,64',
+        nomeAviao: 'Boing B767-400',
+        operadoPor: 'LATAM Airlines Brasil',
+        servicos: [
+          {
+            servico: 'Bebidas alcoólicas e não alcoólicas',
+            icon: 'wine_bar',
+          },
+          {
+            servico: 'Entretenimento a bordo',
+            icon: 'movie',
+          },
+          {
+            servico: 'Serviço de alimentação',
+            icon: 'dinner_dining',
+          },
+          {
+            servico: 'Tomada elétrica',
+            icon: 'power',
+          },
+        ],
+      },{
+        origem: [
+          {
+            cidade: 'Nova York',
+            nomeAeroporto: 'John F. Kennedy',
+            siglaAeroporto: 'JFK',
+            horaChegada: '06:15',
+          },
+        ],
+        destino: [
+          {
+            cidade: 'São Paulo',
+            nomeAeroporto: 'Guarulhos International',
+            siglaAeroporto: 'GRU',
+            horaSaida: '21:15',
+          },
+        ],
+        duracao: '09h50m',
+        paradas: [
+          {
+            aeroporto: 'MCW',
+          },
+        ],
+        tarifa: 'R$5.758,64',
+        nomeAviao: 'Boing B767-400',
+        operadoPor: 'LATAM Airlines Brasil',
+        servicos: [
+          {
+            servico: 'Bebidas alcoólicas e não alcoólicas',
+            icon: 'wine_bar',
+          },
+          {
+            servico: 'Entretenimento a bordo',
+            icon: 'movie',
+          },
+          {
+            servico: 'Serviço de alimentação',
+            icon: 'dinner_dining',
+          },
+          {
+            servico: 'Tomada elétrica',
+            icon: 'power',
+          },
+        ],
+      },{
+        origem: [
+          {
+            cidade: 'Nova York',
+            nomeAeroporto: 'John F. Kennedy',
+            siglaAeroporto: 'JFK',
+            horaChegada: '06:15',
+          },
+        ],
+        destino: [
+          {
+            cidade: 'São Paulo',
+            nomeAeroporto: 'Guarulhos International',
+            siglaAeroporto: 'GRU',
+            horaSaida: '21:15',
+          },
+        ],
+        duracao: '09h50m',
+        paradas: [
+          {
+            aeroporto: 'MCW',
+          },
+        ],
+        tarifa: 'R$5.758,64',
+        nomeAviao: 'Boing B767-400',
+        operadoPor: 'LATAM Airlines Brasil',
+        servicos: [
+          {
+            servico: 'Bebidas alcoólicas e não alcoólicas',
+            icon: 'wine_bar',
+          },
+          {
+            servico: 'Entretenimento a bordo',
+            icon: 'movie',
+          },
+          {
+            servico: 'Serviço de alimentação',
+            icon: 'dinner_dining',
+          },
+          {
+            servico: 'Tomada elétrica',
+            icon: 'power',
+          },
+        ],
+      }
     ];
   }
 }

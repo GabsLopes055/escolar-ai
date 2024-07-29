@@ -24,6 +24,7 @@ export class SelectComponent implements OnChanges {
   @Input() options: OptionSelect[] = [];
   @Input() control: FormControl = new FormControl();
   @Input() icon: string = 'arrow_drop_down';
+  @Input() size: 'small' | 'middle' = 'middle';
   @Input() border: boolean = true;
   @Output() changeValue = new EventEmitter();
 

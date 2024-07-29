@@ -2,6 +2,7 @@ import { NgModule, inject } from "@angular/core";
 import { CanActivateFn, RouterModule, Routes } from "@angular/router";
 import { HomeComponent } from "./pages/home/home.component";
 import { TokenService } from "../../shared/services/token/token.service";
+import { VooConfirmadoComponent } from "./pages/viajar/components/voos/components/voo-confirmado/voo-confirmado.component";
 
 const tokenGuard: CanActivateFn = () => {
   const guardService = inject(TokenService);

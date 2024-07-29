@@ -13,7 +13,8 @@ import { Subscriber, Subscription } from 'rxjs';
 })
 export class VoosIdaComponent implements OnInit, OnDestroy {
 
-  @Input() vooIda: any = [];
+  @Input() vooIda: any[] | null = [];
+  @Input() mostrarLabel: boolean = true;
 
   subscription = new Subscription();
   panel: boolean = false;

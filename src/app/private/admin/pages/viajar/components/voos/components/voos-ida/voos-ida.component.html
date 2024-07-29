@@ -1,4 +1,17 @@
 <main>
+
+  @if(mostrarLabel) {
+  <div class="informacoesVoo">
+    <div class="tipoVoo">
+      <span class="material-symbols-outlined">
+        airplane_ticket
+      </span>
+      <span>Escolha um voo de ida:</span>
+    </div>
+  </div>
+  }
+
+  @for(vooIda of vooIda; track vooIda) {
   <div class="card-voo">
     <div class="vooIda">
       <img src="../../../../../../../../../assets/images/voos/latam.png" alt="" srcset="">
@@ -36,6 +49,8 @@
         <span>Tarifa a partir de</span>
         <p>{{vooIda.tarifa}}</p>
       </div>
+
+      @if(mostrarLabel) {
       <div class="expandir" (click)="abriTarifas()">
         <span class="material-symbols-outlined">
           @if(panel){
@@ -45,6 +60,9 @@
           }
         </span>
       </div>
+      } @else {
+        <tgt-button [border]="true" [color]="'success'" [fieldButton]="'outline'" [size]="'small'" [icon]="'swap_horiz'" [iconPosition]="'left'">Alterar Voo</tgt-button>
+      }
     </div>
   </div>
   @if(panel) {
@@ -92,8 +110,10 @@
                 <span>{{vooIda.tarifa}}</span>
                 <p>por passageiro</p>
               </div>
-              <tgt-button (click)="selecionarVoo(vooIda)" [border]="true" [color]="'success'" [fieldButton]="'outline'" [type]="'button'"
-                [size]="'small'">Escolher</tgt-button>
+              @if(mostrarLabel) {
+              <tgt-button (click)="selecionarVoo(vooIda)" [border]="true" [color]="'success'" [fieldButton]="'outline'"
+                [type]="'button'" [size]="'small'">Escolher</tgt-button>
+              }
             </div>
           </div>
         </div>
@@ -135,8 +155,10 @@
                 <span>+R$ 364,30</span>
                 <p>por passageiro</p>
               </div>
-              <tgt-button (click)="selecionarVoo(vooIda)" [border]="true" [color]="'success'" [fieldButton]="'outline'" [type]="'button'"
-                [size]="'small'">Escolher</tgt-button>
+              @if(mostrarLabel) {
+              <tgt-button (click)="selecionarVoo(vooIda)" [border]="true" [color]="'success'" [fieldButton]="'outline'"
+                [type]="'button'" [size]="'small'">Escolher</tgt-button>
+              }
             </div>
           </div>
         </div>
@@ -186,8 +208,10 @@
                 <span>+R$ 598,30</span>
                 <p>por passageiro</p>
               </div>
-              <tgt-button (click)="selecionarVoo(vooIda)" [border]="true" [color]="'success'" [fieldButton]="'outline'" [type]="'button'"
-                [size]="'small'">Escolher</tgt-button>
+              @if(mostrarLabel) {
+              <tgt-button (click)="selecionarVoo(vooIda)" [border]="true" [color]="'success'" [fieldButton]="'outline'"
+                [type]="'button'" [size]="'small'">Escolher</tgt-button>
+              }
             </div>
           </div>
         </div>
@@ -233,8 +257,10 @@
                 <span>+R$ 33.390,79</span>
                 <p>por passageiro</p>
               </div>
+              @if(mostrarLabel) {
               <tgt-button (click)="selecionarVoo(vooIda)" [border]="false" [color]="'secundary'" [type]="'button'"
                 [size]="'small'">Escolher</tgt-button>
+              }
             </div>
           </div>
         </div>
@@ -242,5 +268,5 @@
     </div>
   </div>
   }
-
+  }
 </main>

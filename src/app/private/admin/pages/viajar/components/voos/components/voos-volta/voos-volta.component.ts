@@ -18,10 +18,12 @@ import { VoosService } from '../../voos.service';
 
 export class VoosVoltaComponent implements OnInit {
 
-  @Input() vooVolta : any = [];
+  @Input() vooVolta : any[] | null = [];
+  @Input() mostrarLabel: boolean = true;
 
   subscription = new Subscription();
 
+  vooIda: string = '';
   panel: boolean = false;
 
   constructor(private readonly vooService: VoosService) {}
@@ -29,6 +31,10 @@ export class VoosVoltaComponent implements OnInit {
 
   ngOnInit(): void {
     this.subscription.add();
+
+    this.vooService.vooIda.subscribe((value: any) => {
+      this.vooIda = value[0].origem[0].siglaAeroporto + " - " + value[0].destino[0].siglaAeroporto
+    })
   }
   ngOnDestroy(): void {
     this.subscription.unsubscribe()

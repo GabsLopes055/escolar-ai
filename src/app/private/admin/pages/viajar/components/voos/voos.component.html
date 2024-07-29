@@ -24,11 +24,11 @@
   }
   <div class="filtros">
     <div class="filtro-select">
-      <tgt-select [label]="'Ida e Volta'"></tgt-select>
-      <tgt-select [label]="'Econômica'"></tgt-select>
-      <tgt-select [label]="'Escalas'"></tgt-select>
-      <tgt-select [label]="'Preço'"></tgt-select>
-      <tgt-select [label]="'Companhias aéreas'"></tgt-select>
+      <tgt-select [size]="'small'" [label]="'Ida e Volta'"></tgt-select>
+      <tgt-select [size]="'small'" [label]="'Econômica'"></tgt-select>
+      <tgt-select [size]="'small'" [label]="'Escalas'"></tgt-select>
+      <tgt-select [size]="'small'" [label]="'Preço'"></tgt-select>
+      <tgt-select [size]="'small'" [label]="'Companhias aéreas'"></tgt-select>
     </div>
     <div class="filtro-button">
       <tgt-button [border]="false" [color]="'success'" [fieldButton]="'outline'" [icon]="'tune'" [type]="'button'"
@@ -38,16 +38,12 @@
   <div class="voos">
     @if(mostrarVoosIda) {
     <div class="voosIda">
-      @for (vooIda of voosIda; track vooIda) {
-      <voos-ida [vooIda]="vooIda"></voos-ida>
-      }
+      <voos-ida [vooIda]="voosIda" [mostrarLabel]="true"></voos-ida>
     </div>
     }
     @if(mostrarVoosVolta) {
     <div class="voosVolta">
-      @for(vooVolta of voosVolta; track vooVolta) {
-      <voos-volta [vooVolta]="vooVolta"></voos-volta>
-      }
+      <voos-volta [vooVolta]="voosVolta" [mostrarLabel]="true"></voos-volta>
     </div>
     }
     @if(mostrarVooSelecionados) {
@@ -56,44 +52,44 @@
     </div>
     }
     @if(!mostrarVoosIda && !mostrarVoosVolta && !mostrarVooSelecionados) {
-      <div class="voosEmpty">
-        <h2>Qual seu próximo <label>destino</label>?</h2>
+    <div class="voosEmpty">
+      <h2>Qual seu próximo <label>destino</label>?</h2>
 
-        <svg width="1095" height="329" viewBox="0 0 1095 329" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <g opacity="0.5">
-            <path
-              d="M70.4664 193.342L21.9998 298.608L906.741 308.814L838.143 171.448C827.295 149.724 805.099 135.999 780.818 135.999H724.206C707.224 135.999 690.937 129.258 678.922 117.256L580.302 18.7428C568.288 6.7413 552 0 535.018 0H483.16C466.178 0 449.891 6.74129 437.876 18.7428L384.638 71.9231C372.623 83.9247 356.336 90.666 339.354 90.666H280.8C263.818 90.666 247.531 97.4073 235.516 109.409L207.573 137.322C195.559 149.323 179.271 156.064 162.289 156.064H128.669C103.655 156.064 80.9279 170.621 70.4664 193.342Z"
-              fill="url(#paint0_radial_1978_34124)" />
-            <path d="M242.654 192L0.251953 347.934H493.917L242.654 192Z" fill="#CDCDCC" />
-            <path d="M493.917 347.934L242.374 192L169.117 288.299L270.31 263.702L199.984 347.934H493.917Z"
-              fill="#838280" />
-            <path d="M548.615 92L22.3511 347.58H1094.11L548.615 92Z" fill="#E6E6E5" />
-            <path d="M1094.12 348.065L548.615 92.4851L389.748 250.321L609.197 210.006L456.686 348.065H1094.12Z"
-              fill="#838280" />
-            <path d="M629.968 222L434.627 347.508H832.45L629.968 222Z" fill="#CDCDCC" />
-            <path d="M832.449 347.508L629.801 222L570.783 299.509L652.306 279.711L595.65 347.508H832.449Z"
-              fill="#9C9B99" />
-            <path
-              d="M705.488 41.8764C707.658 39.1248 712.287 40.1732 714.602 40.3042C706.356 40.304 705.922 46.2001 705.488 46.2001C704.099 41.4834 699.412 40.3042 697.242 40.3042C702.45 39.9113 704.33 40.5662 705.488 41.8764Z"
-              fill="#201F1A" />
-            <path
-              d="M711.284 72.1263C712.369 70.4754 714.684 71.1044 715.842 71.183C711.718 71.1829 711.501 74.7205 711.284 74.7205C710.59 71.8905 708.246 71.183 707.161 71.183C709.765 70.9472 710.706 71.3402 711.284 72.1263Z"
-              fill="#201F1A" />
-            <path
-              d="M646.958 80.5779C650.368 75.6251 657.643 77.5122 661.28 77.748C648.322 77.7477 647.64 88.3606 646.958 88.3606C644.776 79.8705 637.41 77.748 634 77.748C642.184 77.0407 645.14 78.2196 646.958 80.5779Z"
-              fill="#201F1A" />
-          </g>
-          <defs>
-            <radialGradient id="paint0_radial_1978_34124" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-              gradientTransform="translate(838.796 -823.795) rotate(112.361) scale(1263.17 1263.17)">
-              <stop stop-color="white" />
-              <stop offset="1" stop-color="#B3B3B3" stop-opacity="0" />
-            </radialGradient>
-          </defs>
-        </svg>
+      <svg width="1095" height="329" viewBox="0 0 1095 329" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g opacity="0.5">
+          <path
+            d="M70.4664 193.342L21.9998 298.608L906.741 308.814L838.143 171.448C827.295 149.724 805.099 135.999 780.818 135.999H724.206C707.224 135.999 690.937 129.258 678.922 117.256L580.302 18.7428C568.288 6.7413 552 0 535.018 0H483.16C466.178 0 449.891 6.74129 437.876 18.7428L384.638 71.9231C372.623 83.9247 356.336 90.666 339.354 90.666H280.8C263.818 90.666 247.531 97.4073 235.516 109.409L207.573 137.322C195.559 149.323 179.271 156.064 162.289 156.064H128.669C103.655 156.064 80.9279 170.621 70.4664 193.342Z"
+            fill="url(#paint0_radial_1978_34124)" />
+          <path d="M242.654 192L0.251953 347.934H493.917L242.654 192Z" fill="#CDCDCC" />
+          <path d="M493.917 347.934L242.374 192L169.117 288.299L270.31 263.702L199.984 347.934H493.917Z"
+            fill="#838280" />
+          <path d="M548.615 92L22.3511 347.58H1094.11L548.615 92Z" fill="#E6E6E5" />
+          <path d="M1094.12 348.065L548.615 92.4851L389.748 250.321L609.197 210.006L456.686 348.065H1094.12Z"
+            fill="#838280" />
+          <path d="M629.968 222L434.627 347.508H832.45L629.968 222Z" fill="#CDCDCC" />
+          <path d="M832.449 347.508L629.801 222L570.783 299.509L652.306 279.711L595.65 347.508H832.449Z"
+            fill="#9C9B99" />
+          <path
+            d="M705.488 41.8764C707.658 39.1248 712.287 40.1732 714.602 40.3042C706.356 40.304 705.922 46.2001 705.488 46.2001C704.099 41.4834 699.412 40.3042 697.242 40.3042C702.45 39.9113 704.33 40.5662 705.488 41.8764Z"
+            fill="#201F1A" />
+          <path
+            d="M711.284 72.1263C712.369 70.4754 714.684 71.1044 715.842 71.183C711.718 71.1829 711.501 74.7205 711.284 74.7205C710.59 71.8905 708.246 71.183 707.161 71.183C709.765 70.9472 710.706 71.3402 711.284 72.1263Z"
+            fill="#201F1A" />
+          <path
+            d="M646.958 80.5779C650.368 75.6251 657.643 77.5122 661.28 77.748C648.322 77.7477 647.64 88.3606 646.958 88.3606C644.776 79.8705 637.41 77.748 634 77.748C642.184 77.0407 645.14 78.2196 646.958 80.5779Z"
+            fill="#201F1A" />
+        </g>
+        <defs>
+          <radialGradient id="paint0_radial_1978_34124" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+            gradientTransform="translate(838.796 -823.795) rotate(112.361) scale(1263.17 1263.17)">
+            <stop stop-color="white" />
+            <stop offset="1" stop-color="#B3B3B3" stop-opacity="0" />
+          </radialGradient>
+        </defs>
+      </svg>
 
 
-      </div>
+    </div>
 
     }
   </div>

@@ -1,19 +1,23 @@
 <main>
+  @if(vooConfirmado) {
+  <voo-confirmado></voo-confirmado>
+  } @else {
   <app-tabs [tabs]="tabs" (change)="chosenTab($event)"></app-tabs>
   @switch (opcaoSelecionada) {
   @case('voos') {
   @defer {
-    <voos></voos>
+  <voos></voos>
   }
   }
   @case('hoteis') {
   @defer {
-    <hoteis></hoteis>
+  <hoteis></hoteis>
   }
   }
   @case('pacotes') {
   @defer {
-    <pacotes></pacotes>
+  <pacotes></pacotes>
+  }
   }
   }
   }

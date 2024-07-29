@@ -1,11 +1,51 @@
 main {
 
   width: 100%;
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+
+  .informacoesVoo {
+    width: 100%;
+    display: flex;
+
+    .tipoVoo {
+      width: 90%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 0px 14px 0px;
+
+      img {
+        width: 14px;
+      }
+
+      .icon {
+        transform: scaleY(-1);
+        transform: scaleX(-1);
+      }
+
+      .divider {
+        width: 1px;
+        height: 24px;
+      }
+
+      span {
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      p {
+        font-size: 14px;
+        font-weight: 700;
+      }
+    }
+  }
 
   .card-voo {
     display: flex;
     flex-direction: column;
-    // gap: 100px;
     min-width: 90%;
     padding: 16px, 24px, 16px, 24px;
     border-radius: 16px;
