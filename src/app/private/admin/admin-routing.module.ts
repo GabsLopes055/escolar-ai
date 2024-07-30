@@ -10,17 +10,18 @@ const tokenGuard: CanActivateFn = () => {
 }
 
 const routes: Routes = [
-    {path: '', component: HomeComponent, canActivate:[tokenGuard]},
-    {path: 'settings', loadComponent: () => import('./pages/configurations/configurations.component').then((c) => c.ConfigurationsComponent), canActivate:[tokenGuard]},
-    {path: 'viajantes', loadComponent: () => import('./pages/viajantes/viajantes.component').then((c) => c.ViajantesComponent), canActivate:[tokenGuard]},
-    {path: 'reservas', loadComponent: () => import('./pages/reservas/reservas.component').then((c) => c.ReservasComponent), canActivate:[tokenGuard]},
-    {path: 'aprovacoes', loadComponent: () => import('./pages/aprovacoes/aprovacoes.component').then((c) => c.AprovacoesComponent), canActivate:[tokenGuard]},
-    {path: 'dashboard', loadComponent: () => import('./pages/dashboard/dashboard.component').then((c) => c.DashboardComponent), canActivate:[tokenGuard]},
-    {path: 'viajar', loadComponent: () => import('./pages/viajar/viajar.component').then((c) => c.ViajarComponent), canActivate:[tokenGuard]},
-    {path: 'central-custo', loadComponent: () => import('./pages/central-custo/central-custo.component').then((c) => c.CentralCustoComponent), canActivate:[tokenGuard]},
-    {path: 'perfil', loadComponent: () => import('./pages/perfil/perfil.component').then((c) => c.PerfilComponent), canActivate: [tokenGuard]},
-    {path: 'suporte-atendimento', loadComponent: () => import('./pages/home/pages/suport-atendimento/suport-atendimento.component').then((c) => c.SuportAtendimentoComponent), canActivate:[tokenGuard]},
+  { path: '', component: HomeComponent, data: { title: 'Home Togo Trip' }, canActivate: [tokenGuard] },
+  { path: 'settings', loadComponent: () => import('./pages/configurations/configurations.component').then((c) => c.ConfigurationsComponent), data: { title: 'Configurações' }, canActivate: [tokenGuard] },
+  { path: 'viajantes', loadComponent: () => import('./pages/viajantes/viajantes.component').then((c) => c.ViajantesComponent), data: { title: 'Colaboradores' }, canActivate: [tokenGuard] },
+  { path: 'reservas', loadComponent: () => import('./pages/reservas/reservas.component').then((c) => c.ReservasComponent), data: { title: 'Minhas Reservas' }, canActivate: [tokenGuard] },
+  { path: 'aprovacoes', loadComponent: () => import('./pages/aprovacoes/aprovacoes.component').then((c) => c.AprovacoesComponent), data: { title: 'Aprovações' }, canActivate: [tokenGuard] },
+  { path: 'dashboard', loadComponent: () => import('./pages/dashboard/dashboard.component').then((c) => c.DashboardComponent), data: { title: 'Dashboard' }, canActivate: [tokenGuard] },
+  { path: 'viajar', loadComponent: () => import('./pages/viajar/viajar.component').then((c) => c.ViajarComponent), data: { title: 'Solicitar Viagens' }, canActivate: [tokenGuard] },
+  { path: 'central-custo', loadComponent: () => import('./pages/central-custo/central-custo.component').then((c) => c.CentralCustoComponent), data: { title: 'Central de Custo' }, canActivate: [tokenGuard] },
+  { path: 'perfil', loadComponent: () => import('./pages/perfil/perfil.component').then((c) => c.PerfilComponent), data: { title: 'Perfil' }, canActivate: [tokenGuard] },
+  { path: 'suporte-atendimento', loadComponent: () => import('./pages/home/pages/suport-atendimento/suport-atendimento.component').then((c) => c.SuportAtendimentoComponent), data: { title: 'Suporte e Atendimento' }, canActivate: [tokenGuard] },
 ];
+
 
   @NgModule({
     imports: [RouterModule.forChild(routes)],

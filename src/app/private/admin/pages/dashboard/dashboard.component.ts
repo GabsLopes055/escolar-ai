@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NavbarService } from '../../../../shared/navbar/navbar.service';
 import { MenuService } from '../../../../shared/menu/menu.service';
 import { Tab, TabsComponent } from '../../../../shared/tabs/tabs.component';
@@ -9,9 +9,12 @@ import { Tab, TabsComponent } from '../../../../shared/tabs/tabs.component';
   host: {class: 'main'},
   imports: [TabsComponent],
   templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.scss'
+  styleUrl: './dashboard.component.scss',
 })
 export class DashboardComponent {
+
+  @Input() title: string = '';
+
   tabs: Tab[] = [
     {icon: 'language', label: 'Geral', value: 'geral', selected: false},
     {icon: 'flight', label: 'Voos', value: 'voos', selected: false},
