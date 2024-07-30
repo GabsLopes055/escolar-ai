@@ -1,11 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnDestroy, OnInit } from '@angular/core';
 import { InputComponent } from '../../../../../../shared/input/input.component';
 import { ButtonComponent } from '../../../../../../shared/button/button.component';
 import { SelectComponent } from '../../../../../../shared/select/select.component';
 import { Subscription } from 'rxjs';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
-
 @Component({
   selector: 'hoteis',
   standalone: true,
@@ -15,6 +14,7 @@ import { DatePipe } from '@angular/common';
     SelectComponent,
     DatePipe
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './hoteis.component.html',
   styleUrl: './hoteis.component.scss',
 })
@@ -34,12 +34,9 @@ export class HoteisComponent implements OnInit, OnDestroy {
   constructor() {}
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
 
+  }
   ngOnInit(): void {
-    this.pesquisarHoteis();
-    this.subscription.add();
   }
 
   pesquisarHoteis() {
@@ -135,5 +132,22 @@ export class HoteisComponent implements OnInit, OnDestroy {
         },
       ];
     }
+
+  }
+  paginarImagens() {
+    // var swiper = new Swiper(".mySwiper", {
+    //   cssMode: true,
+    //   navigation: {
+    //     nextEl: ".swiper-button-next",
+    //     prevEl: ".swiper-button-prev",
+    //   },
+    //   pagination: {
+    //     el: ".swiper-pagination",
+    //   },
+    //   mousewheel: true,
+    //   keyboard: true,
+    // });
+
+    // console.log(swiper)
   }
 }

@@ -1,0 +1,27 @@
+<main>
+  <div class="informacoesVoo">
+    <div class="tipoVoo">
+      <span class="material-symbols-outlined">
+        airplane_ticket
+      </span>
+      <span>Voo de ida:</span>
+    </div>
+  </div>
+  <voos-ida [vooIda]="vooIda" [mostrarLabel]="false"></voos-ida>
+  <div class="informacoesVoo">
+    <div class="tipoVoo">
+      <span class="material-symbols-outlined icon">
+        airplane_ticket
+      </span>
+      <span>Voo de volta:</span>
+    </div>
+  </div>
+  <voos-volta [vooVolta]="vooVolta" [mostrarLabel]="false"></voos-volta>
+  <div class="resumoVoosEscolhidos">
+    <div class="valores">
+      <span>Tarifa a partir de</span>
+      <p>R$66,781.58</p>
+    </div>
+    <tgt-button [border]="false" [color]="'secundary'" (click)="solicitarReserva()">Solicitar Reserva</tgt-button>
+  </div>
+</main>

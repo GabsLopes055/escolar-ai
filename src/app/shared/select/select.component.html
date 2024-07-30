@@ -1,18 +1,21 @@
 <main>
-  <div class="input" (click)="openModal()" [style.border]="border ? '' : 'none'">
-      <span class="label">{{label}}</span>
-      <span class="material-symbols-outlined">
-          {{icon}}
-      </span>
+  <div class="input" (click)="openModal()"
+    [style.border]="border ? '' : 'none'"
+    [style.padding]="size == 'middle' ? '' : '2px 10px'"
+    [style.fontSize]="size == 'middle' ? '' : '14px'">
+    <span class="label">{{label}}</span>
+    <span class="material-symbols-outlined">
+      {{icon}}
+    </span>
   </div>
   @if (isOpenModal) {
-      <div class="modal">
-          <div class="content">
-              @for(option of options; track option) {
-                  <span class="value" (click)="optionSelect(option)">{{option.label}}</span>
-              }
-          </div>
-      </div>
+  <div class="modal">
+    <div class="content">
+      @for(option of options; track option) {
+      <span class="value" (click)="optionSelect(option)">{{option.label}}</span>
+      }
+    </div>
+  </div>
   }
 
 </main>

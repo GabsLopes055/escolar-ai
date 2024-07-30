@@ -1,5 +1,5 @@
 import { Tab, TabsComponent } from './../../../../shared/tabs/tabs.component';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { NavbarService } from './../../../../shared/navbar/navbar.service';
 import { MenuService } from '../../../../shared/menu/menu.service';
@@ -21,9 +21,9 @@ import { User } from '../../../../models/user.interface';
   templateUrl: './perfil.component.html',
   styleUrl: './perfil.component.scss'
 })
-export class PerfilComponent {
+export class PerfilComponent implements OnInit {
 
-  abrirTabSelecionada: any
+  abrirTabSelecionada: string = '';
   usuario!: User | null;
   tabs!: Tab[];
 
@@ -36,6 +36,9 @@ export class PerfilComponent {
     navbarService.showBtnViajar.next(true);
     menuService.updateMenu();
     this.usuario = userService.user;
+    console.log(this.userService)
+  }
+  ngOnInit(): void {
     this.mostrarTabsPermissoes();
   }
 
