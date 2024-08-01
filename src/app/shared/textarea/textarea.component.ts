@@ -20,7 +20,7 @@ export class TextareaComponent {
   @Input() linhas: number = 10;
   @Input() readonly: boolean = false;
   @Input() border: boolean = true;
-  @Input() buttons: boolean = false
+  @Input() buttons: boolean = false;
 
   reprovar() {
     // Lógica para reprovar

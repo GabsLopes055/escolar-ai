@@ -1,0 +1,9 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: auto;
+  justify-content: space-between;
+  gap: 16px;
+
+}
