@@ -10,28 +10,25 @@
 
   @if(buttons) {
   <div class="button-container">
-    <button (click)="reprovar()" class="button reprovar">
-      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="0.5" y="0.5" width="39" height="39" rx="19.5" stroke="#EE0D43"/>
-        <path d="M19.2071 27.7068L23.8155 23.0901C24.1238 22.7818 24.2988 22.3568 24.2988 21.9151V13.5901C24.2988 12.6735 23.5488 11.9235 22.6321 11.9235H15.1405C14.4738 11.9235 13.8738 12.3235 13.6155 12.9318L10.8988 19.2735C10.1905 20.9235 11.3988 22.7568 13.1905 22.7568H17.8988L17.1071 26.5735C17.0238 26.9901 17.1488 27.4151 17.4488 27.7151C17.9405 28.1985 18.7238 28.1985 19.2071 27.7068ZM27.6405 11.9235C26.7238 11.9235 25.9738 12.6735 25.9738 13.5901V20.2568C25.9738 21.1735 26.7238 21.9235 27.6405 21.9235C28.5571 21.9235 29.3071 21.1735 29.3071 20.2568V13.5901C29.3071 12.6735 28.5571 11.9235 27.6405 11.9235Z" fill="#EE0D43"/>
-        </svg>
+    <div (click)="reprovar()" class="btn-reprovar">
+      <span class="material-symbols-outlined icon">
+        thumb_down
+      </span>
+      <span class="label">Cancelar</span>
+    </div>
 
-    </button>
-    <button (click)="aprovar()" class="button approve">
-      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="0.5" y="0.5" width="39" height="39" rx="19.5" stroke="#00CA2C"/>
-        <path d="M20.7909 12.2933L16.1743 16.9099C15.8659 17.2183 15.6909 17.6433 15.6909 18.0849V26.4099C15.6909 27.3266 16.4409 28.0766 17.3576 28.0766H24.8576C25.5243 28.0766 26.1243 27.6766 26.3909 27.0683L29.1076 20.7266C29.8076 19.0766 28.5993 17.2433 26.8076 17.2433H22.0993L22.8909 13.4266C22.9743 13.0099 22.8493 12.5849 22.5493 12.2849C22.0576 11.8016 21.2743 11.8016 20.7909 12.2933ZM12.3576 28.0766C13.2743 28.0766 14.0243 27.3266 14.0243 26.4099V19.7433C14.0243 18.8266 13.2743 18.0766 12.3576 18.0766C11.4409 18.0766 10.6909 18.8266 10.6909 19.7433V26.4099C10.6909 27.3266 11.4409 28.0766 12.3576 28.0766Z" fill="#00CA2C"/>
-        </svg>
+    <div (click)="aprovar()" class="btn-aprovar">
+      <span class="material-symbols-outlined icon">
+        thumb_up
+      </span>
+      <span class="label">Aprovar</span>
 
-    </button>
-    <button (click)="enviarMensagem()" class="button message">
-      <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="52" height="52" rx="26" fill="#CDCDCC"/>
-        <path d="M21.3997 20.3202L29.8897 17.4902C33.6997 16.2202 35.7697 18.3002 34.5097 22.1102L31.6797 30.6002C29.7797 36.3102 26.6597 36.3102 24.7597 30.6002L23.9197 28.0802L21.3997 27.2402C15.6897 25.3402 15.6897 22.2302 21.3997 20.3202Z" stroke="#070600" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M24.1094 27.6499L27.6894 24.0599" stroke="#070600" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-
-    </button>
+    </div>
+    <div (click)="enviarMensagem()" class="btn-enviar">
+      <span class="material-symbols-outlined icon send">
+        send
+      </span>
+    </div>
   </div>
   }
 </div>

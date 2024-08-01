@@ -1,6 +1,19 @@
 main {
   padding: 24px;
 
+  .filtroInput {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    tgt-input-icon {
+      width: 30%;
+    }
+
+  }
+
   .header {
     display: flex;
     flex-direction: row;

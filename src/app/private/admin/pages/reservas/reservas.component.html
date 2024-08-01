@@ -1,4 +1,9 @@
 <main>
+
+  <div class="filtroInput">
+    <tgt-input-icon [type]="'text'" [icon]="'search'" [iconPosition]="'right'" [placeholder]="'Busque uma reserva'"></tgt-input-icon>
+  </div>
+
   <div class="header">
     <app-tabs [border]="false" [tabs]="tabs" (change)="chosenTab($event)"></app-tabs>
     <tgt-button [color]="'success'" fieldButton="outline" [size]="'small'" [border]="false" [icon]="'refresh'"

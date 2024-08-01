@@ -6,36 +6,65 @@ import { HeaderListComponent } from '../../../../../../shared/list/components/he
 import { ItemDataComponent } from '../../../../../../shared/list/components/item-data/item-data.component';
 import { ItemListComponent } from '../../../../../../shared/list/components/item-list/item-list.component';
 import { ListComponent } from '../../../../../../shared/list/list.component';
+import { SidebarService } from '../../../../../../shared/sidebar/sidebar.service';
 import { StatusCircleComponent } from '../../../../../../shared/status-circle/status-circle.component';
 import { Status } from './../../../../../../shared/status-circle/status-circle.component';
+import { HistoricoUsuarioComponent } from '../../../../../../shared/historico-usuario/historico-usuario.component';
+import { HistoricoViagensComponent } from './historico-viagens/historico-viagens.component';
 
 @Component({
   selector: 'reservas-viagens',
   standalone: true,
-  imports: [ListComponent, HeaderListComponent, HeaderColComponent, ItemListComponent, ItemDataComponent, StatusCircleComponent, ButtonComponent],
+  imports: [
+    ListComponent,
+    HeaderListComponent,
+    HeaderColComponent,
+    ItemListComponent,
+    ItemDataComponent,
+    StatusCircleComponent,
+    ButtonComponent,
+  ],
   templateUrl: './viagens.component.html',
-  styleUrl: './viagens.component.scss'
+  styleUrl: './viagens.component.scss',
 })
 export class ViagensComponent implements OnInit {
-
-
   reservaVoo: any[] = [];
 
-  constructor(){}
+  constructor(
+     private readonly sidebarService: SidebarService
+  ) {}
 
   ngOnInit(): void {
     this.reservaVoo = [
-      {destino: 'São Paulo', origem: 'Nova York', dataIda: '15/04/24 15:00', dataVolta: '17/04/24 15:00', status: Status.ATIVO},
-      {destino: 'São Paulo', origem: 'Nova York', dataIda: '15/04/24 15:00', dataVolta: '17/04/24 15:00', status: Status.PENDENTE},
-      {destino: 'São Paulo', origem: 'Nova York', dataIda: '15/04/24 15:00', dataVolta: '17/04/24 15:00', status: Status.INATIVO},
-    ]
+      {
+        destino: 'São Paulo',
+        origem: 'Nova York',
+        dataIda: '15/04/24 15:00',
+        dataVolta: '17/04/24 15:00',
+        status: Status.ATIVO,
+      },
+      {
+        destino: 'São Paulo',
+        origem: 'Nova York',
+        dataIda: '15/04/24 15:00',
+        dataVolta: '17/04/24 15:00',
+        status: Status.PENDENTE,
+      },
+      {
+        destino: 'São Paulo',
+        origem: 'Nova York',
+        dataIda: '15/04/24 15:00',
+        dataVolta: '17/04/24 15:00',
+        status: Status.INATIVO,
+      },
+    ];
   }
 
   formataStatus(status: Status): string {
     let statusRetorno = '';
-    if(status === Status.ATIVO) {
+    if (status === Status.ATIVO) {
       statusRetorno = 'Aprovada';
-    } else if(status === Status.INATIVO) {
+    } else if (status === Status.INATIVO) {
       statusRetorno = 'Cancelada';
     } else {
       statusRetorno = 'Pendente';
@@ -43,6 +72,9 @@ export class ViagensComponent implements OnInit {
     return statusRetorno;
   }
 
-  protected readonly status!: Status;
+  abrirDetalhes() {
+    this.sidebarService.openSide(HistoricoViagensComponent)
+  }
 
+  protected readonly status!: Status;
 }

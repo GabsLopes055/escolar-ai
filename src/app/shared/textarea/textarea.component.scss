@@ -1,4 +1,5 @@
 @import '../../../assets/styles/colors.scss';
+
 input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0px 1000px white inset;
 }
@@ -15,31 +16,118 @@ input:-webkit-autofill {
     display: flex;
     gap: 10px;
 
-    .button {
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
-      border: none;
-      color: white;
+    .btn-reprovar {
       display: flex;
       align-items: center;
-      justify-content: center;
+      border: solid 1px $color-delete;
+      padding: 8px;
+      // gap: 4px;
+      border-radius: 50px;
       cursor: pointer;
+      transition: all .5s;
 
-      &.reprovar {
-        border-radius: 25px;
-        background-color: white;
+      .icon {
+        color: $color-delete
       }
-      &.approve {
-        border-radius: 25px;
-        background-color: white;
+
+      .label {
+        width: 0px;
+        overflow: hidden;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 24px;
+        letter-spacing: 0.10000000149011612px;
+        text-align: left;
+
       }
-      &.message {
-        width: 40px;
-        height: 40px;
-        border-radius: 25px;
-        background-color: white;
+
+      &:hover {
+        background-color: $color-delete;
+        width: auto;
+        color: white;
+        transition: all .5s;
+
+
+        .icon {
+          color: white;
+        }
+
+        .label {
+          width: auto;
+          margin-left: 4px;
+        }
+
+        // display: inline-block;
       }
+    }
+
+    .btn-aprovar {
+      display: flex;
+      align-items: center;
+      border: solid 1px $color-aprovar;
+      padding: 8px;
+      // gap: 4px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all .5s;
+
+      .icon {
+        color: $color-aprovar
+      }
+
+      .label {
+        width: 0px;
+        overflow: hidden;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 24px;
+        letter-spacing: 0.10000000149011612px;
+        text-align: left;
+
+      }
+
+      &:hover {
+        background-color: $color-aprovar;
+        width: auto;
+        color: #070600;
+        transition: all .5s;
+
+
+        .icon {
+          color: #070600;
+        }
+
+        .label {
+          width: auto;
+          margin-left: 4px;
+        }
+
+        // display: inline-block;
+      }
+    }
+
+    .btn-enviar {
+      display: flex;
+      align-items: center;
+      border: solid 1px $color-yellow;
+      padding: 8px;
+      background-color: $color-yellow;
+      // gap: 4px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all .5s;
+
+      .icon {
+        color: $color-black;
+      }
+
+      .send {
+        transform: rotate(-45deg);
+      }
+
+
+
+
     }
   }
 }
@@ -61,6 +149,7 @@ input:-webkit-autofill {
     // font-weight: bold;
     line-height: 1.2;
   }
+
   &__field {
     box-sizing: border-box;
 
@@ -74,7 +163,7 @@ input:-webkit-autofill {
 
     &:focus,
     &:not(:placeholder-shown) {
-      & + .input__label {
+      &+.input__label {
         transform: translate(.25rem, -100%) scale(.8);
         font-size: 12px;
         background-color: #fff;

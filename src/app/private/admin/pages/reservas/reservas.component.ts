@@ -8,6 +8,8 @@ import { ViagensComponent } from './components/viagens/viagens.component';
 import { PacotesComponent } from './components/pacotes/pacotes.component';
 import { HoteisComponent } from './components/hoteis/hoteis.component';
 import { ChipsComponent } from '../../../../shared/chips/chips.component';
+import { InputComponent } from "../../../../shared/input/input.component";
+import { InputIconComponent } from "../../../../shared/input-icon/input-icon.component";
 
 @Component({
   selector: 'app-reservas',
@@ -21,7 +23,9 @@ import { ChipsComponent } from '../../../../shared/chips/chips.component';
     PacotesComponent,
     HoteisComponent,
     ChipsComponent,
-  ],
+    InputComponent,
+    InputIconComponent
+],
   templateUrl: './reservas.component.html',
   styleUrl: './reservas.component.scss',
 })
