@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { NavbarService } from '../../../../shared/navbar/navbar.service';
-import { MenuService } from '../../../../shared/menu/menu.service';
-import { Tab, TabsComponent } from '../../../../shared/tabs/tabs.component';
+
 import { ButtonComponent } from '../../../../shared/button/button.component';
-import { DividerComponent } from '../../../../shared/divider/divider.component';
-import { ViagensComponent } from './components/viagens/viagens.component';
-import { PacotesComponent } from './components/pacotes/pacotes.component';
-import { HoteisComponent } from './components/hoteis/hoteis.component';
 import { ChipsComponent } from '../../../../shared/chips/chips.component';
-import { InputComponent } from "../../../../shared/input/input.component";
-import { InputIconComponent } from "../../../../shared/input-icon/input-icon.component";
+import { DividerComponent } from '../../../../shared/divider/divider.component';
+import { InputIconComponent } from '../../../../shared/input-icon/input-icon.component';
+import { InputComponent } from '../../../../shared/input/input.component';
+import { MenuService } from '../../../../shared/menu/menu.service';
+import { NavbarService } from '../../../../shared/navbar/navbar.service';
+import { PaginatorComponent } from '../../../../shared/paginator/paginator.component';
+import { Tab, TabsComponent } from '../../../../shared/tabs/tabs.component';
+import { HoteisComponent } from './components/hoteis/hoteis.component';
+import { PacotesComponent } from './components/pacotes/pacotes.component';
+import { ViagensComponent } from './components/viagens/viagens.component';
 
 @Component({
   selector: 'app-reservas',
@@ -24,7 +26,8 @@ import { InputIconComponent } from "../../../../shared/input-icon/input-icon.com
     HoteisComponent,
     ChipsComponent,
     InputComponent,
-    InputIconComponent
+    InputIconComponent,
+    PaginatorComponent
 ],
   templateUrl: './reservas.component.html',
   styleUrl: './reservas.component.scss',

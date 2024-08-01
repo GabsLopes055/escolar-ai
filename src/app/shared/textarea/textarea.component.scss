@@ -21,13 +21,12 @@ input:-webkit-autofill {
       align-items: center;
       border: solid 1px $color-delete;
       padding: 8px;
-      // gap: 4px;
       border-radius: 50px;
       cursor: pointer;
       transition: all .5s;
 
       .icon {
-        color: $color-delete
+        color: $color-delete;
       }
 
       .label {
@@ -38,7 +37,6 @@ input:-webkit-autofill {
         line-height: 24px;
         letter-spacing: 0.10000000149011612px;
         text-align: left;
-
       }
 
       &:hover {
@@ -46,7 +44,6 @@ input:-webkit-autofill {
         width: auto;
         color: white;
         transition: all .5s;
-
 
         .icon {
           color: white;
@@ -56,8 +53,6 @@ input:-webkit-autofill {
           width: auto;
           margin-left: 4px;
         }
-
-        // display: inline-block;
       }
     }
 
@@ -92,7 +87,6 @@ input:-webkit-autofill {
         color: #070600;
         transition: all .5s;
 
-
         .icon {
           color: #070600;
         }
@@ -101,8 +95,6 @@ input:-webkit-autofill {
           width: auto;
           margin-left: 4px;
         }
-
-        // display: inline-block;
       }
     }
 
@@ -124,10 +116,6 @@ input:-webkit-autofill {
       .send {
         transform: rotate(-45deg);
       }
-
-
-
-
     }
   }
 }

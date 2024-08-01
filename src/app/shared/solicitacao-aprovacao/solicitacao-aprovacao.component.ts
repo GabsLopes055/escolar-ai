@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { HistoricoUsuarioComponent } from "../historico-usuario/historico-usuario.component";
 import { SidebarComponent } from "../sidebar/sidebar.component";
 import { TextareaComponent } from "../textarea/textarea.component";
@@ -11,5 +11,4 @@ import { TextareaComponent } from "../textarea/textarea.component";
   styleUrl: './solicitacao-aprovacao.component.scss'
 })
 export class SolicitacaoAprovacaoComponent {
-
 }

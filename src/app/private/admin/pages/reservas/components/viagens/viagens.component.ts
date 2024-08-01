@@ -11,6 +11,7 @@ import { StatusCircleComponent } from '../../../../../../shared/status-circle/st
 import { Status } from './../../../../../../shared/status-circle/status-circle.component';
 import { HistoricoUsuarioComponent } from '../../../../../../shared/historico-usuario/historico-usuario.component';
 import { HistoricoViagensComponent } from './historico-viagens/historico-viagens.component';
+import { PaginatorComponent } from "../../../../../../shared/paginator/paginator.component";
 
 @Component({
   selector: 'reservas-viagens',
@@ -23,7 +24,8 @@ import { HistoricoViagensComponent } from './historico-viagens/historico-viagens
     ItemDataComponent,
     StatusCircleComponent,
     ButtonComponent,
-  ],
+    PaginatorComponent
+],
   templateUrl: './viagens.component.html',
   styleUrl: './viagens.component.scss',
 })
