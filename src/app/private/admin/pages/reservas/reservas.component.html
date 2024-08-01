@@ -1,3 +1,34 @@
 <main>
-    <app-tabs [tabs]="tabs" (change)="chosenTab($event)"></app-tabs>
+
+  <div class="filtroInput">
+    <tgt-input-icon [type]="'text'" [icon]="'search'" [iconPosition]="'right'" [placeholder]="'Busque uma reserva'"></tgt-input-icon>
+  </div>
+
+  <div class="header">
+    <app-tabs [border]="false" [tabs]="tabs" (change)="chosenTab($event)"></app-tabs>
+    <tgt-button [color]="'success'" fieldButton="outline" [size]="'small'" [border]="false" [icon]="'refresh'"
+      (click)="refresh()">Refresh</tgt-button>
+  </div>
+
+  <div class="header-chips">
+    <tgt-chips [label]="statusReserva.TODOS" (click)="setFilterStatus(statusReserva.TODOS)" [select]="selectTodos"></tgt-chips>
+    <tgt-chips [label]="statusReserva.PENDENTES" (click)="setFilterStatus(statusReserva.PENDENTES)" [select]="selectPendentes"></tgt-chips>
+    <tgt-chips [label]="statusReserva.APROVADAS" (click)="setFilterStatus(statusReserva.APROVADAS)" [select]="selectAprovadas"></tgt-chips>
+    <tgt-chips [label]="statusReserva.CANCELADAS" (click)="setFilterStatus(statusReserva.CANCELADAS)" [select]="selectCanceladas"></tgt-chips>
+
+  </div>
+
+  <div class="content">
+    @switch (tabSelecionada) {
+    @case ('voos') {
+    <reservas-viagens></reservas-viagens>
+    }
+    @case ('hoteis') {
+    <reservas-hoteis></reservas-hoteis>
+    }
+    @case ('pacotes') {
+    <reservas-pacotes></reservas-pacotes>
+    }
+    }
+  </div>
 </main>
