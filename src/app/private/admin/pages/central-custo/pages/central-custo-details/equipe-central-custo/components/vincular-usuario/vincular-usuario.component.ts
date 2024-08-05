@@ -49,7 +49,6 @@ import { EquipeCentralCustoService } from '../../equipe-central-custo.service';
     CheckboxComponent,
     ToggleComponent,
     ItemDataComponent,
-    CommonModule,
   ],
   templateUrl: './vincular-usuario.component.html',
   styleUrl: './vincular-usuario.component.scss',
