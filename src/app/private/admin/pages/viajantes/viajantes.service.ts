@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../../../environments/environment";
-import {Observable} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import {SolicitacaoUserRequest, User, UserPutRequest} from "../../../../models/user.interface";
 import { EntityPaginated } from '../../../../models/filtro-busca.interface';
 
@@ -10,6 +10,11 @@ const URL_BASE = `${environment.BACKEND_API}/user`;
   providedIn: 'root'
 })
 export class ViajantesService {
+
+  statusBehavior = new BehaviorSubject<any | null>(null);
+  perfilBehavior = new BehaviorSubject<any | null>(null);
+  inputBehavior = new BehaviorSubject<any | null>(null);
+
 
   constructor(private readonly http: HttpClient) { }
 

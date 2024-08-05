@@ -1,23 +1,23 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { SidebarComponent } from '../../../../../../shared/sidebar/sidebar.component';
-import { InputViewComponent } from '../../../../../../shared/input-view/input-view.component';
+import { SidebarComponent } from '../../../../../../../../shared/sidebar/sidebar.component';
+import { InputViewComponent } from '../../../../../../../../shared/input-view/input-view.component';
 import { DatePipe, NgStyle } from '@angular/common';
-import { ViajantesService } from '../../viajantes.service';
+import { ViajantesService } from '../../../../viajantes.service';
 import {
   Role,
   User,
   UserPutRequest,
-} from '../../../../../../models/user.interface';
-import { InputComponent } from '../../../../../../shared/input/input.component';
+} from '../../../../../../../../models/user.interface';
+import { InputComponent } from '../../../../../../../../shared/input/input.component';
 import {
   OptionSelect,
   SelectComponent,
-} from '../../../../../../shared/select/select.component';
-import { RadioComponent } from '../../../../../../shared/radio/radio.component';
-import { ButtonComponent } from '../../../../../../shared/button/button.component';
-import { SidebarService } from '../../../../../../shared/sidebar/sidebar.service';
+} from '../../../../../../../../shared/select/select.component';
+import { RadioComponent } from '../../../../../../../../shared/radio/radio.component';
+import { ButtonComponent } from '../../../../../../../../shared/button/button.component';
+import { SidebarService } from '../../../../../../../../shared/sidebar/sidebar.service';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ToastService } from '../../../../../../shared/toast/toast.service';
+import { ToastService } from '../../../../../../../../shared/toast/toast.service';
 import { Data } from '@angular/router';
 
 @Component({

@@ -3,15 +3,20 @@
   <app-tabs [tabs]="tabs" (change)="abrirTab($event)"></app-tabs>
 
   @switch (abrirTabSelecionada) {
-
   @case ('dados-pessoais') {
+  @defer {
   <app-dados-pessoais></app-dados-pessoais>
   }
+  }
   @case ('dados-empresariais') {
+  @defer {
   <app-dados-empresariais></app-dados-empresariais>
   }
+  }
   @case ('notificacoes') {
+  @defer {
   <app-notificacoes></app-notificacoes>
+  }
   }
   }
 </main>

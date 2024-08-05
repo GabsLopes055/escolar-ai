@@ -1,214 +1,226 @@
 @import "../../../assets/styles/colors.scss";
+
 .menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+  background-color: $color-black;
+  transition: width .5s;
+
+  .content {
+    width: 222px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    height: 100vh;
-    background-color: $color-black;
-    transition: width .5s;
-
-    .content {
-        width: 222px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 12px;
+    justify-content: center;
+    gap: 12px;
 
 
-        .logo {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px 0;
-            cursor: pointer;
+    .logo {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 0;
+      cursor: pointer;
 
-            span {
-                cursor: pointer;
-
-
-            }
-            .hamb {
-                color: $color-off-white;
-                transition: all .5s;
-            }
-            .hamb:hover {
-                color: $color-yellow;
-            }
-
-        }
-
-        .new {
-            width: Fill (222px)px;
-            height: Hug (56px)px;
-            border-radius: 300px;
-            transition: all .5s;
-
-            a {
-                width: Fill (222px)px;
-                height: Fill (56px)px;
-                padding: 16px 24px 16px 16px;
-                gap: 12px;
-                opacity: 0px;
-
-                display: flex;
-                align-items: center;
-                text-decoration: none;
-
-                color: $color-off-white;
-
-                span {
-                    width: 24px;
-                    height: 24px;
-                }
-
-                .item-description {
-                    font-size: 14px;
-                    font-weight: 600;
-                    line-height: 24px;
-                    letter-spacing: 0.5px;
-                    text-align: left;
-                }
-
-            }
-
-            &:hover {
-                background: rgba(255, 210, 0, 0.3);
-
-            }
-        }
-
-        .divider {
-            width: 190px;
-            border: solid 1px rgba(191, 200, 202, 1);
-        }
-        .divider_close {
-            width: 24px;
-            border: solid 1px rgba(191, 200, 202, 1);
-        }
-
-        .items {
-            list-style: none;
-
-            li {
-                width: 200px;
-                border-radius: 300px;
-                margin-bottom: .3rem;
-                transition: all .5s;
-                a {
-                    width: Fill (222px)px;
-                    height: 16px;
-                    padding: 16px;
-                    gap: 12px;
-                    opacity: 0px;
-
-                    display: flex;
-                    align-items: center;
-                    text-decoration: none;
-                    transition: all .5s;
-
-                    color: $color-off-white;
-
-                    span {
-                        width: 20px;
-                        height: 20px;
-                    }
-
-                    .item-description {
-                        font-size: 12px;
-                        font-weight: 600;
-                        line-height: 24px;
-                        letter-spacing: 0.5px;
-                        text-align: left;
-                    }
-                    &:hover {
-                        color: $color-yellow!important;
-                    }
-                }
-                .selected{
-                    background-color: $color-yellow;
-                    border-radius: 300px;
-                    color: $color-black;
+      span {
+        cursor: pointer;
 
 
-                    &:hover {
-                        color: $color-black!important;
-                    }
-
-                }
-                &:hover {
-                    background: #393833;
-                }
-            }
-
-            .li_close {
-                width: 56px;
-            }
-        }
-    }
-
-    .content_close {
-        align-items: center;
-    }
-
-
-    .item-help {
-
-      .active{
-        background-color: $color-yellow;
-        color: $color-black;
-        border-radius: 300px;
       }
 
+      .hamb {
+        color: $color-off-white;
+        transition: all .5s;
+      }
+
+      .hamb:hover {
+        color: $color-yellow;
+      }
+
+    }
+
+    .new {
+      width: Fill (222px)px;
+      height: Hug (56px)px;
+      border-radius: 300px;
+      transition: all .5s;
+
+      a {
+        width: Fill (222px)px;
+        height: Fill (56px)px;
+        padding: 16px 24px 16px 16px;
+        gap: 12px;
+        opacity: 0px;
+
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+
+        color: $color-off-white;
+
+        span {
+          width: 24px;
+          height: 24px;
+        }
+
+        .item-description {
+          font-size: 14px;
+          font-weight: 600;
+          line-height: 24px;
+          letter-spacing: 0.5px;
+          text-align: left;
+        }
+
+      }
+
+      &:hover {
+        background: rgba(255, 210, 0, 0.3);
+
+      }
+    }
+
+    .divider {
+      width: 190px;
+      border: solid 1px rgba(191, 200, 202, 1);
+    }
+
+    .divider_close {
+      width: 24px;
+      border: solid 1px rgba(191, 200, 202, 1);
+    }
+
+    .items {
+      list-style: none;
+
+      li {
         width: 200px;
         border-radius: 300px;
-        margin-bottom: 1rem;
-        display: flex;
-        flex-direction: column;
+        margin-bottom: .3rem;
         transition: all .5s;
 
         a {
-            width: Fill (222px)px;
-            height: 16px;
-            padding: 16px 24px 16px 16px;
-            gap: 12px;
-            opacity: 0px;
+          width: Fill (222px)px;
+          height: 16px;
+          padding: 16px;
+          gap: 12px;
+          opacity: 0px;
 
-            display: flex;
-            align-items: center;
-            text-decoration: none;
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+          transition: all .5s;
 
-            color: $color-off-white;
-            transition: all .5s;
+          color: $color-off-white;
 
-            span {
-                width: 20px;
-                height: 20px;
-            }
+          span {
+            width: 20px;
+            height: 20px;
+          }
 
-            .item-description {
-                font-size: 12px;
-                font-weight: 600;
-                line-height: 24px;
-                letter-spacing: 0.5px;
-                text-align: left;
-            }
+          .item-description {
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 24px;
+            letter-spacing: 0.5px;
+            text-align: left;
+          }
 
-            &:hover {
-                color: $color-black;
-            }
+          &:hover {
+            color: $color-yellow !important;
+          }
+        }
+
+        .selected {
+          background-color: $color-yellow;
+          border-radius: 300px;
+          color: $color-black;
+
+
+          &:hover {
+            color: $color-black !important;
+          }
+
         }
 
         &:hover {
-            background: #393833;
-
+          background: #393833;
         }
+      }
 
+      .li_close {
+        width: 56px;
+      }
     }
+  }
+
+  .content_close {
+    align-items: center;
+  }
+
+
+  .item-help {
+
+    .active {
+      background-color: $color-yellow;
+      color: $color-black;
+      border-radius: 300px;
+
+
+      &:hover {
+        color: $color-black;
+      }
+    }
+
+    width: 200px;
+    border-radius: 300px;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    transition: all .5s;
+
+    a {
+      width: Fill (222px)px;
+      height: 16px;
+      padding: 16px 24px 16px 16px;
+      gap: 12px;
+      opacity: 0px;
+
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+
+      color: $color-off-white;
+      transition: all .5s;
+
+      span {
+        width: 20px;
+        height: 20px;
+      }
+
+      .item-description {
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 24px;
+        letter-spacing: 0.5px;
+        text-align: left;
+      }
+
+      &:hover {
+        color: $color-yellow;
+      }
+    }
+
+    &:hover {
+      background: #393833;
+    }
+
+  }
 
 }
 
 .item_description_close {
-    display: none;
-    width: 0px;
-    overflow: hidden;
+  display: none;
+  width: 0px;
+  overflow: hidden;
 }

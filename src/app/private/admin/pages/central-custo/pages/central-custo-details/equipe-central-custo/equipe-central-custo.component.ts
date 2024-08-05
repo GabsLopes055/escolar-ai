@@ -23,7 +23,7 @@ import {
 } from '../../../../../../../shared/select/select.component';
 import { FormControl } from '@angular/forms';
 import { PaginatorComponent } from '../../../../../../../shared/paginator/paginator.component';
-import { UpdateUserComponent } from '../../../../viajantes/components/update-user/update-user.component';
+import { UpdateUserComponent } from '../../../../viajantes/pages/colaboradores/components/update-user/update-user.component';
 import { debounceTime, Subscription } from 'rxjs';
 import { DesvincularUsuarioComponent } from './components/desvincular-usuario/desvincular-usuario.component';
 

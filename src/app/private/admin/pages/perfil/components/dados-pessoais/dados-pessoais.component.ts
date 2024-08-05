@@ -17,7 +17,9 @@ import { OptionSelect, SelectComponent } from '../../../../../../shared/select/s
   styleUrl: './dados-pessoais.component.scss',
 })
 export class DadosPessoaisComponent implements OnInit {
+
   usuario: any;
+
   formEditarUsuario = new FormGroup({
     id: new FormControl(),
     nome: new FormControl(),
@@ -52,10 +54,11 @@ export class DadosPessoaisComponent implements OnInit {
   constructor(
     private readonly perfilUsuario: PerfilService,
     private readonly userService: UserService
-  ) {}
+  ) {
+    this.buscarUsuarioId(this.userService.user?.id);
+  }
 
   ngOnInit() {
-    this.buscarUsuarioId(this.userService.user?.id);
   }
 
   buscarUsuarioId(idUsuario: any) {

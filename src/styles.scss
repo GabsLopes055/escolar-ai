@@ -2,12 +2,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 * {
-    margin: 0;
-    padding: 0;
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 500;
-    font-style: normal;
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: black !important;
 }
 
 .tooltip {
@@ -19,5 +24,6 @@
   border-radius: 3px;
   z-index: 999999999999;
   white-space: nowrap;
-  pointer-events: none; /* Ensures the tooltip doesn't interfere with mouse events */
+  pointer-events: none;
+  /* Ensures the tooltip doesn't interfere with mouse events */
 }

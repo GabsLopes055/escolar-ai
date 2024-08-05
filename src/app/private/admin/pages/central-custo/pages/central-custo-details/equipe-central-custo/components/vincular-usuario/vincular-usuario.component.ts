@@ -1,33 +1,34 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs';
-import { CentralCustoDetailsService } from '../../../central-custo-details.service';
+
+import { CentralCustoEquipeRequest } from '../../../../../../../../../models/central-de-custo.interface';
+import { SolicitacaoUserRequest } from '../../../../../../../../../models/user.interface';
 import { ButtonComponent } from '../../../../../../../../../shared/button/button.component';
-import { SidebarComponent } from '../../../../../../../../../shared/sidebar/sidebar.component';
-import { DividerComponent } from '../../../../../../../../../shared/divider/divider.component';
-import { InputComponent } from '../../../../../../../../../shared/input/input.component';
-import { InputIconComponent } from '../../../../../../../../../shared/input-icon/input-icon.component';
-import { ListComponent } from '../../../../../../../../../shared/list/list.component';
-import { TableDataComponent } from '../../../../../../../../../shared/table/components/table-data/table-data.component';
-import { HeaderTableComponent } from '../../../../../../../../../shared/table/components/header-table/header-table.component';
-import { HeaderTableDataComponent } from '../../../../../../../../../shared/table/components/header-table-data/header-table-data.component';
-import { ItemTableComponent } from '../../../../../../../../../shared/table/components/item-table/item-table.component';
-import { TableComponent } from '../../../../../../../../../shared/table/table.component';
 import { CheckboxComponent } from '../../../../../../../../../shared/checkbox/checkbox.component';
-import { ToggleComponent } from '../../../../../../../../../shared/toggle/toggle.component';
+import { DividerComponent } from '../../../../../../../../../shared/divider/divider.component';
+import { InputIconComponent } from '../../../../../../../../../shared/input-icon/input-icon.component';
+import { InputComponent } from '../../../../../../../../../shared/input/input.component';
 import { ItemDataComponent } from '../../../../../../../../../shared/list/components/item-data/item-data.component';
-import {
-  SolicitacaoUserRequest,
-  User,
-  UserEntity,
-} from '../../../../../../../../../models/user.interface';
-import { ViajantesService } from '../../../../../../viajantes/viajantes.service';
-import { SidebarService } from '../../../../../../../../../shared/sidebar/sidebar.service';
+import { ListComponent } from '../../../../../../../../../shared/list/list.component';
 import { UserService } from '../../../../../../../../../shared/services/user/user.service';
+import { SidebarComponent } from '../../../../../../../../../shared/sidebar/sidebar.component';
+import { SidebarService } from '../../../../../../../../../shared/sidebar/sidebar.service';
+import {
+  HeaderTableDataComponent,
+} from '../../../../../../../../../shared/table/components/header-table-data/header-table-data.component';
+import {
+  HeaderTableComponent,
+} from '../../../../../../../../../shared/table/components/header-table/header-table.component';
+import { ItemTableComponent } from '../../../../../../../../../shared/table/components/item-table/item-table.component';
+import { TableDataComponent } from '../../../../../../../../../shared/table/components/table-data/table-data.component';
+import { TableComponent } from '../../../../../../../../../shared/table/table.component';
+import { ToastService } from '../../../../../../../../../shared/toast/toast.service';
+import { ToggleComponent } from '../../../../../../../../../shared/toggle/toggle.component';
+import { ViajantesService } from '../../../../../../viajantes/viajantes.service';
 import { CentralCustoService } from '../../../../../central-custo.service';
 import { EquipeCentralCustoService } from '../../equipe-central-custo.service';
-import { CentralCustoEquipeRequest } from '../../../../../../../../../models/central-de-custo.interface';
-import { ToastService } from '../../../../../../../../../shared/toast/toast.service';
 
 @Component({
   selector: 'app-vincular-usuario',
@@ -48,6 +49,7 @@ import { ToastService } from '../../../../../../../../../shared/toast/toast.serv
     CheckboxComponent,
     ToggleComponent,
     ItemDataComponent,
+    CommonModule,
   ],
   templateUrl: './vincular-usuario.component.html',
   styleUrl: './vincular-usuario.component.scss',
@@ -57,7 +59,7 @@ export class VincularUsuarioComponent implements OnInit {
 
   pesquisa = new FormControl();
 
-  tamanhoPagina: number = 50; // total de itens por pagina
+  tamanhoPagina: number = 5; // total de itens por pagina
   totalItems!: number; // total de registros
   pagina: number = 1; // pagina atual
 
@@ -155,7 +157,6 @@ export class VincularUsuarioComponent implements OnInit {
   }
 
   checkBox(usuario: any, event: any) {
-
     const isChecked = event;
 
     if (usuario.item.role == 'MANAGER') {
@@ -178,23 +179,18 @@ export class VincularUsuarioComponent implements OnInit {
     // Adiciona ou remove o request do array
     if (isChecked) {
       // Adiciona o novo request ao array, se ja não estiver no array
-      if (!this.vincularUsuarioRequest.some((request) => request.userId === usuario.item.id)) {
+      if (
+        !this.vincularUsuarioRequest.some(
+          (request) => request.userId === usuario.item.id
+        )
+      ) {
         this.vincularUsuarioRequest.push(request);
       }
-
     } else {
       // Remove o request do array se o checkbox for desmarcado
       this.vincularUsuarioRequest = this.vincularUsuarioRequest.filter(
         (request) => request.userId !== usuario.item.id
       );
-    }
-  }
-
-  listarScroll(event: any) {
-    const element = event.target;
-    if (element.scrollTop + element.clientHeight >= element.scrollHeight) {
-      this.filtro.tamanhoPagina = this.tamanhoPagina += this.tamanhoPagina;
-      this.listenViajantes();
     }
   }
 

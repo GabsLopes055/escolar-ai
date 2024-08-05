@@ -36,7 +36,6 @@ export class PerfilComponent implements OnInit {
     navbarService.showBtnViajar.next(true);
     menuService.updateMenu();
     this.usuario = userService.user;
-    console.log(this.userService)
   }
   ngOnInit(): void {
     this.mostrarTabsPermissoes();
@@ -56,20 +55,18 @@ export class PerfilComponent implements OnInit {
           {icon: 'person', label: 'Dados Pessoais', value: 'dados-pessoais', selected: false},
           {icon: 'notifications', label: 'Notificações', value: 'notificacoes', selected: false}
         ];
-        break
+        break;
       case('USER') :
         this.tabs = [
         {icon: 'person', label: 'Dados Pessoais', value: 'dados-pessoais', selected: false},
         {icon: 'notifications', label: 'Notificações', value: 'notificacoes', selected: false}
       ];
-      break
-      default:
-      this.tabs = []
+      break;
     }
   }
 
   abrirTab(value: any) {
-    this.abrirTabSelecionada = value
+    this.abrirTabSelecionada = value;
   }
 
 }
