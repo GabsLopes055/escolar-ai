@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ButtonComponent } from "../../../../../../../../shared/button/button.component";
 import { Router } from '@angular/router';
 import { VoosService } from '../../voos.service';
@@ -10,13 +10,18 @@ import { VoosService } from '../../voos.service';
   templateUrl: './voo-confirmado.component.html',
   styleUrl: './voo-confirmado.component.scss'
 })
-export class VooConfirmadoComponent {
+export class VooConfirmadoComponent implements OnInit, OnDestroy{
 
   constructor(
     private readonly router: Router,
     private readonly vooService: VoosService
   ){
 
+  }
+  ngOnDestroy(): void {
+    this.vooService.confirmarVoo.next(null);
+  }
+  ngOnInit(): void {
   }
 
   acompanharReservas() {

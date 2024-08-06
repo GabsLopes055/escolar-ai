@@ -10,6 +10,7 @@ const URL_BASE = `${environment.BACKEND_API}/user`;
   providedIn: 'root',
 })
 export class VoosService {
+
   confirmarVoo = new BehaviorSubject<boolean | null>(false);
   vooIda = new BehaviorSubject<any[] | null>([]);
   vooVolta = new BehaviorSubject<any[] | null>([]);

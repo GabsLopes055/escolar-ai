@@ -20,11 +20,32 @@ main {
     }
   }
 
+  .checkbox-permissao {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    height: auto;
+    padding-top: 40px;
+
+    .user-info-permissao {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      align-items: center;
+
+      span {
+        font-size: 12px;
+        font-weight: 500;
+      }
+    }
+  }
+
   .users {
     display: flex;
     flex-direction: column;
     height: auto;
-    padding: 40px 0px;
+    padding: 20px 0px;
     // overflow: auto;
 
     .usuarioNaoEcontrado {
@@ -41,13 +62,16 @@ main {
     align-items: center;
     gap: 10px;
     height: auto;
-
     .item {
       display: flex;
       flex-direction: row;
       gap: 14px;
       align-items: center;
     }
+
+    // &:hover {
+    //   border: solid 1px #FFD200 ;
+    // }
 
   }
 
@@ -62,7 +86,7 @@ main {
 
   span {
     font-size: 12px;
-    font-weight: 600;
+    font-weight: 500;
   }
 }
 

@@ -22,9 +22,6 @@ export class PerfilAcessoService {
   }
 
   atualizar(permissoes: perfilAcessoRequest): Observable<perfilAcesso> {
-
-    console.log(permissoes)
-
     return this.http.put<perfilAcesso>(`${URL_BASE}`, permissoes)
   }
 }

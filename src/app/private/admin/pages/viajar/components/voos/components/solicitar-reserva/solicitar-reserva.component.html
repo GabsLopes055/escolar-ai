@@ -7,6 +7,20 @@
           [control]="pesquisa"></tgt-input-icon>
       </div>
 
+      @if(permissaoReservarParaMim) {
+        <div class="checkbox-permissao">
+          <div class="item">
+            <div class="user-info-permissao">
+              <tgt-perfil [border]="'none'" [icon]="true" [size]="'small'"></tgt-perfil>
+              <span>Reservar para mim</span>
+            </div>
+          </div>
+          <div class="toggle">
+              <tgt-radio></tgt-radio>
+          </div>
+        </div>
+      }
+
       <div class="users">
         @for (usuario of usuarios; track usuario) {
         <div class="checkbox">

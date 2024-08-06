@@ -22,7 +22,7 @@ export class HoteisComponent implements OnInit, OnDestroy {
 
   inputs: boolean = true;
   hoteis: any[] = [];
-
+  currentIndex = 0;
   formInputs = new FormGroup({
     destino: new FormControl('', Validators.required),
     checkIn: new FormControl('', Validators.required),
@@ -41,7 +41,7 @@ export class HoteisComponent implements OnInit, OnDestroy {
 
   pesquisarHoteis() {
 
-    if (this.formInputs.valid) {
+    // if (this.formInputs.valid) {
 
       this.inputs = false;
 
@@ -131,23 +131,16 @@ export class HoteisComponent implements OnInit, OnDestroy {
           ],
         },
       ];
-    }
+    // }
+
+    console.log(this.hoteis)
 
   }
-  paginarImagens() {
-    // var swiper = new Swiper(".mySwiper", {
-    //   cssMode: true,
-    //   navigation: {
-    //     nextEl: ".swiper-button-next",
-    //     prevEl: ".swiper-button-prev",
-    //   },
-    //   pagination: {
-    //     el: ".swiper-pagination",
-    //   },
-    //   mousewheel: true,
-    //   keyboard: true,
-    // });
+  prevImage() {
+    // this.currentIndex = (this.currentIndex === 0) ? this.hoteis.fotos.length - 1 : this.currentIndex - 1;
+  }
 
-    // console.log(swiper)
+  nextImage() {
+    // this.currentIndex = (this.currentIndex === this.hoteis.fotos.length - 1) ? 0 : this.currentIndex + 1;
   }
 }

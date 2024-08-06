@@ -36,9 +36,20 @@
 
     <div class="cards">
 
-      @for (imagem of hotel.fotos; track imagem) {
-      <img src="{{imagem.caminho}}" alt="">
-      }
+      <div class="buttons">
+        <button class="prev" (click)="prevImage()">&#10094;</button>
+        <!-- @for (imagem of hotel.fotos; track imagem) { -->
+        <img src="{{hotel.fotos[0].caminho}}" alt="">
+        <!-- } -->
+
+        <div class="radios">
+          <input type="radio">
+          <input type="radio">
+          <input type="radio">
+        </div>
+
+        <button class="next" (click)="nextImage()">&#10095;</button>
+      </div>
 
       <div class="card-hotel">
 
@@ -66,7 +77,8 @@
             <h6>Total</h6>
           </div>
           <div class="verPrecos">
-            <tgt-button [color]="'success'" [fieldButton]="'outline'" [type]="'button'" [size]="'small'">Ver Preços</tgt-button>
+            <tgt-button [color]="'success'" [fieldButton]="'outline'" [type]="'button'" [size]="'small'">Ver
+              Preços</tgt-button>
           </div>
         </div>
       </div>

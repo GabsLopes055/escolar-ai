@@ -13,6 +13,7 @@ import { VoosService } from '../../voos.service';
 import { PerfilComponent } from '../../../../../../../../shared/perfil/perfil.component';
 import { RadioComponent } from '../../../../../../../../shared/radio/radio.component';
 import { NgClass, NgStyle } from '@angular/common';
+import { PerfilAcessoService } from '../../../../../configurations/perfil-acesso/perfil-acesso.service';
 
 @Component({
   selector: 'app-solicitar-reserva',
@@ -25,7 +26,7 @@ import { NgClass, NgStyle } from '@angular/common';
     PerfilComponent,
     RadioComponent,
     ReactiveFormsModule,
-    NgClass
+    NgClass,
   ],
   templateUrl: './solicitar-reserva.component.html',
   styleUrl: './solicitar-reserva.component.scss',
@@ -38,6 +39,8 @@ export class SolicitarReservaComponent implements OnInit {
   totalItems!: number; // total de registros
   pagina: number = 1; // pagina atual
 
+  permissaoReservarParaMim!: boolean;
+  empresaId!: number;
   filtro: SolicitacaoUserRequest = {
     pagina: this.pagina,
     tamanhoPagina: this.tamanhoPagina,
@@ -54,17 +57,28 @@ export class SolicitarReservaComponent implements OnInit {
     private readonly sibebarService: SidebarService,
     private readonly toast: ToastService,
     private readonly usuarioService: UserService,
-    private readonly voosService: VoosService
+    private readonly voosService: VoosService,
+    private readonly perfilService: PerfilAcessoService
   ) {}
 
   ngOnInit(): void {
     const empresaId = this.usuarioService.user?.empresaId;
+
     if (empresaId) {
-      this.filtro.empresaId = parseInt(String(empresaId));
+      this.empresaId = empresaId;
+      // this.filtro.empresaId = parseInt(String(empresaId));
     }
     this.listarUsuarios();
     this.campoPesquisa();
-    console.log(this.usuarios);
+    this.preencherPermissoes();
+  }
+
+  preencherPermissoes() {
+    this.perfilService.buscar(this.empresaId).subscribe({
+      next: (value) => {
+        this.permissaoReservarParaMim = value.gestorViaja;
+      },
+    });
   }
 
   listarUsuarios() {
@@ -101,5 +115,7 @@ export class SolicitarReservaComponent implements OnInit {
   }
 
   cancelar() {
+    this.sibebarService.closeSide(false);
+
   }
 }

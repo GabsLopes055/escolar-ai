@@ -5,5 +5,15 @@
       [style.backgroundColor]="size == 'middle' ? '' : '#CDCDCC'"
       >
 
-      <span [style.color]="size == 'middle' ? '' : '#838280'">{{iniciais}}</span>
+      @if(icon) {
+        <span class="material-symbols-outlined"
+        [style.backgroundColor]="'#FFD200'"
+        [style.color]="size == 'middle' ? '' : '#838280'"
+        [style.fontSize.px]="16"
+        [style.borderRadius]="'50%'"
+        [style.padding]="'4px'"
+        >person_2</span>
+      } @else {
+        <span [style.color]="size == 'middle' ? '' : '#838280'">{{iniciais}}</span>
+      }
 </main>
