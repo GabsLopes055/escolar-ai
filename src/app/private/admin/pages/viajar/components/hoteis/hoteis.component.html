@@ -37,18 +37,23 @@
     <div class="cards">
 
       <div class="buttons">
-        <button class="prev" (click)="prevImage()">&#10094;</button>
-        <!-- @for (imagem of hotel.fotos; track imagem) { -->
-        <img src="{{hotel.fotos[0].caminho}}" alt="">
-        <!-- } -->
+
+        @if(mostrarButaoAnterior) {
+          <button class="prev" (click)="imagemAnterior()">&#10094;</button>
+        }
+
+        <img src="{{retornaCaminhoFoto(hotel.fotos)}}" alt="">
 
         <div class="radios">
-          <input type="radio">
-          <input type="radio">
-          <input type="radio">
+          @for(radio of hotel.fotos; track radio) {
+            <input type="radio" [checked]="radio.radio">
+          }
         </div>
 
-        <button class="next" (click)="nextImage()">&#10095;</button>
+        @if(mostrarButaoProximo) {
+          <button class="next" (click)="imagemPosterior()">&#10095;</button>
+        }
+
       </div>
 
       <div class="card-hotel">

@@ -89,11 +89,16 @@ main {
           position: absolute;
           top: 50%;
           transform: translateY(-50%);
-          padding: 10px;
+          padding: 6px;
           background-color: #FDFEFE;
           border: none;
           border-radius: 50%;
           z-index: 1;
+          width: 20px;
+          height: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
 
         .prev {
@@ -115,15 +120,23 @@ main {
         input[type="radio"] {
           width: 10px;
           height: 10px;
-          accent-color: #FDFEFE;
-          // opacity: 0.6;
+          accent-color: #fff;
+          opacity: 0.6;
+          border: 1px solid #FDFEFE;
         }
+
+        input[type="radio"]:checked {
+          width: 10px;
+          height: 10px;
+          opacity: 1;
+        }
+
       }
 
 
       img {
         border-radius: 16px 0px 0px 16px;
-        width: 360px;
+        width: 250px;
         height: 100%;
         overflow: hidden;
         // height: 220px;
@@ -138,6 +151,7 @@ main {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        overflow: hidden;
 
         .cards-content {
           display: flex;
