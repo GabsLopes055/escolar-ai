@@ -34,11 +34,12 @@ export class ButtonComponent {
     secundary: '#fdd325',
     warning: '',
     success: '',
+    dark: '#10140F',
     error: '#EE0D43'
   }
 
 }
-type TypeColors = 'primary' | 'secundary' | 'warning' | 'success' | 'error';
+type TypeColors = 'primary' | 'secundary' | 'warning' | 'success' | 'dark' | 'error';
 
 type Colors = {
   [key in TypeColors]: string;
