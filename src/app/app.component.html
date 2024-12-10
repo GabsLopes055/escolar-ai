@@ -1,13 +1,79 @@
 <div class="corpo">
-    @if(isMenu.length) {
-        <menu></menu>
-    }
-
-    <div>
-        @if(isMenu.length){
-            <navbar></navbar>
-        }
-        <!-- navbar -->
-        <router-outlet />
+  <div class="header">
+    <div class="logo">
+      <img src="../assets/images/logo.png" alt="" />
     </div>
+    <div class="content">
+      <span>Quem somos</span>
+      <span>Plataforma</span>
+      <span>Contato</span>
+    </div>
+    <div class="actions">
+      <tgt-button [fieldButton]="'outline'" [border]="false" [icon]="'person'"
+        >Login</tgt-button
+      >
+      <tgt-button [fieldButton]="'field'" [size]="'small'"
+        >Solicitar Demonstração</tgt-button
+      >
+    </div>
+  </div>
+
+  <div class="info-camera">
+    <div class="text">
+      <span
+        >Transforme a Gestão Escolar com Tecnologia, Segurança e
+        Conectividade</span
+      >
+      <p>
+        A <strong>escolar ai</strong> é uma plataforma inteligente que oferece
+        segurança, controle e gerenciamento centralizado das informações de
+        alunos, professores e da instituição.
+      </p>
+    </div>
+    <div class="img">
+      <img src="../assets/images/imagem cam.png" alt="" />
+    </div>
+  </div>
+
+  <div class="cards">
+    <img src="../assets/images/card-1.png" alt="" />
+    <img src="../assets/images/card-2.png" alt="" />
+    <img src="../assets/images/card-3.png" alt="" />
+  </div>
+
+  <div class="quemSomos">
+    <img src="../assets/images/img-quemsomos.png" alt="" />
+    <div class="text">
+      <span>Quem Somos</span>
+      <p>
+        Somos uma empresa focada em transformar a gestão escolar por meio de
+        soluções tecnológicas inovadoras. Nosso produto oferece ferramentas para
+        monitoramento em tempo real, gestão administrativa e comunicação
+        contínua, promovendo mais segurança e eficiência nas escolas. Nossa
+        missão é simplificar o cotidiano escolar, conectando alunos, pais e
+        educadores de maneira mais eficiente. Estamos sempre em busca de novas
+        soluções para atender às necessidades da educação atual e futura.
+      </p>
+    </div>
+  </div>
+
+  <div class="infos">
+    <div class="div">
+      <div class="img">
+        <img src="../assets/images/imagem mulher.png" alt="" />
+      </div>
+      <div class="text">
+        <span>Notificação em Tempo Real</span>
+        <p>
+          <strong>
+            Com nossa tecnologia de reconhecimento facial, os pais recebem uma
+            notificação instantânea assim que seu filho entra na escola.
+          </strong>
+          Acompanhando o momento em que o aluno é reconhecido pelas câmeras,
+          garantimos maior segurança e tranquilidade para as famílias, mantendo
+          todos informados e conectados com o dia a dia escolar.
+        </p>
+      </div>
+    </div>
+  </div>
 </div>

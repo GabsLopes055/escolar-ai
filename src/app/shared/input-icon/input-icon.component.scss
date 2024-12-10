@@ -1,6 +1,6 @@
-input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0px 1000px white inset;
-}
+// input:-webkit-autofill {
+//     -webkit-box-shadow: 0 0 0px 1000px white inset;
+// }
 
 .main {
     width: 100%;
@@ -11,13 +11,13 @@ input:-webkit-autofill {
         align-items: center;
         gap: 8px;
         border: solid 1px #000;
-        border-radius: 50px;
+        border-radius: 8px;
         padding: 12px;
 
         .color-icon {
             color: #898989;
         }
-        
+
 
 
 

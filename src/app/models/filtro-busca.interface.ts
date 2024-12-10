@@ -5,5 +5,5 @@ export interface FiltroDeBusca {
 
 export interface EntityPaginated<T> {
   totalCount: number;
-  itens: T[] ;
+  itens: T[];
 }

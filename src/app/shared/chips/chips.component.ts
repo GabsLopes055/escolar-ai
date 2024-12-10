@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { StatusChamado } from '../../models/chamado.interface';
+// import { StatusChamado } from '../../models/chamada.interface';
 
 @Component({
   selector: 'tgt-chips',

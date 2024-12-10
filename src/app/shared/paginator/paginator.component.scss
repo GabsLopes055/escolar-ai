@@ -21,7 +21,7 @@ main {
   transition: all .5s;
 
   &:hover {
-    background-color: $color-yellow;
+    background-color: $color-primary;
   }
 }
 
@@ -46,9 +46,9 @@ main {
 
 
   &:hover {
-    background-color: $color-yellow;
+    background-color: $color-primary;
   }
 }
 .clicked {
-  background-color: $color-yellow;
+  background-color: $color-primary;
 }

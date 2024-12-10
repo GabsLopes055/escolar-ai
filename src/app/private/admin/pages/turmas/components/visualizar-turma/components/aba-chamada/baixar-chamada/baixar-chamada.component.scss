@@ -1,0 +1,49 @@
+main {
+  padding: 24px;
+  background-color: #FDFEFE;
+  display: flex;
+  gap: 24px;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 24px;
+
+  .text {
+    display: flex;
+    gap: 24px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    span {
+      width: 557px;
+      height: 28px;
+      gap: 0px;
+      opacity: 0px;
+      color: #000000;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 28px;
+      text-align: center;
+    }
+
+    p {
+      color: #000000;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      letter-spacing: 0.5px;
+      text-align: center;
+    }
+  }
+
+  .action {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    // justify-content: end;
+    width: 100%;
+
+    tgt-button {
+      width: 50%;
+    }
+  }
+}

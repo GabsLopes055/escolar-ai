@@ -1,0 +1,20 @@
+<tgt-modal [witdhModal]="'auto'">
+  <main>
+    <h3>Baixar Chamada</h3>
+    <tgt-divider></tgt-divider>
+    <div class="text">
+      <span>Deseja realmente realizar o download da chamada?</span>
+      <br>
+      <p>
+        É essencial lembrar que os dados da chamada de presença escolar são confidenciais e não devem ser compartilhados
+        fora do ambiente escolar. Agradecemos a colaboração de todos na proteção dessas informações.
+      </p>
+    </div>
+    <div class="action">
+      <tgt-button [border]="false" [color]="'primary'" [size]="'small'" [fieldButton]="'outline'"
+        (click)="baixar()">Cancelar</tgt-button>
+      <tgt-button [color]="'primary'" [fieldButton]="'field'" [icon]="'done_all'" (click)="baixar()">Sim,
+        Baixar</tgt-button>
+    </div>
+  </main>
+</tgt-modal>

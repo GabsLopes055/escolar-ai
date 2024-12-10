@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ModalService } from './modal.service';
 
 @Component({
@@ -9,6 +9,8 @@ import { ModalService } from './modal.service';
   styleUrl: './modal.component.scss'
 })
 export class ModalComponent {
+
+  @Input() witdhModal: string = '';
 
   constructor(
     private readonly modalService: ModalService

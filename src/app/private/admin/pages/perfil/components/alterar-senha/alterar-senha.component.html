@@ -1,0 +1,73 @@
+<tgt-modal [witdhModal]="'40%'">
+  <main>
+    <div class="header">
+      <span>Alterar Senha</span>
+    </div>
+    <tgt-divider></tgt-divider>
+
+    <div class="form">
+      <tgt-input-icon [border]="true" placeholder="Senha Atual" [control]="form.controls.senhaAtual" [type]="'password'" icon="passkey" [iconPosition]="'right'"></tgt-input-icon>
+      <tgt-input-icon [border]="true" placeholder="Nova Senha" [control]="form.controls.senhaNova" [type]="'password'" icon="passkey" [iconPosition]="'right'"></tgt-input-icon>
+      <tgt-input-icon [border]="true" placeholder="Confirmar Nova Senha" [control]="form.controls.confirmaSenhaNova" [type]="'password'" icon="passkey" [iconPosition]="'right'"></tgt-input-icon>
+
+    </div>
+
+    <div class="footer">
+      <div class="forgot">
+        <div class="section">
+          <span class="info-label">A senha deve conter:</span>
+          <div class="info-detail">
+            @if(form.controls.senhaNova.value == null) {
+            <span class="material-symbols-outlined icone">do_not_disturb_on</span>
+            } @else if(this.form.controls.senhaNova.value['length'] >= 8) {
+
+            <span class="material-symbols-outlined icone" [style.color]="'#3CCF17'">check_circle</span>
+            } @else {
+
+            <span class="material-symbols-outlined icone" [style.color]="'#FA077C'">cancel</span>
+            }
+            <p>Pelo menos 8 caracteres;</p>
+          </div>
+          <div class="info-detail">
+            @if(form.controls.senhaNova.value == null && haveUppercaseAndLowwercase == false) {
+            <span class="material-symbols-outlined icone">do_not_disturb_on</span>
+            } @else if(haveUppercaseAndLowwercase) {
+            <span class="material-symbols-outlined icone" [style.color]="'#3CCF17'">check_circle</span>
+            } @else {
+            <span class="material-symbols-outlined icone" [style.color]="'#FA077C'">cancel</span>
+            }
+            <p>Letras maiúsculas e minúsculas;</p>
+          </div>
+          <div class="info-detail">
+            @if(form.controls.senhaNova.value == null && contentNumbers == false) {
+            <span class="material-symbols-outlined icone">do_not_disturb_on</span>
+            } @else if(contentNumbers) {
+            <span class="material-symbols-outlined icone" [style.color]="'#3CCF17'">check_circle</span>
+            } @else {
+            <span class="material-symbols-outlined icone" [style.color]="'#FA077C'">cancel</span>
+            }
+            <p>Números;</p>
+          </div>
+          <div class="info-detail">
+            @if(form.controls.senhaNova.value == null && specialChars == false) {
+            <span class="material-symbols-outlined icone">do_not_disturb_on</span>
+            } @else if(specialChars) {
+            <span class="material-symbols-outlined icone" [style.color]="'#3CCF17'">check_circle</span>
+            } @else {
+            <span class="material-symbols-outlined icone" [style.color]="'#FA077C'">cancel</span>
+            }
+
+            <p>Caracteres especiais.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="buttons">
+      <tgt-button fieldButton="outline" class="col-6" [border]="false" [type]="'button'"
+        (click)="cancelar()">Cancelar</tgt-button>
+      <tgt-button color="primary" class="col-6" (click)="enviar()">Enviar</tgt-button>
+    </div>
+  </main>
+</tgt-modal>

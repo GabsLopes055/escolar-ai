@@ -1,15 +1,12 @@
-import {ModalService} from './../../../../shared/modal/modal.service';
-import {MenuService} from './../../../../shared/menu/menu.service';
-import {Component, OnInit} from '@angular/core';
-import {NavbarService} from '../../../../shared/navbar/navbar.service';
-import {UserService} from '../../../../shared/services/user/user.service';
-import {ButtonComponent} from "../../../../shared/button/button.component";
-import {RouterLink} from '@angular/router';
-import {ToastService} from '../../../../shared/toast/toast.service';
-import {
-  AbrirChamadoComponent
-} from "./components/abrir-chamado/abrir-chamado.component";
-import { TourComponent } from './components/tour/tour.component';
+import { Component, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
+
+import { ButtonComponent } from '../../../../shared/button/button.component';
+import { NavbarService } from '../../../../shared/navbar/navbar.service';
+import { UserService } from '../../../../shared/services/user/user.service';
+import { ToastService } from '../../../../shared/toast/toast.service';
+import { MenuService } from './../../../../shared/menu/menu.service';
+import { ModalService } from './../../../../shared/modal/modal.service';
 
 @Component({
     selector: 'app-home',
@@ -43,6 +40,5 @@ export class HomeComponent implements OnInit {
   }
 
   abrirChamado() {
-    this.modal.open(AbrirChamadoComponent);
   }
 }

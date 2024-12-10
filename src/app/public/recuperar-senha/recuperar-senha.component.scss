@@ -1,0 +1,176 @@
+@import "../../../assets/styles/colors.scss";
+
+main {
+  height: 100vh;
+  display: flex;
+  gap: 70px;
+  justify-content: center;
+  align-items: center;
+
+  .circle {
+    // Para garantir que o container da imagem se ajuste à tela
+    width: 50vw; // Largura ajustada conforme a tela
+    height: auto; // Mantém a altura proporcional
+
+    .conteudo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        width: 90%; // Ocupará a largura máxima disponível
+        height: auto; // Mantém a proporção
+        border-radius: 18px;
+        object-fit: cover; // Garante que a imagem se ajuste ao espaço sem distorção
+      }
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 20%;
+    height: 55%;
+
+    .back {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      span {
+        color: #39693B;
+        cursor: pointer;
+      }
+    }
+
+    .form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      animation: initform 1s;
+
+      .footer {
+        margin-top: 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 46px;
+
+        .info-label {
+          color: #070600;
+        }
+
+        .info-detail {
+          // background-color: #ADFF00;
+          font-size: 12px;
+          display: flex;
+          flex-direction: row;
+          justify-content: start;
+          align-items: center;
+          gap: 8px;
+          // padding: 10px 0px;
+        }
+      }
+
+
+
+      .title-desk {
+        padding: 40px 0;
+        font-weight: 300;
+      }
+
+      .forgot {
+        //width: 100%;
+        display: flex;
+        gap: 14px;
+        justify-content: start;
+
+        span {
+          font-size: 12px;
+          color: #E2E3D8;
+
+          a {
+            font-size: 12px;
+            color: #ADFF00;
+          }
+        }
+      }
+
+    }
+
+    a {
+      text-decoration: none;
+      color: #070600;
+      font-weight: 700;
+    }
+
+    .cadastrado {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      // padding: 100px 0px;
+      gap: 55px;
+      span {
+        font-size: 22px;
+        font-weight: 400;
+        line-height: 28px;
+        text-align: center;
+        width: 418px;
+        height: 28px;
+        gap: 0px;
+        opacity: 0px;
+
+      }
+
+      p {
+        width: 322px;
+        height: 48px;
+        gap: 0px;
+        opacity: 0px;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: 0.5px;
+        text-align: center;
+
+      }
+    }
+
+    .create {
+      width: 100%;
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      margin-bottom: 10px;
+      height: 64px;
+
+      span a {
+        font-weight: 700;
+        color: #181D17;
+      }
+    }
+  }
+}
+
+// Media queries para ajustar conforme a largura da tela
+@media (max-width: 1200px) {
+  .circle {
+    width: 40vw;
+  }
+
+  .content {
+    width: 30%;
+  }
+}
+
+@media (max-width: 992px) {
+  .circle {
+    display: none;
+  }
+
+  .content {
+    width: 90% !important;
+  }
+}

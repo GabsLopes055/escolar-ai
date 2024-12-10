@@ -46,24 +46,24 @@ export class LoginComponent implements OnInit {
   }
 
   entrar() {
-    this.authService.logar(this.formLogin.value as AuthenticationRequest).subscribe({
-      next: response => {
-        window.sessionStorage.setItem('token', response.token);
+    this.router.navigate(['/admin/']);
+    this.menuService.updateMenu();
+    // this.authService.logar(this.formLogin.value as AuthenticationRequest).subscribe({
+    //   next: response => {
+    //     window.sessionStorage.setItem('token', response.token);
 
-        const token = response.token.split(".")[1];
-        const payload = JSON.parse(atob(token));
-        const usuario: User = payload['usuario'];
+    //     const token = response.token.split(".")[1];
+    //     const payload = JSON.parse(atob(token));
+    //     const usuario: User = payload['usuario'];
 
-        this.userService.usuarioInstance = usuario;
-        this.userService.usuario.next(usuario);
+    //     this.userService.usuarioInstance = usuario;
+    //     this.userService.usuario.next(usuario);
 
-        this.router.navigate(['/admin/']);
-        this.menuService.updateMenu();
-      },
-      error: erro => {
-        this.toastService.notify({message: 'Usuário ou senha incorreto', type: 'ERROR'})
-      }
-    });
+    //   },
+    //   error: erro => {
+    //     this.toastService.notify({message: 'Usuário ou senha incorreto', type: 'ERROR'})
+    //   }
+    // });
 
   }
 

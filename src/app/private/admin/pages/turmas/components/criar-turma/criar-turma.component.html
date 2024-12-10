@@ -1,0 +1,13 @@
+<main>
+  <div class="title">
+    <h2>Nova Turma</h2>
+  </div>
+  <div class="form">
+    <tgt-input-icon [border]="true" [placeholder]="'Nome'" [control]="form.controls.nome"></tgt-input-icon>
+    <tgt-input-icon [border]="true" [placeholder]="'Período'" [control]="form.controls.periodo"></tgt-input-icon>
+  </div>
+  <div class="actions">
+    <tgt-button (click)="salvar()" [icon]="'add'" [fieldButton]="'outline'" [border]="false" [size]="'small'">Cancelar</tgt-button>
+    <tgt-button (click)="salvar()" [icon]="'add'" [size]="'small'">Criar</tgt-button>
+  </div>
+</main>

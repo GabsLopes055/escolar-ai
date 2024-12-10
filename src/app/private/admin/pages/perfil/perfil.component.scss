@@ -1,6 +1,66 @@
 main {
   padding: 24px;
+  height: auto;
+  width: auto;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  justify-content: center;
+  align-items: center;
+
+  section {
+    padding-top: 10%;
+    width: 50%;
+
+    .perfil {
+      display: flex;
+      flex-direction: row;
+      gap: 4px;
+      align-items: center;
+      justify-content: space-between;
+
+      .icon-perfil {
+        display: flex;
+        flex-direction: row;
+        gap: 24px;
+        align-items: center;
+      }
+    }
+
+    .info {
+      display: flex;
+      flex-direction: row;
+      gap: 4px;
+      padding: 24px 0px;
+      align-items: center;
+      justify-content: space-between;
+
+      span {
+        color: #000000;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: 0.5px;
+        text-align: center;
+      }
+
+      p {
+        color: #181D17;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+        letter-spacing: 0.15000000596046448px;
+        text-align: center;
+
+      }
+    }
+
+    .alterarSenha {
+      display: flex;
+      flex-direction: row;
+      justify-content: start;
+    }
+
+    // background-color: aqua;
+  }
+
 }

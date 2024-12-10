@@ -1,22 +1,38 @@
 <main>
+  <section>
 
-  <app-tabs [tabs]="tabs" (change)="abrirTab($event)"></app-tabs>
+    <div class="perfil">
+      <div class="icon-perfil">
+        <tgt-perfil></tgt-perfil>
+        <span>Joana da Silva</span>
+      </div>
+      <tgt-button (click)="abrirModalAlterarDados()" [icon]="'edit'" [border]="false" [fieldButton]="'outline'" [color]="'secundary'">Editar</tgt-button>
+    </div>
 
-  @switch (abrirTabSelecionada) {
-  @case ('dados-pessoais') {
-  @defer {
-  <app-dados-pessoais></app-dados-pessoais>
-  }
-  }
-  @case ('dados-empresariais') {
-  @defer {
-  <app-dados-empresariais></app-dados-empresariais>
-  }
-  }
-  @case ('notificacoes') {
-  @defer {
-  <app-notificacoes></app-notificacoes>
-  }
-  }
-  }
+    <div class="info">
+      <span>
+        Email
+      </span>
+      <p>Joana da Silva</p>
+    </div>
+    <tgt-divider></tgt-divider>
+    <div class="info">
+      <span>
+        CPF
+      </span>
+      <p>123.456.789-89</p>
+    </div>
+    <tgt-divider></tgt-divider>
+    <div class="info">
+      <span>
+        Celular
+      </span>
+      <p>(41) 98765-4321</p>
+    </div>
+
+    <div class="alterarSenha">
+      <tgt-button (click)="abrirModalAlterarSenha()" [icon]="'edit'" [border]="false" [fieldButton]="'outline'" [color]="'secundary'">Alterar Senha</tgt-button>
+    </div>
+
+  </section>
 </main>

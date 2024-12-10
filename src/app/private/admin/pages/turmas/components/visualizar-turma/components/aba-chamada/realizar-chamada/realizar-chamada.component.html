@@ -1,0 +1,177 @@
+<tgt-modal [witdhModal]="'80%'">
+  <main>
+    <div class="header">
+      <h3>Chamada</h3>
+      <p>Turma: 8° Ano - Turma A</p>
+      <p>Data: 29/04/2024</p>
+    </div>
+
+    <div class="table">
+      <table>
+        <!-- Cabeçalho da Tabela -->
+        <thead border="1" cellspacing="0" cellpadding="10" style="">
+          <tr>
+            <th class="th">
+              <span class="material-symbols-outlined icone">school</span>
+              Aluno
+            </th>
+            <th>
+              <span class="material-symbols-outlined icone">face</span>
+              Rock (IA)
+            </th>
+            <th class="th">
+              <span class="material-symbols-outlined icone">badge</span>
+              Professor
+            </th>
+          </tr>
+        </thead>
+
+        <!-- Corpo da Tabela -->
+        <tbody>
+          <tr>
+            <td>
+              <div class="linhaBody">Gabriel Lopes</div>
+            </td>
+            <td>
+              <div class="linhaBody">
+                <span class="material-symbols-outlined ausente">sentiment_dissatisfied</span>
+                Ausente
+              </div>
+            </td>
+            <td>
+              <div class="linhaBody">
+                <span class="material-symbols-outlined presente"
+                  >sentiment_very_satisfied</span
+                >
+                Presente
+                <span class="material-symbols-outlined edit">edit</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="linhaBody">
+                Maria Souza
+              </div>
+            </td>
+            <td>
+              <div class="linhaBody">
+                <span class="material-symbols-outlined presente"
+                >sentiment_very_satisfied</span
+                >
+                Presente
+              </div>
+            </td>
+            <td>
+              <div class="linhaBody">
+                <span class="material-symbols-outlined ausente"
+                >sentiment_dissatisfied</span
+                >
+                Inativo
+                <span class="material-symbols-outlined edit">edit</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>João Silva</td>
+            <td>
+              <div class="linhaBody">
+                <span class="material-symbols-outlined ausente"
+                >sentiment_dissatisfied</span
+                >
+                Ausente
+              </div>
+            </td>
+            <td>
+              <div class="linhaBody">
+
+                <span class="material-symbols-outlined ausente"
+                >sentiment_dissatisfied</span
+                >
+                Inativo
+                <span class="material-symbols-outlined edit">edit</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Gabriel Lopes</td>
+            <td>
+              <div class="linhaBody">
+
+                <span class="material-symbols-outlined ausente"
+                >sentiment_dissatisfied</span
+                >
+                Ausente
+              </div>
+            </td>
+            <td>
+              <div class="linhaBody">
+                <button class="btn-error linhaBody">
+                  <span class="material-symbols-outlined ausente"
+                  >sentiment_dissatisfied</span
+                  >
+                  Ausente
+                </button>
+                &nbsp;
+                <button class="btn-succes linhaBody">
+                  <span class="material-symbols-outlined presente"
+                  >sentiment_very_satisfied</span
+                  >
+                  Presente
+                </button>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Catarina Lopes</td>
+            <td>
+              <div class="linhaBody">
+
+                <span class="material-symbols-outlined presente"
+                >sentiment_very_satisfied</span
+                >
+                Presente
+              </div>
+            </td>
+            <td>
+              <div class="linhaBody">
+
+                <button class="btn-error linhaBody">
+                  <span class="material-symbols-outlined ausente"
+                  >sentiment_dissatisfied</span
+                  >
+                  Ausente
+                </button>
+                &nbsp;
+                <button class="btn-succes linhaBody">
+                  <span class="material-symbols-outlined presente"
+                  >sentiment_very_satisfied</span
+                  >
+                  Presente
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="footer">
+      <tgt-button
+        [border]="false"
+        [color]="'primary'"
+        [size]="'small'"
+        [fieldButton]="'outline'"
+        (click)="finalizarChamada()"
+        >Cancelar</tgt-button
+      >
+      <tgt-button
+        [color]="'primary'"
+        [fieldButton]="'field'"
+        [icon]="'done_all'"
+        (click)="finalizarChamada()"
+        >Finalizar Chamada</tgt-button
+      >
+    </div>
+  </main>
+</tgt-modal>

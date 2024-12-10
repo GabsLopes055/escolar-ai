@@ -1,0 +1,50 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  gap: 12px;
+
+  tgt-input-icon {
+    width: 40%;
+  }
+}
+
+.icone {
+  cursor: pointer;
+}
+
+.pag-footer {
+  background-color: aqua;
+  padding-right: 200px;
+  position: absolute;
+  bottom: 20px;
+  right: 70px;
+}
+
+.empty {
+  display: flex;
+  height: 600px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  span {
+    color: #181D17;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.15000000596046448px;
+    text-align: center;
+  }
+
+  p {
+    color: #181D17;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.25px;
+    text-align: center;
+
+  }
+}

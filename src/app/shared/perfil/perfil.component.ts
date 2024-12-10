@@ -10,7 +10,7 @@ import { UserService } from '../services/user/user.service';
 })
 export class PerfilComponent implements OnInit{
 
-  iniciais: string = '';
+  iniciais: string = 'JS';
   @Input() nome:string = '';
   @Input() size: 'middle' | 'small' = 'middle';
   @Input() border: 'true' | 'none' = 'true';
@@ -21,27 +21,27 @@ export class PerfilComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
-    if(!this.nome.length) {
-      const usuario = this.userService.user;
-      this.iniciais = this.obterIniciais(usuario?.nome as string).toUpperCase()
-    } else {
-      this.iniciais = this.obterIniciais(this.nome).toUpperCase()
-    }
+    // if(!this.nome.length) {
+    //   const usuario = this.userService.user;
+    //   this.iniciais = this.obterIniciais(usuario?.nome as string).toUpperCase()
+    // } else {
+    //   this.iniciais = this.obterIniciais(this.nome).toUpperCase()
+    // }
   }
 
 
   obterIniciais(nomeCompleto: string) {
     // Dividir o nome completo em partes
-    let partesNome = nomeCompleto.split(" ");
+    // let partesNome = nomeCompleto.split(" ");
 
-    // Obter a primeira letra do primeiro nome
-    let primeiraLetraPrimeiroNome = partesNome[0][0];
+    // // Obter a primeira letra do primeiro nome
+    // let primeiraLetraPrimeiroNome = partesNome[0][0];
 
-    // Obter a primeira letra do último sobrenome
-    let ultimoSobrenome = partesNome[partesNome.length - 1];
-    let primeiraLetraUltimoSobrenome = ultimoSobrenome[0];
+    // // Obter a primeira letra do último sobrenome
+    // let ultimoSobrenome = partesNome[partesNome.length - 1];
+    // let primeiraLetraUltimoSobrenome = ultimoSobrenome[0];
 
-    // Retornar as iniciais
-    return primeiraLetraPrimeiroNome + primeiraLetraUltimoSobrenome;
+    // // Retornar as iniciais
+    // return primeiraLetraPrimeiroNome + primeiraLetraUltimoSobrenome;
 }
 }

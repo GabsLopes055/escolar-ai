@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CardNumberPipe } from "../pipes/card-number/card-number.pipe";
 import { MouthCardPipe } from "../pipes/mouth-card/mouth-card.pipe";
-import { Cartao } from '../../models/cartao.interface';
+import { Cartao } from '../../models/professores.interface';
 
 @Component({
     selector: 'tgt-credit-card-view',

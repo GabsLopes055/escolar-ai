@@ -8,7 +8,7 @@ import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
   imports: [
     FormsModule,
     ReactiveFormsModule,
-    NgxMaskDirective, 
+    NgxMaskDirective,
     NgxMaskPipe
   ],
   templateUrl: './input-icon.component.html',
@@ -21,4 +21,6 @@ export class InputIconComponent {
   @Input() control: FormControl = new FormControl();
   @Input() mask: string = '';
   @Input() iconPosition: 'left' | 'right' = 'left';
+  @Input() backGround: string = '';
+  @Input() border!: boolean;
 }

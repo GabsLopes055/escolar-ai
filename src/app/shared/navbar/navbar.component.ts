@@ -23,9 +23,9 @@ import { TooltipDirective } from '../directives/tooltip.directive';
 })
 export class NavbarComponent {
   isDetail = false;
-  title;
+  title: any = '';
   isViajar = this.service.showBtnViajar;
-  nameUser: string | undefined = '';
+  nameUser: string | undefined = 'Joana';
 
   constructor(
     private readonly service: NavbarService,
@@ -34,9 +34,9 @@ export class NavbarComponent {
     private readonly menuService: MenuService
   ) {
     this.title = service.title;
-    const usuario = this.userService.user;
-    const firstName = usuario?.nome.split(' ')[0];
-    this.nameUser = firstName;
+    // const usuario = this.userService.user;
+    // const firstName = usuario?.nome.split(' ')[0];
+    // this.nameUser = firstName;
   }
 
   showHideDetail() {

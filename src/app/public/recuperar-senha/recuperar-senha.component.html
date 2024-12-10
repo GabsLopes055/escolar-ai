@@ -1,0 +1,42 @@
+<main>
+
+  <div class="circle">
+    <div class="conteudo">
+      <img src="../../../assets/images/imagem-login.png">
+    </div>
+  </div>
+
+  <div class="content">
+
+    <div class="back">
+      <img src="../../../assets/images/logo.png" alt="imagem.logo">
+    </div>
+
+    @switch (step) {
+    @case (1) {
+    <form [formGroup]="form" class="form">
+      <h2>Recuperação de senha</h2>
+      <h5>Informe seu e-mail para enviarmos uma senha provisória para você.</h5>
+      <tgt-input-icon placeholder="E-mail corporativo" [type]="'email'" [iconPosition]="'right'"
+        icon="email"></tgt-input-icon>
+      <tgt-button type="button" [color]="'primary'" size="small" [icon]="'arrow_forward'" iconPosition="right"
+        (click)="continuar()">Continuar</tgt-button>
+    </form>
+
+    <span>Voltar para a área de <a href="/login">Login</a></span>
+    }
+    @case (2) {
+
+    <div class="cadastrado">
+      <span>Enviaremos uma e-mail de recuperação de senha</span>
+      <p>Enviamos um e-mail com uma senha temporária. Ao realizar o acesso você poderá cadastrar uma nova senha</p>
+      <tgt-button [color]="'primary'" [routerLink]="['/login']" [fieldButton]="'outline'">Voltar para área de Login</tgt-button>
+    </div>
+    }
+    }
+    <!-- -->
+    <div class="create">
+    </div>
+  </div>
+
+</main>

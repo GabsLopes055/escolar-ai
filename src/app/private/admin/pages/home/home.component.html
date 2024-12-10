@@ -11,15 +11,15 @@
     <div class="cards">
       <div class="card-header">
         <span class="material-symbols-outlined icon">
-          dashboard
+          meeting_room
         </span>
         <span class="title">
-          <h3>Dashboard</h3>
+          <h3>Turmas</h3>
         </span>
       </div>
       <div class="card-footer">
         <div class="btn">
-          <tgt-button icon="trending_flat" iconPosition="left" size="small" color="success"></tgt-button>
+          <tgt-button [routerLink]="'/admin/turmas'" icon="trending_flat" iconPosition="left" size="small" color="success"></tgt-button>
         </div>
       </div>
     </div>
@@ -27,31 +27,32 @@
     <div class="cards">
       <div class="card-header">
         <span class="material-symbols-outlined icon">
-          luggage
+          badge
         </span>
         <span class="title">
-          <h3>Viajar</h3>
+          <h3>Colaboradores</h3>
         </span>
       </div>
       <div class="card-footer">
         <div class="btn">
-          <tgt-button icon="trending_flat" iconPosition="left" size="small" color="success"></tgt-button>
+          <tgt-button [routerLink]="'/admin/colaboradores'" icon="trending_flat" iconPosition="left" size="small" color="success"></tgt-button>
         </div>
       </div>
     </div>
 
+
     <div class="cards">
       <div class="card-header">
         <span class="material-symbols-outlined icon">
-          date_range
+          school
         </span>
         <span class="title">
-          <h3>Reservas</h3>
+          <h3>Alunos</h3>
         </span>
       </div>
       <div class="card-footer">
         <div class="btn">
-          <tgt-button icon="trending_flat" iconPosition="left" size="small" color="success"
+          <tgt-button [routerLink]="'/admin/alunos'" icon="trending_flat" iconPosition="left" size="small" color="success"
             [routerLink]="'/admin/dashboard'"></tgt-button>
         </div>
       </div>
@@ -60,65 +61,15 @@
     <div class="cards">
       <div class="card-header">
         <span class="material-symbols-outlined icon">
-          task_alt
+          nest_cam_wired_stand
         </span>
         <span class="title">
-          <h3>Aprovações</h3>
+          <h3>Central</h3>
         </span>
       </div>
       <div class="card-footer">
         <div class="btn">
-          <tgt-button icon="trending_flat" iconPosition="left" size="small" color="success"></tgt-button>
-        </div>
-      </div>
-    </div>
-
-    <div class="cards">
-      <div class="card-header">
-        <span class="material-symbols-outlined icon">
-          person_4
-        </span>
-        <span class="title">
-          <h3>Pessoas</h3>
-        </span>
-      </div>
-      <div class="card-footer">
-        <div class="btn">
-          <tgt-button icon="trending_flat" iconPosition="left" size="small" color="success"
-            [routerLink]="'/admin/dashboard'"></tgt-button>
-        </div>
-      </div>
-    </div>
-
-    <div class="cards">
-      <div class="card-header">
-        <span class="material-symbols-outlined icon">
-          calculate
-        </span>
-        <span class="title">
-          <h3>Central de custo</h3>
-        </span>
-      </div>
-      <div class="card-footer">
-        <div class="btn">
-          <tgt-button icon="trending_flat" iconPosition="left" size="small" color="success"
-            [routerLink]="'/admin/dashboard'"></tgt-button>
-        </div>
-      </div>
-    </div>
-
-    <div class="cards">
-      <div class="card-header">
-        <span class="material-symbols-outlined icon">
-          settings
-        </span>
-        <span class="title">
-          <h3>Configurações</h3>
-        </span>
-      </div>
-      <div class="card-footer">
-        <div class="btn">
-          <tgt-button icon="trending_flat" iconPosition="left" size="small" color="success"
+          <tgt-button [routerLink]="'/admin/central'" icon="trending_flat" iconPosition="left" size="small" color="success"
             [routerLink]="'/admin/dashboard'"></tgt-button>
         </div>
       </div>

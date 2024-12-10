@@ -2,13 +2,10 @@
     <div class="content" [style.width]="isOpen ? '190px' : '36px'" [ngClass]="{content_close: !isOpen}">
         <div class="logo">
             @if(isOpen) {
-                <img src="assets/images/logo.svg" alt="" srcset="">
-                <span class="material-symbols-outlined hamb" (click)="openClose()">
-                    menu_open
-                </span>
+                <img src="../../../assets/images/image-menu.png" alt="" srcset="" (click)="openClose()">
             } @else {
             <span class="material-symbols-outlined hamb" (click)="openClose()">
-                menu
+              <img src="../../../assets/images/Vector.png" alt="">
             </span>
             }
         </div>
@@ -21,7 +18,6 @@
                         <span class="material-symbols-outlined">
                             {{item.icon}}
                         </span>
-
                         <div class="item-description" [ngClass]="{item_description_close: !isOpen}">{{item.label}}</div>
                     </a>
                 </li>

@@ -27,11 +27,11 @@ main {
                 }
 
                 &.selected {
-                    border-bottom: solid 2px $color-yellow;
+                    border-bottom: solid 2px $color-primary;
                 }
 
                 &:hover {
-                    border-bottom: solid 2px $color-yellow;
+                    border-bottom: solid 2px $color-primary;
                 }
             }
         }

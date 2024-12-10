@@ -1,0 +1,42 @@
+@if(data.length > 0) {
+  <div class="header">
+    <tgt-button (click)="criarTurma()" [icon]="'add'" [size]="'small'">Nova Turma</tgt-button>
+    <tgt-input-icon [control]="this.form.controls.buscarTurma" [icon]="'search'" [backGround]="'#EEF2E9'"
+      [placeholder]="'Busque aqui'" [iconPosition]="'right'"></tgt-input-icon>
+  </div>
+  <section>
+    <tgt-list>
+      <div header class="header-list">
+        <tgt-header-list>
+          <tgt-header-col>Turma</tgt-header-col>
+          <tgt-header-col>Período</tgt-header-col>
+          <tgt-header-col></tgt-header-col>
+        </tgt-header-list>
+      </div>
+      <div body class="body">
+        @for (item of data; track item) {
+        <tgt-item-list>
+          <tgt-item-data>{{ item.nome }}</tgt-item-data>
+          <tgt-item-data>{{ item.periodo }}</tgt-item-data>
+          <tgt-item-data>
+            <span class="material-symbols-outlined icone" (click)="visualizarturma()">arrow_forward</span>
+          </tgt-item-data>
+        </tgt-item-list>
+        }
+      </div>
+    </tgt-list>
+  </section>
+  <div class="pag-footer">
+    <div class="pag">
+      <tgt-paginator [pageSize]="tamanhoPagina" [currentPage]="pagina" [totalItems]="totalItems"
+        (changePage)="changePage($event)"></tgt-paginator>
+    </div>
+  </div>
+} @else {
+  <div class="empty">
+    <img src="../../../../../../../assets/images/turma-empty.png" alt="">
+    <span>Você ainda não possui turmas criadas</span>
+    <p>Crie suas turmas para vincular alunos e professores.</p>
+    <tgt-button (click)="criarTurma()" [icon]="'add'" [size]="'small'">Nova Turma</tgt-button>
+  </div>
+}

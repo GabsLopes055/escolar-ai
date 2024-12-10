@@ -9,6 +9,7 @@ main {
     gap: 64px;
     position: relative;
     padding: 16px 24px 16px 24px;
+    border-bottom: 1px solid #B5B4B2;
 
     .title{
         height: 24px;
@@ -84,7 +85,7 @@ main {
             }
 
             &:hover {
-                background-color: $color-yellow;
+                background-color: $color-primary;
             }
         }
     }

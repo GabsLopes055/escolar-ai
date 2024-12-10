@@ -1,23 +1,12 @@
-import {Component} from '@angular/core';
-import {InputIconComponent} from "../../shared/input-icon/input-icon.component";
-import {RouterLink} from '@angular/router';
-import {ButtonComponent} from "../../shared/button/button.component";
-import {
-  FeedbackInitRegisterComponent
-} from "./components/feedback-init-register/feedback-init-register.component";
-import {AuthService} from '../services/auth.service';
-import {
-  FormControl,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-  Validators
-} from '@angular/forms';
-import {Solicitacao} from '../../models/authentication.interface';
-import {ToastService} from "../../shared/toast/toast.service";
-import {
-  FeedbackErroRegisterComponent
-} from "./components/feedback-erro-register/feedback-erro-register.component";
+import { Component } from '@angular/core';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { RouterLink } from '@angular/router';
+
+import { ButtonComponent } from '../../shared/button/button.component';
+import { InputIconComponent } from '../../shared/input-icon/input-icon.component';
+import { InputComponent } from '../../shared/input/input.component';
+import { ToastService } from '../../shared/toast/toast.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -29,24 +18,26 @@ import {
     InputIconComponent,
     RouterLink,
     ButtonComponent,
-    FeedbackInitRegisterComponent,
     ReactiveFormsModule,
     FormsModule,
-    FeedbackErroRegisterComponent
-  ]
+    InputComponent
+]
 })
 export class RegisterComponent {
 
   form = new FormGroup({
     cnpj: new FormControl('', Validators.required),
     nome: new FormControl('', Validators.required),
-    email: new FormControl('', Validators.required)
+    email: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required),
   });
 
-  isFeedback = false;
-  showForm = true;
-  showFeedbackSuccess: boolean = false;
-  showFeedbackErro: boolean = false;
+  step: number = 1;
+
+  haveUppercaseAndLowwercase = false;
+  contentNumbers = false;
+  specialChars = false;
+
 
   constructor(
     private readonly authService: AuthService,
@@ -54,20 +45,12 @@ export class RegisterComponent {
   ) {
   }
 
+
   register() {
-    this.authService.registerEmpresa(this.form.value as Solicitacao).subscribe({
-      next: () => {
-        this.showForm = false;
-        this.showFeedbackSuccess = true;
-      },
-      error: erro => {
-        this.showForm = false;
-        this.showFeedbackErro = true;
-      }
-    })
+    this.step++;
   }
 
-  showFeedback() {
-    this.isFeedback = !this.isFeedback;
+  cadastrar() {
+    this.toast.notify({message: 'Cadastrado com sucesso', type: 'SUCCESS'});
   }
 }

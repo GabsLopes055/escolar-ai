@@ -1,0 +1,22 @@
+<tgt-modal [witdhModal]="'40%'">
+  <main>
+    <div class="header">
+      <span>Alterar Dados</span>
+    </div>
+    <tgt-divider></tgt-divider>
+
+    <div class="form">
+      <tgt-input-icon [border]="true" placeholder="CPF" [control]="form.controls.cpf" [type]="'text'" icon="fingerprint" [iconPosition]="'right'"></tgt-input-icon>
+      <tgt-input-icon [border]="true" placeholder="Nome Completo" [control]="form.controls.nomeCompleto" [type]="'text'" icon="person" [iconPosition]="'right'"></tgt-input-icon>
+      <tgt-input-icon [border]="true" placeholder="Email" [control]="form.controls.email" [type]="'text'" icon="mail" [iconPosition]="'right'"></tgt-input-icon>
+      <tgt-input-icon [border]="true" placeholder="Celular" [control]="form.controls.celular" [type]="'text'" icon="phone" [iconPosition]="'right'"></tgt-input-icon>
+
+    </div>
+
+    <div class="buttons">
+      <tgt-button fieldButton="outline" class="col-6" [border]="false" [type]="'button'"
+        (click)="cancelar()">Cancelar</tgt-button>
+      <tgt-button [color]="'primary'" (click)="enviar()">Enviar</tgt-button>
+    </div>
+  </main>
+</tgt-modal>

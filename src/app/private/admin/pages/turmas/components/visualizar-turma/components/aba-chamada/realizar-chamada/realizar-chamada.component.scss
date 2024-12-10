@@ -1,0 +1,135 @@
+main {
+  width: 100%;
+  height: 100%;
+  background-color: #FFFFFF;
+  border-radius: 14px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  .header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+
+    p {
+      color: #424940;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 20px;
+      letter-spacing: 0.25px;
+      text-align: left;
+
+    }
+  }
+
+  .table {
+    table {
+
+      width: 100%;
+      border-collapse: collapse; // Remove espaços entre bordas para parecer uma borda contínua
+      border: 1px solid #C2C9BD; // Borda externa da tabela
+
+      thead {
+        // border: 1px solid black;
+        padding: 24px;
+        // border: 1px solid #C2C9BD;
+
+        th {
+          // border: 1px solid #C2C9BD;
+          color: #181D17;
+          font-size: 12px;
+          font-weight: 700;
+          line-height: 16px;
+          letter-spacing: 0.4000000059604645px;
+          padding: 23px;
+          background-color: #F7FBF2;
+        }
+
+
+
+
+        .th {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+          gap: 12px;
+        }
+
+
+      }
+
+      tbody {
+
+        td {
+
+          border: 1px solid #C2C9BD;
+          padding: 23px;
+          color: #181D17;
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 16px;
+          letter-spacing: 0.4000000059604645px;
+          text-align: center;
+
+          .linhaBody {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+          }
+
+          .ausente {
+            color: #BA1A1A;
+            background-color: #FFDAD6;
+            padding: 4px;
+            border-radius: 50%;
+          }
+
+          .presente {
+            color: #181D17;
+            background-color: #D5E8CF;
+            padding: 4px;
+            border-radius: 50%;
+          }
+
+          .edit {
+            color: #181D17;
+            background-color: #00E554;
+            border-radius: 6px;
+            padding: 2px;
+          }
+
+          .btn-error {
+            border-radius: 7px;
+            color: #181D17;
+            padding: 8px;
+            background-color: #FFDAD6;
+            border: none;
+          }
+
+          .btn-succes {
+            border: none;
+            border-radius: 7px;
+            color: #181D17;
+            padding: 8px;
+            background-color: #D5E8CF;
+          }
+        }
+      }
+    }
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+    justify-content: end;
+  }
+
+}

@@ -22,9 +22,9 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: $color-yellow;
+    background-color: $color-primary;
     box-sizing: border-box;
-
+    color: #FFF;
     h3 {
       font-size: 18px;
       font-weight: 800;

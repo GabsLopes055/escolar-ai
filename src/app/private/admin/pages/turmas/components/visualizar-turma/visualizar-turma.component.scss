@@ -1,0 +1,61 @@
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .esquerdo {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+
+      span {
+        padding: 9px;
+        border-radius: 50%;
+        color: #39693B;
+        background-color: #D5E8CF;
+      }
+    }
+
+    .direito {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+
+      span {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .icone {
+    cursor: pointer;
+  }
+
+  .find {
+    display: flex;
+    justify-content: end;
+
+    tgt-input-icon {
+      width: 500px;
+    }
+  }
+
+  .aluno-find {
+    display: flex;
+    justify-content: space-between;
+
+    tgt-input-icon {
+      width: 500px;
+    }
+  }
+
+}

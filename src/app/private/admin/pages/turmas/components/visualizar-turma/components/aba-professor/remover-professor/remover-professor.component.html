@@ -1,0 +1,18 @@
+<tgt-modal [witdhModal]="'auto'">
+  <main>
+    <h3>Remover Professor</h3>
+    <tgt-divider></tgt-divider>
+    <div class="text">
+      <span>Deseja realmente remover este professor da turma?</span>
+      <br>
+      <p>
+        Ao confirmar você não poderá voltar atrás com esta ação.
+      </p>
+    </div>
+    <div class="action">
+      <tgt-button [border]="false" [color]="'primary'" [size]="'small'" [fieldButton]="'outline'" (click)="excluir()">Cancelar</tgt-button>
+      <tgt-button [color]="'primary'" [fieldButton]="'field'" [icon]="'done_all'" (click)="excluir()">Sim, Remover</tgt-button>
+    </div>
+  </main>
+</tgt-modal>
+

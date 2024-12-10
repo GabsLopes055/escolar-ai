@@ -12,6 +12,7 @@ import { AsyncPipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Title } from '@angular/platform-browser';
 import { filter, map, mergeMap } from 'rxjs';
+import { ButtonComponent } from "./shared/button/button.component";
 
 @Component({
   selector: 'app-root',
@@ -24,7 +25,8 @@ import { filter, map, mergeMap } from 'rxjs';
     NavbarComponent,
     AsyncPipe,
     HttpClientModule,
-  ],
+    ButtonComponent
+],
 })
 export class AppComponent implements OnInit {
   title = 'togotrip-angular';

@@ -1,5 +1,5 @@
 import {Empresa} from "./empresa.interface";
-import {Cartao} from "./cartao.interface";
+import {Cartao} from "./professores.interface";
 import { FiltroDeBusca } from "./filtro-busca.interface";
 import { Status, User, UserEntity } from "./user.interface";
 

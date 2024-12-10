@@ -8,7 +8,7 @@ import { UserService } from '../services/user/user.service';
 export class NavbarService {
   private _title = new BehaviorSubject<string>("");
   showBtnViajar = new BehaviorSubject(true);
-  
+
 
   constructor(
   ) {

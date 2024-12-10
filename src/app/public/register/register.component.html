@@ -1,48 +1,118 @@
 <main>
-    <div class="circle">
-        <div class="conteudo">
-            <img src="assets/images/logo_dark.svg" width="150px">
-            <span class="material-symbols-outlined title-mob back" [routerLink]="['/login']">
-                arrow_back
-            </span>
-            <h1 class="title-mob">Vamos começar!</h1>
-            <div class="title-text-desk">
-                <h1><span>Olá,</span> Bem vindo!</h1>
-                <div class="text">
-                    <p>Faça reservas e simplifique o gerenciamento de suas viagens corporativas com a To Go Trip!
-                        Desfrute das melhores tarifas, mantenha o controle das despesas e assegure o conforto de seus
-                        colaboradores.</p>
-                    <p>Economize tempo e dinheiro.</p>
-                </div>
+
+  <div class="circle">
+    <div class="conteudo">
+      <img src="../../../assets/images/imagem-login.png">
+    </div>
+  </div>
+
+  <div class="content">
+
+    @if(step != 3) {
+
+    <div class="back" [routerLink]="['/login']">
+      <span class="material-symbols-outlined">
+        arrow_back
+      </span>
+      <span>Voltar</span>
+    </div>
+    }
+
+    @switch (step) {
+    @case (1) {
+    <form [formGroup]="form" class="form">
+      <h2>Dados cadastrais</h2>
+      <h5>Preencha as informações solicitadas para continuar:</h5>
+      <tgt-input-icon placeholder="E-mail corporativo" [type]="'email'" [iconPosition]="'right'"
+        icon="email"></tgt-input-icon>
+      <tgt-input-icon placeholder="Nome Completo" [type]="'text'" [iconPosition]="'right'"
+        icon="person"></tgt-input-icon>
+      <tgt-input-icon placeholder="CPF" [type]="'number'" [iconPosition]="'right'" icon="fingerprint"></tgt-input-icon>
+      <tgt-input-icon placeholder="Celular" [type]="'number'" [iconPosition]="'right'" icon="numbers"></tgt-input-icon>
+      <tgt-button type="button" [color]="'primary'" size="small" [icon]="'arrow_forward'" iconPosition="right"
+        (click)="register()">Continuar</tgt-button>
+    </form>
+    }
+    @case (2) {
+    <form [formGroup]="form" class="form">
+      <div class="title-back">
+        <h2>Criar conta</h2>
+      </div>
+
+      <tgt-input-icon [control]="this.form.controls.password" placeholder="Senha" [type]="'password'" icon=""
+        [iconPosition]="'right'"></tgt-input-icon>
+      <tgt-input-icon placeholder="Confirmar senha" [type]="'password'" icon=""
+        [iconPosition]="'right'"></tgt-input-icon>
+
+
+      <div class="footer">
+        <div class="forgot">
+          <div class="section">
+            <span class="info-label">A senha deve conter:</span>
+            <div class="info-detail">
+              @if(form.controls.password.value == null) {
+              <span class="material-symbols-outlined icone">do_not_disturb_on</span>
+              } @else if(this.form.controls.password.value['length'] >= 8) {
+
+              <span class="material-symbols-outlined icone" [style.color]="'#3CCF17'">check_circle</span>
+              } @else {
+
+              <span class="material-symbols-outlined icone" [style.color]="'#FA077C'">cancel</span>
+              }
+              <p>Pelo menos 8 caracteres;</p>
             </div>
+            <div class="info-detail">
+              @if(form.controls.password.value == null && haveUppercaseAndLowwercase == false) {
+              <span class="material-symbols-outlined icone">do_not_disturb_on</span>
+              } @else if(haveUppercaseAndLowwercase) {
+              <span class="material-symbols-outlined icone" [style.color]="'#3CCF17'">check_circle</span>
+              } @else {
+              <span class="material-symbols-outlined icone" [style.color]="'#FA077C'">cancel</span>
+              }
+              <p>Letras maiúsculas e minúsculas;</p>
+            </div>
+            <div class="info-detail">
+              @if(form.controls.password.value == null && contentNumbers == false) {
+              <span class="material-symbols-outlined icone">do_not_disturb_on</span>
+              } @else if(contentNumbers) {
+              <span class="material-symbols-outlined icone" [style.color]="'#3CCF17'">check_circle</span>
+              } @else {
+              <span class="material-symbols-outlined icone" [style.color]="'#FA077C'">cancel</span>
+              }
+              <p>Números;</p>
+            </div>
+            <div class="info-detail">
+              @if(form.controls.password.value == null && specialChars == false) {
+              <span class="material-symbols-outlined icone">do_not_disturb_on</span>
+              } @else if(specialChars) {
+              <span class="material-symbols-outlined icone" [style.color]="'#3CCF17'">check_circle</span>
+              } @else {
+              <span class="material-symbols-outlined icone" [style.color]="'#FA077C'">cancel</span>
+              }
+
+              <p>Caracteres especiais.</p>
+            </div>
+          </div>
+
         </div>
-
+        <tgt-button type="button" [color]="'primary'" icon="add" size="small" iconPosition="left"
+          (click)="register()">Criar conta
+        </tgt-button>
+      </div>
+    </form>
+    }
+    @case (3) {
+    <div class="cadastrado">
+      <img src="../../../assets/images/cadastrado.png" alt="imagem-cadastrado">
+      <span>Parabéns!</span>
+      <p>Sua conta foi criada com sucesso! Realize o login para acessar a plataforma.</p>
+      <tgt-button [routerLink]="['/login']" (click)="cadastrar()" [color]="'primary'">Login</tgt-button>
     </div>
-    <div class="content">
-        @if(showForm) {
-        <form class="form" [formGroup]="form" (submit)="register()">
-            <h1 class="title-desk">Vamos começar!</h1>
-            <h2>Registre-se</h2>
-            <tgt-input-icon [control]="form.controls.cnpj" [type]="'text'" icon="apartment" placeholder="CNPJ"
-                mask="00.000.000/0000-00"></tgt-input-icon>
-            <tgt-input-icon [control]="form.controls.nome" [type]="'text'" icon="person" placeholder="Nome completo"></tgt-input-icon>
-            <tgt-input-icon [control]="form.controls.email" [type]="'email'" icon="email" placeholder="E-mail corporativo"></tgt-input-icon>
-
-            <tgt-button [color]="'primary'" [icon]="'login'" [iconPosition]="'right'" size="small"
-                (click)="register()">Cadastrar</tgt-button>
-        </form>
-
-        }
-        @if(showFeedbackSuccess) {
-          <feedback-init-register></feedback-init-register>
-        }
-        @if(showFeedbackErro) {
-          <feedback-erro-register></feedback-erro-register>
-        }
-
-        <div class="create">
-            <span>Já possui uma conta? <a [routerLink]="['/login']">Login</a></span>
-        </div>
+    }
+    }
+    <!-- [routerLink]="['/login']" -->
+    <div class="create">
     </div>
+  </div>
 
 </main>

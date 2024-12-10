@@ -1,0 +1,14 @@
+main {
+  padding: 24px;
+
+  .chips {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 12px;
+    overflow: auto;
+    // tgt-chips {
+    //   width: auto;
+    // }
+  }
+}
