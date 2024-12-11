@@ -112,7 +112,7 @@
         font-weight: 400;
         line-height: 24px;
         letter-spacing: 0.5px;
-        text-align: left;
+        text-align: justify;
         text-underline-position: from-font;
         text-decoration-skip-ink: none;
       }
@@ -282,7 +282,7 @@
   .corpo {
     justify-content: center;
     align-items: center;
-    // background-color: aqua;
+
     .header {
       flex-direction: column;
       width: 100%;
@@ -332,22 +332,32 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      width: 90%;
+
       img {
         width: 300px;
       }
     }
 
     .quemSomos {
+      width: 90%;
       flex-direction: column;
       align-items: center;
+      padding: 0px;
+
     }
 
     .infos {
+
+      width: 100%;
       flex-direction: column;
 
       .div {
         padding: 30px;
+        display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
 
         img {
           width: 300px;
@@ -355,16 +365,20 @@
       }
     }
 
+
+
     .principaisFuncionalidades {
       width: 90%;
       align-items: center;
       justify-content: center;
       padding: 0px;
+
       .info-cards {
         flex-direction: column;
         gap: 12px;
         align-items: center;
         justify-content: center;
+
         img {
           width: 350px;
         }
@@ -373,6 +387,7 @@
 
     .gestao {
       height: auto;
+      width: 90%;
 
       .img {
         img {
