@@ -9,7 +9,8 @@
       <span>Contato</span>
     </div>
     <div class="actions">
-      <tgt-button [fieldButton]="'outline'" [border]="false" [icon]="'person'">Login</tgt-button>
+
+      <tgt-button [fieldButton]="'outline'" [border]="false" [icon]="'person'" (click)="irParaLogin()" >Login</tgt-button>
       <tgt-button [fieldButton]="'field'" [size]="'small'">Solicitar Demonstração</tgt-button>
     </div>
   </div>
@@ -87,6 +88,7 @@
       <img src="../assets/images/info-card-5.png" alt="">
       <img src="../assets/images/info-card-6.png" alt="">
     </div>
+    <br>
     <tgt-button [fieldButton]="'field'" [size]="'small'">Solicitar Demonstração</tgt-button>
   </div>
 
@@ -112,9 +114,7 @@
       </div>
 
       <div class="navegacao">
-        <p>Endereço</p>
-        <p>contatoescolarai.com</p>
-        <p>(00) 00000-0000</p>
+        <p>{{email}}</p>
       </div>
 
       <tgt-button [fieldButton]="'field'" [size]="'small'">Solicitar Demonstração</tgt-button>
