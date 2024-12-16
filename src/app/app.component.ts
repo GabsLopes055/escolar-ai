@@ -12,7 +12,7 @@ import { AsyncPipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Title } from '@angular/platform-browser';
 import { filter, map, mergeMap } from 'rxjs';
-import { ButtonComponent } from "./shared/button/button.component";
+import { ButtonComponent } from './shared/button/button.component';
 
 @Component({
   selector: 'app-root',
@@ -25,36 +25,18 @@ import { ButtonComponent } from "./shared/button/button.component";
     NavbarComponent,
     AsyncPipe,
     HttpClientModule,
-    ButtonComponent
-],
+    ButtonComponent,
+  ],
 })
-export class AppComponent implements OnInit {
-  title = 'togotrip-angular';
-  isMenu: Menu[] = [];
+export class AppComponent {
+  title = 'Escolar Ai';
+  email: string = 'contato@escolarai.com';
 
   constructor(
-    private menuService: MenuService,
-    private titleService: Title,
-    private router: Router,
-    private activatedRoute: ActivatedRoute
-  ) {
-    this.menuService._menu.subscribe((menu) => (this.isMenu = menu));
-  }
-  ngOnInit() {
-    this.router.events
-      .pipe(
-        filter((event) => event instanceof NavigationEnd),
-        map(() => this.activatedRoute),
-        map((route) => {
-          while (route.firstChild) {
-            route = route.firstChild;
-          }
-          return route;
-        }),
-        mergeMap((route) => route.data)
-      )
-      .subscribe((event) => {
-        this.titleService.setTitle(event['title']);
-      });
+    private readonly router: Router
+  ) {}
+
+  irParaLogin() {
+    window.open("https://escolarai.com.br/login");
   }
 }
